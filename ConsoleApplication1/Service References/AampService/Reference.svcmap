@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f4c58601-97c5-4584-88d4-015857c29572" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1862/AampService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AampService.xsd" MetadataType="Schema" ID="843e2e22-d00d-458b-a12a-960c6713e374" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AampService.disco" MetadataType="Disco" ID="716f9ab2-dc3d-44dd-861b-b33c0e6de91f" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?disco" />
+    <MetadataFile FileName="AampService1.xsd" MetadataType="Schema" ID="e9935a52-809e-462b-a259-172acf7c7f1e" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AampService.wsdl" MetadataType="Wsdl" ID="66bbd13e-1cd1-415f-8f78-b415bad3c3c2" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?wsdl" />
+    <MetadataFile FileName="AampService2.xsd" MetadataType="Schema" ID="ed9fdb95-4ed7-483e-aedb-01f658ae9172" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
