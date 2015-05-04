@@ -1,3 +1,26 @@
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\Aamps.Domain.dll.config
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\Aamps.Domain.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\Aamps.Domain.pdb
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\EntityFramework.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.Helpers.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.Mvc.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.Razor.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.WebPages.Deployment.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.WebPages.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.WebPages.Razor.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\EntityFramework.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.Helpers.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.Mvc.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.Razor.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.WebPages.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.WebPages.Deployment.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\bin\Release\System.Web.WebPages.Razor.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\obj\Release\Aamps.Domain.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\obj\Release\Aamps.Domain.pdb
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Domain\obj\Release\Aamps.Domain.csprojResolveAssemblyReference.cache
 C:\Users\Thule Zitha\Documents\dev\Aamps\Aamps.Domain\bin\Release\Aamps.Domain.dll.config
 C:\Users\Thule Zitha\Documents\dev\Aamps\Aamps.Domain\bin\Release\Aamps.Domain.dll
 C:\Users\Thule Zitha\Documents\dev\Aamps\Aamps.Domain\bin\Release\Aamps.Domain.pdb

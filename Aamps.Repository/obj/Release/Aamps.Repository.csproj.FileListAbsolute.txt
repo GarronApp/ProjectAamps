@@ -1,3 +1,31 @@
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\Aamps.Repository.dll.config
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\Aamps.Repository.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\Aamps.Repository.pdb
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\Aamps.Domain.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\EntityFramework.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\Microsoft.Web.Infrastructure.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.Helpers.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.Mvc.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.Razor.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.WebPages.Deployment.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.WebPages.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.WebPages.Razor.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\Aamps.Domain.pdb
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\EntityFramework.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.Helpers.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.Mvc.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.Razor.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.WebPages.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.WebPages.Deployment.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\System.Web.WebPages.Razor.xml
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\obj\Release\Aamps.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\obj\Release\Aamps.Repository.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\obj\Release\Aamps.Repository.pdb
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\App.Common.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\itextsharp.dll
+C:\Users\Thule Zitha\Documents\Visual Studio 2013\Projects\Aamps\Aamps.Repository\bin\Release\App.Common.pdb
 C:\Users\Thule Zitha\Documents\dev\Aamps\Aamps.Repository\bin\Release\Aamps.Repository.dll.config
 C:\Users\Thule Zitha\Documents\dev\Aamps\Aamps.Repository\bin\Release\Aamps.Repository.dll
 C:\Users\Thule Zitha\Documents\dev\Aamps\Aamps.Repository\bin\Release\Aamps.Repository.pdb
