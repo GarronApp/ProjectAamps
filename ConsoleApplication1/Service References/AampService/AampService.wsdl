@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AampService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAampService_GetAllUnits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUnits" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllUnits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitByUnitBlock_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByUnitBlock" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitByUnitBlock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByUnitBlockResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitByAddedUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByAddedUser" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitByAddedUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByAddedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitByAgentId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByAgentId" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitByAgentId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByAgentIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitByDevelopmentId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByDevelopmentId" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitByDevelopmentId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitByDevelopmentIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdateUnit_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUnit" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdateUnit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllSales_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSales" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllSales_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleByUnitId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleByUnitId" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleByUnitId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleByUnitIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllDevelopments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDevelopments" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllDevelopments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDevelopmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetEstateByDevelopment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEstateByDevelopment" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetEstateByDevelopment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEstateByDevelopmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitStatusById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitStatusById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitStatusById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitStatusByIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAampService">
+    <wsdl:operation name="GetAllUnits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllUnits" message="tns:IAampService_GetAllUnits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllUnitsResponse" message="tns:IAampService_GetAllUnits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitById" message="tns:IAampService_GetUnitById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitByIdResponse" message="tns:IAampService_GetUnitById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitByUnitBlock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitByUnitBlock" message="tns:IAampService_GetUnitByUnitBlock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitByUnitBlockResponse" message="tns:IAampService_GetUnitByUnitBlock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitByAddedUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitByAddedUser" message="tns:IAampService_GetUnitByAddedUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitByAddedUserResponse" message="tns:IAampService_GetUnitByAddedUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitByAgentId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitByAgentId" message="tns:IAampService_GetUnitByAgentId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitByAgentIdResponse" message="tns:IAampService_GetUnitByAgentId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitByDevelopmentId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitByDevelopmentId" message="tns:IAampService_GetUnitByDevelopmentId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitByDevelopmentIdResponse" message="tns:IAampService_GetUnitByDevelopmentId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/UpdateUnit" message="tns:IAampService_UpdateUnit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/UpdateUnitResponse" message="tns:IAampService_UpdateUnit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSales">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllSales" message="tns:IAampService_GetAllSales_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllSalesResponse" message="tns:IAampService_GetAllSales_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleById" message="tns:IAampService_GetSaleById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleByIdResponse" message="tns:IAampService_GetSaleById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleByUnitId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleByUnitId" message="tns:IAampService_GetSaleByUnitId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleByUnitIdResponse" message="tns:IAampService_GetSaleByUnitId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDevelopments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllDevelopments" message="tns:IAampService_GetAllDevelopments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllDevelopmentsResponse" message="tns:IAampService_GetAllDevelopments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentById" message="tns:IAampService_GetDevelopmentById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentByIdResponse" message="tns:IAampService_GetDevelopmentById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstateByDevelopment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetEstateByDevelopment" message="tns:IAampService_GetEstateByDevelopment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetEstateByDevelopmentResponse" message="tns:IAampService_GetEstateByDevelopment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitStatusById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusById" message="tns:IAampService_GetUnitStatusById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusByIdResponse" message="tns:IAampService_GetUnitStatusById_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAampService" type="tns:IAampService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllUnits">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetAllUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitByUnitBlock">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitByUnitBlock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitByAddedUser">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitByAddedUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitByAgentId">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitByAgentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitByDevelopmentId">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitByDevelopmentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUnit">
+      <soap:operation soapAction="http://tempuri.org/IAampService/UpdateUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSales">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetAllSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetSaleById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleByUnitId">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetSaleByUnitId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDevelopments">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetAllDevelopments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetDevelopmentById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstateByDevelopment">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetEstateByDevelopment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitStatusById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitStatusById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AampService">
+    <wsdl:port name="BasicHttpBinding_IAampService" binding="tns:BasicHttpBinding_IAampService">
+      <soap:address location="http://localhost:1862/AampService.svc/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

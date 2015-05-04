@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AAMPS.Web.Models.ViewModels.DevelopmentViewModel>
+@{
+    ViewBag.Title = "TestReport";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TestReport</title>
+</head>
+<body>
+    <div class="row">
+        <p class="text-center" id="buttonsDashBoard">
+            <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('available')">RESERVATIONS</button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('notavailable')">UPDATE SALES INFO</button>
+
+        </p>
+        <br /><br />
+
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td class="dark-orange">Unit Number</td>
+                    <td class="dark-orange">Description</td>
+                    <td class="text-center dark-orange">Unit Size</td>
+                    <td class="dark-orange">Unit Status</td>
+                    <td class="text-right dark-orange">Price Incl.VAT</td>
+                    <td class="dark-orange">Phase</td>
+                    <td class="dark-orange">Available Date</td>
+                    <td class="dark-orange">Action</td>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>#</td>
+                        <td>@item.UnitNumber</td>
+                        <td>@item.DevelopmentDescription</td>
+                        <td class="text-center">@item.UnitSize</td>
+                        <td>@item.UnitStatusID</td>
+                        <td class="text-right">R @item.UnitPriceIncluding</td>
+                        <td>Phase</td>
+                        <td>@item.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</body>
+</html>
+
+
+
