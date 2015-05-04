@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-Aamps.Web-20150314014226.mdf;Initial Catalog=aspnet-Aamps.Web-20150314014226;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Thule\ Zitha\\Documents\\dev\\Aamps\\ProjectAamps\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="AampsContext-Web.config Connection String" description="AampsContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=localhost;Initial Catalog=Aamps;Integrated Security=True;MultipleActiveResultSets=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Thule\ Zitha\\Documents\\dev\\Aamps\\ProjectAamps\.Web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AampsContext']/@connectionString" />
+  </parameter>
+</parameters>
