@@ -78,12 +78,6 @@ namespace Aamps.Domain.Models.Mapping
             this.HasOptional(t => t.SaleType)
                 .WithMany(t => t.Sales)
                 .HasForeignKey(d => d.SaleTypeID);
-
-            //this.HasRequired(o=> o.Sa)
-            //           .WithMany(s => s.Students)
-            //           .HasForeignKey(s => s.StdId);
-
-
             //this.HasRequired(t => t.Unit)
             //    .WithMany(t => t.Sales)
             //    .HasForeignKey(d => d.UnitID);

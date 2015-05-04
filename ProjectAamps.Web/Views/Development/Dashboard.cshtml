@@ -5,17 +5,17 @@
 }
 
 @model IEnumerable<AAMPS.Web.Models.ViewModels.DevelopmentViewModel>
-<div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
+<div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px">
     <div class="row text-center" style="margin-top:-40px">
         <h3 style="font-size:1.49em;font-weight:bold">Development Dashboard</h3>
     </div>
     <fieldset>
         <div class="row text-center">
-            <div class="col-md-2 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 &nbsp;
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <table style="font-size:0.69em; font-weight:400;margin-top:15px" class="table-striped text-center">
+                <table style="font-size:0.59em; font-weight:400" class="table-striped text-center">
                     <thead>
                         <tr>
                             <td class="col-md-4"><b>Status</b></td>
@@ -52,9 +52,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-6 col-sm-12 col-xs-12">
-                <div id="chart"></div>
-
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                &nbsp;
             </div>
         </div>
 
@@ -65,7 +64,6 @@
     <p class="text-center" id="buttonsDashBoard">
         <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('available')">RESERVATIONS</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('notavailable')">UPDATE SALES INFO</button>
-        <button type="button" class="btn btn-primary btn-lg" onclick="showBonds()">BONDS</button>
 
     </p>
     <br /><br />
@@ -155,7 +153,7 @@
                                             @item.UnitSize
                                         </td>
                                         <td>
-                                            <a class="orange" onclick="ViewAvailableUnits(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Book Unit</a>
+                                            <a class="orange" onclick="window.location.href='@Url.Action("Details", "Sales", new { id = @item.UnitId })'"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Book Unit</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -173,7 +171,7 @@
     </form>
 </div>
 
- <div class="modal fade" id="ReservationDetailsModalNotAvailable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="ReservationDetailsModalNotAvailable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form id="ReservationDetailsForm">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -225,77 +223,7 @@
                                             @item.UnitSize
                                         </td>
                                         <td>
-                                            <a class="orange" onclick="ViewNotAvailableUnits(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;View Unit</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            }
-                        </table>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'">Cancel</button>
-                </div>
-
-            </div>
-        </div>
-    </form>
-</div>
-
-<div class="modal fade" id="ReservationDetailsSoldModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form id="ReservationDetailsForm">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="modalEdit">Pending Bookings</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <table class="table table-condensed" id="tableApps">
-                            <thead class="datagrid">
-                                <tr>
-                                    <th class="dark-orange">
-                                        Unit Number
-                                    </th>
-                                    <th class="dark-orange">
-                                        Unit Block
-                                    </th>
-                                    <th class="dark-orange">
-                                        Unit Floor
-                                    </th>
-                                    <th class="dark-orange">
-                                        Unit Price
-                                    </th>
-                                    <th class="dark-orange">
-                                        Unit Size
-                                    </th>
-                                </tr>
-                            </thead>
-
-
-                            @foreach (var item in Model.Where(c => c.UnitStatusId == 4))
-                            {
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            @item.UnitNumber
-                                        </td>
-                                        <td>
-                                            @item.UnitBlock
-                                        </td>
-                                        <td>
-                                            @item.UnitFloor
-                                        </td>
-                                        <td>
-                                            R @item.UnitPrice
-                                        </td>
-                                        <td>
-                                            @item.UnitSize
-                                        </td>
-                                        <td>
-                                            <a class="orange" onclick="ViewBondDetails(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;View Details</a>
+                                            <a class="orange" onclick="window.location.href='@Url.Action("Details", "Sales", new { id = @item.UnitId })'"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;View Unit</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -314,22 +242,10 @@
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
-<script src="~/Scripts/d3.js"></script>
-<script src="~/Scripts/c3.js"></script>
-<link href="~/Content/c3.css" rel="stylesheet" />
+@*<script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+<script src="http://code.highcharts.com/modules/exporting.js" type="text/javascript"></script>*@
 <script type="text/javascript">
-    function ViewBondDetails(id)
-    {
-        window.location.href = "/Bonds/Details/" + id;
-    }
-    function ViewNotAvailableUnits(id)
-    {
-        window.location.href = "/Sales/Details/" + id;
-    }
-    function ViewAvailableUnits(id)
-    {
-        window.location.href = "/Sales/Details/" + id;
-    }
+
     function showReservations(context) {
 
         if (context === 'available') {
@@ -340,14 +256,7 @@
         }
     }
 
-    function showBonds()
-    {
-        $('#ReservationDetailsSoldModal').modal('show');
-    }
-
-
 </script>
-
 
 <script type="text/javascript">
     $(function () {
@@ -368,52 +277,6 @@
 
             }
         });
-
-        var items = [];
-        $.getJSON("GetTotals", function (data) {
-
-            items.push(data);
-            console.log(data)
-            var chart = c3.generate({
-                size: {
-                    height: 180,
-                    width: 360
-                },
-                data: {
-                    columns: [
-                          [data[0].series, data[0].data],
-                          [data[1].series, data[1].data],
-                          [data[2].series, data[2].data],
-                          [data[3].series, data[3].data],
-
-                        //$.each(items, function (key,val) {
-                        //    console.log(items);
-                        //    console.log(items[0][0].series + " " + items[0][0].data);
-                        //    [items[0][0].series, items[0][0].data]
-                        //    }),
-                    ],
-                    type: 'pie',
-                },
-
-            });
-        });
-        //var chart = c3.generate({
-        //    size: {
-        //        height: 180,
-        //        width: 360
-        //    },
-        //    data: {
-        //        columns: [
-        //            ['Lulu', 15],
-        //            ['Olaf', 40],
-        //            ['Nula', 30],
-        //            ['Yuga', 15],
-        //        ],
-        //        type: 'pie',
-
-        //    },
-
-        //});
     });
 </script>
 

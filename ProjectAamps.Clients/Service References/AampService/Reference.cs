@@ -1050,493 +1050,6 @@ namespace AAMPS.Clients.AampService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OriginatorTr", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
-    [System.SerializableAttribute()]
-    public partial class OriginatorTr : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AAMPS.Clients.AampService.Bank BankField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BankIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AAMPS.Clients.AampService.MOStatus MOStatuField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MOStatusIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> OriginatorTrAIPDtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> OriginatorTrAcceptDtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool OriginatorTrAcceptedBtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int OriginatorTrAddedByUserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime OriginatorTrAddedDtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double OriginatorTrBondAmountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> OriginatorTrGrantDtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int OriginatorTrIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double OriginatorTrIntRateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int OriginatorTrModifiedByUserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime OriginatorTrModifiedDtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> OriginatorTrSubmittedDtField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AAMPS.Clients.AampService.Sale SaleField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SaleIDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AAMPS.Clients.AampService.Bank Bank {
-            get {
-                return this.BankField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BankField, value) != true)) {
-                    this.BankField = value;
-                    this.RaisePropertyChanged("Bank");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BankID {
-            get {
-                return this.BankIDField;
-            }
-            set {
-                if ((this.BankIDField.Equals(value) != true)) {
-                    this.BankIDField = value;
-                    this.RaisePropertyChanged("BankID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AAMPS.Clients.AampService.MOStatus MOStatu {
-            get {
-                return this.MOStatuField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MOStatuField, value) != true)) {
-                    this.MOStatuField = value;
-                    this.RaisePropertyChanged("MOStatu");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int MOStatusID {
-            get {
-                return this.MOStatusIDField;
-            }
-            set {
-                if ((this.MOStatusIDField.Equals(value) != true)) {
-                    this.MOStatusIDField = value;
-                    this.RaisePropertyChanged("MOStatusID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> OriginatorTrAIPDt {
-            get {
-                return this.OriginatorTrAIPDtField;
-            }
-            set {
-                if ((this.OriginatorTrAIPDtField.Equals(value) != true)) {
-                    this.OriginatorTrAIPDtField = value;
-                    this.RaisePropertyChanged("OriginatorTrAIPDt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> OriginatorTrAcceptDt {
-            get {
-                return this.OriginatorTrAcceptDtField;
-            }
-            set {
-                if ((this.OriginatorTrAcceptDtField.Equals(value) != true)) {
-                    this.OriginatorTrAcceptDtField = value;
-                    this.RaisePropertyChanged("OriginatorTrAcceptDt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool OriginatorTrAcceptedBt {
-            get {
-                return this.OriginatorTrAcceptedBtField;
-            }
-            set {
-                if ((this.OriginatorTrAcceptedBtField.Equals(value) != true)) {
-                    this.OriginatorTrAcceptedBtField = value;
-                    this.RaisePropertyChanged("OriginatorTrAcceptedBt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int OriginatorTrAddedByUser {
-            get {
-                return this.OriginatorTrAddedByUserField;
-            }
-            set {
-                if ((this.OriginatorTrAddedByUserField.Equals(value) != true)) {
-                    this.OriginatorTrAddedByUserField = value;
-                    this.RaisePropertyChanged("OriginatorTrAddedByUser");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime OriginatorTrAddedDt {
-            get {
-                return this.OriginatorTrAddedDtField;
-            }
-            set {
-                if ((this.OriginatorTrAddedDtField.Equals(value) != true)) {
-                    this.OriginatorTrAddedDtField = value;
-                    this.RaisePropertyChanged("OriginatorTrAddedDt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double OriginatorTrBondAmount {
-            get {
-                return this.OriginatorTrBondAmountField;
-            }
-            set {
-                if ((this.OriginatorTrBondAmountField.Equals(value) != true)) {
-                    this.OriginatorTrBondAmountField = value;
-                    this.RaisePropertyChanged("OriginatorTrBondAmount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> OriginatorTrGrantDt {
-            get {
-                return this.OriginatorTrGrantDtField;
-            }
-            set {
-                if ((this.OriginatorTrGrantDtField.Equals(value) != true)) {
-                    this.OriginatorTrGrantDtField = value;
-                    this.RaisePropertyChanged("OriginatorTrGrantDt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int OriginatorTrID {
-            get {
-                return this.OriginatorTrIDField;
-            }
-            set {
-                if ((this.OriginatorTrIDField.Equals(value) != true)) {
-                    this.OriginatorTrIDField = value;
-                    this.RaisePropertyChanged("OriginatorTrID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double OriginatorTrIntRate {
-            get {
-                return this.OriginatorTrIntRateField;
-            }
-            set {
-                if ((this.OriginatorTrIntRateField.Equals(value) != true)) {
-                    this.OriginatorTrIntRateField = value;
-                    this.RaisePropertyChanged("OriginatorTrIntRate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int OriginatorTrModifiedByUser {
-            get {
-                return this.OriginatorTrModifiedByUserField;
-            }
-            set {
-                if ((this.OriginatorTrModifiedByUserField.Equals(value) != true)) {
-                    this.OriginatorTrModifiedByUserField = value;
-                    this.RaisePropertyChanged("OriginatorTrModifiedByUser");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime OriginatorTrModifiedDt {
-            get {
-                return this.OriginatorTrModifiedDtField;
-            }
-            set {
-                if ((this.OriginatorTrModifiedDtField.Equals(value) != true)) {
-                    this.OriginatorTrModifiedDtField = value;
-                    this.RaisePropertyChanged("OriginatorTrModifiedDt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> OriginatorTrSubmittedDt {
-            get {
-                return this.OriginatorTrSubmittedDtField;
-            }
-            set {
-                if ((this.OriginatorTrSubmittedDtField.Equals(value) != true)) {
-                    this.OriginatorTrSubmittedDtField = value;
-                    this.RaisePropertyChanged("OriginatorTrSubmittedDt");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AAMPS.Clients.AampService.Sale Sale {
-            get {
-                return this.SaleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SaleField, value) != true)) {
-                    this.SaleField = value;
-                    this.RaisePropertyChanged("Sale");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int SaleID {
-            get {
-                return this.SaleIDField;
-            }
-            set {
-                if ((this.SaleIDField.Equals(value) != true)) {
-                    this.SaleIDField = value;
-                    this.RaisePropertyChanged("SaleID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Bank", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
-    [System.SerializableAttribute()]
-    public partial class Bank : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BankDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int BankIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AAMPS.Clients.AampService.OriginatorTr[] OriginatorTrsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AAMPS.Clients.AampService.Sale[] SalesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BankDescription {
-            get {
-                return this.BankDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BankDescriptionField, value) != true)) {
-                    this.BankDescriptionField = value;
-                    this.RaisePropertyChanged("BankDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BankID {
-            get {
-                return this.BankIDField;
-            }
-            set {
-                if ((this.BankIDField.Equals(value) != true)) {
-                    this.BankIDField = value;
-                    this.RaisePropertyChanged("BankID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AAMPS.Clients.AampService.OriginatorTr[] OriginatorTrs {
-            get {
-                return this.OriginatorTrsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OriginatorTrsField, value) != true)) {
-                    this.OriginatorTrsField = value;
-                    this.RaisePropertyChanged("OriginatorTrs");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AAMPS.Clients.AampService.Sale[] Sales {
-            get {
-                return this.SalesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SalesField, value) != true)) {
-                    this.SalesField = value;
-                    this.RaisePropertyChanged("Sales");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MOStatus", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
-    [System.SerializableAttribute()]
-    public partial class MOStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MOStatusDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MOStatusIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AAMPS.Clients.AampService.OriginatorTr[] OriginatorTrsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MOStatusDescription {
-            get {
-                return this.MOStatusDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MOStatusDescriptionField, value) != true)) {
-                    this.MOStatusDescriptionField = value;
-                    this.RaisePropertyChanged("MOStatusDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int MOStatusID {
-            get {
-                return this.MOStatusIDField;
-            }
-            set {
-                if ((this.MOStatusIDField.Equals(value) != true)) {
-                    this.MOStatusIDField = value;
-                    this.RaisePropertyChanged("MOStatusID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AAMPS.Clients.AampService.OriginatorTr[] OriginatorTrs {
-            get {
-                return this.OriginatorTrsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OriginatorTrsField, value) != true)) {
-                    this.OriginatorTrsField = value;
-                    this.RaisePropertyChanged("OriginatorTrs");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Sale", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
     [System.SerializableAttribute()]
     public partial class Sale : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -2414,6 +1927,99 @@ namespace AAMPS.Clients.AampService {
                 if ((this.UnitIDField.Equals(value) != true)) {
                     this.UnitIDField = value;
                     this.RaisePropertyChanged("UnitID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Bank", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
+    [System.SerializableAttribute()]
+    public partial class Bank : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BankDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BankIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private AAMPS.Clients.AampService.OriginatorTr[] OriginatorTrsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private AAMPS.Clients.AampService.Sale[] SalesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BankDescription {
+            get {
+                return this.BankDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BankDescriptionField, value) != true)) {
+                    this.BankDescriptionField = value;
+                    this.RaisePropertyChanged("BankDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BankID {
+            get {
+                return this.BankIDField;
+            }
+            set {
+                if ((this.BankIDField.Equals(value) != true)) {
+                    this.BankIDField = value;
+                    this.RaisePropertyChanged("BankID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AAMPS.Clients.AampService.OriginatorTr[] OriginatorTrs {
+            get {
+                return this.OriginatorTrsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OriginatorTrsField, value) != true)) {
+                    this.OriginatorTrsField = value;
+                    this.RaisePropertyChanged("OriginatorTrs");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AAMPS.Clients.AampService.Sale[] Sales {
+            get {
+                return this.SalesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SalesField, value) != true)) {
+                    this.SalesField = value;
+                    this.RaisePropertyChanged("Sales");
                 }
             }
         }
@@ -4461,6 +4067,323 @@ namespace AAMPS.Clients.AampService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OriginatorTr", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
+    [System.SerializableAttribute()]
+    public partial class OriginatorTr : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private AAMPS.Clients.AampService.Bank BankField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BankIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private AAMPS.Clients.AampService.MOStatus MOStatuField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MOStatusIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> OriginatorTrAIPDtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> OriginatorTrAcceptDtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool OriginatorTrAcceptedBtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OriginatorTrAddedByUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime OriginatorTrAddedDtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double OriginatorTrBondAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> OriginatorTrGrantDtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OriginatorTrIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double OriginatorTrIntRateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OriginatorTrModifiedByUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime OriginatorTrModifiedDtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> OriginatorTrSubmittedDtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private AAMPS.Clients.AampService.Sale SaleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SaleIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AAMPS.Clients.AampService.Bank Bank {
+            get {
+                return this.BankField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BankField, value) != true)) {
+                    this.BankField = value;
+                    this.RaisePropertyChanged("Bank");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BankID {
+            get {
+                return this.BankIDField;
+            }
+            set {
+                if ((this.BankIDField.Equals(value) != true)) {
+                    this.BankIDField = value;
+                    this.RaisePropertyChanged("BankID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AAMPS.Clients.AampService.MOStatus MOStatu {
+            get {
+                return this.MOStatuField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MOStatuField, value) != true)) {
+                    this.MOStatuField = value;
+                    this.RaisePropertyChanged("MOStatu");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MOStatusID {
+            get {
+                return this.MOStatusIDField;
+            }
+            set {
+                if ((this.MOStatusIDField.Equals(value) != true)) {
+                    this.MOStatusIDField = value;
+                    this.RaisePropertyChanged("MOStatusID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> OriginatorTrAIPDt {
+            get {
+                return this.OriginatorTrAIPDtField;
+            }
+            set {
+                if ((this.OriginatorTrAIPDtField.Equals(value) != true)) {
+                    this.OriginatorTrAIPDtField = value;
+                    this.RaisePropertyChanged("OriginatorTrAIPDt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> OriginatorTrAcceptDt {
+            get {
+                return this.OriginatorTrAcceptDtField;
+            }
+            set {
+                if ((this.OriginatorTrAcceptDtField.Equals(value) != true)) {
+                    this.OriginatorTrAcceptDtField = value;
+                    this.RaisePropertyChanged("OriginatorTrAcceptDt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool OriginatorTrAcceptedBt {
+            get {
+                return this.OriginatorTrAcceptedBtField;
+            }
+            set {
+                if ((this.OriginatorTrAcceptedBtField.Equals(value) != true)) {
+                    this.OriginatorTrAcceptedBtField = value;
+                    this.RaisePropertyChanged("OriginatorTrAcceptedBt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OriginatorTrAddedByUser {
+            get {
+                return this.OriginatorTrAddedByUserField;
+            }
+            set {
+                if ((this.OriginatorTrAddedByUserField.Equals(value) != true)) {
+                    this.OriginatorTrAddedByUserField = value;
+                    this.RaisePropertyChanged("OriginatorTrAddedByUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime OriginatorTrAddedDt {
+            get {
+                return this.OriginatorTrAddedDtField;
+            }
+            set {
+                if ((this.OriginatorTrAddedDtField.Equals(value) != true)) {
+                    this.OriginatorTrAddedDtField = value;
+                    this.RaisePropertyChanged("OriginatorTrAddedDt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double OriginatorTrBondAmount {
+            get {
+                return this.OriginatorTrBondAmountField;
+            }
+            set {
+                if ((this.OriginatorTrBondAmountField.Equals(value) != true)) {
+                    this.OriginatorTrBondAmountField = value;
+                    this.RaisePropertyChanged("OriginatorTrBondAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> OriginatorTrGrantDt {
+            get {
+                return this.OriginatorTrGrantDtField;
+            }
+            set {
+                if ((this.OriginatorTrGrantDtField.Equals(value) != true)) {
+                    this.OriginatorTrGrantDtField = value;
+                    this.RaisePropertyChanged("OriginatorTrGrantDt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OriginatorTrID {
+            get {
+                return this.OriginatorTrIDField;
+            }
+            set {
+                if ((this.OriginatorTrIDField.Equals(value) != true)) {
+                    this.OriginatorTrIDField = value;
+                    this.RaisePropertyChanged("OriginatorTrID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double OriginatorTrIntRate {
+            get {
+                return this.OriginatorTrIntRateField;
+            }
+            set {
+                if ((this.OriginatorTrIntRateField.Equals(value) != true)) {
+                    this.OriginatorTrIntRateField = value;
+                    this.RaisePropertyChanged("OriginatorTrIntRate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OriginatorTrModifiedByUser {
+            get {
+                return this.OriginatorTrModifiedByUserField;
+            }
+            set {
+                if ((this.OriginatorTrModifiedByUserField.Equals(value) != true)) {
+                    this.OriginatorTrModifiedByUserField = value;
+                    this.RaisePropertyChanged("OriginatorTrModifiedByUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime OriginatorTrModifiedDt {
+            get {
+                return this.OriginatorTrModifiedDtField;
+            }
+            set {
+                if ((this.OriginatorTrModifiedDtField.Equals(value) != true)) {
+                    this.OriginatorTrModifiedDtField = value;
+                    this.RaisePropertyChanged("OriginatorTrModifiedDt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> OriginatorTrSubmittedDt {
+            get {
+                return this.OriginatorTrSubmittedDtField;
+            }
+            set {
+                if ((this.OriginatorTrSubmittedDtField.Equals(value) != true)) {
+                    this.OriginatorTrSubmittedDtField = value;
+                    this.RaisePropertyChanged("OriginatorTrSubmittedDt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AAMPS.Clients.AampService.Sale Sale {
+            get {
+                return this.SaleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SaleField, value) != true)) {
+                    this.SaleField = value;
+                    this.RaisePropertyChanged("Sale");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SaleID {
+            get {
+                return this.SaleIDField;
+            }
+            set {
+                if ((this.SaleIDField.Equals(value) != true)) {
+                    this.SaleIDField = value;
+                    this.RaisePropertyChanged("SaleID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TransAtt", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
     [System.SerializableAttribute()]
     public partial class TransAtt : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -4826,6 +4749,83 @@ namespace AAMPS.Clients.AampService {
                 if ((this.TransAttTDRecDtField.Equals(value) != true)) {
                     this.TransAttTDRecDtField = value;
                     this.RaisePropertyChanged("TransAttTDRecDt");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MOStatus", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
+    [System.SerializableAttribute()]
+    public partial class MOStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MOStatusDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MOStatusIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private AAMPS.Clients.AampService.OriginatorTr[] OriginatorTrsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MOStatusDescription {
+            get {
+                return this.MOStatusDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MOStatusDescriptionField, value) != true)) {
+                    this.MOStatusDescriptionField = value;
+                    this.RaisePropertyChanged("MOStatusDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MOStatusID {
+            get {
+                return this.MOStatusIDField;
+            }
+            set {
+                if ((this.MOStatusIDField.Equals(value) != true)) {
+                    this.MOStatusIDField = value;
+                    this.RaisePropertyChanged("MOStatusID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AAMPS.Clients.AampService.OriginatorTr[] OriginatorTrs {
+            get {
+                return this.OriginatorTrsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OriginatorTrsField, value) != true)) {
+                    this.OriginatorTrsField = value;
+                    this.RaisePropertyChanged("OriginatorTrs");
                 }
             }
         }
@@ -6571,18 +6571,6 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateUnit", ReplyAction="http://tempuri.org/IAampService/UpdateUnitResponse")]
         System.Threading.Tasks.Task UpdateUnitAsync(AAMPS.Clients.AampService.Unit unit);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateOrginator", ReplyAction="http://tempuri.org/IAampService/UpdateOrginatorResponse")]
-        void UpdateOrginator(AAMPS.Clients.AampService.OriginatorTr originatorTr);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateOrginator", ReplyAction="http://tempuri.org/IAampService/UpdateOrginatorResponse")]
-        System.Threading.Tasks.Task UpdateOrginatorAsync(AAMPS.Clients.AampService.OriginatorTr originatorTr);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveOrginator", ReplyAction="http://tempuri.org/IAampService/SaveOrginatorResponse")]
-        void SaveOrginator(AAMPS.Clients.AampService.OriginatorTr originatorTr);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveOrginator", ReplyAction="http://tempuri.org/IAampService/SaveOrginatorResponse")]
-        System.Threading.Tasks.Task SaveOrginatorAsync(AAMPS.Clients.AampService.OriginatorTr originatorTr);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllSales", ReplyAction="http://tempuri.org/IAampService/GetAllSalesResponse")]
         AAMPS.Clients.AampService.Sale[] GetAllSales();
         
@@ -6594,54 +6582,6 @@ namespace AAMPS.Clients.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleById", ReplyAction="http://tempuri.org/IAampService/GetSaleByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Sale> GetSaleByIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleActiveStatus", ReplyAction="http://tempuri.org/IAampService/GetSaleActiveStatusResponse")]
-        AAMPS.Clients.AampService.SaleActiveStatus GetSaleActiveStatus(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleActiveStatus", ReplyAction="http://tempuri.org/IAampService/GetSaleActiveStatusResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleActiveStatus> GetSaleActiveStatusAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleTypesResponse")]
-        AAMPS.Clients.AampService.SaleType[] GetSaleTypes();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleTypesResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleType[]> GetSaleTypesAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetBankById", ReplyAction="http://tempuri.org/IAampService/GetBankByIdResponse")]
-        AAMPS.Clients.AampService.Bank GetBankById(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetBankById", ReplyAction="http://tempuri.org/IAampService/GetBankByIdResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Bank> GetBankByIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllBanks", ReplyAction="http://tempuri.org/IAampService/GetAllBanksResponse")]
-        AAMPS.Clients.AampService.Bank[] GetAllBanks();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllBanks", ReplyAction="http://tempuri.org/IAampService/GetAllBanksResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Bank[]> GetAllBanksAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetMOStatusById", ReplyAction="http://tempuri.org/IAampService/GetMOStatusByIdResponse")]
-        AAMPS.Clients.AampService.MOStatus GetMOStatusById(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetMOStatusById", ReplyAction="http://tempuri.org/IAampService/GetMOStatusByIdResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.MOStatus> GetMOStatusByIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllMOStatus", ReplyAction="http://tempuri.org/IAampService/GetAllMOStatusResponse")]
-        AAMPS.Clients.AampService.MOStatus[] GetAllMOStatus();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllMOStatus", ReplyAction="http://tempuri.org/IAampService/GetAllMOStatusResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.MOStatus[]> GetAllMOStatusAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorBySalesId", ReplyAction="http://tempuri.org/IAampService/GetOriginatorBySalesIdResponse")]
-        AAMPS.Clients.AampService.OriginatorTr[] GetOriginatorBySalesId(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorBySalesId", ReplyAction="http://tempuri.org/IAampService/GetOriginatorBySalesIdResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr[]> GetOriginatorBySalesIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorById", ReplyAction="http://tempuri.org/IAampService/GetOriginatorByIdResponse")]
-        AAMPS.Clients.AampService.OriginatorTr GetOriginatorById(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorById", ReplyAction="http://tempuri.org/IAampService/GetOriginatorByIdResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr> GetOriginatorByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleByUnitId", ReplyAction="http://tempuri.org/IAampService/GetSaleByUnitIdResponse")]
         AAMPS.Clients.AampService.Sale GetSaleByUnitId(int id);
@@ -6696,18 +6636,6 @@ namespace AAMPS.Clients.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePerson", ReplyAction="http://tempuri.org/IAampService/SavePersonResponse")]
         System.Threading.Tasks.Task SavePersonAsync(AAMPS.Clients.AampService.Individual person);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllPreferedContactMethods", ReplyAction="http://tempuri.org/IAampService/GetAllPreferedContactMethodsResponse")]
-        AAMPS.Clients.AampService.PreferedContactMethod[] GetAllPreferedContactMethods();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllPreferedContactMethods", ReplyAction="http://tempuri.org/IAampService/GetAllPreferedContactMethodsResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod[]> GetAllPreferedContactMethodsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPreferedContactMethodById", ReplyAction="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse")]
-        AAMPS.Clients.AampService.PreferedContactMethod GetPreferedContactMethodById(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPreferedContactMethodById", ReplyAction="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod> GetPreferedContactMethodByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUser", ReplyAction="http://tempuri.org/IAampService/GetUserResponse")]
         AAMPS.Clients.AampService.UserList GetUser(int identity);
@@ -6821,22 +6749,6 @@ namespace AAMPS.Clients.AampService {
             return base.Channel.UpdateUnitAsync(unit);
         }
         
-        public void UpdateOrginator(AAMPS.Clients.AampService.OriginatorTr originatorTr) {
-            base.Channel.UpdateOrginator(originatorTr);
-        }
-        
-        public System.Threading.Tasks.Task UpdateOrginatorAsync(AAMPS.Clients.AampService.OriginatorTr originatorTr) {
-            return base.Channel.UpdateOrginatorAsync(originatorTr);
-        }
-        
-        public void SaveOrginator(AAMPS.Clients.AampService.OriginatorTr originatorTr) {
-            base.Channel.SaveOrginator(originatorTr);
-        }
-        
-        public System.Threading.Tasks.Task SaveOrginatorAsync(AAMPS.Clients.AampService.OriginatorTr originatorTr) {
-            return base.Channel.SaveOrginatorAsync(originatorTr);
-        }
-        
         public AAMPS.Clients.AampService.Sale[] GetAllSales() {
             return base.Channel.GetAllSales();
         }
@@ -6851,70 +6763,6 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Sale> GetSaleByIdAsync(int id) {
             return base.Channel.GetSaleByIdAsync(id);
-        }
-        
-        public AAMPS.Clients.AampService.SaleActiveStatus GetSaleActiveStatus(int id) {
-            return base.Channel.GetSaleActiveStatus(id);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleActiveStatus> GetSaleActiveStatusAsync(int id) {
-            return base.Channel.GetSaleActiveStatusAsync(id);
-        }
-        
-        public AAMPS.Clients.AampService.SaleType[] GetSaleTypes() {
-            return base.Channel.GetSaleTypes();
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleType[]> GetSaleTypesAsync() {
-            return base.Channel.GetSaleTypesAsync();
-        }
-        
-        public AAMPS.Clients.AampService.Bank GetBankById(int id) {
-            return base.Channel.GetBankById(id);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Bank> GetBankByIdAsync(int id) {
-            return base.Channel.GetBankByIdAsync(id);
-        }
-        
-        public AAMPS.Clients.AampService.Bank[] GetAllBanks() {
-            return base.Channel.GetAllBanks();
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Bank[]> GetAllBanksAsync() {
-            return base.Channel.GetAllBanksAsync();
-        }
-        
-        public AAMPS.Clients.AampService.MOStatus GetMOStatusById(int id) {
-            return base.Channel.GetMOStatusById(id);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.MOStatus> GetMOStatusByIdAsync(int id) {
-            return base.Channel.GetMOStatusByIdAsync(id);
-        }
-        
-        public AAMPS.Clients.AampService.MOStatus[] GetAllMOStatus() {
-            return base.Channel.GetAllMOStatus();
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.MOStatus[]> GetAllMOStatusAsync() {
-            return base.Channel.GetAllMOStatusAsync();
-        }
-        
-        public AAMPS.Clients.AampService.OriginatorTr[] GetOriginatorBySalesId(int id) {
-            return base.Channel.GetOriginatorBySalesId(id);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr[]> GetOriginatorBySalesIdAsync(int id) {
-            return base.Channel.GetOriginatorBySalesIdAsync(id);
-        }
-        
-        public AAMPS.Clients.AampService.OriginatorTr GetOriginatorById(int id) {
-            return base.Channel.GetOriginatorById(id);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr> GetOriginatorByIdAsync(int id) {
-            return base.Channel.GetOriginatorByIdAsync(id);
         }
         
         public AAMPS.Clients.AampService.Sale GetSaleByUnitId(int id) {
@@ -6987,22 +6835,6 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task SavePersonAsync(AAMPS.Clients.AampService.Individual person) {
             return base.Channel.SavePersonAsync(person);
-        }
-        
-        public AAMPS.Clients.AampService.PreferedContactMethod[] GetAllPreferedContactMethods() {
-            return base.Channel.GetAllPreferedContactMethods();
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod[]> GetAllPreferedContactMethodsAsync() {
-            return base.Channel.GetAllPreferedContactMethodsAsync();
-        }
-        
-        public AAMPS.Clients.AampService.PreferedContactMethod GetPreferedContactMethodById(int id) {
-            return base.Channel.GetPreferedContactMethodById(id);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod> GetPreferedContactMethodByIdAsync(int id) {
-            return base.Channel.GetPreferedContactMethodByIdAsync(id);
         }
         
         public AAMPS.Clients.AampService.UserList GetUser(int identity) {

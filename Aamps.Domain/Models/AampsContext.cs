@@ -1,8 +1,6 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Aamps.Domain.Models.Mapping;
-using AAMPS.Domain.ViewModels.Bonds;
-using Aamps.Domain.ViewModels.Sales;
 
 namespace Aamps.Domain.Models
 {
@@ -57,8 +55,6 @@ namespace Aamps.Domain.Models
         public DbSet<UserList> UserLists { get; set; }
         public DbSet<UserRight> UserRights { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
-
- 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,24 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooleanExtensions.cs" />
-    <Compile Include="DataContractFactory.cs" />
-    <Compile Include="DataContractSurrogate.cs" />
-    <Compile Include="IEnumerableExtensions.cs" />
-    <Compile Include="IListExtensions.cs" />
-    <Compile Include="Invariant.cs" />
-    <Compile Include="InvariantException.cs" />
-    <Compile Include="ObjectExtensions.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SafeCastXmlReader.cs" />
     <Compile Include="SQLExtentions\CheckDbRecordExist.cs" />
-    <Compile Include="StringExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\App.Common\App.Common.csproj">
-      <Project>{736ef188-0087-413f-bbc8-f6289f1ef55c}</Project>
-      <Name>App.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

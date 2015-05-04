@@ -43,11 +43,7 @@ namespace Aamps.Service
         [OperationContract]
         void UpdateUnit(Unit unit);
 
-        //Orginator Service
-        [OperationContract]
-        void UpdateOrginator(OriginatorTr originatorTr);
-        [OperationContract]
-        void SaveOrginator(OriginatorTr originatorTr);
+
 
         //Sales Service
 
@@ -56,30 +52,6 @@ namespace Aamps.Service
 
         [OperationContract]
         Sale GetSaleById(int id);
-
-        [OperationContract]
-        SaleActiveStatus GetSaleActiveStatus(int id);
-
-        [OperationContract]
-        List<SaleType> GetSaleTypes();
-
-        [OperationContract]
-        Bank GetBankById(int id);
-
-        [OperationContract]
-        List<Bank> GetAllBanks();
-
-        [OperationContract]
-        MOStatus GetMOStatusById(int id);
-
-        [OperationContract]
-        List<MOStatus> GetAllMOStatus();
-
-        [OperationContract]
-        List<OriginatorTr> GetOriginatorBySalesId(int id);
-
-        [OperationContract]
-        OriginatorTr GetOriginatorById(int id);
 
         [OperationContract]
         Sale GetSaleByUnitId(int id);
@@ -107,11 +79,7 @@ namespace Aamps.Service
 
         //Individual
          [OperationContract]
-         void SavePerson(Individual person);
-         [OperationContract]
-         List<PreferedContactMethod> GetAllPreferedContactMethods();
-         [OperationContract]
-         PreferedContactMethod GetPreferedContactMethodById(int id);
+        void SavePerson(Individual person);
 
         //User
         [OperationContract]

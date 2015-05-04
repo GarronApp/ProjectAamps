@@ -105,44 +105,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UnitType" nillable="true" type="tns:UnitType" />
-  <xs:complexType name="OriginatorTr">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Bank" nillable="true" type="tns:Bank" />
-      <xs:element minOccurs="0" name="BankID" type="xs:int" />
-      <xs:element minOccurs="0" name="MOStatu" nillable="true" type="tns:MOStatus" />
-      <xs:element minOccurs="0" name="MOStatusID" type="xs:int" />
-      <xs:element minOccurs="0" name="OriginatorTrAIPDt" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="OriginatorTrAcceptDt" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="OriginatorTrAcceptedBt" type="xs:boolean" />
-      <xs:element minOccurs="0" name="OriginatorTrAddedByUser" type="xs:int" />
-      <xs:element minOccurs="0" name="OriginatorTrAddedDt" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="OriginatorTrBondAmount" type="xs:double" />
-      <xs:element minOccurs="0" name="OriginatorTrGrantDt" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="OriginatorTrID" type="xs:int" />
-      <xs:element minOccurs="0" name="OriginatorTrIntRate" type="xs:double" />
-      <xs:element minOccurs="0" name="OriginatorTrModifiedByUser" type="xs:int" />
-      <xs:element minOccurs="0" name="OriginatorTrModifiedDt" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="OriginatorTrSubmittedDt" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Sale" nillable="true" type="tns:Sale" />
-      <xs:element minOccurs="0" name="SaleID" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="OriginatorTr" nillable="true" type="tns:OriginatorTr" />
-  <xs:complexType name="Bank">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BankDescription" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BankID" type="xs:int" />
-      <xs:element minOccurs="0" name="OriginatorTrs" nillable="true" type="tns:ArrayOfOriginatorTr" />
-      <xs:element minOccurs="0" name="Sales" nillable="true" type="tns:ArrayOfSale" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Bank" nillable="true" type="tns:Bank" />
-  <xs:complexType name="ArrayOfOriginatorTr">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OriginatorTr" nillable="true" type="tns:OriginatorTr" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfOriginatorTr" nillable="true" type="tns:ArrayOfOriginatorTr" />
   <xs:complexType name="ArrayOfSale">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Sale" nillable="true" type="tns:Sale" />
@@ -208,6 +170,52 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Sale" nillable="true" type="tns:Sale" />
+  <xs:complexType name="Bank">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BankDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankID" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginatorTrs" nillable="true" type="tns:ArrayOfOriginatorTr" />
+      <xs:element minOccurs="0" name="Sales" nillable="true" type="tns:ArrayOfSale" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Bank" nillable="true" type="tns:Bank" />
+  <xs:complexType name="ArrayOfOriginatorTr">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OriginatorTr" nillable="true" type="tns:OriginatorTr" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOriginatorTr" nillable="true" type="tns:ArrayOfOriginatorTr" />
+  <xs:complexType name="OriginatorTr">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bank" nillable="true" type="tns:Bank" />
+      <xs:element minOccurs="0" name="BankID" type="xs:int" />
+      <xs:element minOccurs="0" name="MOStatu" nillable="true" type="tns:MOStatus" />
+      <xs:element minOccurs="0" name="MOStatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginatorTrAIPDt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OriginatorTrAcceptDt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OriginatorTrAcceptedBt" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OriginatorTrAddedByUser" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginatorTrAddedDt" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OriginatorTrBondAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="OriginatorTrGrantDt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OriginatorTrID" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginatorTrIntRate" type="xs:double" />
+      <xs:element minOccurs="0" name="OriginatorTrModifiedByUser" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginatorTrModifiedDt" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OriginatorTrSubmittedDt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Sale" nillable="true" type="tns:Sale" />
+      <xs:element minOccurs="0" name="SaleID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OriginatorTr" nillable="true" type="tns:OriginatorTr" />
+  <xs:complexType name="MOStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MOStatusDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MOStatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginatorTrs" nillable="true" type="tns:ArrayOfOriginatorTr" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MOStatus" nillable="true" type="tns:MOStatus" />
   <xs:complexType name="ArrayOfBondAtt">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="BondAtt" nillable="true" type="tns:BondAtt" />
@@ -621,36 +629,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTransAtt" nillable="true" type="tns:ArrayOfTransAtt" />
-  <xs:complexType name="MOStatus">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="MOStatusDescription" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="MOStatusID" type="xs:int" />
-      <xs:element minOccurs="0" name="OriginatorTrs" nillable="true" type="tns:ArrayOfOriginatorTr" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="MOStatus" nillable="true" type="tns:MOStatus" />
-  <xs:complexType name="ArrayOfSaleType">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="SaleType" nillable="true" type="tns:SaleType" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfSaleType" nillable="true" type="tns:ArrayOfSaleType" />
-  <xs:complexType name="ArrayOfBank">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Bank" nillable="true" type="tns:Bank" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfBank" nillable="true" type="tns:ArrayOfBank" />
-  <xs:complexType name="ArrayOfMOStatus">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="MOStatus" nillable="true" type="tns:MOStatus" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfMOStatus" nillable="true" type="tns:ArrayOfMOStatus" />
-  <xs:complexType name="ArrayOfPreferedContactMethod">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PreferedContactMethod" nillable="true" type="tns:PreferedContactMethod" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPreferedContactMethod" nillable="true" type="tns:ArrayOfPreferedContactMethod" />
 </xs:schema>

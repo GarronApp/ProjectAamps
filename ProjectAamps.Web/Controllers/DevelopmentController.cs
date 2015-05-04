@@ -29,25 +29,25 @@ namespace AAMPS.Web.Controllers
             var model = new SummaryViewModel();
 
             var totalUnitsReserved = units.Count(x => x.UnitStatusID == 2);
-            var totalUnitsPending = units.Count(x => x.UnitStatusID == 6);
-            var totalUnitsSold = units.Count(x => x.UnitStatusID == 3);
+            var totalUnitsPending = units.Count(x => x.UnitStatusID == 3);
+            var totalUnitsSold = units.Count(x => x.UnitStatusID == 4);
 
 
             items.Add(new SummaryViewModel(){
                series = "Available",
-               data = units.Where(x => x.UnitStatusID == 1).Count()
+               data = units.Where(x => x.UnitStatusID == 1).Sum(x => x.UnitPriceIncluding)
             });
               items.Add(new SummaryViewModel(){
                series = "Pending",
-               data = units.Where(x => x.UnitStatusID == 3).Count()
+               data = units.Where(x => x.UnitStatusID == 3).Sum(x => x.UnitPriceIncluding)
             });
               items.Add(new SummaryViewModel(){
                series = "Reserved",
-               data = units.Where(x => x.UnitStatusID == 2).Count()
+               data = units.Where(x => x.UnitStatusID == 2).Sum(x => x.UnitPriceIncluding)
             });
               items.Add(new SummaryViewModel(){
                series = "Sold",
-               data = units.Where(x => x.UnitStatusID == 4).Count()
+               data = units.Where(x => x.UnitStatusID == 4).Sum(x => x.UnitPriceIncluding)
             });
 
               return Json(items, JsonRequestBehavior.AllowGet);
@@ -84,6 +84,7 @@ namespace AAMPS.Web.Controllers
             Session.Add("TotalUnitsPendingPrice", totalUnitsPendingPrice * totalUnitsPending);
             Session.Add("TotalUnitsReserved", totalUnitsReserved);
             Session.Add("totalUnitsReservedPrice", totalUnitsReservedPrice * totalUnitsReserved);
+
 
 
             List<DevelopmentViewModel> list = new List<DevelopmentViewModel>();
