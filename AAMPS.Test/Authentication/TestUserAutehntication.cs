@@ -10,7 +10,7 @@ namespace AAMPS.Test.Authentication
         public void ValidateUser()
         {
 
-            var username = "test@mail.com";
+            var username = "test";
             var password = "test";
 
             AAMPS.Clients.Security.AuthProvider _authenticationProvider = new Clients.Security.AuthProvider();
