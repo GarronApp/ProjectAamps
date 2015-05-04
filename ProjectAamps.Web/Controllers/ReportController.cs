@@ -22,6 +22,16 @@ namespace AAMPS.Web.Controllers
             return View();
         }
 
+        public ActionResult SalesReport()
+        {
+            return View();
+        }
+
+        public ActionResult BondsReport()
+        {
+            return View();
+        }
+
         public void ExportToPdf()
         {
             App.Common.Reporting.PDFByteStreamProvider.StreamHandler();

@@ -305,6 +305,13 @@
     <Content Include="Views\Sales\_LayoutSales.cshtml" />
     <Content Include="Views\Bonds\Details.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\Templates\SalesReport.cshtml" />
+    <Content Include="Views\Report\Templates\TestView.cshtml" />
+    <Content Include="Views\Report\TestReport.cshtml" />
+    <Content Include="Views\Report\_ReportLayout.cshtml" />
+    <Content Include="Views\Report\SalesReport.cshtml" />
+    <Content Include="Views\Report\BondsReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
