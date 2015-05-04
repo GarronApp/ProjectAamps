@@ -16,7 +16,7 @@ namespace Aamps.Domain.Models
             this.OriginatorTrs = new List<OriginatorTr>();
             this.TransAtts = new List<TransAtt>();
         }
-[DataMember]
+        [DataMember]
         public int SaleID { get; set; }
         [DataMember]
         public int UnitID { get; set; }

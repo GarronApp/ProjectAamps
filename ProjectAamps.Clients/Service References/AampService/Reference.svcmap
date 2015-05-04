@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0b70ea44-ddde-4832-9598-14d4ca3e8d9c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="14dd0959-3cea-4227-aa2b-d7bb823535c5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:1862/AampService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AampService.xsd" MetadataType="Schema" ID="c9e204d8-2594-4f43-8de8-cea56382ec57" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd2" />
-    <MetadataFile FileName="AampService.disco" MetadataType="Disco" ID="1c597024-521b-4f91-a326-4de2c567e1f7" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?disco" />
-    <MetadataFile FileName="AampService1.xsd" MetadataType="Schema" ID="1881896c-9136-496d-b8cb-9a440ea91615" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd1" />
-    <MetadataFile FileName="AampService.wsdl" MetadataType="Wsdl" ID="45c35244-70ef-4981-bb33-0531427f2d47" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?wsdl" />
-    <MetadataFile FileName="AampService2.xsd" MetadataType="Schema" ID="8a0f39a6-8d13-4c9a-8f38-066e97a0d53b" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AampService.xsd" MetadataType="Schema" ID="fb032179-bdf0-42c4-a4d3-caeb3d207b5a" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AampService.disco" MetadataType="Disco" ID="45699998-b708-4b40-aeb0-0665b5b1a96e" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?disco" />
+    <MetadataFile FileName="AampService1.xsd" MetadataType="Schema" ID="3fd4e304-51b9-4f4d-9831-bcc6af848817" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AampService.wsdl" MetadataType="Wsdl" ID="6a97201e-b560-4105-9130-2d551b8e9ade" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?wsdl" />
+    <MetadataFile FileName="AampService2.xsd" MetadataType="Schema" ID="51156e48-56a9-4d89-a8b6-76a6acd5358a" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

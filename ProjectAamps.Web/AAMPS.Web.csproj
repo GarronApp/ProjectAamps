@@ -179,6 +179,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BinaryContentResult.cs" />
+    <Compile Include="Controllers\BondsController.cs" />
     <Compile Include="Controllers\DevelopmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyController.cs" />
@@ -189,12 +190,16 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ViewModels\Bonds\BondsViewModel.cs" />
+    <Compile Include="Models\ViewModels\Bonds\OrginatorViewModel.cs" />
+    <Compile Include="Models\ViewModels\Sales\PendingSaleViewModel.cs" />
     <Compile Include="Models\ViewModels\Sales\ReservationViewModel.cs" />
+    <Compile Include="Models\ViewModels\Sales\ReservedSaleViewModel.cs" />
     <Compile Include="Models\ViewModels\SummaryViewModel.cs" />
     <Compile Include="Models\ViewModels\DevelopmentViewModel.cs" />
     <Compile Include="Models\ViewModels\Development\Dashboard\DevelopmentUnitViewModel.cs" />
     <Compile Include="Models\ViewModels\Development\Dashboard\Queries\DevelopmentUnitQuery.cs" />
-    <Compile Include="Models\ViewModels\Mappers\IMapper.cs" />
+    <Compile Include="Models\ViewModels\Mappers\Mapper.cs" />
     <Compile Include="Models\ViewModels\Mappers\UnitDevelopmentMapper.cs" />
     <Compile Include="Models\ViewModels\SalesAgentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,6 +212,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\c3.css" />
+    <Content Include="Content\c3.min.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -227,6 +234,8 @@
     <Content Include="Images\photo.png" />
     <Content Include="Images\SmitIncLogo.png" />
     <Content Include="Images\Yellowwood_Estate_Logo.gif" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="Scripts\app\bonds\bonds.js" />
     <Content Include="Scripts\app\sales\sales.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -239,6 +248,10 @@
     <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\Aamps.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\c3.js" />
+    <Content Include="Scripts\c3.min.js" />
+    <Content Include="Scripts\d3.js" />
+    <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -290,11 +303,8 @@
     <Content Include="Views\Development\HomePage.cshtml" />
     <Content Include="Views\Development\Dashboard.cshtml" />
     <Content Include="Views\Sales\_LayoutSales.cshtml" />
-    <Content Include="Views\Report\_ReportLayout.cshtml" />
-    <Content Include="Views\Report\Templates\SalesReport.cshtml" />
-    <Content Include="Views\Report\Index.cshtml" />
-    <Content Include="Views\Report\TestReport.cshtml" />
-    <Content Include="Views\Report\Templates\TestView.cshtml" />
+    <Content Include="Views\Bonds\Details.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,6 +342,10 @@
     <ProjectReference Include="..\App.Common\App.Common.csproj">
       <Project>{736ef188-0087-413f-bbc8-f6289f1ef55c}</Project>
       <Name>App.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Extentions\App.Extentions.csproj">
+      <Project>{5b968789-d617-41a9-bbfa-7fdc89a87a83}</Project>
+      <Name>App.Extentions</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProjectAamps.Clients\AAMPS.Clients.csproj">
       <Project>{f807018d-bf8c-49ea-a210-5bcb18246b00}</Project>

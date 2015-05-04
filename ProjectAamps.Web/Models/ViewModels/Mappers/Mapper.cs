@@ -5,8 +5,13 @@ using System.Web;
 
 namespace AAMPS.Web.Models.ViewModels.Mappers
 {
-    abstract public class IMapper
+    public abstract class Mapper<T>
     {
-       abstract public void OnLoad();
+
+        #region Virtual Methods
+
+        public abstract T Map();
+
+        #endregion
     }
 }

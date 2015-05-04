@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Extentions
+namespace Aamps.Domain.ValueObjects
 {
-    public class Class1
+    public enum BankTypes
     {
+        ABSA = 1,
+        FNB = 2,
+        Nedbank = 3,
+        SBSA = 4
     }
 }

@@ -37,9 +37,6 @@ namespace AAMPS.Web.Models.ViewModels
         public int ReservedStatusCount { get; set; }
         public int SoldStatusCount { get; set; }
         public int TotalUnitsCount { get; set; }
-
-
-
         public Nullable<System.DateTime> UnitActiveDate { get; set; }
     }
 }

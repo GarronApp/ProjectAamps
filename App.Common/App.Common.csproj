@@ -75,12 +75,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparers\GenericEqualityComparer.cs" />
+    <Compile Include="Controllers\Actions\ControllerAction.cs" />
+    <Compile Include="Controllers\Actions\IControllerAction.cs" />
     <Compile Include="Exceptions\ExceptionHandler.cs" />
     <Compile Include="Mails\EmailProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporting\PDFByteStreamProvider.cs" />
     <Compile Include="Reporting\ReportSettings.cs" />
     <Compile Include="Security\AampsAuthorize.cs" />
+    <Compile Include="Security\SessionHandler.cs" />
     <Compile Include="Security\UserSessionValidationHandler.cs" />
     <Compile Include="Validation\LoginValidationHandler.cs" />
   </ItemGroup>
@@ -90,7 +94,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Converters\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Exceptions\Logs\ExceptionLogger.txt" />
   </ItemGroup>
