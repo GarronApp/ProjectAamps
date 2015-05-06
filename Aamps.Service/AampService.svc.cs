@@ -186,10 +186,18 @@ namespace Aamps.Service
             _salesRepo.Update(reservation);
         }
 
-        public void SavePerson(Individual person)
+         public void AddSale(Sale newSale)
+         {
+             _salesRepo = new SalesRepository(_dbContext);
+             _salesRepo.Add(newSale);
+         }
+
+         public Individual SavePerson(Individual person)
         {
             _personRepo = new IndividualRepository(_dbContext);
             _personRepo.Add(person);
+
+            return person;
         }
 
         public PreferedContactMethod GetPreferedContactMethodById(int id)

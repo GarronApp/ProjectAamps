@@ -9,6 +9,7 @@ namespace AAMPS.Web.Models.ViewModels.Sales
     {
         public int SaleStatusId { get; set; }
         public int UnitStatusId { get; set; }
+        public int CurrentIndividualID { get; set; }
         public string CurrentSalesStatus { get; set; }
         public string SaleReservationDt { get; set; }
         public string SaleReservationExpiryDt { get; set; }

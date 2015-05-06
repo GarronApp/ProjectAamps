@@ -17,5 +17,10 @@ namespace Aamps.Domain.Converters
         {
             return (int)status;
         }
+
+        public static int SaleStatusConverter(Aamps.Domain.ValueObjects.SaleActiveStatusType.GetSaleStatusType status)
+        {
+            return (int)status;
+        }
     }
 }

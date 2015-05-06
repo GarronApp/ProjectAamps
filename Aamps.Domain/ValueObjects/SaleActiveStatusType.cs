@@ -17,5 +17,14 @@ namespace Aamps.Domain.ValueObjects
             Bankable = 5,
             Registered = 6
         }
+
+       public enum GetSaleStatusType
+       {
+           Active = 1,
+           Cancelled = 2,
+           Declined = 3,
+           InActive = 4
+       }
+
     }
 }

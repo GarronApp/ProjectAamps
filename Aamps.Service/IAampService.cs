@@ -87,6 +87,9 @@ namespace Aamps.Service
         [OperationContract]
         void SaveUpdateReservation(Sale sale);
 
+        [OperationContract]
+        void AddSale(Sale sale);
+
         //Development Service
 
         [OperationContract]
@@ -107,7 +110,7 @@ namespace Aamps.Service
 
         //Individual
          [OperationContract]
-         void SavePerson(Individual person);
+        Individual SavePerson(Individual person);
          [OperationContract]
          List<PreferedContactMethod> GetAllPreferedContactMethods();
          [OperationContract]

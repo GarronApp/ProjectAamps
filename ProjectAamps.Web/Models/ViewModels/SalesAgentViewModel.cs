@@ -20,7 +20,7 @@ namespace AAMPS.Web.Models.ViewModels
         public string AgentIdNumber { get; set; }
         public int CurrentSalesStatusId { get; set; }
         public string CurrentSalesStatus { get; set; }
-        public bool IsNewSale { get; set; }
+        public string IsNewSale { get; set; }
 
         public virtual List<PreferedContactMethod> PreferedContactMethods { get; set; }
         public DateTime? ReservationLapses { get; set; }
@@ -37,12 +37,12 @@ namespace AAMPS.Web.Models.ViewModels
         public string BondRequired { get; set; }
         public float CashPayment { get; set; }
 
-        public string IndividualFirstName { get; set; }
-        public string IndividualLastName { get; set; }
-        public string IndividualCellNo { get; set; }
-        public string IndividualWorkNo { get; set; }
-        public int IndividualContactMethod { get; set; }
-        public string IndividualEmailAddress { get; set; }
+        public string IndividualName { get; set; }
+        public string IndividualSurname { get; set; }
+        public string IndividualContactCell { get; set; }
+        public string IndividualContactWork { get; set; }
+        public int PreferedContactMethodID { get; set; }
+        public string IndividualEmail { get; set; }
 
         public int SaleStatusId { get; set; }
         public int UnitStatusId { get; set; }

@@ -11,6 +11,7 @@ using System.Globalization;
 using App.Extentions;
 using Aamps.Domain.ValueObjects;
 using Aamps.Domain.Converters;
+using AAMPS.Clients.ViewModels.Individual;
 
 namespace AAMPS.Web.Controllers
 {
@@ -156,12 +157,13 @@ namespace AAMPS.Web.Controllers
                     saleAgent.UnitPhase = currentSalesAgent.Unit.UnitPhase;
                     saleAgent.UnitFloor = currentSalesAgent.Unit.UnitFloor;
                     saleAgent.PlotSize = currentSalesAgent.Unit.UnitErfSize;
-                    saleAgent.IndividualFirstName = currentSalesAgent.Individual.IndividualName;
-                    saleAgent.IndividualLastName = currentSalesAgent.Individual.IndividualSurname;
-                    saleAgent.IndividualCellNo = currentSalesAgent.Individual.IndividualContactCell;
-                    saleAgent.IndividualWorkNo = currentSalesAgent.Individual.IndividualContactWork;
-                    saleAgent.IndividualEmailAddress = currentSalesAgent.Individual.IndividualEmail;
-                    saleAgent.IndividualContactMethod = currentSalesAgent.Individual.PreferedContactMethodID;
+
+                    saleAgent.IndividualName= currentSalesAgent.Individual.IndividualName;
+                    saleAgent.IndividualSurname = currentSalesAgent.Individual.IndividualSurname;
+                    saleAgent.IndividualContactCell = currentSalesAgent.Individual.IndividualContactCell;
+                    saleAgent.IndividualContactWork= currentSalesAgent.Individual.IndividualContactWork;
+                    saleAgent.IndividualEmail= currentSalesAgent.Individual.IndividualEmail;
+                    saleAgent.PreferedContactMethodID = currentSalesAgent.Individual.PreferedContactMethodID;
 
                     saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt != null ? currentSalesAgent.SaleContractSignedPurchaserDt.Value.ToString("") : string.Empty;
                     saleAgent.SaleContractSignedSellerDt = currentSalesAgent.SaleContractSignedSellerDt.AsString();
@@ -179,7 +181,20 @@ namespace AAMPS.Web.Controllers
 
                     return Json(saleAgent, JsonRequestBehavior.AllowGet);
                 }
-                return Json("NewSale", JsonRequestBehavior.AllowGet);
+                else
+                {
+                    SalesAgentViewModel saleAgent = new SalesAgentViewModel();
+                    int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
+                    var _currentUnit = _repoService.GetUnitById(_currentUnitId);
+                    saleAgent.IsNewSale = "NewSale";
+                    saleAgent.UnitNumber = _currentUnit.UnitNumber;
+                    saleAgent.UnitSize = _currentUnit.UnitSize;
+                    saleAgent.UnitPrice = _currentUnit.UnitPrice;
+                    saleAgent.UnitPhase = _currentUnit.UnitPhase;
+                    saleAgent.UnitFloor = _currentUnit.UnitFloor;
+                    saleAgent.PlotSize = _currentUnit.UnitErfSize;
+                    return Json(saleAgent, JsonRequestBehavior.AllowGet);
+                }
 
             }
             catch (Exception ex)
@@ -190,14 +205,26 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult SaveIndividual(Individual person)
+        public JsonResult SaveIndividual(IndividualViewModel individual)
         {
             try
             {
-                if (person != null)
-                {               
-                    _repoService.SavePerson(person);
-                    return Json(person, JsonRequestBehavior.AllowGet);
+                if (individual != null)
+                {
+                    var _individual = new Individual();
+
+                    _individual.IndividualName = individual.IndividualName;
+                    _individual.IndividualSurname = individual.IndividualSurname;
+                    _individual.IndividualContactCell = individual.IndividualContactCell;
+                    _individual.IndividualContactHome = individual.IndividualContactHome;
+                    _individual.IndividualContactWork = individual.IndividualContactWork;
+                    _individual.IndividualEmail = individual.IndividualEmail;
+                    _individual.PreferedContactMethodID = individual.PreferedContactMethodID;
+
+                    var result = _repoService.SavePerson(_individual);
+                    individual.IndividualID = result.IndividualID;
+
+                    return Json(individual, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
@@ -217,27 +244,35 @@ namespace AAMPS.Web.Controllers
                 if (reservation != null)
                 {
                     
-                    var _currentSale = _repoService.GetSaleById(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
+                    var newSale = new Sale();
+                   
                     var _linkedUnit = _repoService.GetUnitById(int.Parse(SessionHandler.GetSessionContext("CurrentUnit")));
 
-                    if (_currentSale.SaleActiveStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Available))
-                    {
-                        _currentSale.SaleActiveStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
-                        reservation.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
-                        reservation.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)_currentSale.SaleActiveStatusID).SaleActiveStatusDescription;
-                    }
+                    newSale.SaleActiveStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
+                    reservation.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
+                    reservation.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)newSale.SaleActiveStatusID).SaleActiveStatusDescription;
 
-                    if (_linkedUnit.UnitStatusID == UnitSaleStatusConverter.UnitStatusConverter(UnitStatusType.GetUnitStatusType.Available))
-                    {
-                        _linkedUnit.UnitStatusID = UnitSaleStatusConverter.UnitStatusConverter(UnitStatusType.GetUnitStatusType.Reserved);
-                        reservation.UnitStatusId = UnitSaleStatusConverter.UnitStatusConverter(UnitStatusType.GetUnitStatusType.Reserved);
-                        _repoService.UpdateUnit(_linkedUnit);
-                    } 
+                    _linkedUnit.UnitStatusID = UnitSaleStatusConverter.UnitStatusConverter(UnitStatusType.GetUnitStatusType.Reserved);
+                    reservation.UnitStatusId = UnitSaleStatusConverter.UnitStatusConverter(UnitStatusType.GetUnitStatusType.Reserved);
+                    _repoService.UpdateUnit(_linkedUnit);
 
-                    _currentSale.SaleReservationDt = DateTime.ParseExact(reservation.SaleReservationDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    _currentSale.SaleReservationExpiryDt = DateTime.ParseExact(reservation.SaleReservationExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    _currentSale.SaleReservationExtentionDt = DateTime.ParseExact(reservation.SaleReservationExtentionDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    _repoService.SaveUpdateReservation(_currentSale);
+                    newSale.UnitID = _linkedUnit.UnitID;
+                    newSale.SaleStatusID = UnitSaleStatusConverter.SaleStatusConverter(SaleActiveStatusType.GetSaleStatusType.Active);
+                    newSale.SaleReservationDt = DateTime.ParseExact(reservation.SaleReservationDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    newSale.SaleReservationExpiryDt = DateTime.ParseExact(reservation.SaleReservationExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    newSale.SaleReservationExtentionDt = DateTime.ParseExact(reservation.SaleReservationExtentionDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    newSale.IndividualID = reservation.CurrentIndividualID;
+                    newSale.SaleAddedDt = DateTime.Now;
+                    newSale.SaleModifiedDt = DateTime.Now;
+                    newSale.SaleAddedByUser = 1;
+                    newSale.SaleModifiedByUser = 1;
+                    newSale.SaleDepositPaidBt = false;
+                    newSale.SalesBondRequiredBt = false;
+                    newSale.SalesReferalCommDueBt = false;
+                    newSale.SalesBondCommDueBt = false;
+                    newSale.SaleBondRequiredAmount = 0;
+
+                    _repoService.AddSale(newSale);
                     return Json(reservation, JsonRequestBehavior.AllowGet);
                 }
             }

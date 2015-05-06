@@ -6655,6 +6655,12 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveUpdateReservation", ReplyAction="http://tempuri.org/IAampService/SaveUpdateReservationResponse")]
         System.Threading.Tasks.Task SaveUpdateReservationAsync(AAMPS.Clients.AampService.Sale sale);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/AddSale", ReplyAction="http://tempuri.org/IAampService/AddSaleResponse")]
+        void AddSale(AAMPS.Clients.AampService.Sale sale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/AddSale", ReplyAction="http://tempuri.org/IAampService/AddSaleResponse")]
+        System.Threading.Tasks.Task AddSaleAsync(AAMPS.Clients.AampService.Sale sale);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllDevelopments", ReplyAction="http://tempuri.org/IAampService/GetAllDevelopmentsResponse")]
         AAMPS.Clients.AampService.Development[] GetAllDevelopments();
         
@@ -6692,10 +6698,10 @@ namespace AAMPS.Clients.AampService {
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company> GetCompanyByUserGroupIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePerson", ReplyAction="http://tempuri.org/IAampService/SavePersonResponse")]
-        void SavePerson(AAMPS.Clients.AampService.Individual person);
+        AAMPS.Clients.AampService.Individual SavePerson(AAMPS.Clients.AampService.Individual person);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePerson", ReplyAction="http://tempuri.org/IAampService/SavePersonResponse")]
-        System.Threading.Tasks.Task SavePersonAsync(AAMPS.Clients.AampService.Individual person);
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> SavePersonAsync(AAMPS.Clients.AampService.Individual person);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllPreferedContactMethods", ReplyAction="http://tempuri.org/IAampService/GetAllPreferedContactMethodsResponse")]
         AAMPS.Clients.AampService.PreferedContactMethod[] GetAllPreferedContactMethods();
@@ -6933,6 +6939,14 @@ namespace AAMPS.Clients.AampService {
             return base.Channel.SaveUpdateReservationAsync(sale);
         }
         
+        public void AddSale(AAMPS.Clients.AampService.Sale sale) {
+            base.Channel.AddSale(sale);
+        }
+        
+        public System.Threading.Tasks.Task AddSaleAsync(AAMPS.Clients.AampService.Sale sale) {
+            return base.Channel.AddSaleAsync(sale);
+        }
+        
         public AAMPS.Clients.AampService.Development[] GetAllDevelopments() {
             return base.Channel.GetAllDevelopments();
         }
@@ -6981,11 +6995,11 @@ namespace AAMPS.Clients.AampService {
             return base.Channel.GetCompanyByUserGroupIdAsync(id);
         }
         
-        public void SavePerson(AAMPS.Clients.AampService.Individual person) {
-            base.Channel.SavePerson(person);
+        public AAMPS.Clients.AampService.Individual SavePerson(AAMPS.Clients.AampService.Individual person) {
+            return base.Channel.SavePerson(person);
         }
         
-        public System.Threading.Tasks.Task SavePersonAsync(AAMPS.Clients.AampService.Individual person) {
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> SavePersonAsync(AAMPS.Clients.AampService.Individual person) {
             return base.Channel.SavePersonAsync(person);
         }
         

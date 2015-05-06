@@ -43,7 +43,10 @@
             $(this).find('i').toggleClass('fa-plus-circle fa-minus-circle');
         });
 
-        $("#txtReservationDate").datepicker("setValue", new Date());
+        var dateToday = new Date();
+        var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+        $("#txtReservationDate").datepicker("setValue", convertDateToday);
+
 
         $("#txtReservationDate").on('changeDate', function (ev) {
             var reservationDate = document.getElementById('txtReservationDate').value;
@@ -104,7 +107,9 @@
             }
             else {
                 $("#txtDepositPaidDate").prop("disabled", false);
-                $("#txtDepositPaidDate").datepicker("setValue", new Date());
+                var dateToday = new Date();
+                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                $("#txtDepositPaidDate").datepicker("setValue", convertDateToday);
             }
         });
 
@@ -198,7 +203,13 @@
         });
 
         $("#btnUpdateReservation").click(function () {
-            instance.UpdateReservationDetails();
+            
+            if (instance.validateClient()) {
+                instance.UpdateReservationDetails();
+            }
+            else {
+                alert("please update client before saving sale");
+            }
         });
 
         $("#btnUpdateReservedSale").click(function () {
@@ -232,7 +243,7 @@
             success: function (data) {
                 console.log("response...");
                 console.log(data);
-                if (data != "NewSale") {
+                if (data.IsNewSale != "NewSale") {
                     instance.MapUnitDetails(data);
                     instance.MapIndividualDetails(data);
                     instance.MapSaleDetails(data);
@@ -266,9 +277,9 @@
                         $("#SalePendingForm select").prop("disabled", false);
                         $("#SalePendingForm select option").prop("disabled", false);
 
-                        $("#individualFormPending input").attr("disabled", false);
-                        $("#individualFormPending select").prop("disabled", false);
-                        $("#individualFormPending select option").prop("disabled", false);
+                        $("#individualFormPending input").attr("disabled", true);
+                        $("#individualFormPending select").prop("disabled", true);
+                        $("#individualFormPending select option").prop("disabled", true);
 
                         $("#pendingPanel").removeClass("disabledbutton");
                         $("#soldPanel").addClass("disabledbutton");
@@ -338,6 +349,12 @@
                 else {
 
                     console.log(data);
+                    $("#lblUnitPhase").html(data.UnitPhase);
+                    $("#lblUnitPrice").html("R " + data.UnitPrice);
+                    $("#lblUnitNumber").html(data.UnitNumber);
+                    $("#lblUnitSize").html(data.UnitSize);
+                    $("#lblUnitFloor").html(data.UnitFloor);
+
                     $('#txtSaleReservedPanelStatus').val("Available");
                     $("#SaleReservedForm input").attr("disabled", false);
                     $("#SaleReservedForm select").prop('disabled', false);
@@ -349,6 +366,7 @@
 
                     $("#soldPanel").addClass("disabledbutton");
                     $("#pendingPanel").addClass("disabledbutton");
+
                 }
             },
             error: function (data) {
@@ -356,6 +374,43 @@
             }
         });
     }
+
+    this.validateForm = function (form) {
+        var list = new Array();
+        $(form).each(function (index, element) {
+            if (element.value === '') {
+                return false;
+            }
+
+                //var fieldData = field.value;
+
+                //if (fieldData.length == 0 || fieldData == "" || fieldData == fieldData) {
+
+                //    field.className = "FieldError"; //Classs to highlight error
+                //    alert("Please correct the errors in order to continue.");
+                //    return false;
+                //} else {
+
+                //    field.className = "FieldOk"; //Resets field back to default
+                //    return true; //Submits form
+                //}
+        })
+
+        return true;
+    };
+
+    
+    this.validateClient = function () {
+        var form = $("#individualFormReserved").serializeArray();
+        var validForm = true;
+        for (var i = 0; i < form.length; i++) {
+            if (form[i].value === '') {
+                validForm = false;
+                break;
+            }
+        }
+        return validForm;
+     }
 
     this.UpdateReservationDetails = function () {
         var formData = $("#SaleReservedForm").serialize();
@@ -412,7 +467,7 @@
             type: "POST",
             data: formData,
             success: function (data) {
-            instance.MapIndividualDetails(data);
+            //instance.MapIndividualDetails(data);
             },
             error: function (exception) {
                 console.log(exception);
@@ -427,6 +482,8 @@
             url: instance.save_Individual_Url,
             type: "POST",
             data: formData,
+            async: true,
+            cache: false,
             success: function (data) {
                 instance.MapIndividualDetails(data);
             },
@@ -459,18 +516,25 @@
     }
 
     this.MapIndividualDetails = function (data) {
+        console.log(data);
         $('#individualFormReserved').trigger("reset");
         $('#individualFormReserved')[0].reset();
-        $("#txtFirstNamePending").val(data.IndividualFirstName);
-        $("#txtLastNamePending").val(data.IndividualLastName);
-        $("#txtCellNumberPending").val(data.IndividualCellNo);
-        $("#txtWorkNumberPending").val(data.IndividualWorkNo);
-        $("#txtEmailPending").val(data.IndividualEmailAddress);
-        $("#txtFirstNameReserved").val(data.IndividualFirstName);
-        $("#txtLastNameReserved").val(data.IndividualLastName);
-        $("#txtCellNumberReserved").val(data.IndividualCellNo);
-        $("#txtWorkNumberReserved").val(data.IndividualWorkNo);
-        $("#txtEmailReserved").val(data.IndividualEmailAddress);
+        $("#IndividualID").attr('value',data.IndividualID);
+        $("#CurrentIndividualID").attr('value', data.IndividualID);
+        $("#txtFirstNameReserved").val(data.IndividualName);
+        $("#txtLastNameReserved").val(data.IndividualSurname);
+        $("#txtCellNumberReserved").val(data.IndividualContactCell);
+        $("#txtWorkNumberReserved").val(data.IndividualContactWork);
+        $("#txtEmailReserved").val(data.IndividualEmail);
+        var contactMethod = data.PreferedContactMethodID;
+        $("#PreferedContactMethodID").val(contactMethod);
+        $("#txtPendingPreferedContactMethod").val(contactMethod);
+        $("#txtFirstNamePending").val(data.IndividualName);
+        $("#txtLastNamePending").val(data.IndividualSurname);
+        $("#txtCellNumberPending").val(data.IndividualContactCell);
+        $("#txtWorkNumberPending").val(data.IndividualContactWork);
+        $("#txtEmailPending").val(data.IndividualEmail);
+
     }
 
     this.MapUnitDetails = function (data) {
@@ -508,11 +572,17 @@
         });
     }
 
-    this.GetPreferedContactTypes = function (data) {
+    this.GetReservedPreferedContactTypes = function (data) {
         $("#PreferedContactMethodID option").remove();
         $.each(data, function (index, item) {
             $("#PreferedContactMethodID").append('<option value=' + index + '>' + item + '</option>');
-            $("#PreferedContactMethod").append('<option value=' + index + '>' + item + '</option>');
+        });
+    }
+
+    this.GetPendingPreferedContactTypes = function (data) {
+        $("#txtPendingPreferedContactMethod option").remove();
+        $.each(data, function (index, item) {
+            $("#txtPendingPreferedContactMethod").append('<option value=' + index + '>' + item + '</option>');
         });
     }
 
@@ -549,7 +619,8 @@
             async: true,
             cache: false,
             success: function (data) {
-                instance.GetPreferedContactTypes(data);
+                instance.GetReservedPreferedContactTypes(data);
+                instance.GetPendingPreferedContactTypes(data);
             },
             error: function (exception) {
                 console.log(exception);

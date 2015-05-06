@@ -175,6 +175,26 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
+        public void AddSale(Sale sale)
+        {
+             try
+             {
+                 AampsContext _dbContext = new AampsContext();
+                 _dbContext.Sales.Add(sale);
+
+             }
+             catch (DbUpdateConcurrencyException dbcx)
+             {
+                 App.Common.Exceptions.ExceptionHandler.HandleException(dbcx);
+                 throw dbcx;
+             }
+             catch (Exception ex)
+             {
+                 App.Common.Exceptions.ExceptionHandler.HandleException(ex);
+                 throw ex;
+             }
+        }
+
 
     }
 }
