@@ -119,6 +119,9 @@
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleActiveStatus1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleDepositProof.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleType1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

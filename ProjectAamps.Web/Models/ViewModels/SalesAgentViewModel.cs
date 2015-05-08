@@ -47,22 +47,28 @@ namespace AAMPS.Web.Models.ViewModels
         public int SaleStatusId { get; set; }
         public int UnitStatusId { get; set; }
         public int SaleTypeID { get; set; }
-        public int MortgageOriginatorID { get; set; }
-        public double SalesBondAmount { get; set; }
+        public int BondOriginatorID { get; set; }
         public float SalesBondInterestRate { get; set; }
         public string SalesBondAccountNo { get; set; }
-        public string SalesBondClientContactedDt { get; set; }
-        public string SalesBondBondDocsRecDt { get; set; }
-        public string SalesBondGrantedDt { get; set; }
-        public string SalesBondClientAcceptDt { get; set; }
+        public DateTime? SalesBondClientContactedDt { get; set; }
+        public DateTime? SalesBondBondDocsRecDt { get; set; }
+        public DateTime? SalesBondGrantedDt { get; set; }
+        public DateTime? SalesBondClientAcceptDt { get; set; }
         public int SalesBondCommDueBt { get; set; }
-        public string SaleContractSignedSellerDt { get; set; }
+        public DateTime? SaleContractSignedSellerDt { get; set; }
         public int SalesBondRequiredBt { get; set; }
-        public string SalesBondRequiredDt { get; set; }
-        public float SaleBondRequiredAmount { get; set; }
-        public string SaleContractSignedPurchaserDt { get; set; }
-        public string SaleBondDueTimeDt { get; set; }
-        public string SaleBondDueExpiryDt { get; set; }
+        public DateTime? SalesBondRequiredDt { get; set; }
+        public double SaleBondRequiredAmount { get; set; }
+        public DateTime? SaleBondDueTimeDt { get; set; }
+        public DateTime? SaleBondDueExpiryDt { get; set; }
+
+        public DateTime? SaleContractSignedPurchaserDt { get; set; }
+        public int SalesDepositProofID { get; set; }
+        public int SalesDepositProofBt { get; set; }
+        public DateTime? SalesDepositProofDt { get; set; }
+        public double SalesBondAmount { get; set; }
+        public DateTime? SalesDepoistPaidDt { get; set; }
+        public int SaleDepositPaidBt { get; set; }
 
 
         public string Development { get; set; }

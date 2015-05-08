@@ -139,6 +139,13 @@ namespace Aamps.Service
             return results;
         }
 
+        public List<SaleDepositProof> GetDepositTypes()
+        {
+            _salesRepo = new SalesRepository(_dbContext);
+            var results = _salesRepo.GetDepositTypes();
+            return results;
+        }
+
         public List<Bank> GetAllBanks()
         {
             _salesRepo = new SalesRepository(_dbContext);

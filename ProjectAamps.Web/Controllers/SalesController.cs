@@ -54,6 +54,21 @@ namespace AAMPS.Web.Controllers
 
         [AampsAuthorize]
         [HttpGet]
+        public ActionResult GetSaleDepositProofs()
+        {
+            var salesDepositProofList = new List<string>();
+            var depositProofs = _repoService.GetDepositTypes();
+            foreach (var item in depositProofs)
+            {
+                salesDepositProofList.Add(item.SaleDepositProofDescription);
+            }
+
+            return Json(salesDepositProofList, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [AampsAuthorize]
+        [HttpGet]
         public ActionResult GetCompanyOriginator()
         {
             var originatorTypeList = new List<string>();
@@ -165,18 +180,26 @@ namespace AAMPS.Web.Controllers
                     saleAgent.IndividualEmail= currentSalesAgent.Individual.IndividualEmail;
                     saleAgent.PreferedContactMethodID = currentSalesAgent.Individual.PreferedContactMethodID;
 
-                    saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt != null ? currentSalesAgent.SaleContractSignedPurchaserDt.Value.ToString("") : string.Empty;
-                    saleAgent.SaleContractSignedSellerDt = currentSalesAgent.SaleContractSignedSellerDt.AsString();
-                    saleAgent.SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.AsString();
-                    saleAgent.SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.AsString();
-                    saleAgent.SalesBondGrantedDt = currentSalesAgent.SalesBondGrantedDt.AsString();
-                    saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt.AsString();
-                    saleAgent.SalesBondRequiredDt = currentSalesAgent.SalesBondRequiredDt.AsString();
-                    saleAgent.SaleBondDueTimeDt = currentSalesAgent.SaleBondDueTimeDt.AsString();
-                    saleAgent.SaleBondDueExpiryDt = currentSalesAgent.SaleBondDueExpiryDt.AsString();
-                    saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt.AsString();
+                    saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt;
+                    saleAgent.SalesDepositProofID = currentSalesAgent.SalesDepositProofID != null ? (int)currentSalesAgent.SalesDepositProofID : 0;
+                    saleAgent.SalesDepositProofDt = currentSalesAgent.SalesDepositProofDt;
+                    saleAgent.SalesDepoistPaidDt = currentSalesAgent.SalesDepoistPaidDt;
+                    saleAgent.SalesBondAmount = currentSalesAgent.SalesBondAmount != null ? (double)currentSalesAgent.SalesBondAmount : 0.0; 
+                    saleAgent.SaleDepositPaidBt = currentSalesAgent.SaleDepositPaidBt == true ? 1 : 0;
+
+
+                    saleAgent.SaleContractSignedSellerDt = currentSalesAgent.SaleContractSignedSellerDt;
+                    saleAgent.SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt;
+                    saleAgent.SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt;
+                    saleAgent.SalesBondGrantedDt = currentSalesAgent.SalesBondGrantedDt;
+                    saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt;
+                    saleAgent.SalesBondRequiredDt = currentSalesAgent.SalesBondRequiredDt;
+                    saleAgent.SaleBondDueTimeDt = currentSalesAgent.SaleBondDueTimeDt;
+                    saleAgent.SaleBondDueExpiryDt = currentSalesAgent.SaleBondDueExpiryDt;
+                    saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt;
                     saleAgent.SalesBondCommDueBt = currentSalesAgent.SalesBondCommDueBt == true ? 1 : 0;
                     saleAgent.SalesBondAmount = currentSalesAgent.SalesBondAmount != null ? (double)currentSalesAgent.SalesBondAmount : 0.0;
+                    saleAgent.SaleBondRequiredAmount = currentSalesAgent.SaleBondRequiredAmount != null ? (double)currentSalesAgent.SaleBondRequiredAmount : 0.0;
                     saleAgent.SalesBondInterestRate = currentSalesAgent.SalesBondInterestRate != null ? (float)currentSalesAgent.SalesBondInterestRate : 0;
 
                     return Json(saleAgent, JsonRequestBehavior.AllowGet);
@@ -305,12 +328,17 @@ namespace AAMPS.Web.Controllers
                         _linkedUnit.UnitStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
                         sale.UnitStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
                         _repoService.UpdateUnit(_linkedUnit);
-                    } 
+                    }
 
-                    _currentSale.SaleContractSignedPurchaserDt = DateTime.ParseExact(sale.SalesDepoistPaidDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    _currentSale.SaleContractSignedPurchaserDt = sale.SaleContractSignedPurchaserDt != null ? DateTime.ParseExact(sale.SaleContractSignedPurchaserDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                    _currentSale.SalesDepositProofID = sale.SalesDepositProofID;
                     _currentSale.SaleDepositPaidBt = sale.SaleDepositPaidBt == 1 ? true : false;
-                    _currentSale.SalesDepoistPaidDt = DateTime.ParseExact(sale.SalesDepoistPaidDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    _currentSale.SalesDepositProofDt = DateTime.ParseExact(sale.SalesDepoistPaidDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    _currentSale.SalesDepoistPaidDt = sale.SalesDepoistPaidDt != null ? DateTime.ParseExact(sale.SalesDepoistPaidDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                    _currentSale.SalesDepositProofDt = sale.SalesDepositProofDt != null ? DateTime.ParseExact(sale.SalesDepositProofDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                    _currentSale.SalesBondAmount = sale.SalesBondAmount != null ? (double)sale.SalesBondAmount : 0.0;
+                    _currentSale.SaleModifiedDt = DateTime.Now;
+                    _currentSale.SaleModifiedByUser = 1;
+
                     _repoService.SaveUpdateReservation(_currentSale);
                     return Json(sale, JsonRequestBehavior.AllowGet);
                 
@@ -341,19 +369,23 @@ namespace AAMPS.Web.Controllers
                     sale.UnitStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
                     _repoService.UpdateUnit(_linkedUnit);
                 }
-                _currentSale.SaleContractSignedPurchaserDt = sale.SaleContractSignedPurchaserDt != null ? DateTime.ParseExact(sale.SaleContractSignedPurchaserDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+
                 _currentSale.SaleContractSignedSellerDt = sale.SaleContractSignedSellerDt != null ? DateTime.ParseExact(sale.SaleContractSignedSellerDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondClientContactedDt = sale.SalesBondClientContactedDt != null ? DateTime.ParseExact(sale.SalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondBondDocsRecDt = sale.SalesBondBondDocsRecDt != null ? DateTime.ParseExact(sale.SalesBondBondDocsRecDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondGrantedDt = sale.SalesBondGrantedDt != null ? DateTime.ParseExact(sale.SalesBondGrantedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondClientAcceptDt = sale.SalesBondClientAcceptDt != null ? DateTime.ParseExact(sale.SalesBondClientAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                _currentSale.SalesBondRequiredBt = sale.SalesBondRequiredBt == 1 ? true : false;
                 _currentSale.SalesBondRequiredDt = sale.SalesBondRequiredDt != null ? DateTime.ParseExact(sale.SalesBondRequiredDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                 _currentSale.SaleBondDueTimeDt = sale.SaleBondDueTimeDt != null ? DateTime.ParseExact(sale.SaleBondDueTimeDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                 _currentSale.SaleBondDueExpiryDt = sale.SaleBondDueExpiryDt != null ? DateTime.ParseExact(sale.SaleBondDueExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                _currentSale.SaleBondRequiredAmount = sale.SaleBondRequiredAmount != null ? (float)sale.SaleBondRequiredAmount : 0;
+                _currentSale.SaleTypeID = sale.SaleTypeID == 0 ? 1 : 2;
+                _currentSale.SalesBondGrantedDt = sale.SalesBondGrantedDt != null ? DateTime.ParseExact(sale.SalesBondGrantedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                 _currentSale.SalesBondClientAcceptDt = sale.SalesBondClientAcceptDt != null ? DateTime.ParseExact(sale.SalesBondClientAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                _currentSale.SalesBondAmount = sale.SalesBondAmount != null ? (double)sale.SalesBondAmount : 0.0;
+                _currentSale.SalesBondClientContactedDt = sale.SalesBondClientContactedDt != null ? DateTime.ParseExact(sale.SalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                _currentSale.SalesBondBondDocsRecDt = sale.SalesBondBondDocsRecDt != null ? DateTime.ParseExact(sale.SalesBondBondDocsRecDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                 _currentSale.SalesBondCommDueBt = sale.SalesBondCommDueBt == 1 ? true : false;
-                _currentSale.SalesBondAmount = sale.SalesBondAmount;
                 _currentSale.SalesBondInterestRate = sale.SalesBondInterestRate;
+                _currentSale.SaleModifiedDt = DateTime.Now;
+                _currentSale.SaleModifiedByUser = 1;
 
                 _repoService.SaveUpdateReservation(_currentSale);
                 return Json(sale, JsonRequestBehavior.AllowGet);

@@ -6607,6 +6607,12 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleTypesResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleType[]> GetSaleTypesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDepositTypes", ReplyAction="http://tempuri.org/IAampService/GetDepositTypesResponse")]
+        AAMPS.Clients.AampService.SaleDepositProof[] GetDepositTypes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDepositTypes", ReplyAction="http://tempuri.org/IAampService/GetDepositTypesResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleDepositProof[]> GetDepositTypesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetBankById", ReplyAction="http://tempuri.org/IAampService/GetBankByIdResponse")]
         AAMPS.Clients.AampService.Bank GetBankById(int id);
         
@@ -6873,6 +6879,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleType[]> GetSaleTypesAsync() {
             return base.Channel.GetSaleTypesAsync();
+        }
+        
+        public AAMPS.Clients.AampService.SaleDepositProof[] GetDepositTypes() {
+            return base.Channel.GetDepositTypes();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleDepositProof[]> GetDepositTypesAsync() {
+            return base.Channel.GetDepositTypesAsync();
         }
         
         public AAMPS.Clients.AampService.Bank GetBankById(int id) {

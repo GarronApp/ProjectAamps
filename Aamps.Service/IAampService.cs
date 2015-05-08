@@ -64,6 +64,9 @@ namespace Aamps.Service
         List<SaleType> GetSaleTypes();
 
         [OperationContract]
+        List<SaleDepositProof> GetDepositTypes();
+
+        [OperationContract]
         Bank GetBankById(int id);
 
         [OperationContract]

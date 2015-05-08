@@ -635,6 +635,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSaleType" nillable="true" type="tns:ArrayOfSaleType" />
+  <xs:complexType name="ArrayOfSaleDepositProof">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SaleDepositProof" nillable="true" type="tns:SaleDepositProof" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSaleDepositProof" nillable="true" type="tns:ArrayOfSaleDepositProof" />
   <xs:complexType name="ArrayOfBank">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Bank" nillable="true" type="tns:Bank" />

@@ -57,6 +57,15 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
+        public List<SaleDepositProof> GetDepositTypes()
+        {
+            AampsContext _dbContext = new AampsContext();
+            var results = (from x in _dbContext.SaleDepositProofs
+                           select x).ToList();
+
+            return results;
+        }
+
         public List<OriginatorTr> GetOriginatorBySalesId(int id)
         {
             AampsContext _dbContext = new AampsContext();

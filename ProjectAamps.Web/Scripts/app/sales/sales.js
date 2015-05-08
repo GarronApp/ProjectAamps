@@ -8,6 +8,7 @@
     instance.getAgentDetails_Url = "/Sales/GetAgentSaleDetails";
     instance.getSaleTypes_Url = "/Sales/GetSaleTypes";
     instance.getPreferedContactTypes_Url = "/Sales/GetPreferedContactMethods";
+    instance.getDepositProofTypes_Url = "/Sales/GetSaleDepositProofs";
     instance.getCompanyOrginator_Url = "/Sales/GetCompanyOriginator";
     
 
@@ -43,10 +44,11 @@
             $(this).find('i').toggleClass('fa-plus-circle fa-minus-circle');
         });
 
+
+
         var dateToday = new Date();
         var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
         $("#txtReservationDate").datepicker("setValue", convertDateToday);
-
 
         $("#txtReservationDate").on('changeDate', function (ev) {
             var reservationDate = document.getElementById('txtReservationDate').value;
@@ -89,14 +91,16 @@
             }
         });
 
-        $('#checkSellerContractSigned ').change(function () {
+        $('#checkPurchaserContractSigned').change(function () {
             if (!$(this).is(':checked')) {
-                $("#txtSellerContractSignedDate").prop("disabled", true);
-                $("#txtSellerContractSignedDate").val("");
+                $("#txtPurchaserContractSigned").prop("disabled", true);
+                $("#txtPurchaserContractSigned").val("");
             }
             else {
-                $("#txtSellerContractSignedDate").prop("disabled", false);
-                $("#txtSellerContractSignedDate").datepicker("setValue", new Date());
+                $("#txtPurchaserContractSigned").prop("disabled", false);
+                var dateToday = new Date();
+                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                $("#txtPurchaserContractSigned").datepicker("setValue", convertDateToday);
             }
         });
 
@@ -104,8 +108,10 @@
             if (!$(this).is(':checked')) {
                 $("#txtDepositPaidDate").prop("disabled", true);
                 $("#txtDepositPaidDate").val("");
+                $(this).val(0);
             }
             else {
+                $(this).val(1);
                 $("#txtDepositPaidDate").prop("disabled", false);
                 var dateToday = new Date();
                 var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
@@ -124,14 +130,62 @@
             }
         });
 
+        $('#checkSalesDepositProofBt').change(function () {
+            if (!$(this).is(':checked')) {
+                $("#txtSalesDepositProofDt").prop("disabled", true);
+                $("#txtSalesDepositProofDt").val("");
+                $(this).val(0);
+            }
+            else{
+                $(this).val(1); 
+                $("#txtSalesDepositProofDt").prop("disabled", false);
+                var dateToday = new Date();
+                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                $("#txtSalesDepositProofDt").datepicker("setValue", convertDateToday);
+            }
+        });
+
         $('#checkBondRequired').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtBondRequiredDate").prop("disabled", true);
                 $("#txtBondRequiredDate").val("");
+                $(this).val(0);
             }
             else {
+                $(this).val(1);
                 $("#txtBondRequiredDate").prop("disabled", false);
-                $("#txtBondRequiredDate").datepicker("setValue", new Date());
+                var dateToday = new Date();
+                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                var _saleBondDueTimeDt = moment(convertedReservationDate, 'DD/MM/YYYY').add('days', 2).format('DD/MM/YYYY');
+                var _saleBondDueExpiryDt = moment(convertedReservationDate, 'DD/MM/YYYY').add('days', 45).format('DD/MM/YYYY');
+                $("#txtBondRequiredDate").datepicker("setValue", convertDateToday);
+                $("#txtSaleBondDueTime").datepicker("setValue", _saleBondDueTimeDt);
+                $("#txtSaleBondDueExpiryDt").datepicker("setValue", _saleBondDueExpiryDt);
+            }
+        });
+
+        $("#txtBondRequiredDate").on('changeDate', function (ev) {
+            var reservationDate = document.getElementById('txtBondRequiredDate').value;
+            var convertedReservationDate = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+            var _saleBondDueTimeDt = moment(convertedReservationDate, 'DD/MM/YYYY').add('days', 2).format('DD/MM/YYYY');
+            var _saleBondDueExpiryDt = moment(convertedReservationDate, 'DD/MM/YYYY').add('days', 45).format('DD/MM/YYYY');
+            $("#txtSaleBondDueTime").datepicker("setValue", _saleBondDueTimeDt);
+            $("#txtSaleBondDueExpiryDt").datepicker("setValue", _saleBondDueExpiryDt);
+        });
+
+
+        $('#checkPendingSellerContractSigned').change(function () {
+            if (!$(this).is(':checked')) {
+                $("#txtSellerContractSignedDate").prop("disabled", true);
+                $("#txtSellerContractSignedDate").val("");
+                $(this).val(0);
+            }
+            else {
+                $(this).val(1);
+                $("#txtSellerContractSignedDate").prop("disabled", false);
+                var dateToday = new Date();
+                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                $("#txtSellerContractSignedDate").datepicker("setValue", convertDateToday);
             }
         });
 
@@ -142,7 +196,9 @@
             }
             else {
                 $("#txtGranted").prop("disabled", false);
-                $("#txtGranted").datepicker("setValue", new Date());
+                var dateToday = new Date();
+                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                $("#txtGranted").datepicker("setValue", convertDateToday);
             }
         });
 
@@ -153,7 +209,9 @@
             }
             else {
                 $("#txtClientAccepted").prop("disabled", false);
-                $("#txtClientAccepted").datepicker("setValue", new Date());
+                var dateToday = new Date();
+                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                $("#txtClientAccepted").datepicker("setValue", convertDateToday);
             }
         });
 
@@ -202,18 +260,34 @@
 
         });
 
+        $('#selectSalesDepositProof').on('change', function () {
+            var selectedItem = $(this).val();
+            if(selectedItem > 0)
+                $("#showNonCashPaymentSection").removeClass("hide");
+            else
+                $("#showNonCashPaymentSection").addClass("hide");
+        });
+
         $("#btnUpdateReservation").click(function () {
             
             if (instance.validateClient()) {
                 instance.UpdateReservationDetails();
             }
             else {
-                alert("please update client before saving sale");
+                alert("please complete required fields*");
             }
         });
 
+
+
         $("#btnUpdateReservedSale").click(function () {
-            instance.UpdateReservedSale();
+            if (instance.validateReservedSale()) {
+
+                instance.UpdateReservedSale();
+            }
+            else {
+                alert("please complete required fields*");
+            }
         });
 
         $("#btnUpdatePendingSale").click(function () {
@@ -229,6 +303,7 @@
 
         instance.LoadSaleTypes();
         instance.LoadContactPreferedTypes();
+        instance.LoadDepositProofTypes();
         instance.LoadCompanyOrginators();
         instance.initializeSaleDetails();
 
@@ -290,6 +365,8 @@
                         $('#txtSalePendingPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSaleSoldPanelStatus').val(data.CurrentSalesStatus);
 
+ 
+
                         $("#SaleReservedForm input").attr("disabled", true);
                         $("#SaleReservedForm select option").prop('disabled', 'disabled');
 
@@ -297,7 +374,8 @@
                         $("#individualFormReserved select").attr("disabled", 'disabled');
 
                         $("#SalePendingForm input").attr("disabled", true);
-                        $("#SalePendingForm select option").prop("disabled", 'disabled');
+                        $("#SalePendingForm select").prop("disabled", 'disabled');
+
 
                         $("#individualFormPending input").attr("disabled", true);
                         $("#individualFormPending select").prop("disabled", 'disabled');
@@ -327,7 +405,7 @@
                         $("#individualFormReserved select").attr("disabled", 'disabled');
 
                         $("#SalePendingForm input").attr("disabled", true);
-                        $("#SalePendingForm select option").prop("disabled", 'disabled');
+                        $("#SalePendingForm select").prop("disabled", 'disabled');
 
                         $("#individualFormPending input").attr("disabled", true);
                         $("#individualFormPending select").prop("disabled", 'disabled');
@@ -375,28 +453,16 @@
         });
     }
 
-    this.validateForm = function (form) {
-        var list = new Array();
-        $(form).each(function (index, element) {
-            if (element.value === '') {
-                return false;
+    this.validateReservedSale = function () {
+        var form = $("#SalePendingForm").serializeArray();
+        var validForm = true;
+        for (var i = 0; i < form.length; i++) {
+            if (form[i].value === '') {
+                validForm = false;
+                break;
             }
-
-                //var fieldData = field.value;
-
-                //if (fieldData.length == 0 || fieldData == "" || fieldData == fieldData) {
-
-                //    field.className = "FieldError"; //Classs to highlight error
-                //    alert("Please correct the errors in order to continue.");
-                //    return false;
-                //} else {
-
-                //    field.className = "FieldOk"; //Resets field back to default
-                //    return true; //Submits form
-                //}
-        })
-
-        return true;
+        }
+        return validForm;
     };
 
     
@@ -515,6 +581,11 @@
         window.location.href = "/Development/Dashboard";
     }
 
+    this.ConvertCurrentDate = function (currentDate, control) {
+        var convertedCurrentDate = moment(currentDate, 'DD-MM-YYYY').format('DD/MM/YYYY');
+        $("#" + control).datepicker("setValue", convertedCurrentDate);
+    }
+
     this.MapIndividualDetails = function (data) {
         console.log(data);
         $('#individualFormReserved').trigger("reset");
@@ -552,16 +623,37 @@
     }
 
     this.MapSaleDetails = function (data) {
-        $("#txtSaleSoldPanelStatus").val(data.CurrentSalesStatus);
-        $("#txtSellerContractSignedDate").val(data.SaleContractSignedSellerDt);
-        $("#txtPurchaserContractSignedDate").val(data.SaleContractSignedPurchaserDt);
-        $("#SalesBondClientAcceptDt").val(data.SalesBondClientContactedDt);
-        $("#txtSellerContractSignedDate").val(data.SalesBondBondDocsRecDt);
-        $("#txtGranted").val(data.SalesBondGrantedDt);
-        $("#txtSellerContractSignedDate").val(data.SalesBondClientAcceptDt);
-        $("#SalesBondRequiredDt").val(data.SalesBondRequiredDt);
-        $("#txtAmountGranted").val(data.SalesBondAmount);
+        console.log(data);
 
+        if (data.CurrentSalesStatusId >= 3) {
+            
+            var depositProofID = data.SalesDepositProofID;
+            if (depositProofID > 0) {
+                $("#showNonCashPaymentSection").removeClass("hide");
+                instance.ConvertCurrentDate(data.SaleContractSignedPurchaserDt, "txtPurchaserContractSigned");
+                instance.ConvertCurrentDate(data.SalesDepoistPaidDt, "txtDepositPaidDate");
+                instance.ConvertCurrentDate(data.SalesDepositProofDt, "txtSalesDepositProofDt");
+                $("#txtDepositPaid").val(data.SalesBondAmount);
+                $("#selectSalesDepositProof").val(data.SalesDepositProofID);
+            }
+            else {
+                $("#showNonCashPaymentSection").addClass("hide");
+            }
+        }
+
+        if (data.CurrentSalesStatusId >= 4) {
+            instance.ConvertCurrentDate(data.SaleContractSignedSellerDt, "txtSellerContractSignedDate");
+            instance.ConvertCurrentDate(data.SalesBondRequiredDt, "txtBondRequiredDate");
+            instance.ConvertCurrentDate(data.SalesBondGrantedDt, "txtGranted");
+            instance.ConvertCurrentDate(data.SalesBondClientAcceptDt, "txtClientAccepted");
+            instance.ConvertCurrentDate(data.SaleBondDueTimeDt, "txtSaleBondDueTime");
+            instance.ConvertCurrentDate(data.SaleBondDueExpiryDt, "txtSaleBondDueExpiryDt");
+            $("#txtSaleBondRequiredAmount").val(data.SaleBondRequiredAmount);
+            $("#selectFinanceType").val(data.SaleTypeID);
+            $("#selectOriginator").val(data.BondOriginatorID);
+            $("#txtAmountGranted").val(data.SalesBondAmount);
+            $("#txtSaleSoldPanelStatus").val(data.CurrentSalesStatus);
+        }
     }
 
     this.GetSaleTypes = function (data)
@@ -569,6 +661,14 @@
         $("#selectFinanceType option").remove(); 
         $.each(data, function (index, item) { 
             $("#selectFinanceType").append('<option value=' + index + '>' + item + '</option>');
+        });
+    }
+
+    this.GetDepositProofTypes = function (data) {
+        $("#selectSalesDepositProof option").remove();
+        //$("#selectSalesDepositProof").append('<option>' + "[ Select ]" + '</option>');
+        $.each(data, function (index, item) {
+            $("#selectSalesDepositProof").append('<option value=' + index + '>' + item + '</option>');
         });
     }
 
@@ -621,6 +721,22 @@
             success: function (data) {
                 instance.GetReservedPreferedContactTypes(data);
                 instance.GetPendingPreferedContactTypes(data);
+            },
+            error: function (exception) {
+                console.log(exception);
+            }
+        });
+    }
+
+    this.LoadDepositProofTypes = function () {
+        $.ajax({
+            url: instance.getDepositProofTypes_Url,
+            type: "GET",
+            data: {},
+            async: true,
+            cache: false,
+            success: function (data) {
+                instance.GetDepositProofTypes(data);
             },
             error: function (exception) {
                 console.log(exception);
