@@ -565,7 +565,6 @@
       <xs:element minOccurs="0" name="PurchaserPostalCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PurchaserRegID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PurchaserSuburb" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Sales" nillable="true" type="tns:ArrayOfSale" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Purchaser" nillable="true" type="tns:Purchaser" />

@@ -44,30 +44,45 @@ namespace AAMPS.Web.Models.ViewModels
         public int PreferedContactMethodID { get; set; }
         public string IndividualEmail { get; set; }
 
+        public int PurchaserID { get; set; }
+        public string PurchaserDescription { get; set; }
+        public string PurchaserRegID { get; set; }
+        public string PurchaserContactPerson { get; set; }
+        public string PurchaserContactCell { get; set; }
+        public string PurchaserContactHome { get; set; }
+        public string PurchaserContactWork { get; set; }
+         public string PurchaserEmail { get; set; }
+        public string PurchaserAddress { get; set; }
+        public string PurchaserAddress1 { get; set; }
+        public string PurchaserAddress2 { get; set; }
+        public string PurchaserAddress3 { get; set; }
+        public string PurchaserPostalCode { get; set; }
+        public string PurchaserSuburb { get; set; }
+
         public int SaleStatusId { get; set; }
         public int UnitStatusId { get; set; }
         public int SaleTypeID { get; set; }
         public int BondOriginatorID { get; set; }
         public float SalesBondInterestRate { get; set; }
         public string SalesBondAccountNo { get; set; }
-        public DateTime? SalesBondClientContactedDt { get; set; }
-        public DateTime? SalesBondBondDocsRecDt { get; set; }
-        public DateTime? SalesBondGrantedDt { get; set; }
-        public DateTime? SalesBondClientAcceptDt { get; set; }
+        public string SalesBondClientContactedDt { get; set; }
+        public string SalesBondBondDocsRecDt { get; set; }
+        public string SalesBondGrantedDt { get; set; }
+        public string SalesBondClientAcceptDt { get; set; }
         public int SalesBondCommDueBt { get; set; }
-        public DateTime? SaleContractSignedSellerDt { get; set; }
+        public string SaleContractSignedSellerDt { get; set; }
         public int SalesBondRequiredBt { get; set; }
-        public DateTime? SalesBondRequiredDt { get; set; }
+        public string SalesBondRequiredDt { get; set; }
         public double SaleBondRequiredAmount { get; set; }
-        public DateTime? SaleBondDueTimeDt { get; set; }
-        public DateTime? SaleBondDueExpiryDt { get; set; }
+        public string SaleBondDueTimeDt { get; set; }
+        public string SaleBondDueExpiryDt { get; set; }
 
-        public DateTime? SaleContractSignedPurchaserDt { get; set; }
+        public string SaleContractSignedPurchaserDt { get; set; }
         public int SalesDepositProofID { get; set; }
         public int SalesDepositProofBt { get; set; }
-        public DateTime? SalesDepositProofDt { get; set; }
+        public string SalesDepositProofDt { get; set; }
         public double SalesBondAmount { get; set; }
-        public DateTime? SalesDepoistPaidDt { get; set; }
+        public string SalesDepoistPaidDt { get; set; }
         public int SaleDepositPaidBt { get; set; }
 
 

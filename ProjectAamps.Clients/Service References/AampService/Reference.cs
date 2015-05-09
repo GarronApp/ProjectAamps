@@ -2709,9 +2709,6 @@ namespace AAMPS.Clients.AampService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PurchaserSuburbField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AAMPS.Clients.AampService.Sale[] SalesField;
-        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -2939,19 +2936,6 @@ namespace AAMPS.Clients.AampService {
                 if ((object.ReferenceEquals(this.PurchaserSuburbField, value) != true)) {
                     this.PurchaserSuburbField = value;
                     this.RaisePropertyChanged("PurchaserSuburb");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AAMPS.Clients.AampService.Sale[] Sales {
-            get {
-                return this.SalesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SalesField, value) != true)) {
-                    this.SalesField = value;
-                    this.RaisePropertyChanged("Sales");
                 }
             }
         }
@@ -6721,6 +6705,24 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPreferedContactMethodById", ReplyAction="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod> GetPreferedContactMethodByIdAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePurchaser", ReplyAction="http://tempuri.org/IAampService/SavePurchaserResponse")]
+        AAMPS.Clients.AampService.Purchaser SavePurchaser(AAMPS.Clients.AampService.Purchaser purchaser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePurchaser", ReplyAction="http://tempuri.org/IAampService/SavePurchaserResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> SavePurchaserAsync(AAMPS.Clients.AampService.Purchaser purchaser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdatePurchaser", ReplyAction="http://tempuri.org/IAampService/UpdatePurchaserResponse")]
+        AAMPS.Clients.AampService.Purchaser UpdatePurchaser(AAMPS.Clients.AampService.Purchaser purchaser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdatePurchaser", ReplyAction="http://tempuri.org/IAampService/UpdatePurchaserResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> UpdatePurchaserAsync(AAMPS.Clients.AampService.Purchaser purchaser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserById", ReplyAction="http://tempuri.org/IAampService/GetPurchaserByIdResponse")]
+        AAMPS.Clients.AampService.Purchaser GetPurchaserById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserById", ReplyAction="http://tempuri.org/IAampService/GetPurchaserByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> GetPurchaserByIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUser", ReplyAction="http://tempuri.org/IAampService/GetUserResponse")]
         AAMPS.Clients.AampService.UserList GetUser(int identity);
         
@@ -7031,6 +7033,30 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod> GetPreferedContactMethodByIdAsync(int id) {
             return base.Channel.GetPreferedContactMethodByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.Purchaser SavePurchaser(AAMPS.Clients.AampService.Purchaser purchaser) {
+            return base.Channel.SavePurchaser(purchaser);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> SavePurchaserAsync(AAMPS.Clients.AampService.Purchaser purchaser) {
+            return base.Channel.SavePurchaserAsync(purchaser);
+        }
+        
+        public AAMPS.Clients.AampService.Purchaser UpdatePurchaser(AAMPS.Clients.AampService.Purchaser purchaser) {
+            return base.Channel.UpdatePurchaser(purchaser);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> UpdatePurchaserAsync(AAMPS.Clients.AampService.Purchaser purchaser) {
+            return base.Channel.UpdatePurchaserAsync(purchaser);
+        }
+        
+        public AAMPS.Clients.AampService.Purchaser GetPurchaserById(int id) {
+            return base.Channel.GetPurchaserById(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> GetPurchaserByIdAsync(int id) {
+            return base.Channel.GetPurchaserByIdAsync(id);
         }
         
         public AAMPS.Clients.AampService.UserList GetUser(int identity) {

@@ -132,6 +132,7 @@ namespace Aamps.Repository.Implementations
 
                 _dbContext.Entry(results).Reference(s => s.Unit).Load();
                 _dbContext.Entry(results).Reference(s => s.Individual).Load();
+                _dbContext.Entry(results).Reference(s => s.Purchaser).Load();
                 
 
                 return results;

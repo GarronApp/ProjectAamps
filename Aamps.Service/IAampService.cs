@@ -113,11 +113,19 @@ namespace Aamps.Service
 
         //Individual
          [OperationContract]
-        Individual SavePerson(Individual person);
+         Individual SavePerson(Individual person);
          [OperationContract]
          List<PreferedContactMethod> GetAllPreferedContactMethods();
          [OperationContract]
          PreferedContactMethod GetPreferedContactMethodById(int id);
+
+        //Purchaser
+         [OperationContract]
+         Purchaser SavePurchaser(Purchaser purchaser);
+         [OperationContract]
+         Purchaser UpdatePurchaser(Purchaser purchaser);
+         [OperationContract]
+         Purchaser GetPurchaserById(int id);
 
         //User
         [OperationContract]

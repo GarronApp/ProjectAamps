@@ -180,23 +180,36 @@ namespace AAMPS.Web.Controllers
                     saleAgent.IndividualEmail= currentSalesAgent.Individual.IndividualEmail;
                     saleAgent.PreferedContactMethodID = currentSalesAgent.Individual.PreferedContactMethodID;
 
-                    saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt;
+                    saleAgent.PurchaserDescription = currentSalesAgent.Purchaser.PurchaserDescription;
+                    saleAgent.PurchaserContactPerson = currentSalesAgent.Purchaser.PurchaserContactPerson;
+                    saleAgent.PurchaserContactCell = currentSalesAgent.Purchaser.PurchaserContactCell;
+                    saleAgent.PurchaserContactHome = currentSalesAgent.Purchaser.PurchaserContactHome;
+                    saleAgent.PurchaserContactWork = currentSalesAgent.Purchaser.PurchaserContactWork;
+                    saleAgent.PurchaserEmail = currentSalesAgent.Purchaser.PurchaserEmail;
+                    saleAgent.PurchaserAddress = currentSalesAgent.Purchaser.PurchaserAddress;
+                    saleAgent.PurchaserAddress1 = currentSalesAgent.Purchaser.PurchaserAddress1;
+                    saleAgent.PurchaserAddress2 = currentSalesAgent.Purchaser.PurchaserAddress2;
+                    saleAgent.PurchaserAddress3 = currentSalesAgent.Purchaser.PurchaserAddress3;
+                    saleAgent.PurchaserSuburb = currentSalesAgent.Purchaser.PurchaserSuburb;
+                    saleAgent.PurchaserPostalCode = currentSalesAgent.Purchaser.PurchaserPostalCode;
+
+                    saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt.HasValue ? currentSalesAgent.SaleContractSignedPurchaserDt.Value.ToString() : string.Empty;
                     saleAgent.SalesDepositProofID = currentSalesAgent.SalesDepositProofID != null ? (int)currentSalesAgent.SalesDepositProofID : 0;
-                    saleAgent.SalesDepositProofDt = currentSalesAgent.SalesDepositProofDt;
-                    saleAgent.SalesDepoistPaidDt = currentSalesAgent.SalesDepoistPaidDt;
+                    saleAgent.SalesDepositProofDt = currentSalesAgent.SalesDepositProofDt.HasValue ? currentSalesAgent.SalesDepositProofDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesDepoistPaidDt = currentSalesAgent.SalesDepoistPaidDt.HasValue ? currentSalesAgent.SalesDepoistPaidDt.Value.ToString() : string.Empty;
                     saleAgent.SalesBondAmount = currentSalesAgent.SalesBondAmount != null ? (double)currentSalesAgent.SalesBondAmount : 0.0; 
                     saleAgent.SaleDepositPaidBt = currentSalesAgent.SaleDepositPaidBt == true ? 1 : 0;
 
 
-                    saleAgent.SaleContractSignedSellerDt = currentSalesAgent.SaleContractSignedSellerDt;
-                    saleAgent.SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt;
-                    saleAgent.SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt;
-                    saleAgent.SalesBondGrantedDt = currentSalesAgent.SalesBondGrantedDt;
-                    saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt;
-                    saleAgent.SalesBondRequiredDt = currentSalesAgent.SalesBondRequiredDt;
-                    saleAgent.SaleBondDueTimeDt = currentSalesAgent.SaleBondDueTimeDt;
-                    saleAgent.SaleBondDueExpiryDt = currentSalesAgent.SaleBondDueExpiryDt;
-                    saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt;
+                    saleAgent.SaleContractSignedSellerDt = currentSalesAgent.SaleContractSignedSellerDt.HasValue ? currentSalesAgent.SaleContractSignedSellerDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? currentSalesAgent.SalesBondClientContactedDt.Value.ToString() : string.Empty; 
+                    saleAgent.SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondGrantedDt =  currentSalesAgent.SalesBondGrantedDt.HasValue ? currentSalesAgent.SalesBondGrantedDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondClientAcceptDt =  currentSalesAgent.SalesBondClientAcceptDt.HasValue ? currentSalesAgent.SalesBondClientAcceptDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondRequiredDt =  currentSalesAgent.SalesBondRequiredDt.HasValue ? currentSalesAgent.SalesBondRequiredDt.Value.ToString() : string.Empty;
+                    saleAgent.SaleBondDueTimeDt =  currentSalesAgent.SaleBondDueTimeDt.HasValue ? currentSalesAgent.SaleBondDueTimeDt.Value.ToString() : string.Empty;
+                    saleAgent.SaleBondDueExpiryDt = currentSalesAgent.SaleBondDueExpiryDt.HasValue ? currentSalesAgent.SaleBondDueExpiryDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondClientAcceptDt =  currentSalesAgent.SalesBondClientAcceptDt.HasValue ? currentSalesAgent.SalesBondClientAcceptDt.Value.ToString() : string.Empty;
                     saleAgent.SalesBondCommDueBt = currentSalesAgent.SalesBondCommDueBt == true ? 1 : 0;
                     saleAgent.SalesBondAmount = currentSalesAgent.SalesBondAmount != null ? (double)currentSalesAgent.SalesBondAmount : 0.0;
                     saleAgent.SaleBondRequiredAmount = currentSalesAgent.SaleBondRequiredAmount != null ? (double)currentSalesAgent.SaleBondRequiredAmount : 0.0;
@@ -242,7 +255,9 @@ namespace AAMPS.Web.Controllers
                     _individual.IndividualContactHome = individual.IndividualContactHome;
                     _individual.IndividualContactWork = individual.IndividualContactWork;
                     _individual.IndividualEmail = individual.IndividualEmail;
-                    _individual.PreferedContactMethodID = individual.PreferedContactMethodID;
+                    var contactMethod = individual.PreferedContactMethodID.ToString();
+                    SetPreferedMethod(contactMethod, _individual);
+                    individual.PreferedContactMethodID = _individual.PreferedContactMethodID;
 
                     var result = _repoService.SavePerson(_individual);
                     individual.IndividualID = result.IndividualID;
@@ -416,6 +431,40 @@ namespace AAMPS.Web.Controllers
 
             return null;
 
+        }
+
+
+        public void SetPreferedMethod(string method, Individual individual)
+        {
+            switch (method)
+            {
+                case "0":
+                    {
+                        individual.PreferedContactMethodID = 1;
+                        break;
+                    }
+
+                case "1":
+                    {
+                        individual.PreferedContactMethodID = 4;
+                        break;
+                    }
+                case "2":
+                    {
+                        individual.PreferedContactMethodID = 2;
+                        break;
+                    }
+                case "3":
+                    {
+                        individual.PreferedContactMethodID = 3;
+                        break;
+
+                    }
+                default:
+                    break;
+
+
+            }
         }
 	}
 }

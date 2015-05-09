@@ -9,7 +9,7 @@ namespace Aamps.Domain.Models
         public Purchaser()
         {
             this.PurchaserIndividualLinks = new List<PurchaserIndividualLink>();
-            this.Sales = new List<Sale>();
+            //this.Sales = new List<Sale>();
         }
         [DataMember]
         public int PurchaserID { get; set; }
@@ -45,8 +45,8 @@ namespace Aamps.Domain.Models
         public virtual EntityType EntityType { get; set; }
         [DataMember]
         public virtual ICollection<PurchaserIndividualLink> PurchaserIndividualLinks { get; set; }
-        [DataMember]
-        public virtual ICollection<Sale> Sales { get; set; }
+        //[DataMember]
+        //public virtual ICollection<Sale> Sales { get; set; }
 
     }
 }

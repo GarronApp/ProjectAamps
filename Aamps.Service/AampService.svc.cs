@@ -14,6 +14,7 @@ namespace Aamps.Service
         SalesRepository _salesRepo;
         DevelopmentRepository _devRepo;
         IndividualRepository _personRepo;
+        PurchaserRepository _purchaserRepo;
         UserRepository _userRepo;
         OrginatorRepository _orginatorRepo;
 
@@ -206,6 +207,29 @@ namespace Aamps.Service
 
             return person;
         }
+
+         public Purchaser SavePurchaser(Purchaser purchaser)
+         {
+             _purchaserRepo = new PurchaserRepository(_dbContext);
+             _purchaserRepo.Add(purchaser);
+
+             return purchaser;
+         }
+
+         public Purchaser UpdatePurchaser(Purchaser purchaser)
+         {
+             _purchaserRepo = new PurchaserRepository(_dbContext);
+             _purchaserRepo.Update(purchaser);
+
+             return purchaser;
+         }
+
+         public Purchaser GetPurchaserById(int id)
+         {
+             _purchaserRepo = new PurchaserRepository(_dbContext);
+             var results = _purchaserRepo.GetPurchaserById(id);
+             return results;
+         }
 
         public PreferedContactMethod GetPreferedContactMethodById(int id)
         {

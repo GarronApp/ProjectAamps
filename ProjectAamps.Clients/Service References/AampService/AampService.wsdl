@@ -211,6 +211,24 @@
   <wsdl:message name="IAampService_GetPreferedContactMethodById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPreferedContactMethodByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_SavePurchaser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePurchaser" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_SavePurchaser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePurchaserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdatePurchaser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePurchaser" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdatePurchaser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePurchaserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPurchaserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchaserById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPurchaserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchaserByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_GetUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUser" />
   </wsdl:message>
@@ -359,6 +377,18 @@
     <wsdl:operation name="GetPreferedContactMethodById">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPreferedContactMethodById" message="tns:IAampService_GetPreferedContactMethodById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse" message="tns:IAampService_GetPreferedContactMethodById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePurchaser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SavePurchaser" message="tns:IAampService_SavePurchaser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/SavePurchaserResponse" message="tns:IAampService_SavePurchaser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchaser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/UpdatePurchaser" message="tns:IAampService_UpdatePurchaser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/UpdatePurchaserResponse" message="tns:IAampService_UpdatePurchaser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaserById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPurchaserById" message="tns:IAampService_GetPurchaserById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPurchaserByIdResponse" message="tns:IAampService_GetPurchaserById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUser" message="tns:IAampService_GetUser_InputMessage" />
@@ -670,6 +700,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetPreferedContactMethodById">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetPreferedContactMethodById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePurchaser">
+      <soap:operation soapAction="http://tempuri.org/IAampService/SavePurchaser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchaser">
+      <soap:operation soapAction="http://tempuri.org/IAampService/UpdatePurchaser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaserById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetPurchaserById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

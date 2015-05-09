@@ -104,10 +104,22 @@
             }
         });
 
+        $('#checkHasPaidDeposit').change(function(){
+            if (!$(this).is(':checked')) {
+                
+
+            }
+            else {
+                
+
+            }
+        });
+
         $('#checkDepositPaid').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtDepositPaidDate").prop("disabled", true);
                 $("#txtDepositPaidDate").val("");
+                $("#showNonCashPaymentSection").addClass('hide');
                 $(this).val(0);
             }
             else {
@@ -116,6 +128,7 @@
                 var dateToday = new Date();
                 var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
                 $("#txtDepositPaidDate").datepicker("setValue", convertDateToday);
+                $("#showNonCashPaymentSection").removeClass('hide');
             }
         });
 
@@ -260,13 +273,13 @@
 
         });
 
-        $('#selectSalesDepositProof').on('change', function () {
-            var selectedItem = $(this).val();
-            if(selectedItem > 0)
-                $("#showNonCashPaymentSection").removeClass("hide");
-            else
-                $("#showNonCashPaymentSection").addClass("hide");
-        });
+        //$('#selectSalesDepositProof').on('change', function () {
+        //    var selectedItem = $(this).val();
+        //    if(selectedItem > 0)
+        //        $("#showNonCashPaymentSection").removeClass("hide");
+        //    else
+        //        $("#showNonCashPaymentSection").addClass("hide");
+        //});
 
         $("#btnUpdateReservation").click(function () {
             
@@ -322,6 +335,7 @@
                     instance.MapUnitDetails(data);
                     instance.MapIndividualDetails(data);
                     instance.MapSaleDetails(data);
+                    instance.MapPurchaserlDetails(data);
                     var saleStatus = data.CurrentSalesStatusId;
                     console.log(saleStatus);
                     if (saleStatus == 1) {
@@ -583,6 +597,7 @@
 
     this.ConvertCurrentDate = function (currentDate, control) {
         var convertedCurrentDate = moment(currentDate, 'DD-MM-YYYY').format('DD/MM/YYYY');
+        var convertedCurrentDate = moment(currentDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
         $("#" + control).datepicker("setValue", convertedCurrentDate);
     }
 
@@ -597,7 +612,7 @@
         $("#txtCellNumberReserved").val(data.IndividualContactCell);
         $("#txtWorkNumberReserved").val(data.IndividualContactWork);
         $("#txtEmailReserved").val(data.IndividualEmail);
-        var contactMethod = data.PreferedContactMethodID;
+        var contactMethod = instance.MapPreferedContactMethod(data.PreferedContactMethodID);
         $("#PreferedContactMethodID").val(contactMethod);
         $("#txtPendingPreferedContactMethod").val(contactMethod);
         $("#txtFirstNamePending").val(data.IndividualName);
@@ -606,6 +621,56 @@
         $("#txtWorkNumberPending").val(data.IndividualContactWork);
         $("#txtEmailPending").val(data.IndividualEmail);
 
+    }
+
+    this.MapPurchaserlDetails = function (data) {
+        console.log(data);
+        $('#purchaserFormSold').trigger("reset");
+        $('#purchaserFormSold')[0].reset();
+        $("#CurrentIndividualID").attr('value', data.PurchaserDescription);
+        $("#txtPurchaserDescription").val(data.PurchaserDescription);
+        $("#txtPurchaserContactPerson").val(data.PurchaserContactPerson);
+        $("#txtPurchaserContactCell").val(data.PurchaserContactCell);
+        $("#txtPurchaserContactHome").val(data.PurchaserContactHome);
+        $("#txtPurchaserContactWork").val(data.PurchaserContactWork);
+        $("#txtPurchaserEmail").val(data.PurchaserEmail);
+        $("#txtPurchaserAddress").val(data.PurchaserAddress);
+        $("#txtPurchaserAddress1").val(data.PurchaserAddress1);
+        $("#txtPurchaserAddress2").val(data.PurchaserAddress2);
+        $("#txtPurchaserAddress3").val(data.PurchaserAddress3);
+        $("#txtPurchaserSuburb").val(data.PurchaserSuburb);
+        $("#txtPurchaserPostalCode").val(data.PurchaserPostalCode);
+    }
+
+    this.MapPreferedContactMethod = function (data) {
+        var method = data;
+        switch (method) {
+            case 1:
+                {
+                    return 0
+                    break;
+                }
+            case 2:
+                {
+                    return 2
+                    break;
+                }
+
+            case 3:
+                {
+                    return 3
+                    break;
+                }
+            case 4:
+                {
+                    return 1
+                    break;
+                }
+               
+            default:
+                break;
+
+        }
     }
 
     this.MapUnitDetails = function (data) {

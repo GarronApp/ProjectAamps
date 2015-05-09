@@ -89,46 +89,49 @@
     <None Include="Service References\AampService\AampService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Bank1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Bank.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Company1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Company.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Development1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Development.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Estate1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Estate.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Individual.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Individual1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.MOStatus1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.MOStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.OriginatorTr1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.OriginatorTr.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.PreferedContactMethod1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.PreferedContactMethod.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Sale1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Purchaser.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleActiveStatus1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Sale.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleDepositProof.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleActiveStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleType1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleDepositProof1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Unit1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.UnitStatus1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Unit.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.UnitStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
@@ -154,7 +157,7 @@
     <None Include="Service References\AampService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.UserList1.datasource">
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.UserList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AampService\Reference.svcmap">

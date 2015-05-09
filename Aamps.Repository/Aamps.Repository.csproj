@@ -77,12 +77,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\BaseRepository.cs" />
+    <Compile Include="Implementations\PurchaserRepository.cs" />
     <Compile Include="Implementations\IndividualRepository.cs" />
     <Compile Include="Implementations\DevelopmentRepository.cs" />
     <Compile Include="Implementations\OrginatorRepository.cs" />
     <Compile Include="Implementations\SalesRepository.cs" />
     <Compile Include="Implementations\UserRepository.cs" />
     <Compile Include="Implementations\UnitRepository.cs" />
+    <Compile Include="Interfaces\IPurchaserRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IDevelopmentRepository.cs" />
     <Compile Include="Interfaces\IOriginatorRepository.cs" />

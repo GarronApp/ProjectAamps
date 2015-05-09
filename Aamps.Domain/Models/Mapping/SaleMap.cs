@@ -63,9 +63,9 @@ namespace Aamps.Domain.Models.Mapping
             //this.HasOptional(t => t.Individual)
             //    .WithMany(t => t.Sales)
             //    .HasForeignKey(d => d.IndividualID);
-            this.HasOptional(t => t.Purchaser)
-                .WithMany(t => t.Sales)
-                .HasForeignKey(d => d.PurchaserID);
+            //this.HasOptional(t => t.Purchaser)
+            //    .WithMany(t => t.Sales)
+            //    .HasForeignKey(d => d.PurchaserID);
             this.HasOptional(t => t.SaleActiveStatus)
                 .WithMany(t => t.Sales)
                 .HasForeignKey(d => d.SaleActiveStatusID);
