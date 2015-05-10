@@ -77,6 +77,30 @@ namespace AAMPS.Web.Models.ViewModels
         public string SaleBondDueTimeDt { get; set; }
         public string SaleBondDueExpiryDt { get; set; }
 
+        public int SalesBondBondDocsRecBt { get; set; }
+        public int SalesBondClientContactedBt { get; set; }
+        public int SalesBondClientAcceptBt { get; set; }
+        public int SalesBondGrantedBt { get; set; }
+
+
+        public string SaleBondBank { get; set; }
+        public int OriginatorTrSubmittedBt { get; set; }
+        public string OriginatorTrSubmittedDt { get; set; }
+        public int OriginatorTrAIPBt { get; set; }
+        public string OriginatorTrAIPDt { get; set; }
+        public int OriginatorTrGrantBt { get; set; }
+        public string OriginatorTrGrantDt { get; set; }
+
+        public int OriginatorTrAcceptedBt { get; set; }
+        public string OriginatorTrAcceptDt { get; set; }
+        public int OriginatorTrBondAmountBt { get; set; }
+        public double OriginatorTrBondAmount { get; set; }
+        public int OriginatorTrIntRateBt { get; set; }
+        public double OriginatorTrIntRate { get; set; }
+        public int OriginatorTrAddedBt { get; set; }
+        public string OriginatorTrAddedDt { get; set; }
+        public string OriginatorTrModifiedDt { get; set; }
+
         public string SaleContractSignedPurchaserDt { get; set; }
         public int SalesDepositProofID { get; set; }
         public int SalesDepositProofBt { get; set; }

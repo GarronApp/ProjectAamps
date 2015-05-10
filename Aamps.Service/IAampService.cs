@@ -126,6 +126,8 @@ namespace Aamps.Service
          Purchaser UpdatePurchaser(Purchaser purchaser);
          [OperationContract]
          Purchaser GetPurchaserById(int id);
+         [OperationContract]
+         List<EntityType> GetPurchaserEntityTypes();
 
         //User
         [OperationContract]

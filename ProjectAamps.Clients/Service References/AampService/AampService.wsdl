@@ -229,6 +229,12 @@
   <wsdl:message name="IAampService_GetPurchaserById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPurchaserByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_GetPurchaserEntityTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchaserEntityTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPurchaserEntityTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchaserEntityTypesResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_GetUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUser" />
   </wsdl:message>
@@ -389,6 +395,10 @@
     <wsdl:operation name="GetPurchaserById">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPurchaserById" message="tns:IAampService_GetPurchaserById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPurchaserByIdResponse" message="tns:IAampService_GetPurchaserById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaserEntityTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPurchaserEntityTypes" message="tns:IAampService_GetPurchaserEntityTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPurchaserEntityTypesResponse" message="tns:IAampService_GetPurchaserEntityTypes_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUser" message="tns:IAampService_GetUser_InputMessage" />
@@ -727,6 +737,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPurchaserById">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetPurchaserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaserEntityTypes">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetPurchaserEntityTypes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -12,6 +12,7 @@ using App.Extentions;
 using Aamps.Domain.ValueObjects;
 using Aamps.Domain.Converters;
 using AAMPS.Clients.ViewModels.Individual;
+using AAMPS.Clients.ViewModels.Purchaser;
 
 namespace AAMPS.Web.Controllers
 {
@@ -54,6 +55,19 @@ namespace AAMPS.Web.Controllers
 
         [AampsAuthorize]
         [HttpGet]
+        public ActionResult GetPurchaserEntityTypes()
+        {
+            var purchaserEntityTypesList = new List<string>();
+            var purchaserEntityTypes = _repoService.GetPurchaserEntityTypes();
+            foreach (var item in purchaserEntityTypes)
+            {
+                purchaserEntityTypesList.Add(item.EntityTypeDescription);
+            }
+            return Json(purchaserEntityTypesList, JsonRequestBehavior.AllowGet);
+        }
+
+        [AampsAuthorize]
+        [HttpGet]
         public ActionResult GetSaleDepositProofs()
         {
             var salesDepositProofList = new List<string>();
@@ -62,9 +76,7 @@ namespace AAMPS.Web.Controllers
             {
                 salesDepositProofList.Add(item.SaleDepositProofDescription);
             }
-
             return Json(salesDepositProofList, JsonRequestBehavior.AllowGet);
-
         }
 
         [AampsAuthorize]
@@ -200,20 +212,38 @@ namespace AAMPS.Web.Controllers
                     saleAgent.SalesBondAmount = currentSalesAgent.SalesBondAmount != null ? (double)currentSalesAgent.SalesBondAmount : 0.0; 
                     saleAgent.SaleDepositPaidBt = currentSalesAgent.SaleDepositPaidBt == true ? 1 : 0;
 
+                    saleAgent.SalesBondAccountNo = currentSalesAgent.SalesBondAccountNo;
+                    saleAgent.SalesBondInterestRate = currentSalesAgent.SalesBondInterestRate != null ? (float)currentSalesAgent.SalesBondInterestRate : 0;
+                    saleAgent.SalesBondGrantedDt = currentSalesAgent.SalesBondGrantedDt.HasValue ? currentSalesAgent.SalesBondGrantedDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondGrantedBt = currentSalesAgent.SalesBondGrantedDt.HasValue ? 1 : 0;
+                    saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt.HasValue ? currentSalesAgent.SalesBondClientAcceptDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondClientAcceptBt = currentSalesAgent.SalesBondClientAcceptDt.HasValue ? 1 : 0;
+                    saleAgent.SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? currentSalesAgent.SalesBondClientContactedDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondClientContactedBt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? 1 : 0;
+                    saleAgent.SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondBondDocsRecBt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? 1 : 0;
 
                     saleAgent.SaleContractSignedSellerDt = currentSalesAgent.SaleContractSignedSellerDt.HasValue ? currentSalesAgent.SaleContractSignedSellerDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? currentSalesAgent.SalesBondClientContactedDt.Value.ToString() : string.Empty; 
-                    saleAgent.SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondGrantedDt =  currentSalesAgent.SalesBondGrantedDt.HasValue ? currentSalesAgent.SalesBondGrantedDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondClientAcceptDt =  currentSalesAgent.SalesBondClientAcceptDt.HasValue ? currentSalesAgent.SalesBondClientAcceptDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondRequiredDt =  currentSalesAgent.SalesBondRequiredDt.HasValue ? currentSalesAgent.SalesBondRequiredDt.Value.ToString() : string.Empty;
-                    saleAgent.SaleBondDueTimeDt =  currentSalesAgent.SaleBondDueTimeDt.HasValue ? currentSalesAgent.SaleBondDueTimeDt.Value.ToString() : string.Empty;
+                    saleAgent.SalesBondRequiredDt = currentSalesAgent.SalesBondRequiredDt.HasValue ? currentSalesAgent.SalesBondRequiredDt.Value.ToString() : string.Empty;
+                    saleAgent.SaleBondDueTimeDt = currentSalesAgent.SaleBondDueTimeDt.HasValue ? currentSalesAgent.SaleBondDueTimeDt.Value.ToString() : string.Empty;
                     saleAgent.SaleBondDueExpiryDt = currentSalesAgent.SaleBondDueExpiryDt.HasValue ? currentSalesAgent.SaleBondDueExpiryDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondClientAcceptDt =  currentSalesAgent.SalesBondClientAcceptDt.HasValue ? currentSalesAgent.SalesBondClientAcceptDt.Value.ToString() : string.Empty;
                     saleAgent.SalesBondCommDueBt = currentSalesAgent.SalesBondCommDueBt == true ? 1 : 0;
-                    saleAgent.SalesBondAmount = currentSalesAgent.SalesBondAmount != null ? (double)currentSalesAgent.SalesBondAmount : 0.0;
                     saleAgent.SaleBondRequiredAmount = currentSalesAgent.SaleBondRequiredAmount != null ? (double)currentSalesAgent.SaleBondRequiredAmount : 0.0;
-                    saleAgent.SalesBondInterestRate = currentSalesAgent.SalesBondInterestRate != null ? (float)currentSalesAgent.SalesBondInterestRate : 0;
+
+                    var currentOrginator = _repoService.GetOriginatorById((int)currentSalesAgent.BondOriginatorID);
+                    saleAgent.SaleBondBank = _repoService.GetBankById(currentOrginator.BankID).BankDescription;
+                    //saleAgent.OriginatorTrBondAmount = currentOrginator.OriginatorTrBondAmount;
+                    //saleAgent.OriginatorTrBondAmountBt = currentOrginator.OriginatorTrBondAmount != null ? 1 : 0;
+                    //saleAgent.OriginatorTrIntRate = currentOrginator.OriginatorTrIntRate;
+                    //saleAgent.OriginatorTrBondAmountBt = currentOrginator.OriginatorTrBondAmount != null ? 1 : 0;
+                    //saleAgent.OriginatorTrSubmittedDt = currentOrginator.OriginatorTrSubmittedDt.HasValue ? currentOrginator.OriginatorTrSubmittedDt.Value.ToString() : string.Empty;
+                    //saleAgent.OriginatorTrSubmittedBt = currentOrginator.OriginatorTrSubmittedDt.HasValue ? 1 : 0;
+                    //saleAgent.OriginatorTrGrantDt = currentOrginator.OriginatorTrGrantDt.HasValue ? currentOrginator.OriginatorTrGrantDt.Value.ToString() : string.Empty;
+                    //saleAgent.OriginatorTrGrantBt = currentOrginator.OriginatorTrGrantDt.HasValue ? 1 : 0;
+                    //saleAgent.OriginatorTrAcceptDt = currentOrginator.OriginatorTrAcceptDt.HasValue ? currentOrginator.OriginatorTrAcceptDt.Value.ToString() : string.Empty;
+                    //saleAgent.OriginatorTrAcceptedBt = currentOrginator.OriginatorTrAcceptDt.HasValue ? 1 : 0;
+                    //saleAgent.OriginatorTrAIPDt = currentOrginator.OriginatorTrAIPDt.HasValue ? currentOrginator.OriginatorTrAIPDt.Value.ToString() : string.Empty;
+                    //saleAgent.OriginatorTrAIPBt = currentOrginator.OriginatorTrAIPDt.HasValue ? 1 : 0;
 
                     return Json(saleAgent, JsonRequestBehavior.AllowGet);
                 }
@@ -272,6 +302,41 @@ namespace AAMPS.Web.Controllers
 
             return null;
             
+        }
+
+        [HttpPost]
+        public JsonResult SavePurchaser(PurchaserViewModel purchaser)
+        {
+            try
+            {
+                if (purchaser != null)
+                {
+                    var _purchaser = new Purchaser();
+
+                    _purchaser.PurchaserDescription = purchaser.PurchaserDescription;
+                    _purchaser.PurchaserContactPerson = purchaser.PurchaserContactPerson;
+                    _purchaser.PurchaserContactHome = purchaser.PurchaserContactHome;
+                    _purchaser.PurchaserContactCell = purchaser.PurchaserContactCell;
+                    _purchaser.PurchaserContactWork = purchaser.PurchaserContactWork;
+                    _purchaser.PurchaserEmail = purchaser.PurchaserEmail;
+                    _purchaser.PurchaserAddress = purchaser.PurchaserAddress;
+                    _purchaser.PurchaserAddress1 = purchaser.PurchaserAddress1;
+                    _purchaser.PurchaserAddress2 = purchaser.PurchaserAddress2;
+                    _purchaser.PurchaserSuburb = purchaser.PurchaserSuburb;
+                    _purchaser.PurchaserPostalCode = purchaser.PurchaserPostalCode;
+
+                    _repoService.SavePurchaser(_purchaser);
+
+                    return Json(purchaser, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.InnerException);
+            }
+
+            return null;
+
         }
 
         [HttpPost]

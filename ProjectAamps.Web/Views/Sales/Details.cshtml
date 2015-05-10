@@ -381,40 +381,7 @@
                                 <select class="form-control" id="selectFinanceType" name="SaleTypeID"></select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="selectBondRequired" class="col-sm-4 control-label">Originator</label>
-                            <div class="col-sm-8">
-                                <select class="form-control" id="selectOriginator" name="BondOriginatorID"></select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="checkGranted" class="col-sm-4 control-label">Granted</label>
-                            <div class="col-sm-1">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" id="checkGranted" value=""></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control datepicker" disabled="disabled" id="txtGranted" name="SalesBondGrantedDt" data-date-format="dd/mm/yyyy" placeholder="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="checkClientAccepted" class="col-sm-4 control-label">Client Accepted</label>
-                            <div class="col-sm-1">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" id="checkClientAccepted" value=""></label>
-                                </div>
-                            </div>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control datepicker" disabled="disabled" id="txtClientAccepted" name="SalesBondClientAcceptDt" data-date-format="dd/mm/yyyy" placeholder="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtAmountGranted" class="col-sm-4 control-label">Amount Granted</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="txtAmountGranted" name="SalesBondAmount" placeholder="0.0">
-                            </div>
-                        </div>
+                      
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
                                 <input type="button" id="btnUpdatePendingSale" class="btn btn-primary btn-sm" value="Update"/>
@@ -425,6 +392,14 @@
                 </div>
                 <div class="col-md-6">
                     <form class="form-horizontal" id="purchaserFormSold">
+
+                        <div class="form-group">
+                            <label for="selectPurchaserType" class="col-sm-2 control-label">Purchaser Type</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="selectPurchaserType" name="EntityTypeID"></select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="txtFirstName" class="col-sm-2 control-label">Purchaser</label>
                             <div class="col-sm-10">
@@ -501,7 +476,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <input type="button" class="btn btn-primary btn-sm" value="Update"/>
+                                <input type="button" class="btn btn-primary btn-sm" id="btnAddUpdatePurchaser" value="Update"/>
                             </div>
                         </div>
 
@@ -515,6 +490,153 @@
     </div>
 </div>
 
+
+<div class="panel panel-default" id="bondsPanel">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" style="text-decoration:none">
+        <div class="panel-heading" id="divPanelBonds">
+            <h4 class="panel-title">
+                Bonds
+                <span class="pull-right"><i class="fa fa-plus-circle" style="font-size:18px"></i></span>
+            </h4>
+        </div>
+    </a>
+    <div id="collapseFour" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <form class="form-horizontal" id="SaleBondsForm">
+                        
+                        <div class="form-group">
+                            <label for="selectBondRequired" class="col-sm-4 control-label">Originator</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="selectOriginator" name="BondOriginatorID"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectBankName" class="col-sm-4 control-label">Bank Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSaleBondBank" name="SaleBondBank" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAmountGranted" class="col-sm-4 control-label">Bond Account No</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSalesBondAccountNo" name="SalesBondAccountNo" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtExpiryDate" class="col-sm-4 control-label">Interest Rate</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSalesBondInterestRate" name="SalesBondInterestRate" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAmountGranted" class="col-sm-4 control-label">Amount Granted</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSalesBondAmount" name="SalesBondAmount" placeholder="0.0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkGranted" class="col-sm-4 control-label">Granted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkSalesBondGrantedBt" name="SalesBondGrantedBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" disabled="disabled" id="txtGranted" name="SalesBondGrantedDt" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkClientAccepted" class="col-sm-4 control-label">Client Accepted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkSalesBondClientAcceptBt" name="SalesBondClientAcceptBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control datepicker" disabled="disabled" id="txtClientAccepted" name="SalesBondClientAcceptDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="txtAmountGranted" class="col-sm-4 control-label">Client Contacted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkSalesBondClientContactedBt" name="SalesBondClientContactedBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="txtSalesBondClientContactedDt" name="SalesBondClientContactedDt" placeholder="0.0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAmountGranted" class="col-sm-4 control-label">Documents Received</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkSalesBondBondDocsRecBt" name="SalesBondBondDocsRecBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="txtSalesBondBondDocsRecDt" name="SalesBondBondDocsRecDt">
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                            <label for="txtExtentionDate" class="col-sm-4 control-label">Submitted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkOriginatorTrSubmittedBt" name="OriginatorTrSubmittedBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="txtOriginatorTrSubmittedDt" name="OriginatorTrSubmittedDt" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtExtentionDate" class="col-sm-4 control-label">AIP</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkOriginatorTrAIPBt" name="OriginatorTrAIPBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="txtOriginatorTrAIPDt" name="OriginatorTrAIPDt" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtExtentionDate" class="col-sm-4 control-label">Granted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkOriginatorTrGrantBt" name="OriginatorTrGrantBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="txtOriginatorTrGrantDt" name="OriginatorTrGrantDt" placeholder="">
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="txtExtentionDate" class="col-sm-4 control-label">Client Accepted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkOriginatorTrAcceptedBt" name="OriginatorTrAcceptedBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="OriginatorTrAcceptDt" name="OriginatorTrAcceptDt" placeholder="">
+                            </div>
+                        </div>*@
+                     
+                    </form>
+                </div>
+
+
+        </div>
+    </div>
+    </div>
+</div>
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/moment.js"></script>
 <script src="~/Scripts/app/sales/sales.js"></script>

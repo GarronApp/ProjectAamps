@@ -6723,6 +6723,12 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserById", ReplyAction="http://tempuri.org/IAampService/GetPurchaserByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> GetPurchaserByIdAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserEntityTypes", ReplyAction="http://tempuri.org/IAampService/GetPurchaserEntityTypesResponse")]
+        AAMPS.Clients.AampService.EntityType[] GetPurchaserEntityTypes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserEntityTypes", ReplyAction="http://tempuri.org/IAampService/GetPurchaserEntityTypesResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.EntityType[]> GetPurchaserEntityTypesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUser", ReplyAction="http://tempuri.org/IAampService/GetUserResponse")]
         AAMPS.Clients.AampService.UserList GetUser(int identity);
         
@@ -7057,6 +7063,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> GetPurchaserByIdAsync(int id) {
             return base.Channel.GetPurchaserByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.EntityType[] GetPurchaserEntityTypes() {
+            return base.Channel.GetPurchaserEntityTypes();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.EntityType[]> GetPurchaserEntityTypesAsync() {
+            return base.Channel.GetPurchaserEntityTypesAsync();
         }
         
         public AAMPS.Clients.AampService.UserList GetUser(int identity) {

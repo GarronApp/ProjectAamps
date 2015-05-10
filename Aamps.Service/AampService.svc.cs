@@ -231,6 +231,13 @@ namespace Aamps.Service
              return results;
          }
 
+         public List<EntityType> GetPurchaserEntityTypes()
+         {
+            _purchaserRepo = new PurchaserRepository(_dbContext);
+            var results = _purchaserRepo.GetPurchaserEntityTypes();
+            return results;
+         }
+
         public PreferedContactMethod GetPreferedContactMethodById(int id)
         {
             _personRepo = new IndividualRepository(_dbContext);

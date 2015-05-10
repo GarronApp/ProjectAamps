@@ -5,11 +5,13 @@
     instance.save_ReservedSale_Url = "/Sales/UpdateReservedSale"
     instance.save_PendingSale_Url = "/Sales/UpdatePendingSale";
     instance.save_Individual_Url = "/Sales/SaveIndividual";
+    instance.save_Purchaser_Url = "/Sales/SavePurchaser";
     instance.getAgentDetails_Url = "/Sales/GetAgentSaleDetails";
     instance.getSaleTypes_Url = "/Sales/GetSaleTypes";
     instance.getPreferedContactTypes_Url = "/Sales/GetPreferedContactMethods";
     instance.getDepositProofTypes_Url = "/Sales/GetSaleDepositProofs";
     instance.getCompanyOrginator_Url = "/Sales/GetCompanyOriginator";
+    instance.getPurchaserEntityTypes_Url = "/Sales/GetPurchaserEntityTypes";
     
 
     this.load = function()
@@ -44,7 +46,9 @@
             $(this).find('i').toggleClass('fa-plus-circle fa-minus-circle');
         });
 
-
+        $('#divPanelBonds').click(function () {
+            $(this).find('i').toggleClass('fa-plus-circle fa-minus-circle');
+        });
 
         var dateToday = new Date();
         var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
@@ -104,17 +108,6 @@
             }
         });
 
-        $('#checkHasPaidDeposit').change(function(){
-            if (!$(this).is(':checked')) {
-                
-
-            }
-            else {
-                
-
-            }
-        });
-
         $('#checkDepositPaid').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtDepositPaidDate").prop("disabled", true);
@@ -161,12 +154,19 @@
         $('#checkBondRequired').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtBondRequiredDate").prop("disabled", true);
+                $("#txtSaleBondDueTime").prop("disabled", true);
+                $("#txtSaleBondDueExpiryDt").prop("disabled", true);
+                $("#txtSaleBondDueTime").val("");
+                $("#txtSaleBondDueExpiryDt").val("");
                 $("#txtBondRequiredDate").val("");
+
                 $(this).val(0);
             }
             else {
                 $(this).val(1);
                 $("#txtBondRequiredDate").prop("disabled", false);
+                $("#txtSaleBondDueTime").prop("disabled", false);
+                $("#txtSaleBondDueExpiryDt").prop("disabled", false);
                 var dateToday = new Date();
                 var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
                 var _saleBondDueTimeDt = moment(convertedReservationDate, 'DD/MM/YYYY').add('days', 2).format('DD/MM/YYYY');
@@ -273,14 +273,6 @@
 
         });
 
-        //$('#selectSalesDepositProof').on('change', function () {
-        //    var selectedItem = $(this).val();
-        //    if(selectedItem > 0)
-        //        $("#showNonCashPaymentSection").removeClass("hide");
-        //    else
-        //        $("#showNonCashPaymentSection").addClass("hide");
-        //});
-
         $("#btnUpdateReservation").click(function () {
             
             if (instance.validateClient()) {
@@ -290,9 +282,7 @@
                 alert("please complete required fields*");
             }
         });
-
-
-
+        
         $("#btnUpdateReservedSale").click(function () {
             if (instance.validateReservedSale()) {
 
@@ -303,6 +293,10 @@
             }
         });
 
+        $("#btnAddUpdatePurchaser").click(function () {
+            instance.UpdatePurchaserDetails();
+        });
+                
         $("#btnUpdatePendingSale").click(function () {
             instance.UpdatePendingSale();
         });
@@ -317,6 +311,7 @@
         instance.LoadSaleTypes();
         instance.LoadContactPreferedTypes();
         instance.LoadDepositProofTypes();
+        instance.LoadPurchaserEntityTypes();
         instance.LoadCompanyOrginators();
         instance.initializeSaleDetails();
 
@@ -335,10 +330,14 @@
                     instance.MapUnitDetails(data);
                     instance.MapIndividualDetails(data);
                     instance.MapSaleDetails(data);
+                    instance.MapBondsDetails(data);
                     instance.MapPurchaserlDetails(data);
                     var saleStatus = data.CurrentSalesStatusId;
                     console.log(saleStatus);
                     if (saleStatus == 1) {
+
+                        //$("#collapseOne").removeClass('panel-collapse collapse').addClass('panel-collapse in');
+                        //$("#collapseOne").css("height", "auto");
 
                         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
 
@@ -348,10 +347,16 @@
                         $("#individualFormReserved input").attr("disabled", false);
                         $("#individualFormReserved select").attr("disabled", false);
 
+                      
+
                         $("#soldPanel").addClass("disabledbutton");
                         $("#pendingPanel").addClass("disabledbutton");
+                        $("#bondsPanel").addClass("disabledbutton");
                     }
                     if (saleStatus == 2) {
+
+                        //$("#collapseTwo").removeClass("collapse").addClass("in");
+                        //$("#collapseTwo").css("height", "auto");
 
                         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSalePendingPanelStatus').val(data.CurrentSalesStatus);
@@ -372,14 +377,16 @@
 
                         $("#pendingPanel").removeClass("disabledbutton");
                         $("#soldPanel").addClass("disabledbutton");
+                        $("#bondsPanel").addClass("disabledbutton");
                     }
                     if (saleStatus == 3) {
+
+                        //$("#collapseThree").removeClass("collapse").addClass("in");
+                        //$("#collapseThree").css("height", "auto");
 
                         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSalePendingPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSaleSoldPanelStatus').val(data.CurrentSalesStatus);
-
- 
 
                         $("#SaleReservedForm input").attr("disabled", true);
                         $("#SaleReservedForm select option").prop('disabled', 'disabled');
@@ -405,9 +412,12 @@
 
                         $("#pendingPanel").removeClass("disabledbutton");
                         $("#soldPanel").removeClass("disabledbutton");
+                        $("#bondsPanel").addClass("disabledbutton");
+
                     }
 
                     if (saleStatus >= 4) {
+
                         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSalePendingPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSaleSoldPanelStatus').val(data.CurrentSalesStatus);
@@ -435,6 +445,7 @@
 
                         $("#pendingPanel").removeClass("disabledbutton");
                         $("#soldPanel").removeClass("disabledbutton");
+                        $("#bondsPanel").removeClass("disabledbutton");
 
                     }
                 }
@@ -456,6 +467,7 @@
                     $("#individualFormReserved select").attr("disabled", false);
                     $("#individualFormReserved select option").attr("disabled", false);
 
+                    $("#bondsPanel").addClass("disabledbutton");
                     $("#soldPanel").addClass("disabledbutton");
                     $("#pendingPanel").addClass("disabledbutton");
 
@@ -573,6 +585,23 @@
         });
     }
 
+    this.UpdatePurchaserDetails = function () {
+        var formData = $("#purchaserFormSold").serialize();
+        $.ajax({
+            url: instance.save_Purchaser_Url,
+            type: "POST",
+            data: formData,
+            async: true,
+            cache: false,
+            success: function (data) {
+                instance.MapPurchaserlDetails(data);
+            },
+            error: function (exception) {
+                console.log(exception);
+            }
+        });
+    }
+
     this.UpdatePendingPersonDetails = function () {
         var person = $("#individualFormPending").serialize();
         $.ajax({
@@ -596,7 +625,6 @@
     }
 
     this.ConvertCurrentDate = function (currentDate, control) {
-        var convertedCurrentDate = moment(currentDate, 'DD-MM-YYYY').format('DD/MM/YYYY');
         var convertedCurrentDate = moment(currentDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
         $("#" + control).datepicker("setValue", convertedCurrentDate);
     }
@@ -721,6 +749,45 @@
         }
     }
 
+    this.MapBondsDetails = function (data) {
+        console.log(data);
+
+        $("#SaleBondsForm input").attr("disabled", true);
+        $("#SaleBondsForm select option").prop('disabled', 'disabled');
+        $("#SaleBondsForm select").attr("disabled", 'disabled');
+
+        $("#txtSaleBondBank").val(data.SaleBondBank);
+        $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
+        $("#txtSalesBondAmount").val("R " + data.SalesBondAmount);
+        $("#txtSalesBondInterestRate").val(data.SalesBondInterestRate + " %");
+
+        if (data.SalesBondGrantedBt == 1)
+            $("#checkSalesBondGrantedBt").prop('checked', true);
+        else
+            $("#checkSalesBondGrantedBt").prop('checked', false);
+        if (data.SalesBondClientAcceptBt == 1)
+            $("#checkSalesBondClientAcceptBt").prop('checked', true);
+        else
+            $("#checkSalesBondClientAcceptBt").prop('checked', false);
+        if (data.SalesBondClientContactedBt == 1)
+            $("#checkSalesBondClientContactedBt").prop('checked', true);
+        else
+            $("#checkSalesBondClientContactedBt").prop('checked', false);
+        if (data.SalesBondBondDocsRecBt == 1)
+            $("#checkSalesBondBondDocsRecBt").prop('checked', true);
+        else
+            $("#checkSalesBondBondDocsRecBt").prop('checked', false);
+        
+        instance.ConvertCurrentDate(data.SalesBondClientAcceptDt, "txtClientAccepted");
+        instance.ConvertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+        instance.ConvertCurrentDate(data.SalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
+        instance.ConvertCurrentDate(data.OriginatorTrSubmittedDt, "txtOriginatorTrSubmittedDt");
+        instance.ConvertCurrentDate(data.OriginatorTrAIPDt, "txtOriginatorTrAIPDt");
+        instance.ConvertCurrentDate(data.OriginatorTrGrantDt, "txtOriginatorTrGrantDt");
+        instance.ConvertCurrentDate(data.OriginatorTrAcceptDt, "OriginatorTrAcceptDt");
+
+    }
+
     this.GetSaleTypes = function (data)
     {
         $("#selectFinanceType option").remove(); 
@@ -734,6 +801,15 @@
         //$("#selectSalesDepositProof").append('<option>' + "[ Select ]" + '</option>');
         $.each(data, function (index, item) {
             $("#selectSalesDepositProof").append('<option value=' + index + '>' + item + '</option>');
+        });
+    }
+
+    this.GetPurchaserEntityTypes = function (data) {
+        $("#selectPurchaserType option").remove();
+        $("#selectPurchaserType").append('<option value=' + 0 + '>' + "[ select purchaser type ]" + '</option>');
+        $.each(data, function (index, item) {
+            var index = index + 1;
+            $("#selectPurchaserType").append('<option value=' + index + '>' + item + '</option>');
         });
     }
 
@@ -802,6 +878,22 @@
             cache: false,
             success: function (data) {
                 instance.GetDepositProofTypes(data);
+            },
+            error: function (exception) {
+                console.log(exception);
+            }
+        });
+    }
+
+    this.LoadPurchaserEntityTypes = function () {
+        $.ajax({
+            url: instance.getPurchaserEntityTypes_Url,
+            type: "GET",
+            data: {},
+            async: true,
+            cache: false,
+            success: function (data) {
+                instance.GetPurchaserEntityTypes(data);
             },
             error: function (exception) {
                 console.log(exception);

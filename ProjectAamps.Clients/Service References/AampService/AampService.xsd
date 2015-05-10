@@ -658,4 +658,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPreferedContactMethod" nillable="true" type="tns:ArrayOfPreferedContactMethod" />
+  <xs:complexType name="ArrayOfEntityType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EntityType" nillable="true" type="tns:EntityType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEntityType" nillable="true" type="tns:ArrayOfEntityType" />
 </xs:schema>

@@ -26,5 +26,14 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
+        public List<EntityType> GetPurchaserEntityTypes()
+        {
+            AampsContext _dbContext = new AampsContext();
+            var results = (from x in _dbContext.EntityTypes
+                           select x).ToList();
+
+            return results;
+        }
+
     }
 }
