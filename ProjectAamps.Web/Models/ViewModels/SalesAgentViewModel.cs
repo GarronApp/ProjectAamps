@@ -45,6 +45,7 @@ namespace AAMPS.Web.Models.ViewModels
         public string IndividualEmail { get; set; }
 
         public int PurchaserID { get; set; }
+        public int EntityTypeID { get; set; }
         public string PurchaserDescription { get; set; }
         public string PurchaserRegID { get; set; }
         public string PurchaserContactPerson { get; set; }

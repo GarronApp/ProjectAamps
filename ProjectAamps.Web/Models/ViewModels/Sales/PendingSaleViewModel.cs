@@ -27,6 +27,7 @@ namespace AAMPS.Web.Models.ViewModels.Sales
         public string SaleContractSignedPurchaserDt { get; set; }
         public string SaleBondDueTimeDt { get; set; }
         public string SaleBondDueExpiryDt { get; set; }
+        public int CurrentPurchaserID { get; set; }
 
         
 

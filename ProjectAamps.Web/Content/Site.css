@@ -244,6 +244,26 @@ textarea {
     
 }
 
+.required-field{
+    border: 1px solid #f00;
+}
+
+.btn-cancel {
+    margin-right: 10px;
+    border: none;
+    outline: none;
+    font-size: 0.75em;
+    text-decoration: underline;
+    color: #ff703c;
+    opacity: 1;
+    background-color: transparent;
+    font-weight: 200;
+}
+
+input.money-bank{
+    text-align: right;
+}
+
 .light-grey {
     color: #FF703C;
 }

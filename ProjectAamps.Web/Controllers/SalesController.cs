@@ -101,14 +101,6 @@ namespace AAMPS.Web.Controllers
             return View();
         }
 
-        //[AampsAuthorize]
-        //[HttpGet]
-        //public ActionResult Details()
-        //{
-        //    SessionHandler.SessionContext("NewSale","true");
-        //    return View();
-        //}
-
         [AampsAuthorize]
         public ActionResult Details(int id)
         {
@@ -154,9 +146,6 @@ namespace AAMPS.Web.Controllers
             return View();
         }
 
-
-
-
         [HttpGet]
         public JsonResult GetAgentSaleDetails()
         {
@@ -185,25 +174,30 @@ namespace AAMPS.Web.Controllers
                     saleAgent.UnitFloor = currentSalesAgent.Unit.UnitFloor;
                     saleAgent.PlotSize = currentSalesAgent.Unit.UnitErfSize;
 
-                    saleAgent.IndividualName= currentSalesAgent.Individual.IndividualName;
+                    SessionHandler.SessionContext("CurrentIndividualId", currentSalesAgent.Individual.IndividualID);
+                    saleAgent.IndividualName = currentSalesAgent.Individual.IndividualName;
                     saleAgent.IndividualSurname = currentSalesAgent.Individual.IndividualSurname;
                     saleAgent.IndividualContactCell = currentSalesAgent.Individual.IndividualContactCell;
                     saleAgent.IndividualContactWork= currentSalesAgent.Individual.IndividualContactWork;
                     saleAgent.IndividualEmail= currentSalesAgent.Individual.IndividualEmail;
                     saleAgent.PreferedContactMethodID = currentSalesAgent.Individual.PreferedContactMethodID;
 
-                    saleAgent.PurchaserDescription = currentSalesAgent.Purchaser.PurchaserDescription;
-                    saleAgent.PurchaserContactPerson = currentSalesAgent.Purchaser.PurchaserContactPerson;
-                    saleAgent.PurchaserContactCell = currentSalesAgent.Purchaser.PurchaserContactCell;
-                    saleAgent.PurchaserContactHome = currentSalesAgent.Purchaser.PurchaserContactHome;
-                    saleAgent.PurchaserContactWork = currentSalesAgent.Purchaser.PurchaserContactWork;
-                    saleAgent.PurchaserEmail = currentSalesAgent.Purchaser.PurchaserEmail;
-                    saleAgent.PurchaserAddress = currentSalesAgent.Purchaser.PurchaserAddress;
-                    saleAgent.PurchaserAddress1 = currentSalesAgent.Purchaser.PurchaserAddress1;
-                    saleAgent.PurchaserAddress2 = currentSalesAgent.Purchaser.PurchaserAddress2;
-                    saleAgent.PurchaserAddress3 = currentSalesAgent.Purchaser.PurchaserAddress3;
-                    saleAgent.PurchaserSuburb = currentSalesAgent.Purchaser.PurchaserSuburb;
-                    saleAgent.PurchaserPostalCode = currentSalesAgent.Purchaser.PurchaserPostalCode;
+                    if (currentSalesAgent.Purchaser != null)
+                    {
+                        saleAgent.EntityTypeID = currentSalesAgent.Purchaser.EntityTypeID;
+                        saleAgent.PurchaserDescription = currentSalesAgent.Purchaser.PurchaserDescription;
+                        saleAgent.PurchaserContactPerson = currentSalesAgent.Purchaser.PurchaserContactPerson;
+                        saleAgent.PurchaserContactCell = currentSalesAgent.Purchaser.PurchaserContactCell;
+                        saleAgent.PurchaserContactHome = currentSalesAgent.Purchaser.PurchaserContactHome;
+                        saleAgent.PurchaserContactWork = currentSalesAgent.Purchaser.PurchaserContactWork;
+                        saleAgent.PurchaserEmail = currentSalesAgent.Purchaser.PurchaserEmail;
+                        saleAgent.PurchaserAddress = currentSalesAgent.Purchaser.PurchaserAddress;
+                        saleAgent.PurchaserAddress1 = currentSalesAgent.Purchaser.PurchaserAddress1;
+                        saleAgent.PurchaserAddress2 = currentSalesAgent.Purchaser.PurchaserAddress2;
+                        saleAgent.PurchaserAddress3 = currentSalesAgent.Purchaser.PurchaserAddress3;
+                        saleAgent.PurchaserSuburb = currentSalesAgent.Purchaser.PurchaserSuburb;
+                        saleAgent.PurchaserPostalCode = currentSalesAgent.Purchaser.PurchaserPostalCode;
+                    }
 
                     saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt.HasValue ? currentSalesAgent.SaleContractSignedPurchaserDt.Value.ToString() : string.Empty;
                     saleAgent.SalesDepositProofID = currentSalesAgent.SalesDepositProofID != null ? (int)currentSalesAgent.SalesDepositProofID : 0;
@@ -230,20 +224,15 @@ namespace AAMPS.Web.Controllers
                     saleAgent.SalesBondCommDueBt = currentSalesAgent.SalesBondCommDueBt == true ? 1 : 0;
                     saleAgent.SaleBondRequiredAmount = currentSalesAgent.SaleBondRequiredAmount != null ? (double)currentSalesAgent.SaleBondRequiredAmount : 0.0;
 
-                    var currentOrginator = _repoService.GetOriginatorById((int)currentSalesAgent.BondOriginatorID);
-                    saleAgent.SaleBondBank = _repoService.GetBankById(currentOrginator.BankID).BankDescription;
-                    //saleAgent.OriginatorTrBondAmount = currentOrginator.OriginatorTrBondAmount;
-                    //saleAgent.OriginatorTrBondAmountBt = currentOrginator.OriginatorTrBondAmount != null ? 1 : 0;
-                    //saleAgent.OriginatorTrIntRate = currentOrginator.OriginatorTrIntRate;
-                    //saleAgent.OriginatorTrBondAmountBt = currentOrginator.OriginatorTrBondAmount != null ? 1 : 0;
-                    //saleAgent.OriginatorTrSubmittedDt = currentOrginator.OriginatorTrSubmittedDt.HasValue ? currentOrginator.OriginatorTrSubmittedDt.Value.ToString() : string.Empty;
-                    //saleAgent.OriginatorTrSubmittedBt = currentOrginator.OriginatorTrSubmittedDt.HasValue ? 1 : 0;
-                    //saleAgent.OriginatorTrGrantDt = currentOrginator.OriginatorTrGrantDt.HasValue ? currentOrginator.OriginatorTrGrantDt.Value.ToString() : string.Empty;
-                    //saleAgent.OriginatorTrGrantBt = currentOrginator.OriginatorTrGrantDt.HasValue ? 1 : 0;
-                    //saleAgent.OriginatorTrAcceptDt = currentOrginator.OriginatorTrAcceptDt.HasValue ? currentOrginator.OriginatorTrAcceptDt.Value.ToString() : string.Empty;
-                    //saleAgent.OriginatorTrAcceptedBt = currentOrginator.OriginatorTrAcceptDt.HasValue ? 1 : 0;
-                    //saleAgent.OriginatorTrAIPDt = currentOrginator.OriginatorTrAIPDt.HasValue ? currentOrginator.OriginatorTrAIPDt.Value.ToString() : string.Empty;
-                    //saleAgent.OriginatorTrAIPBt = currentOrginator.OriginatorTrAIPDt.HasValue ? 1 : 0;
+                    if(currentSalesAgent.BondOriginatorID != null)
+                    {
+                        var currentOrginator = _repoService.GetOriginatorById((int)currentSalesAgent.BondOriginatorID);
+                        if (currentOrginator != null)
+                        {
+                            saleAgent.SaleBondBank = _repoService.GetBankById(currentOrginator.BankID).BankDescription;
+                        }
+                    }
+
 
                     return Json(saleAgent, JsonRequestBehavior.AllowGet);
                 }
@@ -267,6 +256,29 @@ namespace AAMPS.Web.Controllers
             {
                 return Json(ex);
             }
+
+        }
+
+        [HttpGet]
+        public JsonResult GetIndividual()
+        {
+            try
+            {
+                int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
+                var _individual = _repoService.GetSaleByUnitId(_currentUnitId).Individual;
+
+                if (_individual != null)
+                {
+                    return Json(_individual, JsonRequestBehavior.AllowGet);
+                }
+                    
+            }
+            catch (Exception ex)
+            {
+                return Json(ex.InnerException);
+            }
+
+            return null;
 
         }
 
@@ -313,6 +325,7 @@ namespace AAMPS.Web.Controllers
                 {
                     var _purchaser = new Purchaser();
 
+                    _purchaser.EntityTypeID = purchaser.EntityTypeID;
                     _purchaser.PurchaserDescription = purchaser.PurchaserDescription;
                     _purchaser.PurchaserContactPerson = purchaser.PurchaserContactPerson;
                     _purchaser.PurchaserContactHome = purchaser.PurchaserContactHome;
@@ -324,9 +337,10 @@ namespace AAMPS.Web.Controllers
                     _purchaser.PurchaserAddress2 = purchaser.PurchaserAddress2;
                     _purchaser.PurchaserSuburb = purchaser.PurchaserSuburb;
                     _purchaser.PurchaserPostalCode = purchaser.PurchaserPostalCode;
+                    _purchaser.PurchaserRegID = Guid.NewGuid().ToString().Substring(0, 8);
 
-                    _repoService.SavePurchaser(_purchaser);
-
+                    var result =  _repoService.SavePurchaser(_purchaser);
+                    purchaser.PurchaserID = result.PurchaserID;
                     return Json(purchaser, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -361,9 +375,9 @@ namespace AAMPS.Web.Controllers
 
                     newSale.UnitID = _linkedUnit.UnitID;
                     newSale.SaleStatusID = UnitSaleStatusConverter.SaleStatusConverter(SaleActiveStatusType.GetSaleStatusType.Active);
-                    newSale.SaleReservationDt = DateTime.ParseExact(reservation.SaleReservationDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    newSale.SaleReservationExpiryDt = DateTime.ParseExact(reservation.SaleReservationExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    newSale.SaleReservationExtentionDt = DateTime.ParseExact(reservation.SaleReservationExtentionDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    newSale.SaleReservationDt = reservation.SaleReservationDt != null ? DateTime.ParseExact(reservation.SaleReservationDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                    newSale.SaleReservationExpiryDt = reservation.SaleReservationExpiryDt != null ? DateTime.ParseExact(reservation.SaleReservationExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture): (DateTime?)null;
+                    newSale.SaleReservationExtentionDt = reservation.SaleReservationExtentionDt != null ? DateTime.ParseExact(reservation.SaleReservationExtentionDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                     newSale.IndividualID = reservation.CurrentIndividualID;
                     newSale.SaleAddedDt = DateTime.Now;
                     newSale.SaleModifiedDt = DateTime.Now;
@@ -450,6 +464,7 @@ namespace AAMPS.Web.Controllers
                     _repoService.UpdateUnit(_linkedUnit);
                 }
 
+                _currentSale.PurchaserID = sale.CurrentPurchaserID;
                 _currentSale.SaleContractSignedSellerDt = sale.SaleContractSignedSellerDt != null ? DateTime.ParseExact(sale.SaleContractSignedSellerDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                 _currentSale.SalesBondRequiredBt = sale.SalesBondRequiredBt == 1 ? true : false;
                 _currentSale.SalesBondRequiredDt = sale.SalesBondRequiredDt != null ? DateTime.ParseExact(sale.SalesBondRequiredDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
