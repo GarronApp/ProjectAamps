@@ -217,6 +217,11 @@ namespace AAMPS.Web.Controllers
                     saleAgent.SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.Value.ToString() : string.Empty;
                     saleAgent.SalesBondBondDocsRecBt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? 1 : 0;
 
+                    if (currentSalesAgent.BankID != null)
+                    {
+                        saleAgent.SaleBondBank = _repoService.GetBankById((int)currentSalesAgent.BankID).BankDescription;
+                    }
+
                     saleAgent.SaleContractSignedSellerDt = currentSalesAgent.SaleContractSignedSellerDt.HasValue ? currentSalesAgent.SaleContractSignedSellerDt.Value.ToString() : string.Empty;
                     saleAgent.SalesBondRequiredDt = currentSalesAgent.SalesBondRequiredDt.HasValue ? currentSalesAgent.SalesBondRequiredDt.Value.ToString() : string.Empty;
                     saleAgent.SaleBondDueTimeDt = currentSalesAgent.SaleBondDueTimeDt.HasValue ? currentSalesAgent.SaleBondDueTimeDt.Value.ToString() : string.Empty;

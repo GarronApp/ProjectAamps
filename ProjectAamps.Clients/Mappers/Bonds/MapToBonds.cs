@@ -51,7 +51,7 @@ namespace AAMPS.Clients.Mappers.Bonds
 
             SessionHandler.SessionContext("CurrentSaleId", currentSalesAgent.SaleID);
 
-            var _currentUnit = _repoService.GetUnitByDevelopmentId(currentSalesAgent.Unit.DevelopmentID).FirstOrDefault();
+           // var _currentUnit = _repoService.GetUnitById(UnitId);
 
             var orginators = _repoService.GetOriginatorBySalesId(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
 

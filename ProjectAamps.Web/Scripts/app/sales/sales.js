@@ -206,31 +206,31 @@
             }
         });
 
-        $('#checkGranted').change(function () {
-            if (!$(this).is(':checked')) {
-                $("#txtGranted").prop("disabled", true);
-                $("#txtGranted").val("");
-            }
-            else {
-                $("#txtGranted").prop("disabled", false);
-                var dateToday = new Date();
-                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
-                $("#txtGranted").datepicker("setValue", convertDateToday);
-            }
-        });
+        //$('#checkGranted').change(function () {
+        //    if (!$(this).is(':checked')) {
+        //        $("#txtGranted").prop("disabled", true);
+        //        $("#txtGranted").val("");
+        //    }
+        //    else {
+        //        $("#txtGranted").prop("disabled", false);
+        //        var dateToday = new Date();
+        //        var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+        //        $("#txtGranted").datepicker("setValue", convertDateToday);
+        //    }
+        //});
 
-        $('#checkClientAccepted').change(function () {
-            if (!$(this).is(':checked')) {
-                $("#txtClientAccepted").prop("disabled", true);
-                $("#txtClientAccepted").val("");
-            }
-            else {
-                $("#txtClientAccepted").prop("disabled", false);
-                var dateToday = new Date();
-                var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
-                $("#txtClientAccepted").datepicker("setValue", convertDateToday);
-            }
-        });
+        //$('#checkClientAccepted').change(function () {
+        //    if (!$(this).is(':checked')) {
+        //        $("#txtClientAccepted").prop("disabled", true);
+        //        $("#txtClientAccepted").val("");
+        //    }
+        //    else {
+        //        $("#txtClientAccepted").prop("disabled", false);
+        //        var dateToday = new Date();
+        //        var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
+        //        $("#txtClientAccepted").datepicker("setValue", convertDateToday);
+        //    }
+        //});
 
         $(document).on('change', '.btn-file :file', function () {
             var input = $(this),
@@ -1034,6 +1034,7 @@
             instance.ConvertCurrentDate(data.SalesBondClientAcceptDt, "txtClientAccepted");
             instance.ConvertCurrentDate(data.SaleBondDueTimeDt, "txtSaleBondDueTime");
             instance.ConvertCurrentDate(data.SaleBondDueExpiryDt, "txtSaleBondDueExpiryDt");
+            $("#txtSaleBondBank").val(data.SaleBondBank);
             $("#txtSaleBondRequiredAmount").val(data.SaleBondRequiredAmount);
             $("#selectFinanceType").val(data.SaleTypeID);
             $("#selectOriginator").val(data.BondOriginatorID);

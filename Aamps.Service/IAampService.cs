@@ -93,6 +93,9 @@ namespace Aamps.Service
         [OperationContract]
         void AddSale(Sale sale);
 
+        [OperationContract]
+        void UpdateSale(Sale sale);
+
         //Development Service
 
         [OperationContract]

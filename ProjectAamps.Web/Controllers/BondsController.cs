@@ -37,12 +37,14 @@ namespace AAMPS.Web.Controllers
         public JsonResult GetDetails()
         {
             SalesAgentViewModel saleAgent = new SalesAgentViewModel();
+
             int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
             var currentSalesAgent = _repoService.GetSaleByUnitId(_currentUnitId);
 
             SessionHandler.SessionContext("CurrentSaleId", currentSalesAgent.SaleID);
 
-            var _currentUnit = _repoService.GetUnitByDevelopmentId(currentSalesAgent.Unit.DevelopmentID).FirstOrDefault();
+            //var _currentUnit = _repoService.GetUnitByDevelopmentId(currentSalesAgent.Unit.DevelopmentID).FirstOrDefault();
+            var _currentUnit = _repoService.GetUnitById(_currentUnitId);
             var viewModel = new BondsViewModel()
             {
                 UnitId = _currentUnit.UnitID,
@@ -63,6 +65,33 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        public JsonResult SaveSalesBondDetails(SalesAgentViewModel sale)
+        {
+            try
+            {
+
+                var _linkedSale = _repoService.GetSaleById(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
+                if (_linkedSale != null)
+                {
+                    _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
+                    _linkedSale.SalesBondBondDocsRecDt = sale.SalesBondBondDocsRecDt != null ? DateTime.ParseExact(sale.SalesBondBondDocsRecDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                    _linkedSale.SalesBondClientContactedDt = sale.SalesBondClientContactedDt != null ? DateTime.ParseExact(sale.SalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+
+                    _linkedSale.SaleModifiedDt = DateTime.Now;
+                    _linkedSale.SaleModifiedByUser = 1;
+
+                    _repoService.UpdateSale(_linkedSale);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return Json(sale, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public JsonResult SaveUpdateOrginator(OrginatorViewModel orginator)
         {
             try
@@ -72,33 +101,87 @@ namespace AAMPS.Web.Controllers
                     if (orginator.ApplicationStatus != "NewApplication")
                     {
                         Invariant.IsNotNull(orginator.OriginatorTrID, () => "orginator id is null");
-
-
+                        
                         var currentOrginator = _repoService.GetOriginatorById(orginator.OriginatorTrID);
-                        currentOrginator.OriginatorTrBondAmount = orginator.OriginatorTrBondAmount;
-                        currentOrginator.OriginatorTrIntRate = orginator.OriginatorTrIntRate;
-                        currentOrginator.OriginatorTrSubmittedDt = DateTime.ParseExact(orginator.OriginatorTrSubmittedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        currentOrginator.OriginatorTrGrantDt = DateTime.ParseExact(orginator.OriginatorTrGrantDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        currentOrginator.OriginatorTrAcceptDt = DateTime.ParseExact(orginator.OriginatorTrAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        currentOrginator.OriginatorTrAIPDt = DateTime.ParseExact(orginator.OriginatorTrAIPDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        currentOrginator.OriginatorTrModifiedDt = DateTime.Now;
-                        currentOrginator.SaleID = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
+
+                        Invariant.IsNotNull(currentOrginator.OriginatorTrID, () => "MOStatus ID is null");
+
+                        switch (currentOrginator.MOStatusID)
+	                    { 
+                            case 1:
+                                {
+                          
+                                    currentOrginator.OriginatorTrBondAmount = orginator.OriginatorTrBondAmount;
+                                    currentOrginator.OriginatorTrIntRate = orginator.OriginatorTrIntRate;
+                                     currentOrginator.OriginatorTrSubmittedDt = orginator.OriginatorTrSubmittedDt != null ? DateTime.ParseExact(orginator.OriginatorTrSubmittedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture):  (DateTime?)null;
+                                    currentOrginator.OriginatorTrModifiedDt = DateTime.Now;
+                                    currentOrginator.SaleID = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
+
+                                    if(orginator.OriginatorTrAIPDt != null)
+                                    {
+                                        currentOrginator.OriginatorTrAIPDt =  DateTime.ParseExact(orginator.OriginatorTrAIPDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                        currentOrginator.MOStatusID = 2;
+                                    }
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    currentOrginator.OriginatorTrBondAmount = orginator.OriginatorTrBondAmount;
+                                    currentOrginator.OriginatorTrIntRate = orginator.OriginatorTrIntRate;
+                                    currentOrginator.OriginatorTrSubmittedDt = orginator.OriginatorTrSubmittedDt != null ? DateTime.ParseExact(orginator.OriginatorTrSubmittedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture):  (DateTime?)null;
+                                    currentOrginator.OriginatorTrAIPDt = orginator.OriginatorTrAIPDt != null ? DateTime.ParseExact(orginator.OriginatorTrAIPDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) :  (DateTime?)null;
+                                    currentOrginator.OriginatorTrModifiedDt = DateTime.Now;
+                                    currentOrginator.SaleID = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
+
+                                    if(orginator.OriginatorTrGrantDt != null)
+                                    {
+                                        currentOrginator.OriginatorTrGrantDt = DateTime.ParseExact(orginator.OriginatorTrGrantDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                        currentOrginator.MOStatusID = 3;
+                                    }
+
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    currentOrginator.OriginatorTrBondAmount = orginator.OriginatorTrBondAmount;
+                                    currentOrginator.OriginatorTrIntRate = orginator.OriginatorTrIntRate;
+                                    currentOrginator.OriginatorTrSubmittedDt = orginator.OriginatorTrSubmittedDt != null ?DateTime.ParseExact(orginator.OriginatorTrSubmittedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) :(DateTime?)null;
+                                    currentOrginator.OriginatorTrAIPDt = orginator.OriginatorTrAIPDt != null ? DateTime.ParseExact(orginator.OriginatorTrAIPDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) :(DateTime?)null;
+                                    currentOrginator.OriginatorTrGrantDt = orginator.OriginatorTrGrantDt != null ? DateTime.ParseExact(orginator.OriginatorTrGrantDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) :(DateTime?)null;
+                                    currentOrginator.OriginatorTrModifiedDt = DateTime.Now;
+                                    currentOrginator.SaleID = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
+                            
+                                    if(orginator.OriginatorTrAcceptDt != null)
+                                    {
+                                        currentOrginator.OriginatorTrAcceptDt =  DateTime.ParseExact(orginator.OriginatorTrAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                        currentOrginator.MOStatusID = 4;
+                                    }
+                                      break;
+                                
+                                }
+		                    default:
+                                  break;
+	                    }
+
                         SetBankType(orginator.BankName, currentOrginator);
                         SetMOStatus(orginator.MOStatus, currentOrginator);
 
-                            _repoService.UpdateOrginator(currentOrginator);
-                            return Json(orginator, JsonRequestBehavior.AllowGet);
+                         _repoService.UpdateOrginator(currentOrginator);
+
+                         if (currentOrginator.MOStatusID == 4)
+                         {
+                             UpdateSaleBondDetails(currentOrginator);
+                         }
+
+                        return Json(orginator, JsonRequestBehavior.AllowGet);
                     }
                     else
                     {
                         var newOrginator = new OriginatorTr();
                         newOrginator.OriginatorTrBondAmount = orginator.OriginatorTrBondAmount;
                         newOrginator.OriginatorTrIntRate = orginator.OriginatorTrIntRate;
-                        newOrginator.OriginatorTrSubmittedDt = DateTime.ParseExact(orginator.OriginatorTrSubmittedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        newOrginator.OriginatorTrGrantDt = DateTime.ParseExact(orginator.OriginatorTrGrantDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        newOrginator.OriginatorTrAcceptDt = DateTime.ParseExact(orginator.OriginatorTrAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        newOrginator.OriginatorTrAIPDt = DateTime.ParseExact(orginator.OriginatorTrAIPDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                        newOrginator.OriginatorTrAcceptedBt = true;
+                        newOrginator.OriginatorTrSubmittedDt = orginator.OriginatorTrSubmittedDt != null ? DateTime.ParseExact(orginator.OriginatorTrSubmittedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                        newOrginator.OriginatorTrAcceptedBt = false;
                         newOrginator.OriginatorTrModifiedDt = DateTime.Now;
                         newOrginator.OriginatorTrAddedDt = DateTime.Now;
                         newOrginator.OriginatorTrAddedByUser = 1;
@@ -106,9 +189,11 @@ namespace AAMPS.Web.Controllers
 
                         newOrginator.SaleID = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
                         SetBankType(orginator.BankName, newOrginator);
-                        SetMOStatus(orginator.MOStatus, newOrginator);
+                        newOrginator.MOStatusID = 1;  
 
                         _repoService.SaveOrginator(newOrginator);
+                      
+
                         return Json(orginator, JsonRequestBehavior.AllowGet);
                     }
 
@@ -128,21 +213,84 @@ namespace AAMPS.Web.Controllers
         {
             Invariant.IsNotNull(id, () => "orginator id is null");
             var _currentOrginators = _repoService.GetOriginatorById(id);
-            var viewModel = new BondsViewModel()
+            var viewModel = new BondsViewModel();
+
+            if(_currentOrginators != null)
             {
-                BankName = _repoService.GetBankById((int)_currentOrginators.BankID).BankDescription,
-                MOStatus = _repoService.GetMOStatusById((int)_currentOrginators.MOStatusID).MOStatusDescription,
-                OriginatorTrAcceptDt = _currentOrginators.OriginatorTrAcceptDt != null ? _currentOrginators.OriginatorTrAcceptDt.Value.ToString("dd/MM/yyyy") : string.Empty,
-                OriginatorTrAddedDt = _currentOrginators.OriginatorTrAddedDt != null ? _currentOrginators.OriginatorTrAddedDt.ToShortDateString() : string.Empty,
-                OriginatorTrSubmittedDt = _currentOrginators.OriginatorTrSubmittedDt != null ? _currentOrginators.OriginatorTrSubmittedDt.Value.ToString("dd/MM/yyyy") : string.Empty,
-                OriginatorTrAIPDt = _currentOrginators.OriginatorTrAIPDt != null ? _currentOrginators.OriginatorTrAIPDt.Value.ToString("dd/MM/yyyy") : string.Empty,
-                OriginatorTrBondAmount = _currentOrginators.OriginatorTrBondAmount,
-                OriginatorTrIntRate = _currentOrginators.OriginatorTrIntRate,
-                OriginatorTrGrantDt = _currentOrginators.OriginatorTrGrantDt != null ? _currentOrginators.OriginatorTrGrantDt.Value.ToString("dd/MM/yyyy") : string.Empty
-            };
+                switch (_currentOrginators.MOStatusID)
+                {
+                    case 1:
+                        {
+                            viewModel.BankName = _repoService.GetBankById((int)_currentOrginators.BankID).BankDescription;
+                            viewModel.MOStatus = _repoService.GetMOStatusById((int)_currentOrginators.MOStatusID).MOStatusDescription;
+                            viewModel.OriginatorTrBondAmount = _currentOrginators.OriginatorTrBondAmount;
+                            viewModel.OriginatorTrIntRate = _currentOrginators.OriginatorTrIntRate;
+                            viewModel.OriginatorTrSubmittedDt = _currentOrginators.OriginatorTrSubmittedDt != null ? _currentOrginators.OriginatorTrSubmittedDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            break;
+                        }
+                    case 2:
+                        {
+                            viewModel.BankName = _repoService.GetBankById((int)_currentOrginators.BankID).BankDescription;
+                            viewModel.MOStatus = _repoService.GetMOStatusById((int)_currentOrginators.MOStatusID).MOStatusDescription;
+                            viewModel.OriginatorTrBondAmount = _currentOrginators.OriginatorTrBondAmount;
+                            viewModel.OriginatorTrIntRate = _currentOrginators.OriginatorTrIntRate;
+                            viewModel.OriginatorTrSubmittedDt = _currentOrginators.OriginatorTrSubmittedDt != null ? _currentOrginators.OriginatorTrSubmittedDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            viewModel.OriginatorTrAIPDt = _currentOrginators.OriginatorTrAIPDt != null ? _currentOrginators.OriginatorTrAIPDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            break;
+                        }
+                    case 3:
+                        {
+                            viewModel.BankName = _repoService.GetBankById((int)_currentOrginators.BankID).BankDescription;
+                            viewModel.MOStatus = _repoService.GetMOStatusById((int)_currentOrginators.MOStatusID).MOStatusDescription;
+                            viewModel.OriginatorTrBondAmount = _currentOrginators.OriginatorTrBondAmount;
+                            viewModel.OriginatorTrIntRate = _currentOrginators.OriginatorTrIntRate;
+                            viewModel.OriginatorTrSubmittedDt = _currentOrginators.OriginatorTrSubmittedDt != null ? _currentOrginators.OriginatorTrSubmittedDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            viewModel.OriginatorTrAIPDt = _currentOrginators.OriginatorTrAIPDt != null ? _currentOrginators.OriginatorTrAIPDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            viewModel.OriginatorTrGrantDt = _currentOrginators.OriginatorTrGrantDt != null ? _currentOrginators.OriginatorTrGrantDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            break;
+                        }
+                    case 4:
+                        {
+                            viewModel.BankName = _repoService.GetBankById((int)_currentOrginators.BankID).BankDescription;
+                            viewModel.MOStatus = _repoService.GetMOStatusById((int)_currentOrginators.MOStatusID).MOStatusDescription;
+                            viewModel.OriginatorTrBondAmount = _currentOrginators.OriginatorTrBondAmount;
+                            viewModel.OriginatorTrIntRate = _currentOrginators.OriginatorTrIntRate;
+                            viewModel.OriginatorTrSubmittedDt = _currentOrginators.OriginatorTrSubmittedDt != null ? _currentOrginators.OriginatorTrSubmittedDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            viewModel.OriginatorTrAIPDt = _currentOrginators.OriginatorTrAIPDt != null ? _currentOrginators.OriginatorTrAIPDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            viewModel.OriginatorTrGrantDt = _currentOrginators.OriginatorTrGrantDt != null ? _currentOrginators.OriginatorTrGrantDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            viewModel.OriginatorTrAcceptDt = _currentOrginators.OriginatorTrAcceptDt != null ? _currentOrginators.OriginatorTrAcceptDt.Value.ToString("dd/MM/yyyy") : string.Empty;
+                            break;
+                        }
+                    default:
+                        break;
+                }
+            }
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
 
+        }
+
+        public void UpdateSaleBondDetails(OriginatorTr orginator)
+        {
+            try
+            {
+                var _linkedSale = _repoService.GetSaleById(orginator.SaleID);
+                _linkedSale.SalesBondAmount = orginator.OriginatorTrBondAmount;
+                _linkedSale.SalesBondInterestRate = orginator.OriginatorTrIntRate;
+                _linkedSale.SalesBondGrantedDt = orginator.OriginatorTrGrantDt;
+                _linkedSale.SalesBondClientAcceptDt = orginator.OriginatorTrAcceptDt;
+                _linkedSale.BankID = orginator.BankID;
+
+                _linkedSale.SaleModifiedDt = DateTime.Now;
+                _linkedSale.SaleModifiedByUser = 1;
+
+                _repoService.UpdateSale(_linkedSale);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
 

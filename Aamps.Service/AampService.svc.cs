@@ -200,6 +200,12 @@ namespace Aamps.Service
              _salesRepo.Add(newSale);
          }
 
+         public void UpdateSale(Sale sale)
+         {
+             _salesRepo = new SalesRepository(_dbContext);
+             _salesRepo.Update(sale);
+         }
+
          public Individual SavePerson(Individual person)
         {
             _personRepo = new IndividualRepository(_dbContext);

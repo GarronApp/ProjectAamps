@@ -6651,6 +6651,12 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/AddSale", ReplyAction="http://tempuri.org/IAampService/AddSaleResponse")]
         System.Threading.Tasks.Task AddSaleAsync(AAMPS.Clients.AampService.Sale sale);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateSale", ReplyAction="http://tempuri.org/IAampService/UpdateSaleResponse")]
+        void UpdateSale(AAMPS.Clients.AampService.Sale sale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateSale", ReplyAction="http://tempuri.org/IAampService/UpdateSaleResponse")]
+        System.Threading.Tasks.Task UpdateSaleAsync(AAMPS.Clients.AampService.Sale sale);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllDevelopments", ReplyAction="http://tempuri.org/IAampService/GetAllDevelopmentsResponse")]
         AAMPS.Clients.AampService.Development[] GetAllDevelopments();
         
@@ -6967,6 +6973,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task AddSaleAsync(AAMPS.Clients.AampService.Sale sale) {
             return base.Channel.AddSaleAsync(sale);
+        }
+        
+        public void UpdateSale(AAMPS.Clients.AampService.Sale sale) {
+            base.Channel.UpdateSale(sale);
+        }
+        
+        public System.Threading.Tasks.Task UpdateSaleAsync(AAMPS.Clients.AampService.Sale sale) {
+            return base.Channel.UpdateSaleAsync(sale);
         }
         
         public AAMPS.Clients.AampService.Development[] GetAllDevelopments() {

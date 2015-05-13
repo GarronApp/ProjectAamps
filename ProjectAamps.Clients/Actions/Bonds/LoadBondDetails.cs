@@ -36,9 +36,9 @@ namespace AAMPS.Clients.Actions.Bonds
         {
             var currentSale = new AampService.AampServiceClient().GetSaleByUnitId(Id);
 
-            var _currentUnit = _repoService.GetUnitByDevelopmentId(currentSale.Unit.DevelopmentID).FirstOrDefault();
+           // var _currentUnit = _repoService.GetUnitByDevelopmentId(currentSale.Unit.DevelopmentID).FirstOrDefault();
             
-            var result = new MapToBonds(new MapBondsQuery() { Sale = currentSale, Unit = _currentUnit});
+            var result = new MapToBonds(new MapBondsQuery() { Sale = currentSale, Unit = currentSale.Unit});
             query.Result = result.Result;
             return result.Result;
         }

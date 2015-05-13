@@ -3,6 +3,9 @@
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #c3c3c3;
+
+   
+
 }
 
 header, footer, nav, section {
@@ -80,6 +83,11 @@ p#buttonsDashBoard .btn-lg, .btn-group-lg > .btn {
     background-color: #3276b1;
 }
 
+.customTable{
+    font-size: 0.78em; 
+    font-weight: 400;
+    font-family:"Segoe UI", Verdana, Helvetica, Sans-Serif;
+}
 
 
 .btn-primary {
@@ -226,7 +234,7 @@ panel-heading a:after {
 
 label{
     font-weight:normal;
-    font-size:0.9em;
+    font-size:0.96em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 }
 

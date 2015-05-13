@@ -19,9 +19,9 @@
             <legend class="well">Unit</legend>
             <div class="col-md-12" style="margin-top: -20px;">
                 <table style="width:100%" class="table-striped text-center">
-                    <thead style="font-size:0.69em;font-weight:400;">
+                    <thead style="font-size:0.70em;font-weight:400;">
                         <tr>
-                            <td class="dark-orange">Unit Number</td>
+                            <td class=" dark-orange">Unit Number</td>
                             <td class="dark-orange">Description</td>
                             <td class="text-center dark-orange">Unit Size</td>
                             <td class="dark-orange">Unit Status</td>
@@ -30,7 +30,7 @@
                             <td class="dark-orange">Available Date</td>
                         </tr>
                     </thead>
-                    <tbody style="font-size:0.69em;font-weight:400;">
+                    <tbody style="font-size:0.70em;font-weight:400;">
                         <tr>
                             <td>@Model.UnitNumber</td>
                             <td>@Model.DevelopmentDescription</td>
@@ -52,7 +52,7 @@
                     <fieldset>
                         <legend class="well">Sale</legend>
                         <table style="width:100%" class="table-striped text-center">
-                            <thead style="font-size:0.69em;font-weight:400;">
+                            <thead style="font-size:0.70em;font-weight:400;">
                                 <tr>
                                     <td class="col-md-3 dark-orange"><strong>Contract Signed</strong></td>
                                     <td class="col-md-3 dark-orange"><strong>Deposit Paid</strong></td>
@@ -60,7 +60,8 @@
                                     <td class="col-md-3 dark-orange"><strong>Depost Amount</strong></td>
                                 </tr>
                             </thead>
-                            <tbody style="font-size:0.69em;font-weight:400;">
+
+                            <tbody style="font-size:0.70em;font-weight:400;">
                                 <tr>
                                     <td class="col-md-3"><label>@Model.SaleContractSignedPurchaserDt</label></td>
                                     <td class="col-md-3"><label>@Model.DepositPaid</label></td>
@@ -77,7 +78,7 @@
                     <fieldset>
                         <legend class="well">Bond</legend>
                         <table style="width:100%" class="table-striped text-left">
-                            <thead style="font-size:0.69em;font-weight:400;">
+                            <thead style="font-size:0.70em;font-weight:400;">
                                 <tr>
                                     <td class="col-md-3 dark-orange"><strong>Bond Required</strong></td>
                                     <td class="col-md-3 dark-orange"><strong>Bond Amount</strong></td>
@@ -85,7 +86,7 @@
                                     <td class="col-md-3 dark-orange"><strong>Date Granted</strong></td>
                                 </tr>
                             </thead>
-                            <tbody style="font-size:0.69em;font-weight:400;">
+                            <tbody style="font-size:0.70em;font-weight:400;">
                                 <tr>
                                     <td class="col-md-3"><label>@Model.SalesBondRequiredBt</label></td>
                                     <td class="col-md-3"><label>R @Model.SaleBondRequiredAmount</label></td>
@@ -102,7 +103,7 @@
             <div class="col-md-12">
                 <fieldset>
                     <legend class="well">Individual</legend>
-                    <table style="width:100%;font-size:0.69em;font-weight:400;margin-top: -31px;" class="table text-left">
+                    <table style="width:100%;font-size:0.70em;font-weight:400;margin-top: -31px;" class="table text-left">
                             <tr>
                                 <td class="col-md-3"><strong>First Name:</strong></td>
                                 <td class="col-md-3"><label id="lblFirstName">@Model.IndividualFirstName</label></td>
@@ -127,40 +128,51 @@
     </div>
 </div>
 <div class="row" style="background:#eee">
-    <div class="col-md-12">
-        <table style="width:100%" class="table text-left">
-            <thead style="font-size:0.79em;font-weight:400;">
-                <tr>
-                    <td class="col-md-3 dark-orange"><strong>Client Contacted</strong></td>
-                    <td class="col-md-3 dark-orange"><strong>Documents Rec</strong></td>
-                    <td class="col-md-3 dark-orange"><strong>Bond Account No</strong></td>
-                </tr>
-            </thead>
-            <tbody style="font-size:0.69em;font-weight:400;">
-                <tr>
-                    <td class="col-md-3">
-                        <div class="col-sm-12">
-                             <label><input type="checkbox" id="checkClientContacted" value=""></label>&nbsp;
-                            <label id="txtDocumentsRec" style="font-size:0.98em;font-weight:400;">@Model.SalesBondClientContactedDt</label>
-                        </div>
-                    </td>
-                    <td class="col-md-3">
-                        <div class="col-sm-12">
-                            <label><input type="checkbox" id="checkDocumentsRec" value=""></label>&nbsp;
-                            <label style="font-size:0.98em;font-weight:400;" id="txtDocumentsRec">@Model.SalesBondBondDocsRecDt</label>
-                        </div>
+    <form id="UpdateSalesBondDetailsFrom">
+        <div class="col-md-12">
+            <table style="width:100%" class="table text-left">
+                <thead style="font-size:0.82em;font-weight:400;">
+                    <tr>
+                        <td class="col-md-3 dark-orange"><strong>Client Contacted</strong></td>
+                        <td class="col-md-3 dark-orange"><strong>Documents Received</strong></td>
+                        <td class="col-md-3 dark-orange"><strong>Bond Account No</strong></td>
+                    </tr>
+                </thead>
+                <tbody style="font-size:0.69em;font-weight:400;">
+                    <tr>
+                        <td class="col-md-3">
+                            <div class="col-sm-12">
+                                <input type="checkbox" id="checkClientContacted" class="pull-left" value="">&nbsp;&nbsp;
+                                <input type="text" class="form-control datepicker pull-left" style="width: 75%;margin-left: 15px;" disabled="disabled" id="txtSalesBondClientContactedDt" name="SalesBondClientContactedDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </td>
+                        <td class="col-md-3">
+                            <div class="col-sm-12">
+                                <input type="checkbox" id="checkDocumentsRec" class="pull-left" value="">&nbsp;&nbsp;
+                                <input type="text" class="form-control datepicker pull-left" style="width: 75%;margin-left: 15px;" disabled="disabled" id="txtSalesBondBondDocsRecDt" name="SalesBondBondDocsRecDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
 
-                    </td>
-                    <td class="col-md-3"><label style="font-size:0.98em;font-weight:400;">@Model.SalesBondAccountNo</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                        </td>
+                        <td class="col-md-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="txtSalesBondAccountNo" style="width: 75%" name="salesbondaccountno" placeholder="">
+                            </div>
+                        </td>
+                        <td class="col-md-3">
+                            <div class="col-sm-12">
+                                <input type="button" id="btnUpdateSalesBondDetails" class="btn btn-primary pull-right" value="Update" style="margin-right:50px" />
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
     <div class="col-md-12">
         <input type="button" id="btnAddBankApplication" onclick="showNewBankApplicationModal();" class="btn btn-primary text-center" value="Submit Loan to Bank"/>
         <br /><br />
         <table style="width:100%" class="table table-hover text-left">
-            <thead style="font-size:0.69em;font-weight:400;">
+            <thead style="font-size:0.82em;font-weight:400;">
                 <tr>
                     <td class="col-md-1 dark-orange"><strong>BANK</strong></td>
                     <td class="col-md-1 dark-orange"><strong>STATUS</strong></td>
@@ -217,7 +229,7 @@
                             <div class="form-group" style="padding-bottom:30px">
                                 <label for="selectMOStatus" class="col-sm-4 control-label">Status</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control" id="selectMOStatus" name="MOStatus"></select>
+                                    <select class="form-control" id="selectMOStatus" name="MOStatus" disabled="disabled"></select>
                                 </div>
                             </div>
 
@@ -295,6 +307,29 @@
             $("#showModalUpdateOriginator").modal('show');
             $("#btnUpdateOriginatorTr").val("Submit");
             $("#ApplicationStatus").val("NewApplication");
+
+            var dateToday = new Date();
+            var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
+            $("#OriginatorTrSubmittedDt").datepicker("setValue", convertDateToday);
+
+            $("#selectBankName").prop('disabled', false);
+            $("#OriginatorTrSubmittedDt").prop('disabled', false);
+            $("#OriginatorTrAIPDt").prop('disabled', false);
+            $("#OriginatorTrGrantDt").prop('disabled', false);
+            $("#OriginatorTrAcceptDt").prop('disabled', false);
+
+            $("#OriginatorTrAIPDt").prop('disabled',true);
+            $("#OriginatorTrGrantDt").prop('disabled',true);
+            $("#OriginatorTrAcceptDt").prop('disabled',true);
+            $("#selectMOStatus select").attr('disabled', 'disabled');
+            $("#selectMOStatus select option").attr('disabled', 'disabled');
+            $("#selectMOStatus select option").prop('disabled',true);
+
+            $('#selectMOStatus')
+                .empty()
+                .append('<option selected="selected" value="0">AS SUBMITTED</option>')
+            ;
+
         }
     </script>
     <script type="text/javascript">
