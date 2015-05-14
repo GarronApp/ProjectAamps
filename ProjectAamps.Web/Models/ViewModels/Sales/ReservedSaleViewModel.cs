@@ -15,6 +15,7 @@ namespace AAMPS.Web.Models.ViewModels.Sales
         public int SalesDepositProofBt { get; set; }
         public string SalesDepositProofDt { get; set; }
         public double SalesBondAmount { get; set; }
+        public double SalesTotalDepositAmount { get; set; }
         public string SalesDepoistPaidDt { get; set; }
         public int SaleDepositPaidBt { get; set; }
 

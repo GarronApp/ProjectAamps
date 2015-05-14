@@ -1,13 +1,60 @@
-﻿
+﻿@model IEnumerable<AAMPS.Clients.AampService.SalesReportViewModel>
 @{
     ViewBag.Title = "SalesReport";
     Layout = "~/Views/Report/_ReportLayout.cshtml";
 }
 
-<div class="row">
-
-</div>
 <h4>SalesReport</h4>
+<table class="table table-bordered">
+   <thead style="background-color:#000000; color:#ffffff">
+       <tr>
+           <td>Development</td>
+           <td>Unit No</td>
+           <td>Phase</td>
+           <td>Price</td>
+           <td>Type</td>
+           <td>Status</td>
+           <td>Agency</td>
+           <td>Agent</td>
+           <td>Purchaser</td>
+           <td>Deposit</td>
+           <td>Deposit Date</td>
+           <td>Proof</td>
+           <td>Cntr Signed</td>
+           <td>Bond</td>
+           <td>Bond Req</td>
+           <td>Bond Amount Grant</td>
+           <td>Granted</td>
+           <td>Amount Due</td>
+       </tr>
+   </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@item.Development</td>
+                <td>@item.UnitNo</td>
+                <td>@item.Phase</td>
+                <td>@item.Price</td>
+                <td>@item.Type</td>
+                <td>@item.Status</td>
+                <td>@item.Agency</td>
+                <td>@item.Agent</td>
+                <td>@item.Purchaser</td>
+                <td>@item.Deposit</td>
+                <td>@*@item.DepositDate*@</td>
+                <td>@item.Proof</td>
+
+                <td>@*@item.CntrSigned.HasValue ? @item.CntrSigned.GetValueOrDefault().ToString() : No Date*@</td>
+                <td>@item.Bond</td>
+                <td>@item.BondReq</td>
+                <td>@item.BondAmountGrant</td>
+                <td>@*@item.Granted.HasValue ? @item.Granted.GetValueOrDefault().ToShortDateString(): No Date*@</td>
+                <td>@item.AmountDue</td>
+            </tr>
+        </tbody>
+    }
+</table>
 
 
 

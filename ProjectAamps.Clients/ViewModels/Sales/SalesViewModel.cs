@@ -77,7 +77,10 @@ namespace AAMPS.Clients.ViewModels.Sales
         public int MortgageOriginatorID { get; set; }
         
         public double SalesBondAmount { get; set; }
-        
+
+        public double SalesTotalDepositAmount { get; set; }
+
+
         public float SalesBondInterestRate { get; set; }
         
         public string SalesBondAccountNo { get; set; }

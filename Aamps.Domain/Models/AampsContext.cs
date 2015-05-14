@@ -3,6 +3,7 @@ using System.Data.Entity.Infrastructure;
 using Aamps.Domain.Models.Mapping;
 using AAMPS.Domain.ViewModels.Bonds;
 using Aamps.Domain.ViewModels.Sales;
+using System.Data.SqlClient;
 
 namespace Aamps.Domain.Models
 {
@@ -11,6 +12,7 @@ namespace Aamps.Domain.Models
         static AampsContext()
         {
             Database.SetInitializer<AampsContext>(null);
+
         }
 
         public AampsContext()
@@ -99,6 +101,8 @@ namespace Aamps.Domain.Models
             modelBuilder.Configurations.Add(new UserListMap());
             modelBuilder.Configurations.Add(new UserRightMap());
             modelBuilder.Configurations.Add(new UserTypeMap());
+
+           // var result = this.Database.SqlQuery<object>("sp_SalesReport @DevelopmentID", 3);
         }
     }
 }

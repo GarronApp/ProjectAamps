@@ -65,6 +65,7 @@ namespace AAMPS.Web.Models.ViewModels
         public int SaleTypeID { get; set; }
         public int BondOriginatorID { get; set; }
         public float SalesBondInterestRate { get; set; }
+        public float SalesTotalDepositAmount {get;set;}
         public string SalesBondAccountNo { get; set; }
         public string SalesBondClientContactedDt { get; set; }
         public string SalesBondBondDocsRecDt { get; set; }

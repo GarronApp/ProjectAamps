@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
- }
+}
 
 @model IEnumerable<AAMPS.Web.Models.ViewModels.DevelopmentViewModel>
 <div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
@@ -65,6 +65,7 @@
         <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('available')">RESERVATIONS</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('notavailable')">UPDATE SALES INFO</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="showBonds()">BONDS</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="showReports()">REPORTS</button>
 
     </p>
     <br /><br />
@@ -108,7 +109,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="modalEdit">Available Bookings</h4>
+                    <h4 class="modal-title" id="modalEdit">Available Units</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -134,7 +135,7 @@
                             </thead>
 
 
-                            @foreach (var item in Model.Where(c=> c.UnitStatusId == 1))
+                            @foreach (var item in Model.Where(c => c.UnitStatusId == 1))
                             {
                                 <tbody>
                                     <tr>
@@ -148,7 +149,7 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPrice
+                                            R @item.UnitPriceIncluding
                                         </td>
                                         <td>
                                             @item.UnitSize
@@ -200,11 +201,14 @@
                                     <th class="dark-orange">
                                         Unit Size
                                     </th>
+                                    <th class="dark-orange">
+                                        Unit Status
+                                    </th>
                                 </tr>
                             </thead>
 
 
-                            @foreach (var item in Model.Where(c => c.UnitStatusId != 1))
+                            @foreach (var item in Model.Where(c => c.UnitStatusId != 1).OrderBy(c => c.UnitStatusId))
                             {
                                 <tbody>
                                     <tr>
@@ -218,10 +222,13 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPrice
+                                            R @item.UnitPriceIncluding
                                         </td>
                                         <td>
                                             @item.UnitSize
+                                        </td>
+                                        <td>
+                                            @item.UnitStatusID
                                         </td>
                                         <td>
                                             <a class="orange" onclick="ViewNotAvailableUnits(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;View Unit</a>
@@ -288,13 +295,13 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPrice
+                                            R @item.UnitPriceIncluding
                                         </td>
                                         <td>
                                             @item.UnitSize
                                         </td>
                                         <td>
-                                            <a class="orange" onclick="ViewBondDetails(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;View Details</a>
+                                            <a class="orange" onclick="ViewBondDetails(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Bond Details</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -317,16 +324,13 @@
 <script src="~/Scripts/c3.js"></script>
 <link href="~/Content/c3.css" rel="stylesheet" />
 <script type="text/javascript">
-    function ViewBondDetails(id)
-    {
+    function ViewBondDetails(id) {
         window.location.href = "/Bonds/Details/" + id;
     }
-    function ViewNotAvailableUnits(id)
-    {
+    function ViewNotAvailableUnits(id) {
         window.location.href = "/Sales/Details/" + id;
     }
-    function ViewAvailableUnits(id)
-    {
+    function ViewAvailableUnits(id) {
         window.location.href = "/Sales/Details/" + id;
     }
     function showReservations(context) {
@@ -339,9 +343,12 @@
         }
     }
 
-    function showBonds()
-    {
+    function showBonds() {
         $('#ReservationDetailsSoldModal').modal('show');
+    }
+
+    function showReports() {
+        window.location.href = '@Url.Action("Index", "Report")';
     }
 
 
@@ -380,9 +387,10 @@
                 data: {
                     columns: [
                           [data[0].series, data[0].data],
-                          [data[1].series, data[1].data],
                           [data[2].series, data[2].data],
+                          [data[1].series, data[1].data],
                           [data[3].series, data[3].data],
+
 
                         //$.each(items, function (key,val) {
                         //    console.log(items);

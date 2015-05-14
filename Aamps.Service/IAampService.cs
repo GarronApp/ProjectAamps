@@ -1,4 +1,5 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.ViewModels.Reports.Sales;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,6 +84,9 @@ namespace Aamps.Service
 
         [OperationContract]
         OriginatorTr GetOriginatorById(int id);
+
+        [OperationContract]
+        List<SalesReportViewModel> GetSalesReport();
 
         [OperationContract]
         Sale GetSaleByUnitId(int id);

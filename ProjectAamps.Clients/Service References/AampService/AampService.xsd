@@ -201,6 +201,7 @@
       <xs:element minOccurs="0" name="SalesDepositProofDt" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SalesDepositProofID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="SalesReferalCommDueBt" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SalesTotalDepositAmount" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="SalesTransferAttAssignedID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="TransAtts" nillable="true" type="tns:ArrayOfTransAtt" />
       <xs:element minOccurs="0" name="Unit" nillable="true" type="tns:Unit" />

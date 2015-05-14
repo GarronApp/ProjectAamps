@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,6 +111,22 @@ namespace Aamps.Repository.Implementations
                            where x.MOStatusID == id
                            select x).FirstOrDefault();
             return results;
+        }
+
+        public List<Aamps.Domain.ViewModels.Reports.Sales.SalesReportViewModel> GetSalesReport()
+        {
+            var development = new SqlParameter
+            {
+                ParameterName = "DevelopmentID",
+                Value = "3"
+            };
+
+            using (var dc = new AampsContext())
+            {
+                var result = dc.Database.SqlQuery<Aamps.Domain.ViewModels.Reports.Sales.SalesReportViewModel>("exec dbo.sp_SalesReport @DevelopmentID", development).ToList();
+
+                return result;
+            }
         }
 
         public List<MOStatus> GetAllMOStatus()

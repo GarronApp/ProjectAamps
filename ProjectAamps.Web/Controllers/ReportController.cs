@@ -10,6 +10,11 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using Aamps.Domain.Models;
+using AAMPS.Web.Models.ViewModels.Reports.Sales;
+using System.Data.SqlClient;
+using SelectPdf;
+using iTextSharp.text.html.simpleparser;
 
 namespace AAMPS.Web.Controllers
 {
@@ -24,7 +29,8 @@ namespace AAMPS.Web.Controllers
 
         public ActionResult SalesReport()
         {
-            return View();
+            var result = aampService.GetSalesReport();
+            return View(result);
         }
 
         public ActionResult BondsReport()
@@ -34,7 +40,39 @@ namespace AAMPS.Web.Controllers
 
         public void ExportToPdf()
         {
-            App.Common.Reporting.PDFByteStreamProvider.StreamHandler();
+           App.Common.Reporting.PDFByteStreamProvider.StreamHandler();
+
+            //Response.ContentType = "application/pdf";
+            //Response.AddHeader("content-disposition", "attachment;filename=div.pdf");
+            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+   
+            //StringWriter stringWriter = new StringWriter();
+            //HtmlTextWriter htmlTextWriter = new HtmlTextWriter(stringWriter);
+            //MyDiv.RenderControl(htmlTextWriter);
+   
+            //StringReader stringReader = new StringReader(stringWriter.ToString());
+            //Document Doc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
+            //HTMLWorker htmlparser = new HTMLWorker(Doc);
+            //PdfWriter.GetInstance(Doc, Response.OutputStream);
+   
+            //Doc.Open();
+            //htmlparser.Parse(stringReader);
+            //Doc.Close();
+            //Response.Write(Doc);
+            //Response.End();
+
+
+            //Document pdfDoc = new Document(PageSize.A4.Rotate(), 0, 0, 5, 0);  
+            //PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+            //pdfDoc.Open(); 
+            //pdfDoc.Add(new PdfPTable(;   
+            //pdfWriter.CloseStream = false;  
+            //pdfDoc.Close();  
+            //Response.Buffer = true;  
+            //Response.ContentType =   "application/pdf"; 
+            //Response.AddHeader("content-disposition", "attachment;filename=Test.pdf");  
+            //Response.Cache.SetCacheability(HttpCacheability.NoCache);  
+
         }
 
         public void ExportToExcel()

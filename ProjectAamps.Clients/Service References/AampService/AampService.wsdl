@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAampService_GetAllUnits_InputMessage">
@@ -138,6 +139,12 @@
   </wsdl:message>
   <wsdl:message name="IAampService_GetOriginatorById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOriginatorByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSalesReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalesReport" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSalesReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalesReportResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetSaleByUnitId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSaleByUnitId" />
@@ -341,6 +348,10 @@
     <wsdl:operation name="GetOriginatorById">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetOriginatorById" message="tns:IAampService_GetOriginatorById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetOriginatorByIdResponse" message="tns:IAampService_GetOriginatorById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSalesReport" message="tns:IAampService_GetSalesReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSalesReportResponse" message="tns:IAampService_GetSalesReport_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSaleByUnitId">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleByUnitId" message="tns:IAampService_GetSaleByUnitId_InputMessage" />
@@ -612,6 +623,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetOriginatorById">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetOriginatorById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesReport">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetSalesReport" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

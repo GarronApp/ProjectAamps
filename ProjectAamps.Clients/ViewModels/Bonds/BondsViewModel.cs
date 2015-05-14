@@ -64,6 +64,8 @@ namespace AAMPS.Clients.ViewModels.Bonds
         public string SalesBondAccountNo { get; set; }
         
         public double SaleBondRequiredAmount { get; set; }
+
+        public double SalesTotalDepositAmount { get; set; }
         
         public IEnumerable<OrginatorViewModel> Orginators { get; set; }
         

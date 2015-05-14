@@ -416,6 +416,7 @@
             type: 'GET',
             datatype: 'json',
             data: {},
+            async : true,
             success: function (data) {
                 console.log("response...");
                 console.log(data);
@@ -1019,7 +1020,7 @@
                 instance.ConvertCurrentDate(data.SaleContractSignedPurchaserDt, "txtPurchaserContractSigned");
                 instance.ConvertCurrentDate(data.SalesDepoistPaidDt, "txtDepositPaidDate");
                 instance.ConvertCurrentDate(data.SalesDepositProofDt, "txtSalesDepositProofDt");
-                $("#txtDepositPaid").val(data.SalesBondAmount);
+                $("#txtDepositPaid").val(data.SalesTotalDepositAmount);
                 $("#selectSalesDepositProof").val(data.SalesDepositProofID);
             }
             else {
@@ -1038,7 +1039,7 @@
             $("#txtSaleBondRequiredAmount").val(data.SaleBondRequiredAmount);
             $("#selectFinanceType").val(data.SaleTypeID);
             $("#selectOriginator").val(data.BondOriginatorID);
-            $("#txtAmountGranted").val(data.SalesBondAmount);
+            $("#txtAmountGranted").val(data.SalesTotalDepositAmount);
             $("#txtSaleSoldPanelStatus").val(data.CurrentSalesStatus);
         }
     }
@@ -1052,9 +1053,9 @@
 
         $("#txtSaleBondBank").val(data.SaleBondBank);
         $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
-        $("#txtSalesBondAmount").val("R " + data.SalesBondAmount);
+        $("#txtSalesBondAmount").val("R " + data.SalesTotalDepositAmount);
         $("#txtSalesBondInterestRate").val(data.SalesBondInterestRate + " %");
-
+        var item = $("#selectOriginator").val;
         if (data.SalesBondGrantedBt == 1)
             $("#checkSalesBondGrantedBt").prop('checked', true);
         else

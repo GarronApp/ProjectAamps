@@ -1695,6 +1695,9 @@ namespace AAMPS.Clients.AampService {
         private bool SalesReferalCommDueBtField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> SalesTotalDepositAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> SalesTransferAttAssignedIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2362,6 +2365,19 @@ namespace AAMPS.Clients.AampService {
                 if ((this.SalesReferalCommDueBtField.Equals(value) != true)) {
                     this.SalesReferalCommDueBtField = value;
                     this.RaisePropertyChanged("SalesReferalCommDueBt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> SalesTotalDepositAmount {
+            get {
+                return this.SalesTotalDepositAmountField;
+            }
+            set {
+                if ((this.SalesTotalDepositAmountField.Equals(value) != true)) {
+                    this.SalesTotalDepositAmountField = value;
+                    this.RaisePropertyChanged("SalesTotalDepositAmount");
                 }
             }
         }
@@ -6497,6 +6513,323 @@ namespace AAMPS.Clients.AampService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SalesReportViewModel", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales")]
+    [System.SerializableAttribute()]
+    public partial class SalesReportViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AgencyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AgentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> AmountDueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BondField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> BondAmountGrantField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> BondReqField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> CntrSignedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> DepositField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DepositDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DevelopmentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> GrantedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhaseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProofField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PurchaserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnitNoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Agency {
+            get {
+                return this.AgencyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgencyField, value) != true)) {
+                    this.AgencyField = value;
+                    this.RaisePropertyChanged("Agency");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Agent {
+            get {
+                return this.AgentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgentField, value) != true)) {
+                    this.AgentField = value;
+                    this.RaisePropertyChanged("Agent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> AmountDue {
+            get {
+                return this.AmountDueField;
+            }
+            set {
+                if ((this.AmountDueField.Equals(value) != true)) {
+                    this.AmountDueField = value;
+                    this.RaisePropertyChanged("AmountDue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Bond {
+            get {
+                return this.BondField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BondField, value) != true)) {
+                    this.BondField = value;
+                    this.RaisePropertyChanged("Bond");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> BondAmountGrant {
+            get {
+                return this.BondAmountGrantField;
+            }
+            set {
+                if ((this.BondAmountGrantField.Equals(value) != true)) {
+                    this.BondAmountGrantField = value;
+                    this.RaisePropertyChanged("BondAmountGrant");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> BondReq {
+            get {
+                return this.BondReqField;
+            }
+            set {
+                if ((this.BondReqField.Equals(value) != true)) {
+                    this.BondReqField = value;
+                    this.RaisePropertyChanged("BondReq");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> CntrSigned {
+            get {
+                return this.CntrSignedField;
+            }
+            set {
+                if ((this.CntrSignedField.Equals(value) != true)) {
+                    this.CntrSignedField = value;
+                    this.RaisePropertyChanged("CntrSigned");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> Deposit {
+            get {
+                return this.DepositField;
+            }
+            set {
+                if ((this.DepositField.Equals(value) != true)) {
+                    this.DepositField = value;
+                    this.RaisePropertyChanged("Deposit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DepositDate {
+            get {
+                return this.DepositDateField;
+            }
+            set {
+                if ((this.DepositDateField.Equals(value) != true)) {
+                    this.DepositDateField = value;
+                    this.RaisePropertyChanged("DepositDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Development {
+            get {
+                return this.DevelopmentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DevelopmentField, value) != true)) {
+                    this.DevelopmentField = value;
+                    this.RaisePropertyChanged("Development");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Granted {
+            get {
+                return this.GrantedField;
+            }
+            set {
+                if ((this.GrantedField.Equals(value) != true)) {
+                    this.GrantedField = value;
+                    this.RaisePropertyChanged("Granted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Phase {
+            get {
+                return this.PhaseField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhaseField, value) != true)) {
+                    this.PhaseField = value;
+                    this.RaisePropertyChanged("Phase");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Proof {
+            get {
+                return this.ProofField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProofField, value) != true)) {
+                    this.ProofField = value;
+                    this.RaisePropertyChanged("Proof");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Purchaser {
+            get {
+                return this.PurchaserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PurchaserField, value) != true)) {
+                    this.PurchaserField = value;
+                    this.RaisePropertyChanged("Purchaser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UnitNo {
+            get {
+                return this.UnitNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnitNoField, value) != true)) {
+                    this.UnitNoField = value;
+                    this.RaisePropertyChanged("UnitNo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AampService.IAampService")]
     public interface IAampService {
@@ -6632,6 +6965,12 @@ namespace AAMPS.Clients.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorById", ReplyAction="http://tempuri.org/IAampService/GetOriginatorByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr> GetOriginatorByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSalesReport", ReplyAction="http://tempuri.org/IAampService/GetSalesReportResponse")]
+        AAMPS.Clients.AampService.SalesReportViewModel[] GetSalesReport();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSalesReport", ReplyAction="http://tempuri.org/IAampService/GetSalesReportResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SalesReportViewModel[]> GetSalesReportAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleByUnitId", ReplyAction="http://tempuri.org/IAampService/GetSaleByUnitIdResponse")]
         AAMPS.Clients.AampService.Sale GetSaleByUnitId(int id);
@@ -6949,6 +7288,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr> GetOriginatorByIdAsync(int id) {
             return base.Channel.GetOriginatorByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.SalesReportViewModel[] GetSalesReport() {
+            return base.Channel.GetSalesReport();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SalesReportViewModel[]> GetSalesReportAsync() {
+            return base.Channel.GetSalesReportAsync();
         }
         
         public AAMPS.Clients.AampService.Sale GetSaleByUnitId(int id) {

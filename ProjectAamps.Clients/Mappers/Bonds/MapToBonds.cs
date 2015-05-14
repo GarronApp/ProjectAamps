@@ -77,7 +77,8 @@ namespace AAMPS.Clients.Mappers.Bonds
 
                 SalesDepoistPaidDt = currentSalesAgent.SalesDepoistPaidDt.HasValue ? currentSalesAgent.SalesDepoistPaidDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SalesDepoistPaidDt.GetValueOrDefault().ToString(),
                 SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt.HasValue ? currentSalesAgent.SaleContractSignedPurchaserDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SaleContractSignedPurchaserDt.GetValueOrDefault().ToString(),
-                SaleBondRequiredAmount = currentSalesAgent.SalesBondAmount.HasValue ? currentSalesAgent.SalesBondAmount.GetValueOrDefault() : currentSalesAgent.SalesBondAmount.GetValueOrDefault(),
+                SaleBondRequiredAmount = currentSalesAgent.SalesTotalDepositAmount.HasValue ? currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault() : currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault(),
+                SalesTotalDepositAmount = currentSalesAgent.SalesTotalDepositAmount.HasValue ? currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault() : currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault(),
                 SalesBondRequiredDt = currentSalesAgent.SalesBondRequiredDt.HasValue ? currentSalesAgent.SalesBondRequiredDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SalesBondRequiredDt.GetValueOrDefault().ToString(),
                 SalesBondRequiredBt = currentSalesAgent.SalesBondRequiredBt == true ? "Yes" : "No",
                 SalesBondGrantedDt = currentSalesAgent.SalesBondGrantedDt.HasValue ? currentSalesAgent.SalesBondGrantedDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SalesBondGrantedDt.GetValueOrDefault().ToString(),

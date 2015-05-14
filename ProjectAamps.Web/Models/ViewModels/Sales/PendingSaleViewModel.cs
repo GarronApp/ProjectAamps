@@ -13,6 +13,7 @@ namespace AAMPS.Web.Models.ViewModels.Sales
         public string CurrentSalesStatus { get; set; }
         public int BondOriginatorID { get; set; }
         public double SalesBondAmount { get; set; }
+        public double SalesTotalDepositAmount { get; set; }
         public float SalesBondInterestRate { get; set; }
         public string SalesBondAccountNo { get; set; }
         public string SalesBondClientContactedDt { get; set; }

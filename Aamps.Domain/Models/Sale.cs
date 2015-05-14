@@ -67,6 +67,8 @@ namespace Aamps.Domain.Models
         [DataMember]
         public Nullable<double> SalesBondAmount { get; set; }
         [DataMember]
+        public Nullable<double> SalesTotalDepositAmount { get; set; }
+        [DataMember]
         public Nullable<System.DateTime> SalesBondGrantedDt { get; set; }
         [DataMember]
         public Nullable<System.DateTime> SalesBondClientAcceptDt { get; set; }

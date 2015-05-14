@@ -1,7 +1,9 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.ViewModels.Reports.Sales;
 using Aamps.Repository.Implementations;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace Aamps.Service
 {
@@ -186,6 +188,14 @@ namespace Aamps.Service
             _salesRepo = new SalesRepository(_dbContext);
             var results = _salesRepo.GetMOStatusById(id);
             return results;
+        }
+
+        public List<SalesReportViewModel> GetSalesReport()
+        {
+            _salesRepo = new SalesRepository(_dbContext);
+            var results = _salesRepo.GetSalesReport();
+            return results;
+
         }
 
          public void SaveUpdateReservation(Sale reservation)

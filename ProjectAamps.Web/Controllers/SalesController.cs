@@ -208,6 +208,7 @@ namespace AAMPS.Web.Controllers
 
                     saleAgent.SalesBondAccountNo = currentSalesAgent.SalesBondAccountNo;
                     saleAgent.SalesBondInterestRate = currentSalesAgent.SalesBondInterestRate != null ? (float)currentSalesAgent.SalesBondInterestRate : 0;
+                    saleAgent.SalesTotalDepositAmount = currentSalesAgent.SalesTotalDepositAmount != null ? (float)currentSalesAgent.SalesTotalDepositAmount : 0; 
                     saleAgent.SalesBondGrantedDt = currentSalesAgent.SalesBondGrantedDt.HasValue ? currentSalesAgent.SalesBondGrantedDt.Value.ToString() : string.Empty;
                     saleAgent.SalesBondGrantedBt = currentSalesAgent.SalesBondGrantedDt.HasValue ? 1 : 0;
                     saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt.HasValue ? currentSalesAgent.SalesBondClientAcceptDt.Value.ToString() : string.Empty;
@@ -434,7 +435,7 @@ namespace AAMPS.Web.Controllers
                     _currentSale.SaleDepositPaidBt = sale.SaleDepositPaidBt == 1 ? true : false;
                     _currentSale.SalesDepoistPaidDt = sale.SalesDepoistPaidDt != null ? DateTime.ParseExact(sale.SalesDepoistPaidDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                     _currentSale.SalesDepositProofDt = sale.SalesDepositProofDt != null ? DateTime.ParseExact(sale.SalesDepositProofDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    _currentSale.SalesBondAmount = sale.SalesBondAmount != null ? (double)sale.SalesBondAmount : 0.0;
+                    _currentSale.SalesTotalDepositAmount = sale.SalesTotalDepositAmount != null ? (double)sale.SalesTotalDepositAmount : 0.0;
                     _currentSale.SaleModifiedDt = DateTime.Now;
                     _currentSale.SaleModifiedByUser = 1;
 

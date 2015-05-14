@@ -23,7 +23,6 @@
                         <p class="text-center" id="buttonsDashBoard">
                             <button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("SalesReport","Report")'">Sales Report</button>
                             <button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("BondsReport","Report")'">Bonds Report</button>
-                            <button type="button" class="btn btn-primary btn-lg" onclick="showBonds()">Development Report</button>
                         </p>
                     </div>
                     <div>
@@ -31,7 +30,7 @@
                     </div>
                     <div class="pull-right">
                         <button type="button" onclick="location.href='@Url.Action("ExportToPdf", "Report")'" class="btn btn-primary btn-sm">Export PDF</button>
-                        <button type="button" onclick="location.href='@Url.Action("ExportToExcel", "Report")'" class="btn btn-primary btn-sm">Export Excel</button>
+                        @*<button type="button" onclick="location.href='@Url.Action("ExportToExcel", "Report")'" class="btn btn-primary btn-sm">Export Excel</button>*@
                     </div>
                 </div>
             </div>

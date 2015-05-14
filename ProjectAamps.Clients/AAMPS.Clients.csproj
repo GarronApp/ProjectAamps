@@ -90,6 +90,9 @@
     <None Include="Service References\AampService\AampService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\AampService\AampService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Bank.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -127,6 +130,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleDepositProof1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SalesReportViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleType.datasource">

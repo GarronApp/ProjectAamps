@@ -41,6 +41,7 @@ namespace Aamps.Domain.Models.Mapping
             this.Property(t => t.SalesBondAccountNo).HasColumnName("SalesBondAccountNo");
             this.Property(t => t.SalesBondInterestRate).HasColumnName("SalesBondInterestRate");
             this.Property(t => t.SalesBondAmount).HasColumnName("SalesBondAmount");
+            this.Property(t => t.SalesTotalDepositAmount).HasColumnName("SalesTotalDepositAmount");
             this.Property(t => t.SalesBondGrantedDt).HasColumnName("SalesBondGrantedDt");
             this.Property(t => t.SalesBondClientAcceptDt).HasColumnName("SalesBondClientAcceptDt");
             this.Property(t => t.SalesBondCommDueBt).HasColumnName("SalesBondCommDueBt");

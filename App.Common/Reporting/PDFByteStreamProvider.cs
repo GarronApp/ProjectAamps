@@ -24,7 +24,32 @@ namespace App.Common.Reporting
                     PdfWriter writer = PdfWriter.GetInstance(document, ms);
                     // Open the document, enabeling writing to the document
                     document.Open();
-                    
+                    var test = @"<h4>SalesReport</h4>
+<table>
+   <thead>
+       <tr>
+           <td>Development</td>
+           <td>Unit No</td>
+           <td>Phase</td>
+           <td>Price</td>
+           <td>Type</td>
+           <td>Status</td>
+           <td>Agency</td>
+           <td>Agent</td>
+           <td>Purchaser</td>
+           <td>Deposit</td>
+           <td>Deposit Date</td>
+           <td>Proof</td>
+           <td>Cntr Signed</td>
+           <td>Bond</td>
+           <td>Bond Req</td>
+           <td>Bond Amount Grant</td>
+           <td>Granted</td>
+           <td>Amount Due</td>
+       </tr>
+   </thead>
+</table>";
+
                     var example_html = @"<p>This <em>is </em><span class=""headline"" style=""text-decoration: underline;"">some</span> <strong>sample <em> text</em></strong><span style=""color: red;"">!!!</span></p>";
                     var example_css = @".headline{font-size:200%}";
 
@@ -36,6 +61,9 @@ namespace App.Common.Reporting
                         //Parse the HTML
                         htmlWorker.Parse(sr);
                     }
+
+                   
+
                     
                     document.Close();
                     writer.Close();
