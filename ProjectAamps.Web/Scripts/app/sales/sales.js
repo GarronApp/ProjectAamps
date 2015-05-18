@@ -18,7 +18,6 @@
     instance.ReservedFormValid = false;
     instance.PendingFormValid = false;
 
-
     this.load = function () {
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
@@ -910,8 +909,15 @@
     }
 
     this.ConvertCurrentDate = function (currentDate, control) {
-        var convertedCurrentDate = moment(currentDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
-        $("#" + control).datepicker("setValue", convertedCurrentDate);
+        if (currentDate == "" || currentDate == null)
+        {
+            $("#" + control).prop("disabled", true);
+            $("#" + control).val("");
+        }
+        else {
+            var convertedCurrentDate = moment(currentDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
+            $("#" + control).datepicker("setValue", convertedCurrentDate);
+        }
     }
 
     this.MapIndividualDetails = function (data) {

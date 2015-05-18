@@ -164,10 +164,7 @@
     <Compile Include="ValueObjects\MOStatusTypes.cs" />
     <Compile Include="ValueObjects\SaleActiveStatusType.cs" />
     <Compile Include="ValueObjects\UnitStatusType.cs" />
-    <Compile Include="ViewModels\Bonds\BondsViewModel.cs" />
-    <Compile Include="ViewModels\Bonds\OrginatorViewModel.cs" />
     <Compile Include="ViewModels\Reports\Sales\SalesReportViewModel.cs" />
-    <Compile Include="ViewModels\Sales\SalesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -181,8 +178,6 @@
     <Folder Include="Mappers\Sales\" />
     <Folder Include="Queries\Bonds\" />
     <Folder Include="Rules\" />
-    <Folder Include="ViewModels\Development\" />
-    <Folder Include="ViewModels\User\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

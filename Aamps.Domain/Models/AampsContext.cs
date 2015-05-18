@@ -1,8 +1,6 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Aamps.Domain.Models.Mapping;
-using AAMPS.Domain.ViewModels.Bonds;
-using Aamps.Domain.ViewModels.Sales;
 using System.Data.SqlClient;
 
 namespace Aamps.Domain.Models

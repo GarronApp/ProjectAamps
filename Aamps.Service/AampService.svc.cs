@@ -1,4 +1,5 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.ValueObjects;
 using Aamps.Domain.ViewModels.Reports.Sales;
 using Aamps.Repository.Implementations;
 using System.Collections.Generic;
@@ -342,6 +343,7 @@ namespace Aamps.Service
             _orginatorRepo = new OrginatorRepository(_dbContext);
             _orginatorRepo.Update(originatorTr);
         }
+
 
     }
 }

@@ -73,12 +73,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAMPS.Test", "AAMPS.Test\AA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Extentions", "App.Extentions\App.Extentions.csproj", "{5B968789-D617-41A9-BBFA-7FDC89A87A83}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{E97F5B11-6513-4418-9683-91A0B9EFA816}"
-	ProjectSection(SolutionItems) = preProject
-		HTMLPage.html = HTMLPage.html
-		TextFile1.txt = TextFile1.txt
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
