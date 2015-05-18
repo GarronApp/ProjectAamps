@@ -15,6 +15,7 @@ using AAMPS.Web.Models.ViewModels.Reports.Sales;
 using System.Data.SqlClient;
 using SelectPdf;
 using iTextSharp.text.html.simpleparser;
+using App.Common.Reporting;
 
 namespace AAMPS.Web.Controllers
 {
@@ -40,8 +41,8 @@ namespace AAMPS.Web.Controllers
 
         public void ExportToPdf()
         {
-           App.Common.Reporting.PDFByteStreamProvider.StreamHandler();
-
+          //App.Common.Reporting.PDFByteStreamProvider.StreamHandler();
+            new PDFByteStreamWrtieProvider().StreamHandler();
             //Response.ContentType = "application/pdf";
             //Response.AddHeader("content-disposition", "attachment;filename=div.pdf");
             //Response.Cache.SetCacheability(HttpCacheability.NoCache);
