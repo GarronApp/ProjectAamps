@@ -116,6 +116,7 @@ namespace AAMPS.Web.Models.ViewModels
         public string UnitNumber { get; set; }
         public double PlotSize { get; set; }
         public double UnitPrice { get; set; }
+        public double UnitPriceIncluding { get; set; }
         public double UnitSize { get; set; }
         public string UnitPhase { get; set; }
         public string UnitFloor { get; set; }

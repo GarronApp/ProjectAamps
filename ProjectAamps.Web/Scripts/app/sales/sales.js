@@ -88,17 +88,17 @@
             //$("#txtPurchaserContractSignedDate").val("", !$(this).is(':checked'));
         });
 
-        $('#checkPurchaserContractSignedDatePending').change(function () {
-            if (!$(this).is(':checked')) {
-                $("#txtPurchaserContractSignedDatePending").prop("disabled", true);
-                $("#txtPurchaserContractSignedDatePending").val("");
-            }
-            else {
-                $("#txtPurchaserContractSignedDatePending").prop("disabled", false);
-                $("#txtPurchaserContractSignedDatePending").datepicker("setValue", new Date());
-            }
-        });
-
+        //$('#checkPurchaserContractSignedDatePending').change(function () {
+        //    if (!$(this).is(':checked')) {
+        //        $("#txtPurchaserContractSignedDatePending").prop("disabled", true);
+        //        $("#txtPurchaserContractSignedDatePending").val("");
+        //    }
+        //    else {
+        //        $("#txtPurchaserContractSignedDatePending").prop("disabled", false);
+        //        $("#txtPurchaserContractSignedDatePending").datepicker("setValue", new Date());
+        //    }
+        //});
+        
         $('#checkPurchaserContractSigned').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtPurchaserContractSigned").prop("disabled", true);
@@ -547,8 +547,9 @@
 
                     console.log(data);
                     $("#lblUnitPhase").html(data.UnitPhase);
-                    $("#lblUnitPrice").html("R " + data.UnitPrice);
+                    $("#lblUnitPrice").html("R " + data.UnitPriceIncluding);
                     $("#lblUnitNumber").html(data.UnitNumber);
+                    $("#lblUnitStatus").html(data.CurrentSalesStatus)
                     $("#lblUnitSize").html(data.UnitSize);
                     $("#lblUnitFloor").html(data.UnitFloor);
 
@@ -958,6 +959,7 @@
     this.MapIndividualToPurchaser = function (data) {
         console.log(data);
         $("#txtPurchaserDescription").val(data.IndividualName + " " + data.IndividualSurname);
+        $("#txtPurchaserContactPerson").val(data.IndividualName + " " + data.IndividualSurname);
         $("#txtPurchaserContactCell").val(data.IndividualContactCell);
         $("#txtPurchaserContactHome").val(data.IndividualContactHome);
         $("#txtPurchaserContactWork").val(data.IndividualContactWork);
@@ -997,11 +999,12 @@
 
     this.MapUnitDetails = function (data) {
         $("#lblUnitPhase").html(data.UnitPhase);
-        $("#lblUnitPrice").html("R " + data.UnitPrice);
+        $("#lblUnitPrice").html("R " + data.UnitPriceIncluding);
         $("#lblUnitNumber").html(data.UnitNumber);
         $("#lblUnitSize").html(data.UnitSize);
         $("#lblUnitFloor").html(data.UnitFloor);
         $("#lblDevName").html(data.Development);
+        $("#lblUnitStatus").html(data.CurrentSalesStatus);
         $("#txtReservationLapses").val(data.ReservationDate);
         $('#txtSignedDate').val(data.DateSignedBySeller);
         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);

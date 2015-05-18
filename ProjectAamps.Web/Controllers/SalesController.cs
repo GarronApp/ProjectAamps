@@ -170,10 +170,11 @@ namespace AAMPS.Web.Controllers
                     saleAgent.UnitNumber = currentSalesAgent.Unit.UnitNumber;
                     saleAgent.UnitSize = currentSalesAgent.Unit.UnitSize;
                     saleAgent.UnitPrice = currentSalesAgent.Unit.UnitPrice;
+                    saleAgent.UnitPriceIncluding = currentSalesAgent.Unit.UnitPriceIncluding;
                     saleAgent.UnitPhase = currentSalesAgent.Unit.UnitPhase;
                     saleAgent.UnitFloor = currentSalesAgent.Unit.UnitFloor;
                     saleAgent.PlotSize = currentSalesAgent.Unit.UnitErfSize;
-
+           
                     SessionHandler.SessionContext("CurrentIndividualId", currentSalesAgent.Individual.IndividualID);
                     saleAgent.IndividualName = currentSalesAgent.Individual.IndividualName;
                     saleAgent.IndividualSurname = currentSalesAgent.Individual.IndividualSurname;
@@ -199,7 +200,7 @@ namespace AAMPS.Web.Controllers
                         saleAgent.PurchaserPostalCode = currentSalesAgent.Purchaser.PurchaserPostalCode;
                     }
 
-                    saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt.HasValue ? currentSalesAgent.SaleContractSignedPurchaserDt.Value.ToString() : string.Empty;
+                    saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt.HasValue ? currentSalesAgent.SaleContractSignedPurchaserDt.Value.ToString() : null;
                     saleAgent.SalesDepositProofID = currentSalesAgent.SalesDepositProofID != null ? (int)currentSalesAgent.SalesDepositProofID : 0;
                     saleAgent.SalesDepositProofDt = currentSalesAgent.SalesDepositProofDt.HasValue ? currentSalesAgent.SalesDepositProofDt.Value.ToString() : string.Empty;
                     saleAgent.SalesDepoistPaidDt = currentSalesAgent.SalesDepoistPaidDt.HasValue ? currentSalesAgent.SalesDepoistPaidDt.Value.ToString() : string.Empty;
@@ -251,6 +252,8 @@ namespace AAMPS.Web.Controllers
                     saleAgent.UnitNumber = _currentUnit.UnitNumber;
                     saleAgent.UnitSize = _currentUnit.UnitSize;
                     saleAgent.UnitPrice = _currentUnit.UnitPrice;
+                    saleAgent.UnitPriceIncluding = _currentUnit.UnitPriceIncluding;
+                    saleAgent.CurrentSalesStatus = "Available";
                     saleAgent.UnitPhase = _currentUnit.UnitPhase;
                     saleAgent.UnitFloor = _currentUnit.UnitFloor;
                     saleAgent.PlotSize = _currentUnit.UnitErfSize;
