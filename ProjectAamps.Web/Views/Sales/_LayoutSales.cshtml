@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+</head>
+@model IEnumerable<AAMPS.Clients.ViewModels.Development.DevelopmentViewModel>
+
+<body style="background-color: #c3c3c3;">
+    <header>
+        <div class="container">
+            <div class="row" style="margin-bottom: 5px; margin-top: 5px">
+                <div class="col-md-2 pull-left" style="margin-left:-15px; ">
+                    <a href='@Url.Action("HomePage","Development")'><img class="img-thumbnail" src='@Url.Content("~/Images/SmitIncLogo.png")' alt="DEVELOPMENT LOGO" style="height:100px;" /></a>
+                </div>
+                <div class="col-md-7" style="margin-top: 0px;padding-left:60px">
+                    <h3 style="font-size:1.76em; font-weight:bold">SMIT SEWGOOLAM INCORPORATED ATTORNEYS AND CONVEYANCERS</h3>
+                </div>
+                <div class="col-md-3" style="margin-top: 15px;">
+                    <div style="padding-left: 40px;">
+                        <span style="font-size:13px;font-weight:bold">Welcome, <span id="currentUser"></span></span>
+                    </div>
+                    <div style="margin-top: -18px;">
+                        <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm" class="pull-right dark-orange"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+ 
+    <div class="container">
+        <div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
+            <div class="row text-center" style="margin-top:-40px">
+                <h3 style="font-size:1.49em;font-weight:bold">Development Summary</h3>
+            </div>
+            <fieldset>
+                        <div class="row text-center">
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                &nbsp;
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <table style="font-size:0.69em; font-weight:400;margin-top:15px" class="table-striped text-center">
+                                    <thead>
+                                        <tr>
+                                            <td class="col-md-4"><b>Status</b></td>
+                                            <td class="col-md-4"><b>QTY</b></td>
+                                            <td class="col-md-4"><b>Value</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-md-4">Available</td>
+                                            <td class="col-md-4">@Session["TotalUnitsAvailable"].ToString()</td>
+                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsAvailablePrice"].ToString()</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-4">Reserved</td>
+                                            <td class="col-md-4">@Session["TotalUnitsReserved"].ToString()</td>
+                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsReservedPrice"].ToString()</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-4">Pending</td>
+                                            <td class="col-md-4">@Session["TotalUnitsPending"].ToString()</td>
+                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsPendingPrice"].ToString()</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-4">Sold</td>
+                                            <td class="col-md-4">@Session["TotalUnitsSold"].ToString()</td>
+                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsSoldPrice"].ToString()</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-4"><b>Total Units</b></td>
+                                            <td class="col-md-4"><span class="badge"><b>@Session["TotalUnits"].ToString()</b></span></td>
+                                            <td class="col-md-4"><span class="badge"><b>R&nbsp;@Session["TotalUnitsPrice"].ToString()</b></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div id="chart"></div>
+                            </div>
+                        </div>
+
+            </fieldset>
+     
+        </div>
+        <div class="row text-center" style="margin-top: -20px;">
+            <fieldset>
+                <div class="col-md-12">
+                    <table style="width:100%" class="table-striped text-center">
+                        <thead style="font-size:0.89em;font-weight:400;">
+                            <tr>
+                                <td class="col-md-3"><strong>Unit Number</strong></td>
+                                <td class="col-md-3"><strong>Unit Phase</strong></td>
+                                <td class="col-md-3"><strong>Unit Floor</strong></td>
+                                <td class="col-md-3"><strong>Unit Price</strong></td>
+                                <td class="col-md-3"><strong>Unit Status</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody style="font-size:0.89em;font-weight:400;">
+                            <tr>
+                                <td class="col-md-3"><label id="lblUnitNumber"></label></td>
+                                <td class="col-md-3"><label id="lblUnitPhase"></label></td>
+                                <td class="col-md-3"><label id="lblUnitFloor"></label></td>
+                                <td class="col-md-3"><label id="lblUnitPrice"></label></td>
+                                <td class="col-md-3"><label id="lblUnitStatus"></label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+        @RenderBody()
+    </div>
+    <footer style="background-color: #c3c3c3" class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="~/Images/aamps.gif" style="height:40px;padding-left:5px;margin-bottom:5px" class="pull-right" />
+                    <h6 class="text-right" style="margin-right: 10px; padding-top:18px"><span class="text-left pull-left"><b>Welcome to Aamps, Your online Management Property System</b></span> Access Africa (Pty) Ltd (c) 2015</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm" style="width:400px">
+            <div class="modal-content">
+                <div class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
+                <div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
+                <div class="modal-footer">
+                    @*<a href="javascript:;" class="btn btn-primary btn-block">Logout</a>*@
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <button type="button" onclick="LogoutUser()" class="btn btn-primary">Logout</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script src="~/Scripts/d3.js"></script>
+<script src="~/Scripts/c3.js"></script>
+<link href="~/Content/c3.css" rel="stylesheet" />
+ <script>
+    function LogoutUser() {
+        var url = '@Url.Action("CloseCurrentSession", "Account")';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            async: true,
+            cache: false,
+            data: {},
+            success: function () {
+                location.href = '@Url.Action("Login", "Account")';
+            },
+            error: function (exception) {
+                console.log(exception);
+            }
+
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        $.ajax({
+            url: '@Url.Action("GetCurrentUser", "Account")',
+            type: 'GET',
+            datatype: 'json',
+            data: {},
+            success: function (data) {
+                $("#currentUser").html(data);
+            }
+        });
+
+        var items = [];
+        $.getJSON("/Development/GetTotals", function (data) {
+
+            items.push(data);
+            console.log(data)
+            var chart = c3.generate({
+                size: {
+                    height: 180,
+                    width: 360
+                },
+                data: {
+                    columns: [
+                          [data[0].series, data[0].data],
+                          [data[2].series, data[2].data],
+                          [data[1].series, data[1].data],
+                          [data[3].series, data[3].data],
+
+                    ],
+                    type: 'bar',
+                },
+
+            });
+        });
+    });
+</script>
+
+
+
+

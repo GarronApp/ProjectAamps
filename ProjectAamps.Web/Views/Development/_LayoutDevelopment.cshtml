@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+</head>
+@model IEnumerable<AAMPS.Clients.ViewModels.Development.DevelopmentViewModel>
+<body style="background-color:#ffffff">
+
+    <div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top: 20px">
+        <div class="row text-center" style="margin-top:-50px">
+            <h3>Developement Dashboard</h3>
+        </div>
+        <fieldset>
+            <div class="row">
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+                <div class="col-md-5">
+                    <table>
+                        <tr>
+                            <td style="font-size:0.69em">Development Name:&nbsp;</td>
+                            <td><label class="badge" style="font-size:0.69em" id="lblDevName"></label></td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:0.69em">Estate Name:&nbsp;</td>
+                            <td><label class="badge" style="font-size:0.69em" id="lblEstateName"></label></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <table style="font-size:0.69em">
+                                <tbody>
+                                    <tr>
+                                        <td>Pending:&nbsp;&nbsp;</td>
+                                        <td><span class="badge" id="lblTotalPending">5</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reserved:&nbsp;&nbsp;</td>
+                                        <td><span class="badge" id="lblTotalReserved">2</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sold:&nbsp;&nbsp;</td>
+                                        <td><span class="badge" id="lblTotalSold">10</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Price:&nbsp;&nbsp;</td>
+                                        <td><span class="badge" id="lblTotalPriceIncVAT">R 125,000,00</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    function showReservations() {
+        $('#ReservationDetailsModal').modal('show');
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $.ajax({
+            url: '@Url.Action("GetDevelopmentSummary", "Development")',
+            type: 'GET',
+            datatype: 'json',
+            data: {},
+            success: function (data) {
+
+                $("#lblDevName").html(data.DevelopmentDescription);
+                $("#lblEstateName").html(data.EstateName);
+                $("#lblTotalUnits").html(data.TotalUnits);
+                $("#lblTotalPending").html(data.PendingStatusCount);
+                $("#lblTotalReserved").html(data.ReservedStatusCount);
+                $("#lblTotalSold").html(data.SoldStatusCount);
+
+
+            }
+        });
+
+    });
+</script>

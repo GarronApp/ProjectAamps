@@ -1,0 +1,402 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<AAMPS.Clients.ViewModels.Development.DevelopmentViewModel>
+<div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
+    <div class="row text-center" style="margin-top:-40px">
+        <h3 style="font-size:1.49em;font-weight:bold">Development Dashboard</h3>
+    </div>
+    <fieldset>
+        <div class="row text-center">
+            <div class="col-md-2 col-sm-12 col-xs-12">
+                &nbsp;
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <table style="font-size:0.69em; font-weight:400;margin-top:15px" class="table-striped text-center">
+                    <thead>
+                        <tr>
+                            <td class="col-md-4"><b>Status</b></td>
+                            <td class="col-md-4"><b>QTY</b></td>
+                            <td class="col-md-4"><b>Value</b></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">Available</td>
+                            <td class="col-md-4">@Session["TotalUnitsAvailable"].ToString()</td>
+                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsAvailablePrice"].ToString()</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">Reserved</td>
+                            <td class="col-md-4">@Session["TotalUnitsReserved"].ToString()</td>
+                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsReservedPrice"].ToString()</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">Pending</td>
+                            <td class="col-md-4">@Session["TotalUnitsPending"].ToString()</td>
+                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsPendingPrice"].ToString()</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">Sold</td>
+                            <td class="col-md-4">@Session["TotalUnitsSold"].ToString()</td>
+                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsSoldPrice"].ToString()</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4"><b>Total Units</b></td>
+                            <td class="col-md-4"><span class="badge"><b>@Session["TotalUnits"].ToString()</b></span></td>
+                            <td class="col-md-4"><span class="badge"><b>R&nbsp;@Session["TotalUnitsPrice"].ToString()</b></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div id="chart"></div>
+
+            </div>
+        </div>
+
+    </fieldset>
+
+</div>
+<div class="row">
+    <p class="text-center" id="buttonsDashBoard">
+        <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('available')">RESERVATIONS</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('notavailable')">UPDATE SALES INFO</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="showBonds()">BONDS</button>
+        <button type="button" class="btn btn-primary btn-lg" onclick="showReports()">REPORTS</button>
+
+    </p>
+    <br /><br />
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td class="dark-orange">Unit Number</td>
+                <td class="dark-orange">Description</td>
+                <td class="text-center dark-orange">Unit Size</td>
+                <td class="dark-orange">Unit Status</td>
+                <td class="text-right dark-orange">Price Incl.VAT</td>
+                <td class="dark-orange">Phase</td>
+                <td class="dark-orange">Available Date</td>
+                @*<td class="dark-orange">Action</td>*@
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>#</td>
+                    <td>@item.UnitNumber</td>
+                    <td>@item.DevelopmentDescription</td>
+                    <td class="text-center">@item.UnitSize</td>
+                    <td>@item.UnitStatusID</td>
+                    <td class="text-right">R @item.UnitPriceIncluding</td>
+                    <td>Phase</td>
+                    <td>@item.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>
+                    @*<td><a onclick="showReservations('notavailable')" class="orange">Update</a></td>*@
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+<div class="modal fade" id="ReservationDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form id="ReservationDetailsForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="modalEdit">Available Units</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <table class="table table-condensed" id="tableApps">
+                            <thead class="datagrid">
+                                <tr>
+                                    <th class="dark-orange">
+                                        Unit Number
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Block
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Floor
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Price
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Size
+                                    </th>
+                                </tr>
+                            </thead>
+
+
+                            @foreach (var item in Model.Where(c => c.UnitStatusId == 1))
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @item.UnitNumber
+                                        </td>
+                                        <td>
+                                            @item.UnitBlock
+                                        </td>
+                                        <td>
+                                            @item.UnitFloor
+                                        </td>
+                                        <td>
+                                            R @item.UnitPriceIncluding
+                                        </td>
+                                        <td>
+                                            @item.UnitSize
+                                        </td>
+                                        <td>
+                                            <a class="orange" onclick="ViewAvailableUnits(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Book Unit</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="ReservationDetailsModalNotAvailable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form id="ReservationDetailsForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="modalEdit">Pending Bookings</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <table class="table table-condensed" id="tableApps">
+                            <thead class="datagrid">
+                                <tr>
+                                    <th class="dark-orange">
+                                        Unit Number
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Block
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Floor
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Price
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Size
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Status
+                                    </th>
+                                </tr>
+                            </thead>
+
+
+                            @foreach (var item in Model.Where(c => c.UnitStatusId != 1).OrderBy(c => c.UnitStatusId))
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @item.UnitNumber
+                                        </td>
+                                        <td>
+                                            @item.UnitBlock
+                                        </td>
+                                        <td>
+                                            @item.UnitFloor
+                                        </td>
+                                        <td>
+                                            R @item.UnitPriceIncluding
+                                        </td>
+                                        <td>
+                                            @item.UnitSize
+                                        </td>
+                                        <td>
+                                            @item.UnitStatusID
+                                        </td>
+                                        <td>
+                                            <a class="orange" onclick="ViewNotAvailableUnits(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;View Unit</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="ReservationDetailsSoldModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form id="ReservationDetailsForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="modalEdit">Sold Units</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <table class="table table-condensed" id="tableApps">
+                            <thead class="datagrid">
+                                <tr>
+                                    <th class="dark-orange">
+                                        Unit Number
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Block
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Floor
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Price
+                                    </th>
+                                    <th class="dark-orange">
+                                        Unit Size
+                                    </th>
+                                </tr>
+                            </thead>
+
+
+                            @foreach (var item in Model.Where(c => c.UnitStatusId == 4))
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @item.UnitNumber
+                                        </td>
+                                        <td>
+                                            @item.UnitBlock
+                                        </td>
+                                        <td>
+                                            @item.UnitFloor
+                                        </td>
+                                        <td>
+                                            R @item.UnitPriceIncluding
+                                        </td>
+                                        <td>
+                                            @item.UnitSize
+                                        </td>
+                                        <td>
+                                            <a class="orange" onclick="ViewBondDetails(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Bond Details</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        </table>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/d3.js"></script>
+<script src="~/Scripts/c3.js"></script>
+<link href="~/Content/c3.css" rel="stylesheet" />
+<script type="text/javascript">
+    function ViewBondDetails(id) {
+        window.location.href = "/Bonds/Details/" + id;
+    }
+    function ViewNotAvailableUnits(id) {
+        window.location.href = "/Sales/Details/" + id;
+    }
+    function ViewAvailableUnits(id) {
+        window.location.href = "/Sales/Details/" + id;
+    }
+    function showReservations(context) {
+
+        if (context === 'available') {
+            $('#ReservationDetailsModal').modal('show');
+        }
+        if (context == "notavailable") {
+            $('#ReservationDetailsModalNotAvailable').modal('show');
+        }
+    }
+
+    function showBonds() {
+        $('#ReservationDetailsSoldModal').modal('show');
+    }
+
+    function showReports() {
+        window.location.href = '@Url.Action("Index", "Report")';
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $.ajax({
+            url: '@Url.Action("GetDevelopmentSummary", "Development")',
+            type: 'GET',
+            datatype: 'json',
+            data: {},
+            success: function (data) {
+
+                $("#lblDevName").html(data.DevelopmentDescription);
+                $("#lblEstateName").html(data.EstateName);
+                $("#lblTotalUnits").html(data.TotalUnits);
+                $("#lblTotalPending").html(data.PendingStatusCount);
+                $("#lblTotalReserved").html(data.ReservedStatusCount);
+                $("#lblTotalSold").html(data.SoldStatusCount);
+
+            }
+        });
+
+        var items = [];
+        $.getJSON("GetTotals", function (data) {
+
+            items.push(data);
+            console.log(data)
+            var chart = c3.generate({
+                size: {
+                    height: 180,
+                    width: 360
+                },
+                data: {
+                    columns: [
+                          [data[0].series, data[0].data],
+                          [data[2].series, data[2].data],
+                          [data[1].series, data[1].data],
+                          [data[3].series, data[3].data],
+                    ],
+                    type: 'bar',
+                },
+
+            });
+        });
+      
+    });
+</script>
+

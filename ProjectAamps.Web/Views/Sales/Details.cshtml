@@ -1,0 +1,613 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "_LayoutSales.cshtml";
+}
+
+@*<link href="~/Content/bootstrap-datepicker.css" rel="stylesheet" />*@
+<style>
+    .datepicker {
+        z-index: 1151 !important;
+    }
+
+    .datepicker {
+        z-index: 10000;
+    }
+
+    .panel-title > a:before {
+        font-family: FontAwesome;
+        content: "\f056";
+        padding-right: 5px;
+        float: right;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .panel-title > a.collapsed:before {
+        content: "\f055";
+    }
+</style>
+
+<div class="panel panel-default">
+    <a data-toggle="collapse" data-parent="#accordion"  href="#collapseOne" style="text-decoration:none">
+        <div class=" panel-heading" id="divPanelReserved">
+            <h4 class="panel-title">
+                Reservation
+
+                <span class="pull-right"><i class="fa fa-plus-circle" style="font-size:18px"></i></span>
+                <input type="button" class="close pull-right btn-cancel" value="RETURN" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'" />
+            </h4>
+        </div>
+    </a>
+    <div id="collapseOne" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal" id="SaleReservedForm">
+                        <input type="text" class="form-control" id="CurrentIndividualID" name="CurrentIndividualID" value="" style="display:none">
+                        <div class="form-group">
+                            <label for="txtStatus" class="col-sm-4 control-label">Status</label>
+                            <div class="col-sm-8">
+                                <input type="text" value="" readonly="readonly" class="form-control" id="txtSaleReservedPanelStatus" placeholder="status">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtReservationDate" class="col-sm-4 control-label">Reservation Date</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control datepicker" id="txtReservationDate" name="SaleReservationDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtExpiryDate" class="col-sm-4 control-label">Expiry Date</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control datepicker" id="txtExpiryDate" name="SaleReservationExpiryDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </div>
+                        <div id="divReservationExtend">
+                            <div class="form-group">
+                                <label for="selectTimeExtention" class="col-sm-4 control-label">Reservation Time Extention</label>
+                                <div class="col-sm-1">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" id="checkReservationTimeExtention" value=""></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="form-control" id="selectTimeExtention" disabled="disabled">
+                                        <option selected="selected"></option>
+                                        <option value="1">1 Day</option>
+                                        <option value="2">2 Days</option>
+                                        <option value="3">3 Days</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtExtentionDate" class="col-sm-4 control-label">Extention Date</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control datepicker" id="txtExtentionDate" name="SaleReservationExtentionDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <input type="button" id="btnUpdateReservation" class="btn btn-primary btn-sm" value="Update" />
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal" id="individualFormReserved">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="IndividualID" name="IndividualID" value="" style="display:none">
+                            <label for="txtFirstName" class="col-sm-2 control-label">First Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtFirstNameReserved" name="IndividualName" placeholder="first name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtLastName" class="col-sm-2 control-label">Last Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtLastNameReserved" name="IndividualSurname" placeholder="last name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCellNumber" class="col-sm-2 control-label">Cell No</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtCellNumberReserved" name="IndividualContactCell" placeholder="cell number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWorkNumber" class="col-sm-2 control-label">Work No</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtWorkNumberReserved" name="IndividualContactWork" placeholder="work number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail" class="col-sm-2 control-label">Email Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtEmailReserved" name="IndividualEmail" placeholder="email address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectPreferdContactMethod" class="col-sm-2 control-label">Contact Method</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="PreferedContactMethodID" name="PreferedContactMethodID"></select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="button" id="btnReservedUpdatePersonDetails" class="btn btn-primary btn-sm" value="Update" />
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default" id="pendingPanel">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="text-decoration:none">
+        <div class="panel-heading" id="divPanelPending">
+            <h4 class="panel-title">
+                Pending
+                <span class="pull-right"><i class="fa fa-plus-circle" style="font-size:18px"></i></span>
+                <input type="button" class="close pull-right btn-cancel" value="RETURN" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'" />
+            </h4>
+
+        </div>
+    </a>
+    <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal" id="SalePendingForm">
+                        <div class="form-group">
+                            <label for="txtStatus" class="col-sm-4 control-label">Status</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSalePendingPanelStatus" value="" readonly="readonly" placeholder="status">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkPurchaserContractSigned" class="col-sm-4 control-label">Purchaser Signed Contract</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkPurchaserContractSigned" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control datepicker" disabled="disabled" id="txtPurchaserContractSigned" name="SaleContractSignedPurchaserDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                                <label for="checkHasPaidDeposit" class="col-sm-4 control-label">Paid Deposit ?</label>
+                                <div class="col-sm-8">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" id="checkHasPaidDeposit" value=""></label>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        <div class="form-group">
+                            <label for="checkDepositPaid" class="col-sm-4 control-label">Deposit Paid</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkDepositPaid" name="SaleDepositPaidBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control datepicker" disabled="disabled" id="txtDepositPaidDate" name="SalesDepoistPaidDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </div>
+
+                        <div id="showNonCashPaymentSection" class="hide">
+
+                            <div class="form-group">
+                                <label for="selectSalesDepositProofTable" class="col-sm-4 control-label">Deposit Type</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="selectSalesDepositProof" name="SalesDepositProofID"></select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="divDepositAmount">
+                                <label for="txtDepositPaid" class="col-sm-4 control-label">Deposit Amount</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="txtDepositPaid" name="SalesTotalDepositAmount" placeholder="0.00">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="checkSalesDepositProofBt" class="col-sm-4 control-label">Deposit Proof Date</label>
+                                <div class="col-sm-1">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" id="checkSalesDepositProofBt" @*name="SalesDepositProofBt"*@ value=""></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control datepicker" disabled="disabled" id="txtSalesDepositProofDt" name="SalesDepositProofDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="txtDepositPaid" class="col-sm-4 control-label">Upload Proof</label>
+                                <div class="col-sm-8">
+                                    @*<span class="btn btn-default btn-file">
+                                            Browse <input type="file">
+                                        </span>*@
+                                    <a class='btn btn-primary' href='javascript:;'>
+                                        Browse...
+                                        <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40" onchange='$("#upload-file-info").html($(this).val());'>
+                                    </a>
+                                    &nbsp;
+                                    <span class='label label-info' id="upload-file-info"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <input type="button" class="btn btn-primary btn-sm" id="btnUpdateReservedSale" value="Update" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal" id="individualFormPending">
+                        <div class="form-group">
+                            <label for="txtFirstName" class="col-sm-2 control-label">First Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtFirstNamePending" disabled="disabled" name="IndividualName" placeholder="first name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtLastName" class="col-sm-2 control-label">Last Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtLastNamePending" disabled="disabled" name="IndividualSurname" placeholder="last name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCellNumber" class="col-sm-2 control-label">Cell No</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtCellNumberPending" disabled="disabled" name="IndividualContactCell" placeholder="cell number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWorkNumber" class="col-sm-2 control-label">Work No</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtWorkNumberPending" disabled="disabled" name="IndividualContactWork" placeholder="work number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail" class="col-sm-2 control-label">Email Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtEmailPending" disabled="disabled" name="IndividualEmail" placeholder="email address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectPreferdContactMethod" class="col-sm-2 control-label">Contact Method</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="txtPendingPreferedContactMethod" disabled="disabled" name="PreferedContactMethodID"></select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="button" id="btnPendingUpdatePersonDetails" class="btn btn-primary btn-sm" value="Update" />
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default" id="soldPanel">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" style="text-decoration:none">
+        <div class="panel-heading" id="divPanelSold">
+            <h4 class="panel-title">
+                Sold
+                <span class="pull-right"><i class="fa fa-plus-circle" style="font-size:18px"></i></span>
+                <input type="button" class="close pull-right btn-cancel" value="RETURN" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'" />
+            </h4>
+        </div>
+    </a>
+    <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="form-horizontal" id="SaleSoldForm">
+                        <input type="text" class="form-control" id="CurrentPurchaserID" name="CurrentPurchaserID" value="" style="display:none">
+                        <div class="form-group">
+                            <label for="txtStatus" class="col-sm-4 control-label">Status</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSaleSoldPanelStatus" value="" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkSellerContractSigned" class="col-sm-4 control-label">Contract signed by seller</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkPendingSellerContractSigned" name="" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control datepicker" disabled="disabled" id="txtSellerContractSignedDate" name="SaleContractSignedSellerDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="selectFinanceType" class="col-sm-4 control-label">Finance Type</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="selectFinanceType" name="SaleTypeID"></select>
+                            </div>
+                        </div>
+
+                        <div id="divSaleBondDetails">
+                            <div class="form-group">
+                                <label for="checkBondRequired" class="col-sm-4 control-label">Bond Required</label>
+                                <div class="col-sm-1">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" id="checkBondRequired" name="SalesBondRequiredBt" value=""></label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control datepicker" disabled="disabled" id="txtBondRequiredDate" name="SalesBondRequiredDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="selectBondRequired" class="col-sm-4 control-label">Originator</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="selectOriginator" name="BondOriginatorID"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtStatus" class="col-sm-4 control-label">Sale Bond Due Time</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control datepicker" id="txtSaleBondDueTime" name="SaleBondDueTimeDt" value="" readonly="readonly" data-date-format="dd/mm/yyyy">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtStatus" class="col-sm-4 control-label">Sale Bond Expiry Date</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control datepicker" id="txtSaleBondDueExpiryDt" name="SaleBondDueExpiryDt" value="" readonly="readonly" data-date-format="dd/mm/yyyy">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtAmountGranted" class="col-sm-4 control-label">Amount Required</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="txtSaleBondRequiredAmount" name="SaleBondRequiredAmount" placeholder="0.0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <input type="button" id="btnUpdatePendingSale" class="btn btn-primary btn-sm" value="Update" />
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="form-horizontal" id="purchaserFormSold">
+
+                        <div class="form-group">
+                            <label for="selectPurchaserType" class="col-sm-2 control-label">Purchaser Type</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="selectPurchaserType" name="EntityTypeID"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtFirstName" class="col-sm-2 control-label">Purchaser</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserDescription" name="PurchaserDescription" placeholder="purchaser">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtLastName" class="col-sm-2 control-label">Contact Person</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserContactPerson" name="PurchaserContactPerson" placeholder="contact person">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCellNumber" class="col-sm-2 control-label">Cell No</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserContactCell" name="PurchaserContactCell" placeholder="cell number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtWorkNumber" class="col-sm-2 control-label">Home No</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserContactHome" name="PurchaserContactHome" placeholder="home number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail" class="col-sm-2 control-label">Work No</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserContactWork" name="PurchaserContactWork" placeholder="work number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail" class="col-sm-2 control-label">Email Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserEmail" name="PurchaserEmail" placeholder="email address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail" class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserAddress" name="PurchaserAddress" placeholder="address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">&nbsp;</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserAddress1" name="PurchaserAddress1" placeholder="address 1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">&nbsp;</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserAddress2" name="PurchaserAddress2" placeholder="address 2">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">&nbsp;</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserAddress3" name="PurchaserAddress3" placeholder="address 3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">&nbsp;</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserSuburb" name="PurchaserSuburb" placeholder="suburb">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">&nbsp;</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtPurchaserPostalCode" name="PurchaserPostalCode" placeholder="postal code">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="button" class="btn btn-primary btn-sm" id="btnAddUpdatePurchaser" value="Update" />
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default" id="bondsPanel">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" style="text-decoration:none">
+        <div class="panel-heading" id="divPanelBonds">
+            <h4 class="panel-title">
+                Bonds
+                <span class="pull-right"><i class="fa fa-plus-circle" style="font-size:18px"></i></span>
+                <input type="button" class="close pull-right btn-cancel" value="RETURN" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'" />
+            </h4>
+        </div>
+    </a>
+    <div id="collapseFour" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <form class="form-horizontal" id="SaleBondsForm">
+
+                        <div class="form-group">
+                            <label for="selectBondRequired" class="col-sm-4 control-label">Originator</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtBondsOriginator" value="Mortgage Max" name="BondOriginatorID" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectBankName" class="col-sm-4 control-label">Bank Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSaleBondBank" name="SaleBondBank" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAmountGranted" class="col-sm-4 control-label">Bond Account No</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSalesBondAccountNo" name="SalesBondAccountNo" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtExpiryDate" class="col-sm-4 control-label">Interest Rate</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSalesBondInterestRate" name="SalesBondInterestRate" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAmountGranted" class="col-sm-4 control-label">Amount Granted</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSalesBondAmount" name="SalesTotalDepositAmount" placeholder="0.0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAmountGranted" class="col-sm-4 control-label">Client Contacted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkSalesBondClientContactedBt" name="SalesBondClientContactedBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="txtSalesBondClientContactedDt" name="SalesBondClientContactedDt" placeholder="" data-date-format="dd/mm/yyyy">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAmountGranted" class="col-sm-4 control-label">Documents Received</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkSalesBondBondDocsRecBt" name="SalesBondBondDocsRecBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="txtSalesBondBondDocsRecDt" name="SalesBondBondDocsRecDt" data-date-format="dd/mm/yyyy">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkGranted" class="col-sm-4 control-label">Granted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkSalesBondGrantedBt" name="SalesBondGrantedBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" disabled="disabled" id="txtGranted" name="SalesBondGrantedDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkClientAccepted" class="col-sm-4 control-label">Client Accepted</label>
+                            <div class="col-sm-1">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="checkSalesBondClientAcceptBt" name="SalesBondClientAcceptBt" value=""></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control datepicker" disabled="disabled" id="txtClientAccepted" name="SalesBondClientAcceptDt" data-date-format="dd/mm/yyyy" placeholder="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/app/sales/sales.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var sales = new Sales();
+        sales.load();
+    });
+</script>
+
