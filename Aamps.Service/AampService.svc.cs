@@ -344,6 +344,32 @@ namespace Aamps.Service
             _orginatorRepo.Update(originatorTr);
         }
 
+        public int GetUnitStatusTypes(GetUnitStatusType unitStatusType)
+        {
+            switch (unitStatusType)
+            {
+                case GetUnitStatusType.Available:
+                    return (int)GetUnitStatusType.Available;
+                case GetUnitStatusType.Reserved:
+                    return (int)GetUnitStatusType.Reserved;
+                case GetUnitStatusType.Pending:
+                    return (int)GetUnitStatusType.Pending;
+                case GetUnitStatusType.Sold:
+                    return (int)GetUnitStatusType.Sold;
+                case GetUnitStatusType.Occupied:
+                    return (int)GetUnitStatusType.Occupied;
+                case GetUnitStatusType.Bankable:
+                    return (int)GetUnitStatusType.Bankable;
+                case GetUnitStatusType.Registered:
+                    return (int)GetUnitStatusType.Registered;
+                case GetUnitStatusType.Unavailable:
+                    return (int)GetUnitStatusType.Unavailable;
+                default:
+                    break;
+            }
+            return 0;
+        }
+
 
     }
 }

@@ -144,7 +144,10 @@ namespace Aamps.Service
         [OperationContract]
         UserList GetCurrentUser(string username);
 
+        //Enums
 
+        [OperationContract]
+        int GetUnitStatusTypes(GetUnitStatusType type);
         
     }
 }

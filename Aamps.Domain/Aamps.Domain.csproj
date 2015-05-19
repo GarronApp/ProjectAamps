@@ -177,7 +177,8 @@
     <Folder Include="Mappers\Bonds\" />
     <Folder Include="Mappers\Sales\" />
     <Folder Include="Queries\Bonds\" />
-    <Folder Include="Rules\" />
+    <Folder Include="Queries\Sales\" />
+    <Folder Include="Rules\Sales\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -19,7 +19,6 @@ namespace AAMPS.Clients.Mappers.Bonds
         public AAMPS.Clients.AampService.AampServiceClient _repoService = new AampServiceClient();
         #region Properties
         
-        public int UnitId { get; set; }
         public Sale currentSalesAgent { get; set; }
         public Unit _currentUnit { get; set; }
         public OriginatorTr orginators { get; set; }

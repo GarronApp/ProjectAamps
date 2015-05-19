@@ -2,6 +2,7 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" />
   <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales" />
+  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
   <xs:element name="GetAllUnits">
     <xs:complexType>
       <xs:sequence />
@@ -553,6 +554,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetCurrentUserResult" nillable="true" type="q45:UserList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUnitStatusTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" minOccurs="0" name="type" type="q46:GetUnitStatusType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUnitStatusTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUnitStatusTypesResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

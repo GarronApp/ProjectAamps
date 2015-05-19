@@ -6830,6 +6830,35 @@ namespace AAMPS.Clients.AampService {
         }
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetUnitStatusType", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects")]
+    public enum GetUnitStatusType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Available = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Reserved = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Pending = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Sold = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Occupied = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Bankable = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Registered = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Unavailable = 8,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AampService.IAampService")]
     public interface IAampService {
@@ -7085,6 +7114,12 @@ namespace AAMPS.Clients.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCurrentUser", ReplyAction="http://tempuri.org/IAampService/GetCurrentUserResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.UserList> GetCurrentUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetUnitStatusTypesResponse")]
+        int GetUnitStatusTypes(AAMPS.Clients.AampService.GetUnitStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetUnitStatusTypesResponse")]
+        System.Threading.Tasks.Task<int> GetUnitStatusTypesAsync(AAMPS.Clients.AampService.GetUnitStatusType type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -7448,6 +7483,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.UserList> GetCurrentUserAsync(string username) {
             return base.Channel.GetCurrentUserAsync(username);
+        }
+        
+        public int GetUnitStatusTypes(AAMPS.Clients.AampService.GetUnitStatusType type) {
+            return base.Channel.GetUnitStatusTypes(type);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetUnitStatusTypesAsync(AAMPS.Clients.AampService.GetUnitStatusType type) {
+            return base.Channel.GetUnitStatusTypesAsync(type);
         }
     }
 }
