@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Aamps.Domain.ValueObjects
 {
+    
     public class UnitStatusType
     {
         public enum GetUnitStatusType

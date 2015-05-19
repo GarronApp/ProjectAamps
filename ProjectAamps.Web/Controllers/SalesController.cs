@@ -1,18 +1,18 @@
-﻿using AAMPS.Web.Models.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AAMPS.Clients.AampService;
 using App.Common.Security;
-using AAMPS.Web.Models.ViewModels.Sales;
 using System.Globalization;
 using App.Extentions;
-using Aamps.Domain.ValueObjects;
 using Aamps.Domain.Converters;
 using AAMPS.Clients.ViewModels.Individual;
 using AAMPS.Clients.ViewModels.Purchaser;
+using AAMPS.Clients.ViewModels.Sales;
+using Aamps.Domain.ValueObjects;
+
 
 namespace AAMPS.Web.Controllers
 {
@@ -154,7 +154,7 @@ namespace AAMPS.Web.Controllers
                 var IsNewSale = SessionHandler.GetSessionContext("NewSale");
                 if (IsNewSale != "true")
                 {
-                    SalesAgentViewModel saleAgent = new SalesAgentViewModel();
+                    SalesViewModel saleAgent = new SalesViewModel();
                     int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
                     var currentSalesAgent = _repoService.GetSaleByUnitId(_currentUnitId);
                     SessionHandler.SessionContext("CurrentSaleId", currentSalesAgent.SaleID);
@@ -245,7 +245,7 @@ namespace AAMPS.Web.Controllers
                 }
                 else
                 {
-                    SalesAgentViewModel saleAgent = new SalesAgentViewModel();
+                    SalesViewModel saleAgent = new SalesViewModel();
                     int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
                     var _currentUnit = _repoService.GetUnitById(_currentUnitId);
                     saleAgent.IsNewSale = "NewSale";

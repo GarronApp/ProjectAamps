@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AAMPS.Web.Models.ViewModels.Sales
+namespace AAMPS.Clients.ViewModels.Sales
 {
     public class PendingSaleViewModel
     {
@@ -30,7 +31,7 @@ namespace AAMPS.Web.Models.ViewModels.Sales
         public string SaleBondDueExpiryDt { get; set; }
         public int CurrentPurchaserID { get; set; }
 
-        
+
 
 
 

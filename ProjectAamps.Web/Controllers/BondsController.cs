@@ -1,6 +1,4 @@
 ﻿using AAMPS.Clients.AampService;
-using AAMPS.Web.Models.ViewModels;
-using AAMPS.Web.Models.ViewModels.Bonds;
 using App.Common.Security;
 using System;
 using System.Collections.Generic;
@@ -9,10 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using App.Extentions;
 using AAMPS.Clients.Actions.Bonds;
-using AAMPS.Domain;
 using AAMPS.Clients.Queries.Bonds;
-using Aamps.Domain.ValueObjects;
 using System.Globalization;
+using AAMPS.Clients.ViewModels.Sales;
+using AAMPS.Clients.ViewModels.Originator;
+using AAMPS.Clients.ViewModels.Bonds;
 
 
 namespace AAMPS.Web.Controllers
@@ -36,7 +35,7 @@ namespace AAMPS.Web.Controllers
         [HttpGet]
         public JsonResult GetDetails()
         {
-            SalesAgentViewModel saleAgent = new SalesAgentViewModel();
+            SalesViewModel saleAgent = new SalesViewModel();
 
             int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
             var currentSalesAgent = _repoService.GetSaleByUnitId(_currentUnitId);
@@ -65,7 +64,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult SaveSalesBondDetails(SalesAgentViewModel sale)
+        public JsonResult SaveSalesBondDetails(SalesViewModel sale)
         {
             try
             {

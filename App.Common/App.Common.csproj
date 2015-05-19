@@ -81,6 +81,8 @@
     <Compile Include="Exceptions\ExceptionHandler.cs" />
     <Compile Include="Mails\EmailProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\HtmlToPdfBuilder.cs" />
+    <Compile Include="Reporting\PDFByteStreamWrtieProvider.cs" />
     <Compile Include="Reporting\PDFByteStreamProvider.cs" />
     <Compile Include="Reporting\ReportSettings.cs" />
     <Compile Include="Security\AampsAuthorize.cs" />

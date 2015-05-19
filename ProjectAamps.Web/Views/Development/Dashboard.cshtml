@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model IEnumerable<AAMPS.Web.Models.ViewModels.DevelopmentViewModel>
+@model IEnumerable<AAMPS.Clients.ViewModels.Development.DevelopmentViewModel>
 <div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
     <div class="row text-center" style="margin-top:-40px">
         <h3 style="font-size:1.49em;font-weight:bold">Development Dashboard</h3>
@@ -390,36 +390,13 @@
                           [data[2].series, data[2].data],
                           [data[1].series, data[1].data],
                           [data[3].series, data[3].data],
-
-
-                        //$.each(items, function (key,val) {
-                        //    console.log(items);
-                        //    console.log(items[0][0].series + " " + items[0][0].data);
-                        //    [items[0][0].series, items[0][0].data]
-                        //    }),
                     ],
                     type: 'bar',
                 },
 
             });
         });
-        //var chart = c3.generate({
-        //    size: {
-        //        height: 180,
-        //        width: 360
-        //    },
-        //    data: {
-        //        columns: [
-        //            ['Lulu', 15],
-        //            ['Olaf', 40],
-        //            ['Nula', 30],
-        //            ['Yuga', 15],
-        //        ],
-        //        type: 'pie',
-
-        //    },
-
-        //});
+      
     });
 </script>
 

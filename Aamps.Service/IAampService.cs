@@ -1,4 +1,5 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.ValueObjects;
 using Aamps.Domain.ViewModels.Reports.Sales;
 using System;
 using System.Collections.Generic;
@@ -142,6 +143,7 @@ namespace Aamps.Service
 
         [OperationContract]
         UserList GetCurrentUser(string username);
+
 
         
     }

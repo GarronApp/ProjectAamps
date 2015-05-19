@@ -1,7 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using AAMPS.Clients.AampService;
-using AAMPS.Web.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,10 +10,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using Aamps.Domain.Models;
-using AAMPS.Web.Models.ViewModels.Reports.Sales;
 using System.Data.SqlClient;
 using SelectPdf;
 using iTextSharp.text.html.simpleparser;
+using App.Common.Reporting;
+using AAMPS.Clients.ViewModels.Development;
 
 namespace AAMPS.Web.Controllers
 {
@@ -40,8 +40,8 @@ namespace AAMPS.Web.Controllers
 
         public void ExportToPdf()
         {
-           App.Common.Reporting.PDFByteStreamProvider.StreamHandler();
-
+          //App.Common.Reporting.PDFByteStreamProvider.StreamHandler();
+            new PDFByteStreamWrtieProvider().StreamHandler();
             //Response.ContentType = "application/pdf";
             //Response.AddHeader("content-disposition", "attachment;filename=div.pdf");
             //Response.Cache.SetCacheability(HttpCacheability.NoCache);

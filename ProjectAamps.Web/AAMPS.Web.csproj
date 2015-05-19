@@ -181,11 +181,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BinaryContentResult.cs" />
     <Compile Include="Controllers\BondsController.cs" />
     <Compile Include="Controllers\DevelopmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MyController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -193,19 +191,6 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ViewModels\Bonds\BondsViewModel.cs" />
-    <Compile Include="Models\ViewModels\Bonds\OrginatorViewModel.cs" />
-    <Compile Include="Models\ViewModels\Reports\Sales\SalesReportViewModel.cs" />
-    <Compile Include="Models\ViewModels\Sales\PendingSaleViewModel.cs" />
-    <Compile Include="Models\ViewModels\Sales\ReservationViewModel.cs" />
-    <Compile Include="Models\ViewModels\Sales\ReservedSaleViewModel.cs" />
-    <Compile Include="Models\ViewModels\SummaryViewModel.cs" />
-    <Compile Include="Models\ViewModels\DevelopmentViewModel.cs" />
-    <Compile Include="Models\ViewModels\Development\Dashboard\DevelopmentUnitViewModel.cs" />
-    <Compile Include="Models\ViewModels\Development\Dashboard\Queries\DevelopmentUnitQuery.cs" />
-    <Compile Include="Models\ViewModels\Mappers\Mapper.cs" />
-    <Compile Include="Models\ViewModels\Mappers\UnitDevelopmentMapper.cs" />
-    <Compile Include="Models\ViewModels\SalesAgentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -224,6 +209,7 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="files\HtmlPage.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

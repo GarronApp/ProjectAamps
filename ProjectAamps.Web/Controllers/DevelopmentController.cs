@@ -1,13 +1,12 @@
-﻿using AAMPS.Web.Models.ViewModels;
-using AAMPS.Web.Models.ViewModels.Development.Dashboard;
-using AAMPS.Web.Models.ViewModels.Mappers;
-using AAMPS.Clients.AampService;
+﻿using AAMPS.Clients.AampService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using App.Common.Security;
+using AAMPS.Clients.ViewModels.Development;
+
 
 namespace AAMPS.Web.Controllers
 {
