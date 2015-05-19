@@ -16,29 +16,29 @@
 
     <div class="row text-center" style="margin-top: -20px;">
         <fieldset>
-            <legend class="well">Unit</legend>
+            <legend class="well"></legend>
             <div class="col-md-12" style="margin-top: -20px;">
                 <table style="width:100%" class="table text-center">
-                    <thead style="font-size:0.70em;font-weight:400;">
+                    <thead style="font-size:1em;font-weight:400;">
                         <tr>
-                            <td class=" dark-orange">Unit Number</td>
+                            <td class="dark-orange">Unit Number</td>
                             <td class="dark-orange">Description</td>
                             <td class="text-center dark-orange">Unit Size</td>
                             <td class="dark-orange">Unit Status</td>
-                            <td class="text-right dark-orange">Price Incl.VAT</td>
+                            <td class="text-center dark-orange">Purchase Price</td>
                             <td class="dark-orange">Phase</td>
-                            <td class="dark-orange">Available Date</td>
+                            @*<td class="dark-orange">Available Date</td>*@
                         </tr>
                     </thead>
-                    <tbody style="font-size:0.70em;font-weight:400;">
+                    <tbody style="font-size:0.9em;font-weight:400;">
                         <tr>
                             <td>@Model.UnitNumber</td>
                             <td>@Model.DevelopmentDescription</td>
                             <td class="text-center">@Model.UnitSize</td>
                             <td>@Model.UnitStatusID</td>
-                            <td class="text-right">R @Model.UnitPriceIncluding</td>
+                            <td class="text-center">R @Model.UnitPriceIncluding</td>
                             <td>@Model.UnitPhase</td>
-                            <td>@Model.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>
+                            @*<td>@Model.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>*@
                         </tr>
                     </tbody>
                 </table>
@@ -83,7 +83,7 @@
                                     <td class="col-md-3 dark-orange"><strong>Bond Required</strong></td>
                                     <td class="col-md-3 dark-orange"><strong>Bond Amount</strong></td>
                                     <td class="col-md-3 dark-orange"><strong>Date Applied</strong></td>
-                                    <td class="col-md-3 dark-orange"><strong>Date Granted</strong></td>
+                                    @*<td class="col-md-3 dark-orange"><strong>Date Granted</strong></td>*@
                                 </tr>
                             </thead>
                             <tbody style="font-size:0.70em;font-weight:400;">
@@ -91,7 +91,7 @@
                                     <td class="col-md-3"><label>@Model.SalesBondRequiredBt</label></td>
                                     <td class="col-md-3"><label>R @Model.SaleBondRequiredAmount</label></td>
                                     <td class="col-md-3"><label>@Model.SalesBondRequiredDt</label></td>
-                                    <td class="col-md-3"><label>@Model.SalesBondGrantedDt</label></td>
+                                   @* <td class="col-md-3"><label>@Model.SalesBondGrantedDt</label></td>*@
                                 </tr>
                             </tbody>
                         </table>

@@ -27,9 +27,9 @@ namespace AAMPS.Web.Controllers
 
             var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
 
-            var result = new LoadBondDetails(new LoadBondsQuery(){ UnitId = id });
-           
-            return View(result.query.Result);
+            var response = new LoadBondDetails(new LoadBondsQuery(){ UnitId = id });
+
+            return View(response.query.Result);
         }
 
         [HttpGet]

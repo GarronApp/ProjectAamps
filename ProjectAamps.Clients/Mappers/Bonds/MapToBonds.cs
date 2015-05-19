@@ -19,7 +19,6 @@ namespace AAMPS.Clients.Mappers.Bonds
         public AAMPS.Clients.AampService.AampServiceClient _repoService = new AampServiceClient();
         #region Properties
         
-        public int UnitId { get; set; }
         public Sale currentSalesAgent { get; set; }
         public Unit _currentUnit { get; set; }
         public OriginatorTr orginators { get; set; }
@@ -73,9 +72,9 @@ namespace AAMPS.Clients.Mappers.Bonds
 
                 DepositPaid = currentSalesAgent.SaleDepositPaidBt == true ? "Yes" : "No",
 
-                SalesDepoistPaidDt = currentSalesAgent.SalesDepoistPaidDt.HasValue ? currentSalesAgent.SalesDepoistPaidDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SalesDepoistPaidDt.GetValueOrDefault().ToString(),
+                SalesDepoistPaidDt = currentSalesAgent.SalesDepoistPaidDt.HasValue ? currentSalesAgent.SalesDepoistPaidDt.GetValueOrDefault().ToString("dd/MM/yyyy") : null,
                 SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt.HasValue ? currentSalesAgent.SaleContractSignedPurchaserDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SaleContractSignedPurchaserDt.GetValueOrDefault().ToString(),
-                SaleBondRequiredAmount = currentSalesAgent.SalesTotalDepositAmount.HasValue ? currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault() : currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault(),
+                SaleBondRequiredAmount = currentSalesAgent.SaleBondRequiredAmount,
                 SalesTotalDepositAmount = currentSalesAgent.SalesTotalDepositAmount.HasValue ? currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault() : currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault(),
                 SalesBondRequiredDt = currentSalesAgent.SalesBondRequiredDt.HasValue ? currentSalesAgent.SalesBondRequiredDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SalesBondRequiredDt.GetValueOrDefault().ToString(),
                 SalesBondRequiredBt = currentSalesAgent.SalesBondRequiredBt == true ? "Yes" : "No",
@@ -107,13 +106,17 @@ namespace AAMPS.Clients.Mappers.Bonds
                     OriginatorTrID = item.OriginatorTrID,
                     BankName = _repoService.GetBankById((int)item.BankID).BankDescription,
                     MOStatus = _repoService.GetMOStatusById((int)item.MOStatusID).MOStatusDescription,
-                    OriginatorTrAcceptDt = item.OriginatorTrAcceptDt.HasValue ? item.OriginatorTrAcceptDt.GetValueOrDefault().ToString("dd/MM/yyyy") : item.OriginatorTrAcceptDt.GetValueOrDefault().ToString(),
+                    //OriginatorTrAcceptDt = item.OriginatorTrAcceptDt.HasValue ? item.OriginatorTrAcceptDt.GetValueOrDefault().ToString("dd/MM/yyyy") : item.OriginatorTrAcceptDt.GetValueOrDefault().ToString(),
+                    OriginatorTrAcceptDt = item.OriginatorTrAcceptDt.HasValue ? item.OriginatorTrAcceptDt.GetValueOrDefault().ToString("dd/MM/yyyy") : null,
                     OriginatorTrAddedDt = item.OriginatorTrAddedDt != null ? item.OriginatorTrAddedDt.ToShortDateString() : item.OriginatorTrAddedDt.ToString(),
-                    OriginatorTrSubmittedDt = item.OriginatorTrSubmittedDt.HasValue ? item.OriginatorTrSubmittedDt.GetValueOrDefault().ToString("dd/MM/yyyy") : item.OriginatorTrSubmittedDt.GetValueOrDefault().ToString(),
-                    OriginatorTrAIPDt = item.OriginatorTrAIPDt.HasValue ? item.OriginatorTrAIPDt.GetValueOrDefault().ToString("dd/MM/yyyy") : item.OriginatorTrAIPDt.GetValueOrDefault().ToString(),
+                    //OriginatorTrSubmittedDt = item.OriginatorTrSubmittedDt.HasValue ? item.OriginatorTrSubmittedDt.GetValueOrDefault().ToString("dd/MM/yyyy") : item.OriginatorTrSubmittedDt.GetValueOrDefault().ToString(),
+                    OriginatorTrSubmittedDt = item.OriginatorTrSubmittedDt.HasValue ? item.OriginatorTrSubmittedDt.GetValueOrDefault().ToString("dd/MM/yyyy") : null,
+                    //OriginatorTrAIPDt = item.OriginatorTrAIPDt.HasValue ? item.OriginatorTrAIPDt.GetValueOrDefault().ToString("dd/MM/yyyy") : item.OriginatorTrAIPDt.GetValueOrDefault().ToString(),
+                    OriginatorTrAIPDt = item.OriginatorTrAIPDt.HasValue ? item.OriginatorTrAIPDt.GetValueOrDefault().ToString("dd/MM/yyyy") : null,
                     OriginatorTrBondAmount = item.OriginatorTrBondAmount,
                     OriginatorTrIntRate = item.OriginatorTrIntRate,
-                    OriginatorTrGrantDt = item.OriginatorTrGrantDt.HasValue ? item.OriginatorTrGrantDt.GetValueOrDefault().ToString("dd/MM/yyyy") : item.OriginatorTrGrantDt.GetValueOrDefault().ToString()
+                    //OriginatorTrGrantDt = item.OriginatorTrGrantDt.HasValue ? item.OriginatorTrGrantDt.GetValueOrDefault().ToString("dd/MM/yyyy") : item.OriginatorTrGrantDt.GetValueOrDefault().ToString()
+                    OriginatorTrGrantDt = item.OriginatorTrGrantDt.HasValue ? item.OriginatorTrGrantDt.GetValueOrDefault().ToString("dd/MM/yyyy") : null
                 };
 
                 orginatorList.Add(viewModel);

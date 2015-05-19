@@ -6,6 +6,7 @@
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAampService_GetAllUnits_InputMessage">
@@ -260,6 +261,12 @@
   <wsdl:message name="IAampService_GetCurrentUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitStatusTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitStatusTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitStatusTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitStatusTypesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAampService">
     <wsdl:operation name="GetAllUnits">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllUnits" message="tns:IAampService_GetAllUnits_InputMessage" />
@@ -428,6 +435,10 @@
     <wsdl:operation name="GetCurrentUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetCurrentUser" message="tns:IAampService_GetCurrentUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetCurrentUserResponse" message="tns:IAampService_GetCurrentUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitStatusTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusTypes" message="tns:IAampService_GetUnitStatusTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusTypesResponse" message="tns:IAampService_GetUnitStatusTypes_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAampService" type="tns:IAampService">
@@ -803,6 +814,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCurrentUser">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetCurrentUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitStatusTypes">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitStatusTypes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

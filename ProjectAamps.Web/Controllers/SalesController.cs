@@ -12,6 +12,11 @@ using AAMPS.Clients.ViewModels.Individual;
 using AAMPS.Clients.ViewModels.Purchaser;
 using AAMPS.Clients.ViewModels.Sales;
 using Aamps.Domain.ValueObjects;
+using AAMPS.Clients.Actions.Sales;
+using AAMPS.Clients.Queries.Sales;
+using AAMPS.Clients.Actions.Development;
+using AAMPS.Clients.Queries.Development;
+using ProjectAamps.Clients.Actions.Sales;
 
 
 namespace AAMPS.Web.Controllers
@@ -104,44 +109,12 @@ namespace AAMPS.Web.Controllers
         [AampsAuthorize]
         public ActionResult Details(int id)
         {
-            var currentUnit = _repoService.GetUnitById(id);
-            var currentUnitStatus = currentUnit.UnitStatusID;
 
-            if (Session["NewSale"] != null)
-            {
-                Session.Remove("NewSale");
-            }
-
-            if(currentUnitStatus == (int)UnitStatusType.GetUnitStatusType.Available)
-            {
-                SessionHandler.SessionContext("CurrentUnitStatus", "Available");
-                SessionHandler.SessionContext("NewSale", "true");
-            }
-            
             SessionHandler.SessionContext("CurrentUnit", id);
-            var units = _repoService.GetAllUnits().ToList();
 
-            var totalUnits = units.Count();
-            var totalUnitsPrice = units.Sum(x => x.UnitPriceIncluding);
-            var totalUnitsAvailable = units.Count(x => x.UnitStatusID == (int)UnitStatusType.GetUnitStatusType.Available);
-            var totalUnitsAvailablePrice = units.Where(x => x.UnitStatusID == (int)UnitStatusType.GetUnitStatusType.Available).Sum(x => x.UnitPriceIncluding);
-            var totalUnitsReserved = units.Count(x => x.UnitStatusID == (int)UnitStatusType.GetUnitStatusType.Reserved);
-            var totalUnitsReservedPrice = units.Where(x => x.UnitStatusID == (int)UnitStatusType.GetUnitStatusType.Reserved).Sum(x => x.UnitPriceIncluding);
-            var totalUnitsPending = units.Count(x => x.UnitStatusID == (int)UnitStatusType.GetUnitStatusType.Pending);
-            var totalUnitsPendingPrice = units.Where(x => x.UnitStatusID == (int)UnitStatusType.GetUnitStatusType.Pending).Sum(x => x.UnitPriceIncluding);
-            var totalUnitsSold = units.Count(x => x.UnitStatusID == (int)UnitStatusType.GetUnitStatusType.Sold);
-            var totalUnitsSoldPrice = units.Where(x => x.UnitStatusID == (int)UnitStatusType.GetUnitStatusType.Sold).Sum(x => x.UnitPriceIncluding);
+            var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
 
-            Session.Add("TotalUnits", totalUnits);
-            Session.Add("TotalUnitsPrice", totalUnitsPrice * totalUnits);
-            Session.Add("TotalUnitsAvailable", totalUnitsAvailable);
-            Session.Add("TotalUnitsAvailablePrice", totalUnitsAvailablePrice * totalUnitsAvailable);
-            Session.Add("TotalUnitsSold", totalUnitsSold);
-            Session.Add("totalUnitsSoldPrice", totalUnitsSoldPrice * totalUnitsSold);
-            Session.Add("TotalUnitsPending", totalUnitsPending);
-            Session.Add("TotalUnitsPendingPrice", totalUnitsPendingPrice * totalUnitsPending);
-            Session.Add("TotalUnitsReserved", totalUnitsReserved);
-            Session.Add("totalUnitsReservedPrice", totalUnitsReservedPrice * totalUnitsReserved);
+            var result = new LoadDevelopmentSummaryTotals(new LoadDevelopmentSummaryTotalsQuery() { UnitId = id });
 
             return View();
         }
@@ -152,112 +125,23 @@ namespace AAMPS.Web.Controllers
             try
             {
                 var IsNewSale = SessionHandler.GetSessionContext("NewSale");
+
                 if (IsNewSale != "true")
                 {
-                    SalesViewModel saleAgent = new SalesViewModel();
-                    int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
-                    var currentSalesAgent = _repoService.GetSaleByUnitId(_currentUnitId);
-                    SessionHandler.SessionContext("CurrentSaleId", currentSalesAgent.SaleID);
-                    int saleActiveStatus = (int)currentSalesAgent.SaleActiveStatusID;
-                    saleAgent.CurrentSalesStatusId = _repoService.GetSaleActiveStatus(saleActiveStatus).SaleActiveStatusID;
-                    saleAgent.CurrentSalesStatus = _repoService.GetSaleActiveStatus(saleActiveStatus).SaleActiveStatusDescription;
-                    saleAgent.ReservationLapses = currentSalesAgent.SaleReservationDt;
-                    saleAgent.ReservationTimeExtention = currentSalesAgent.SaleReservationExtentionDt;
-                    saleAgent.ContractSigned = false;
-                    saleAgent.DepositPaid = currentSalesAgent.SaleDepositPaidBt;
-                    saleAgent.DateSignedBySeller = currentSalesAgent.SaleContractSignedSellerDt;
-                    saleAgent.Development = _repoService.GetDevelopmentById(currentSalesAgent.Unit.DevelopmentID).DevelopmentDescription;
-                    saleAgent.UnitNumber = currentSalesAgent.Unit.UnitNumber;
-                    saleAgent.UnitSize = currentSalesAgent.Unit.UnitSize;
-                    saleAgent.UnitPrice = currentSalesAgent.Unit.UnitPrice;
-                    saleAgent.UnitPriceIncluding = currentSalesAgent.Unit.UnitPriceIncluding;
-                    saleAgent.UnitPhase = currentSalesAgent.Unit.UnitPhase;
-                    saleAgent.UnitFloor = currentSalesAgent.Unit.UnitFloor;
-                    saleAgent.PlotSize = currentSalesAgent.Unit.UnitErfSize;
-           
-                    SessionHandler.SessionContext("CurrentIndividualId", currentSalesAgent.Individual.IndividualID);
-                    saleAgent.IndividualName = currentSalesAgent.Individual.IndividualName;
-                    saleAgent.IndividualSurname = currentSalesAgent.Individual.IndividualSurname;
-                    saleAgent.IndividualContactCell = currentSalesAgent.Individual.IndividualContactCell;
-                    saleAgent.IndividualContactWork= currentSalesAgent.Individual.IndividualContactWork;
-                    saleAgent.IndividualEmail= currentSalesAgent.Individual.IndividualEmail;
-                    saleAgent.PreferedContactMethodID = currentSalesAgent.Individual.PreferedContactMethodID;
+                    var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
 
-                    if (currentSalesAgent.Purchaser != null)
-                    {
-                        saleAgent.EntityTypeID = currentSalesAgent.Purchaser.EntityTypeID;
-                        saleAgent.PurchaserDescription = currentSalesAgent.Purchaser.PurchaserDescription;
-                        saleAgent.PurchaserContactPerson = currentSalesAgent.Purchaser.PurchaserContactPerson;
-                        saleAgent.PurchaserContactCell = currentSalesAgent.Purchaser.PurchaserContactCell;
-                        saleAgent.PurchaserContactHome = currentSalesAgent.Purchaser.PurchaserContactHome;
-                        saleAgent.PurchaserContactWork = currentSalesAgent.Purchaser.PurchaserContactWork;
-                        saleAgent.PurchaserEmail = currentSalesAgent.Purchaser.PurchaserEmail;
-                        saleAgent.PurchaserAddress = currentSalesAgent.Purchaser.PurchaserAddress;
-                        saleAgent.PurchaserAddress1 = currentSalesAgent.Purchaser.PurchaserAddress1;
-                        saleAgent.PurchaserAddress2 = currentSalesAgent.Purchaser.PurchaserAddress2;
-                        saleAgent.PurchaserAddress3 = currentSalesAgent.Purchaser.PurchaserAddress3;
-                        saleAgent.PurchaserSuburb = currentSalesAgent.Purchaser.PurchaserSuburb;
-                        saleAgent.PurchaserPostalCode = currentSalesAgent.Purchaser.PurchaserPostalCode;
-                    }
+                    var response = new LoadSaleDetails(new LoadSalesQuery() { UnitId = unitId });
 
-                    saleAgent.SaleContractSignedPurchaserDt = currentSalesAgent.SaleContractSignedPurchaserDt.HasValue ? currentSalesAgent.SaleContractSignedPurchaserDt.Value.ToString() : null;
-                    saleAgent.SalesDepositProofID = currentSalesAgent.SalesDepositProofID != null ? (int)currentSalesAgent.SalesDepositProofID : 0;
-                    saleAgent.SalesDepositProofDt = currentSalesAgent.SalesDepositProofDt.HasValue ? currentSalesAgent.SalesDepositProofDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesDepoistPaidDt = currentSalesAgent.SalesDepoistPaidDt.HasValue ? currentSalesAgent.SalesDepoistPaidDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondAmount = currentSalesAgent.SalesBondAmount != null ? (double)currentSalesAgent.SalesBondAmount : 0.0; 
-                    saleAgent.SaleDepositPaidBt = currentSalesAgent.SaleDepositPaidBt == true ? 1 : 0;
-
-                    saleAgent.SalesBondAccountNo = currentSalesAgent.SalesBondAccountNo;
-                    saleAgent.SalesBondInterestRate = currentSalesAgent.SalesBondInterestRate != null ? (float)currentSalesAgent.SalesBondInterestRate : 0;
-                    saleAgent.SalesTotalDepositAmount = currentSalesAgent.SalesTotalDepositAmount != null ? (float)currentSalesAgent.SalesTotalDepositAmount : 0; 
-                    saleAgent.SalesBondGrantedDt = currentSalesAgent.SalesBondGrantedDt.HasValue ? currentSalesAgent.SalesBondGrantedDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondGrantedBt = currentSalesAgent.SalesBondGrantedDt.HasValue ? 1 : 0;
-                    saleAgent.SalesBondClientAcceptDt = currentSalesAgent.SalesBondClientAcceptDt.HasValue ? currentSalesAgent.SalesBondClientAcceptDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondClientAcceptBt = currentSalesAgent.SalesBondClientAcceptDt.HasValue ? 1 : 0;
-                    saleAgent.SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? currentSalesAgent.SalesBondClientContactedDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondClientContactedBt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? 1 : 0;
-                    saleAgent.SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondBondDocsRecBt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? 1 : 0;
-
-                    if (currentSalesAgent.BankID != null)
-                    {
-                        saleAgent.SaleBondBank = _repoService.GetBankById((int)currentSalesAgent.BankID).BankDescription;
-                    }
-
-                    saleAgent.SaleContractSignedSellerDt = currentSalesAgent.SaleContractSignedSellerDt.HasValue ? currentSalesAgent.SaleContractSignedSellerDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondRequiredDt = currentSalesAgent.SalesBondRequiredDt.HasValue ? currentSalesAgent.SalesBondRequiredDt.Value.ToString() : string.Empty;
-                    saleAgent.SaleBondDueTimeDt = currentSalesAgent.SaleBondDueTimeDt.HasValue ? currentSalesAgent.SaleBondDueTimeDt.Value.ToString() : string.Empty;
-                    saleAgent.SaleBondDueExpiryDt = currentSalesAgent.SaleBondDueExpiryDt.HasValue ? currentSalesAgent.SaleBondDueExpiryDt.Value.ToString() : string.Empty;
-                    saleAgent.SalesBondCommDueBt = currentSalesAgent.SalesBondCommDueBt == true ? 1 : 0;
-                    saleAgent.SaleBondRequiredAmount = currentSalesAgent.SaleBondRequiredAmount != null ? (double)currentSalesAgent.SaleBondRequiredAmount : 0.0;
-
-                    if(currentSalesAgent.BondOriginatorID != null)
-                    {
-                        var currentOrginator = _repoService.GetOriginatorById((int)currentSalesAgent.BondOriginatorID);
-                        if (currentOrginator != null)
-                        {
-                            saleAgent.SaleBondBank = _repoService.GetBankById(currentOrginator.BankID).BankDescription;
-                        }
-                    }
-
-
-                    return Json(saleAgent, JsonRequestBehavior.AllowGet);
+                    return Json(response.query.QueryResult, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    SalesViewModel saleAgent = new SalesViewModel();
-                    int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
-                    var _currentUnit = _repoService.GetUnitById(_currentUnitId);
-                    saleAgent.IsNewSale = "NewSale";
-                    saleAgent.UnitNumber = _currentUnit.UnitNumber;
-                    saleAgent.UnitSize = _currentUnit.UnitSize;
-                    saleAgent.UnitPrice = _currentUnit.UnitPrice;
-                    saleAgent.UnitPriceIncluding = _currentUnit.UnitPriceIncluding;
-                    saleAgent.CurrentSalesStatus = "Available";
-                    saleAgent.UnitPhase = _currentUnit.UnitPhase;
-                    saleAgent.UnitFloor = _currentUnit.UnitFloor;
-                    saleAgent.PlotSize = _currentUnit.UnitErfSize;
-                    return Json(saleAgent, JsonRequestBehavior.AllowGet);
+                    var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
+
+                    var response = new LoadNewSale(new LoadSalesQuery() { UnitId = unitId });
+
+                    return Json(response.query.QueryResult, JsonRequestBehavior.AllowGet);
+                   
                 }
 
             }
@@ -378,8 +262,8 @@ namespace AAMPS.Web.Controllers
                     reservation.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
                     reservation.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)newSale.SaleActiveStatusID).SaleActiveStatusDescription;
 
-                    _linkedUnit.UnitStatusID = UnitSaleStatusConverter.UnitStatusConverter(UnitStatusType.GetUnitStatusType.Reserved);
-                    reservation.UnitStatusId = UnitSaleStatusConverter.UnitStatusConverter(UnitStatusType.GetUnitStatusType.Reserved);
+                    _linkedUnit.UnitStatusID = (int)AAMPS.Clients.AampService.GetUnitStatusType.Reserved;
+                    reservation.UnitStatusId = (int)AAMPS.Clients.AampService.GetUnitStatusType.Reserved;
                     _repoService.UpdateUnit(_linkedUnit);
 
                     newSale.UnitID = _linkedUnit.UnitID;
@@ -438,7 +322,8 @@ namespace AAMPS.Web.Controllers
                     _currentSale.SaleDepositPaidBt = sale.SaleDepositPaidBt == 1 ? true : false;
                     _currentSale.SalesDepoistPaidDt = sale.SalesDepoistPaidDt != null ? DateTime.ParseExact(sale.SalesDepoistPaidDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                     _currentSale.SalesDepositProofDt = sale.SalesDepositProofDt != null ? DateTime.ParseExact(sale.SalesDepositProofDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    _currentSale.SalesTotalDepositAmount = sale.SalesTotalDepositAmount != null ? (double)sale.SalesTotalDepositAmount : 0.0;
+                    //_currentSale.SalesTotalDepositAmount = sale.SalesTotalDepositAmount != null ? (double)sale.SalesTotalDepositAmount : 0.0;
+                    _currentSale.SalesTotalDepositAmount = sale.SalesTotalDepositAmount;
                     _currentSale.SaleModifiedDt = DateTime.Now;
                     _currentSale.SaleModifiedByUser = 1;
 
@@ -479,7 +364,7 @@ namespace AAMPS.Web.Controllers
                 _currentSale.SalesBondRequiredDt = sale.SalesBondRequiredDt != null ? DateTime.ParseExact(sale.SalesBondRequiredDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                 _currentSale.SaleBondDueTimeDt = sale.SaleBondDueTimeDt != null ? DateTime.ParseExact(sale.SaleBondDueTimeDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                 _currentSale.SaleBondDueExpiryDt = sale.SaleBondDueExpiryDt != null ? DateTime.ParseExact(sale.SaleBondDueExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SaleBondRequiredAmount = sale.SaleBondRequiredAmount != null ? (float)sale.SaleBondRequiredAmount : 0;
+                _currentSale.SaleBondRequiredAmount = sale.SaleBondRequiredAmount != null ? (float)sale.SaleBondRequiredAmount : 0.00;
                 _currentSale.SaleTypeID = sale.SaleTypeID == 0 ? 1 : 2;
                 _currentSale.SalesBondGrantedDt = sale.SalesBondGrantedDt != null ? DateTime.ParseExact(sale.SalesBondGrantedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                 _currentSale.SalesBondClientAcceptDt = sale.SalesBondClientAcceptDt != null ? DateTime.ParseExact(sale.SalesBondClientAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
