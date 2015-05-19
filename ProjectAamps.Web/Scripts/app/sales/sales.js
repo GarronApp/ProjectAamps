@@ -1045,10 +1045,10 @@
             instance.ConvertCurrentDate(data.SaleBondDueTimeDt, "txtSaleBondDueTime");
             instance.ConvertCurrentDate(data.SaleBondDueExpiryDt, "txtSaleBondDueExpiryDt");
             $("#txtSaleBondBank").val(data.SaleBondBank);
-            $("#txtSaleBondRequiredAmount").val(data.SaleBondRequiredAmount);
+            $("#txtSaleBondRequiredAmount").val("R " + data.SaleBondRequiredAmount);
             $("#selectFinanceType").val(data.SaleTypeID);
             $("#selectOriginator").val(data.BondOriginatorID);
-            $("#txtAmountGranted").val(data.SalesTotalDepositAmount);
+            $("#txtAmountGranted").val(data.SalesBondAmount);
             $("#txtSaleSoldPanelStatus").val(data.CurrentSalesStatus);
         }
     }
@@ -1062,7 +1062,7 @@
 
         $("#txtSaleBondBank").val(data.SaleBondBank);
         $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
-        $("#txtSalesBondAmount").val("R " + data.SalesTotalDepositAmount);
+        $("#txtSalesBondAmount").val("R " + data.SalesBondAmount);
         $("#txtSalesBondInterestRate").val(data.SalesBondInterestRate + " %");
         var item = $("#selectOriginator").val;
         if (data.SalesBondGrantedBt == 1)
