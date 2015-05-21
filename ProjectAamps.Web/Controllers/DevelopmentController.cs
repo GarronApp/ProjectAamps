@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using App.Common.Security;
 using AAMPS.Clients.ViewModels.Development;
+using App.Common.Exceptions;
 
 
 namespace AAMPS.Web.Controllers
@@ -57,61 +58,67 @@ namespace AAMPS.Web.Controllers
         [AampsAuthorize]
         public ActionResult Dashboard()
         {
-            Session.Remove("CurrentUnit");
-
-            var units = aampService.GetAllUnits().ToList();
-
-            var totalUnits = units.Count();
-            var totalUnitsPrice = units.Sum(x => x.UnitPriceIncluding);
-            var totalUnitsAvailable = units.Count(x => x.UnitStatusID == 1);
-            var totalUnitsAvailablePrice = units.Where(x => x.UnitStatusID == 1).Sum(x => x.UnitPriceIncluding);
-            var totalUnitsReserved = units.Count(x => x.UnitStatusID == 2);
-            var totalUnitsReservedPrice = units.Where(x => x.UnitStatusID == 2).Sum(x => x.UnitPriceIncluding);
-            var totalUnitsPending = units.Count(x => x.UnitStatusID == 3);
-            var totalUnitsPendingPrice = units.Where(x => x.UnitStatusID == 3).Sum(x => x.UnitPriceIncluding);
-            var totalUnitsSold = units.Count(x => x.UnitStatusID == 4);
-            var totalUnitsSoldPrice = units.Where(x => x.UnitStatusID == 4).Sum(x => x.UnitPriceIncluding);
-
-
-            Session.Add("TotalUnits", totalUnits);
-            Session.Add("TotalUnitsPrice", totalUnitsPrice * totalUnits);
-            Session.Add("TotalUnitsAvailable", totalUnitsAvailable);
-            Session.Add("TotalUnitsAvailablePrice", totalUnitsAvailablePrice * totalUnitsAvailable);
-            Session.Add("TotalUnitsSold", totalUnitsSold);
-            Session.Add("totalUnitsSoldPrice", totalUnitsSoldPrice * totalUnitsSold);
-            Session.Add("TotalUnitsPending", totalUnitsPending);
-            Session.Add("TotalUnitsPendingPrice", totalUnitsPendingPrice * totalUnitsPending);
-            Session.Add("TotalUnitsReserved", totalUnitsReserved);
-            Session.Add("totalUnitsReservedPrice", totalUnitsReservedPrice * totalUnitsReserved);
-
-
-            List<DevelopmentViewModel> list = new List<DevelopmentViewModel>();
-
-            foreach (var item in units)
+            try
             {
-                DevelopmentViewModel viewModel = new DevelopmentViewModel()
+                Session.Remove("CurrentUnit");
+
+                var units = aampService.GetAllUnits().ToList();
+
+                var totalUnits = units.Count();
+                var totalUnitsPrice = units.Sum(x => x.UnitPriceIncluding);
+                var totalUnitsAvailable = units.Count(x => x.UnitStatusID == 1);
+                var totalUnitsAvailablePrice = units.Where(x => x.UnitStatusID == 1).Sum(x => x.UnitPriceIncluding);
+                var totalUnitsReserved = units.Count(x => x.UnitStatusID == 2);
+                var totalUnitsReservedPrice = units.Where(x => x.UnitStatusID == 2).Sum(x => x.UnitPriceIncluding);
+                var totalUnitsPending = units.Count(x => x.UnitStatusID == 3);
+                var totalUnitsPendingPrice = units.Where(x => x.UnitStatusID == 3).Sum(x => x.UnitPriceIncluding);
+                var totalUnitsSold = units.Count(x => x.UnitStatusID == 4);
+                var totalUnitsSoldPrice = units.Where(x => x.UnitStatusID == 4).Sum(x => x.UnitPriceIncluding);
+
+
+                Session.Add("TotalUnits", totalUnits);
+                Session.Add("TotalUnitsPrice", totalUnitsPrice * totalUnits);
+                Session.Add("TotalUnitsAvailable", totalUnitsAvailable);
+                Session.Add("TotalUnitsAvailablePrice", totalUnitsAvailablePrice * totalUnitsAvailable);
+                Session.Add("TotalUnitsSold", totalUnitsSold);
+                Session.Add("totalUnitsSoldPrice", totalUnitsSoldPrice * totalUnitsSold);
+                Session.Add("TotalUnitsPending", totalUnitsPending);
+                Session.Add("TotalUnitsPendingPrice", totalUnitsPendingPrice * totalUnitsPending);
+                Session.Add("TotalUnitsReserved", totalUnitsReserved);
+                Session.Add("totalUnitsReservedPrice", totalUnitsReservedPrice * totalUnitsReserved);
+
+
+                List<DevelopmentViewModel> list = new List<DevelopmentViewModel>();
+
+                foreach (var item in units)
                 {
-                    UnitId = item.UnitID,
-                    UnitStatusId = item.UnitStatusID,
-                    UnitNumber = item.UnitNumber,
-                    UnitSize = item.UnitSize,
-                    UnitBlock = item.UnitBlock,
-                    UnitFloor = item.UnitFloor,
-                    UnitPrice = item.UnitPrice,
-                    UnitPriceIncluding = item.UnitPriceIncluding,
-                    UnitActiveDate = item.UnitActiveDate,
-                    UnitStatusID = aampService.GetUnitStatusById(item.UnitStatusID).UnitStatusDescription,
-                    DevelopmentDescription = aampService.GetDevelopmentById(item.DevelopmentID).DevelopmentDescription
-                };
+                    DevelopmentViewModel viewModel = new DevelopmentViewModel()
+                    {
+                        UnitId = item.UnitID,
+                        UnitStatusId = item.UnitStatusID,
+                        UnitNumber = item.UnitNumber,
+                        UnitSize = item.UnitSize,
+                        UnitBlock = item.UnitBlock,
+                        UnitFloor = item.UnitFloor,
+                        UnitPrice = item.UnitPrice,
+                        UnitPriceIncluding = item.UnitPriceIncluding,
+                        UnitActiveDate = item.UnitActiveDate,
+                        UnitStatusID = aampService.GetUnitStatusById(item.UnitStatusID).UnitStatusDescription,
+                        DevelopmentDescription = aampService.GetDevelopmentById(item.DevelopmentID).DevelopmentDescription
+                    };
 
-              
-
-                list.Add(viewModel);
+                    list.Add(viewModel);
+                }
+           
+              return View(list);
 
             }
+            catch (Exception ex)
+            {
+                ExceptionHandler.HandleException(ex);
+            }
 
-
-            return View(list);
+            return View();
         }
         [HttpGet]
         public JsonResult GetCurrentUnitDetails(int id)

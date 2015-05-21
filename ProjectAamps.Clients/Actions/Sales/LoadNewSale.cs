@@ -1,6 +1,7 @@
 ﻿using AAMPS.Clients.Queries.Sales;
 using AAMPS.Clients.ViewModels.Sales;
 using App.Common.Controllers.Actions;
+using App.Common.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,22 @@ namespace AAMPS.Clients.Actions.Sales
 
         public override object OnExecute()
         {
+            try 
+	        {	        
+		      List<int> items = null;
+
+              foreach (var item in items)
+	          {
+		         Console.Write("testing..."); 
+	          }
+
+	        }
+	        catch (Exception ex)
+	        {
+                ExceptionHandler.HandleException(ex);
+               
+	        }
+
             var _currentUnit = new AAMPS.Clients.AampService.AampServiceClient().GetUnitById(Id);
 
             SalesViewModel viewModel = new SalesViewModel();
@@ -46,6 +63,8 @@ namespace AAMPS.Clients.Actions.Sales
             viewModel.UnitPhase = _currentUnit.UnitPhase;
             viewModel.UnitFloor = _currentUnit.UnitFloor;
             viewModel.PlotSize = _currentUnit.UnitErfSize;
+
+            query.QueryResult = viewModel;
 
             return viewModel;
         }

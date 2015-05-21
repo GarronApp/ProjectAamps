@@ -14,7 +14,7 @@ namespace ProjectAamps.Clients.Actions.Sales
     {
         public bool IsNewPurchaser { get; set; }
 
-        public PurchaserViewModel newPurchaser { get; set; }
+        public PurchaserViewModel newPurchaserViewModel { get; set; }
 
         public SavePurchaser()
         {
@@ -23,13 +23,13 @@ namespace ProjectAamps.Clients.Actions.Sales
         public SavePurchaser(PurchaserViewModel _newPurchaser)
             : base(_newPurchaser)
         {
-            newPurchaser = _newPurchaser;
+            newPurchaserViewModel = _newPurchaser;
             OnBindModel();
         }
 
         public override void OnBindModel()
         {
-            IsNewPurchaser = newPurchaser.IsNewIdentity;
+            IsNewPurchaser = newPurchaserViewModel.IsNewIdentity;
 
             if (IsNewPurchaser)
                 OnExecute();
@@ -39,22 +39,23 @@ namespace ProjectAamps.Clients.Actions.Sales
         {
             var _purchaser = new Purchaser();
 
-            _purchaser.EntityTypeID = newPurchaser.EntityTypeID;
-            _purchaser.PurchaserDescription = newPurchaser.PurchaserDescription;
-            _purchaser.PurchaserContactPerson = newPurchaser.PurchaserContactPerson;
-            _purchaser.PurchaserContactHome = newPurchaser.PurchaserContactHome;
-            _purchaser.PurchaserContactCell = newPurchaser.PurchaserContactCell;
-            _purchaser.PurchaserContactWork = newPurchaser.PurchaserContactWork;
-            _purchaser.PurchaserEmail = newPurchaser.PurchaserEmail;
-            _purchaser.PurchaserAddress = newPurchaser.PurchaserAddress;
-            _purchaser.PurchaserAddress1 = newPurchaser.PurchaserAddress1;
-            _purchaser.PurchaserAddress2 = newPurchaser.PurchaserAddress2;
-            _purchaser.PurchaserSuburb = newPurchaser.PurchaserSuburb;
-            _purchaser.PurchaserPostalCode = newPurchaser.PurchaserPostalCode;
+            _purchaser.EntityTypeID = newPurchaserViewModel.EntityTypeID;
+            _purchaser.PurchaserDescription = newPurchaserViewModel.PurchaserDescription;
+            _purchaser.PurchaserContactPerson = newPurchaserViewModel.PurchaserContactPerson;
+            _purchaser.PurchaserContactHome = newPurchaserViewModel.PurchaserContactHome;
+            _purchaser.PurchaserContactCell = newPurchaserViewModel.PurchaserContactCell;
+            _purchaser.PurchaserContactWork = newPurchaserViewModel.PurchaserContactWork;
+            _purchaser.PurchaserEmail = newPurchaserViewModel.PurchaserEmail;
+            _purchaser.PurchaserAddress = newPurchaserViewModel.PurchaserAddress;
+            _purchaser.PurchaserAddress1 = newPurchaserViewModel.PurchaserAddress1;
+            _purchaser.PurchaserAddress2 = newPurchaserViewModel.PurchaserAddress2;
+            _purchaser.PurchaserSuburb = newPurchaserViewModel.PurchaserSuburb;
+            _purchaser.PurchaserPostalCode = newPurchaserViewModel.PurchaserPostalCode;
             _purchaser.PurchaserRegID = Guid.NewGuid().ToString().Substring(0, 8);
 
             var result =  new AampServiceClient().SavePurchaser(_purchaser);
             _purchaser.PurchaserID = result.PurchaserID;
+            newPurchaserViewModel.PurchaserID = result.PurchaserID;
 
             return _purchaser;
         }

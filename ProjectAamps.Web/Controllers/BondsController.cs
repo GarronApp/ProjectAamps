@@ -12,6 +12,7 @@ using System.Globalization;
 using AAMPS.Clients.ViewModels.Sales;
 using AAMPS.Clients.ViewModels.Originator;
 using AAMPS.Clients.ViewModels.Bonds;
+using App.Common.Exceptions;
 
 
 namespace AAMPS.Web.Controllers
@@ -82,9 +83,9 @@ namespace AAMPS.Web.Controllers
                     _repoService.UpdateSale(_linkedSale);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                ExceptionHandler.HandleException(ex);
             }
 
             return Json(sale, JsonRequestBehavior.AllowGet);
@@ -200,6 +201,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
+                ExceptionHandler.HandleException(ex);
                 return Json(ex.InnerException);
             }
 
@@ -285,10 +287,9 @@ namespace AAMPS.Web.Controllers
 
                 _repoService.UpdateSale(_linkedSale);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                ExceptionHandler.HandleException(ex);
             }
         }
 

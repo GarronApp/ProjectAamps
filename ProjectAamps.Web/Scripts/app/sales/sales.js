@@ -781,6 +781,9 @@
     }
 
     this.UpdateReservedSale = function () {
+
+        $("#txtDepositPaid").val($("#txtDepositPaid").autoNumeric('get'));
+
         var formData = $("#SalePendingForm").serialize();
         $.ajax({
             url: instance.save_ReservedSale_Url,
@@ -797,6 +800,9 @@
     }
 
     this.UpdatePendingSale = function () {
+
+        $("#txtSaleBondRequiredAmount").val($("#txtSaleBondRequiredAmount").autoNumeric('get'));
+
         var formData = $("#SaleSoldForm").serialize();
         $.ajax({
             url: instance.save_PendingSale_Url,

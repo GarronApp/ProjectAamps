@@ -1,0 +1,10 @@
+﻿-----------------------= Start Exception =--------------------------
+2015-05-22 01:05:32 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+

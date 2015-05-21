@@ -44,8 +44,12 @@
   <ItemGroup>
     <Compile Include="Actions\Bonds\LoadBondDetails.cs" />
     <Compile Include="Actions\Development\LoadDevelopmentSummaryTotals.cs" />
+    <Compile Include="Actions\Sales\UpdatePendingToSoldSale.cs" />
+    <Compile Include="Actions\Sales\UpdateReservedToPendingSale.cs" />
+    <Compile Include="Actions\Sales\LoadAndSaveAvailableSale.cs" />
     <Compile Include="Actions\Sales\LoadNewSale.cs" />
     <Compile Include="Actions\Sales\LoadSaleDetails.cs" />
+    <Compile Include="Actions\Sales\SaveIndividual.cs" />
     <Compile Include="Actions\Sales\SavePurchaser.cs" />
     <Compile Include="Mappers\Bonds\BondsViewModel.cs" />
     <Compile Include="Mappers\Bonds\MapToBonds.cs" />
