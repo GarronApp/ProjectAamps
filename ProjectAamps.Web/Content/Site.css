@@ -17,8 +17,8 @@ header, footer, nav, section {
 -----------------------------------------------------------*/
 fieldset {
     border: 1px solid #ddd;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
+    padding: 0 0.4em 0.4em;
+    margin: 0 0 1.0em 0;
 }
 
 legend {
@@ -144,7 +144,7 @@ margin-right: -15px;
 .jumbotron {
     padding: 30px;
     margin-bottom: 30px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 200;
     color: inherit;
     background-color: #eeeeee;
@@ -360,6 +360,37 @@ input.money-bank{
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+/*Custom Styles*/
+label{
+    font-weight: 400;
+    font-size: 1.02em;
+}
+
+fieldset > table > thead{
+    font-size: 0.89em;
+    font-weight: 400;
+}
+
+fieldset > table > tbody{
+    font-size: 0.85em;
+    font-weight: 400;
+}
+
+
+.table-general{
+    font-weight: 400;
+    font-size: 0.97em;
+}
+
+fieldset > legend.well{
+    font-weight: 400;
+    font-size: 0.96em;
+}
+
+.height28{
+    height: 28px;
 }
 
 /* Reporting*/

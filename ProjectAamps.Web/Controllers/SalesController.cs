@@ -216,24 +216,8 @@ namespace AAMPS.Web.Controllers
             {
                 if (purchaser != null)
                 {
-                    var _purchaser = new Purchaser();
-
-                    _purchaser.EntityTypeID = purchaser.EntityTypeID;
-                    _purchaser.PurchaserDescription = purchaser.PurchaserDescription;
-                    _purchaser.PurchaserContactPerson = purchaser.PurchaserContactPerson;
-                    _purchaser.PurchaserContactHome = purchaser.PurchaserContactHome;
-                    _purchaser.PurchaserContactCell = purchaser.PurchaserContactCell;
-                    _purchaser.PurchaserContactWork = purchaser.PurchaserContactWork;
-                    _purchaser.PurchaserEmail = purchaser.PurchaserEmail;
-                    _purchaser.PurchaserAddress = purchaser.PurchaserAddress;
-                    _purchaser.PurchaserAddress1 = purchaser.PurchaserAddress1;
-                    _purchaser.PurchaserAddress2 = purchaser.PurchaserAddress2;
-                    _purchaser.PurchaserSuburb = purchaser.PurchaserSuburb;
-                    _purchaser.PurchaserPostalCode = purchaser.PurchaserPostalCode;
-                    _purchaser.PurchaserRegID = Guid.NewGuid().ToString().Substring(0, 8);
-
-                    var result =  _repoService.SavePurchaser(_purchaser);
-                    purchaser.PurchaserID = result.PurchaserID;
+                    var _newPurchaser = new SavePurchaser(purchaser);
+                    
                     return Json(purchaser, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -258,8 +242,8 @@ namespace AAMPS.Web.Controllers
                    
                     var _linkedUnit = _repoService.GetUnitById(int.Parse(SessionHandler.GetSessionContext("CurrentUnit")));
 
-                    newSale.SaleActiveStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
-                    reservation.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
+                    newSale.SaleActiveStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Reserved;
+                    reservation.SaleStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Reserved;   
                     reservation.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)newSale.SaleActiveStatusID).SaleActiveStatusDescription;
 
                     _linkedUnit.UnitStatusID = (int)AAMPS.Clients.AampService.GetUnitStatusType.Reserved;
@@ -267,7 +251,7 @@ namespace AAMPS.Web.Controllers
                     _repoService.UpdateUnit(_linkedUnit);
 
                     newSale.UnitID = _linkedUnit.UnitID;
-                    newSale.SaleStatusID = UnitSaleStatusConverter.SaleStatusConverter(SaleActiveStatusType.GetSaleStatusType.Active);
+                    newSale.SaleStatusID = (int)AAMPS.Clients.AampService.GetSaleStatusType.Active;   
                     newSale.SaleReservationDt = reservation.SaleReservationDt != null ? DateTime.ParseExact(reservation.SaleReservationDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                     newSale.SaleReservationExpiryDt = reservation.SaleReservationExpiryDt != null ? DateTime.ParseExact(reservation.SaleReservationExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture): (DateTime?)null;
                     newSale.SaleReservationExtentionDt = reservation.SaleReservationExtentionDt != null ? DateTime.ParseExact(reservation.SaleReservationExtentionDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
@@ -303,17 +287,17 @@ namespace AAMPS.Web.Controllers
                 var _currentSale = _repoService.GetSaleById(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
                 var _linkedUnit = _repoService.GetUnitById(int.Parse(SessionHandler.GetSessionContext("CurrentUnit")));
 
-                if (_currentSale.SaleActiveStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved))
+                if (_currentSale.SaleActiveStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Reserved)
                     {
-                        _currentSale.SaleActiveStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
-                        sale.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
+                        _currentSale.SaleActiveStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending;
+                        sale.SaleStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending;
                         sale.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)_currentSale.SaleActiveStatusID).SaleActiveStatusDescription;
                     }
 
-                if (_linkedUnit.UnitStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved))
+                if (_linkedUnit.UnitStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Reserved)
                     {
-                        _linkedUnit.UnitStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
-                        sale.UnitStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
+                        _linkedUnit.UnitStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending;
+                        sale.UnitStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending;
                         _repoService.UpdateUnit(_linkedUnit);
                     }
 
@@ -345,16 +329,16 @@ namespace AAMPS.Web.Controllers
             {
                 var _currentSale = _repoService.GetSaleById(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
                 var _linkedUnit = _repoService.GetUnitById(int.Parse(SessionHandler.GetSessionContext("CurrentUnit")));
-                if (_currentSale.SaleActiveStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending))
+                if (_currentSale.SaleActiveStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending)
                 {
-                    _currentSale.SaleActiveStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
-                    sale.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
+                    _currentSale.SaleActiveStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
+                    sale.SaleStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
                     sale.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)_currentSale.SaleActiveStatusID).SaleActiveStatusDescription;
                 }
-                if (_linkedUnit.UnitStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending))
+                if (_linkedUnit.UnitStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending)
                 {
-                    _linkedUnit.UnitStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
-                    sale.UnitStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
+                    _linkedUnit.UnitStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
+                    sale.UnitStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
                     _repoService.UpdateUnit(_linkedUnit);
                 }
 

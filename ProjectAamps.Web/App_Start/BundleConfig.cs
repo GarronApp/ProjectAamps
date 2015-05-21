@@ -23,12 +23,17 @@ namespace AAMPS.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap-datepicker.js",
                       "~/Scripts/toastr.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/autoNumeric/autoNumeric-1.9.25.js",
+                      "~/Scripts/moment.js",
+                      "~/Scripts/d3.js",
+                      "~/Scripts/c3.js"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/toastr.css",
-                      "~/Content/datepicker.css"));
+                      "~/Content/datepicker.css",
+                      "~/Content/c3.css"));
         }
     }
 }

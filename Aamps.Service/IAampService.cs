@@ -148,6 +148,13 @@ namespace Aamps.Service
 
         [OperationContract]
         int GetUnitStatusTypes(GetUnitStatusType type);
+
+        [OperationContract]
+        int GetSaleActiveStatusTypes(GetSaleActiveStatusType type);
+
+        [OperationContract]
+        int GetSaleStatusTypes(GetSaleStatusType type);
+
         
     }
 }

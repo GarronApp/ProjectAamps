@@ -176,6 +176,8 @@
   <ItemGroup>
     <Folder Include="Mappers\Bonds\" />
     <Folder Include="Mappers\Sales\" />
+    <Folder Include="Operations\Sales\Implementations\" />
+    <Folder Include="Operations\Sales\Interfaces\" />
     <Folder Include="Queries\Bonds\" />
     <Folder Include="Queries\Sales\" />
     <Folder Include="Rules\Sales\" />

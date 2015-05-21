@@ -3,6 +3,7 @@
   <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" />
   <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales" />
   <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
+  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/" />
   <xs:element name="GetAllUnits">
     <xs:complexType>
       <xs:sequence />
@@ -568,6 +569,34 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetUnitStatusTypesResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSaleActiveStatusTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q47:GetSaleActiveStatusType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSaleActiveStatusTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSaleActiveStatusTypesResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSaleStatusTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q48:GetSaleStatusType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSaleStatusTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSaleStatusTypesResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

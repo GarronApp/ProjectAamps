@@ -6859,6 +6859,46 @@ namespace AAMPS.Clients.AampService {
         Unavailable = 8,
     }
     
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetSaleActiveStatusType", Namespace="http://schemas.datacontract.org/2004/07/")]
+    public enum GetSaleActiveStatusType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Available = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Reserved = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Pending = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Sold = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Bankable = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Registered = 6,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetSaleStatusType", Namespace="http://schemas.datacontract.org/2004/07/")]
+    public enum GetSaleStatusType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Active = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Cancelled = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Declined = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        InActive = 4,
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AampService.IAampService")]
     public interface IAampService {
@@ -7120,6 +7160,18 @@ namespace AAMPS.Clients.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetUnitStatusTypesResponse")]
         System.Threading.Tasks.Task<int> GetUnitStatusTypesAsync(AAMPS.Clients.AampService.GetUnitStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleActiveStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleActiveStatusTypesResponse")]
+        int GetSaleActiveStatusTypes(AAMPS.Clients.AampService.GetSaleActiveStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleActiveStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleActiveStatusTypesResponse")]
+        System.Threading.Tasks.Task<int> GetSaleActiveStatusTypesAsync(AAMPS.Clients.AampService.GetSaleActiveStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleStatusTypesResponse")]
+        int GetSaleStatusTypes(AAMPS.Clients.AampService.GetSaleStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleStatusTypesResponse")]
+        System.Threading.Tasks.Task<int> GetSaleStatusTypesAsync(AAMPS.Clients.AampService.GetSaleStatusType type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -7491,6 +7543,22 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<int> GetUnitStatusTypesAsync(AAMPS.Clients.AampService.GetUnitStatusType type) {
             return base.Channel.GetUnitStatusTypesAsync(type);
+        }
+        
+        public int GetSaleActiveStatusTypes(AAMPS.Clients.AampService.GetSaleActiveStatusType type) {
+            return base.Channel.GetSaleActiveStatusTypes(type);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetSaleActiveStatusTypesAsync(AAMPS.Clients.AampService.GetSaleActiveStatusType type) {
+            return base.Channel.GetSaleActiveStatusTypesAsync(type);
+        }
+        
+        public int GetSaleStatusTypes(AAMPS.Clients.AampService.GetSaleStatusType type) {
+            return base.Channel.GetSaleStatusTypes(type);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetSaleStatusTypesAsync(AAMPS.Clients.AampService.GetSaleStatusType type) {
+            return base.Channel.GetSaleStatusTypesAsync(type);
         }
     }
 }

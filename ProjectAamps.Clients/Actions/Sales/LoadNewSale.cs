@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectAamps.Clients.Actions.Sales
+namespace AAMPS.Clients.Actions.Sales
 {
     public class LoadNewSale : ControllerAction
     {
         public int Id { get; set; }
         public LoadSalesQuery query { get; set; }
-          public LoadNewSale()
+        public LoadNewSale()
          {
 
          }

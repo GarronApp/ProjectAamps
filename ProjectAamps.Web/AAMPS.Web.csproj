@@ -232,6 +232,8 @@
     <Content Include="LICENSE.txt" />
     <Content Include="Scripts\app\bonds\bonds.js" />
     <Content Include="Scripts\app\sales\sales.js" />
+    <Content Include="Scripts\autoNumeric\autoNumeric-1.9.25.js" />
+    <Content Include="Scripts\autoNumeric\autoNumeric-1.9.25.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -337,10 +339,6 @@
     <ProjectReference Include="..\Aamps.Repository\Aamps.Repository.csproj">
       <Project>{e45bbf28-92e4-4a4c-aee9-a79c2ca87b5d}</Project>
       <Name>Aamps.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Aamps.Service\Aamps.Service.csproj">
-      <Project>{1d24b4a4-26f2-4c65-a4e3-4e79a7f992b8}</Project>
-      <Name>Aamps.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\App.Common\App.Common.csproj">
       <Project>{736ef188-0087-413f-bbc8-f6289f1ef55c}</Project>

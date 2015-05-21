@@ -44,7 +44,7 @@
                                 &nbsp;
                             </div>
                             <div class="col-md-4 col-sm-12 col-xs-12">
-                                <table style="font-size:0.69em; font-weight:400;margin-top:15px" class="table-striped text-center">
+                                <table style="font-size:0.76em; font-weight:400;margin-top:15px" class="table-striped text-center">
                                     <thead>
                                         <tr>
                                             <td class="col-md-4"><b>Status</b></td>
@@ -93,7 +93,7 @@
             <fieldset>
                 <div class="col-md-12">
                     <table style="width:100%" class="table-striped text-center">
-                        <thead style="font-size:1.25em;font-weight:400;">
+                        <thead>
                             <tr>
                                 <td class="col-md-20"><strong>Unit No</strong></td>
                                 <td class="col-md-20"><strong>Unit Phase</strong></td>
@@ -102,7 +102,7 @@
                                 <td class="col-md-20"><strong>Unit Status</strong></td>
                             </tr>
                         </thead>
-                        <tbody style="font-size:1.2em;font-weight:400;">
+                        <tbody>
                             <tr>
                                 <td class="col-md-20"><label id="lblUnitNumber"></label></td>
                                 <td class="col-md-20"><label id="lblUnitPhase"></label></td>
@@ -151,9 +151,6 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<script src="~/Scripts/d3.js"></script>
-<script src="~/Scripts/c3.js"></script>
-<link href="~/Content/c3.css" rel="stylesheet" />
  <script>
     function LogoutUser() {
         var url = '@Url.Action("CloseCurrentSession", "Account")';
@@ -211,6 +208,7 @@
         });
     });
 </script>
+
 
 
 

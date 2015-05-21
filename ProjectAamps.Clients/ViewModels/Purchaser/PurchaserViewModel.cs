@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectAamps.Clients.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AAMPS.Clients.ViewModels.Purchaser
 {
-    public class PurchaserViewModel
+    public class PurchaserViewModel : IClientViewModel
     {
         public int PurchaserID { get; set; }
         public int EntityTypeID { get; set; }
@@ -23,5 +24,20 @@ namespace AAMPS.Clients.ViewModels.Purchaser
         public string PurchaserAddress3 { get; set; }
         public string PurchaserPostalCode { get; set; }
         public string PurchaserSuburb { get; set; }
+
+
+        private bool purchaser = true;
+
+        public bool IsNewIdentity
+        {
+            get
+            {
+                return this.purchaser;
+            }
+            set
+            {
+                purchaser = value;
+            }
+        }
     }
 }

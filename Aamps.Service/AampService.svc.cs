@@ -370,6 +370,47 @@ namespace Aamps.Service
             return 0;
         }
 
+        public int GetSaleActiveStatusTypes(GetSaleActiveStatusType saleActiveStatusType)
+        {
+            switch (saleActiveStatusType)
+            {
+                case GetSaleActiveStatusType.Available:
+                    return (int)GetUnitStatusType.Available;
+                case GetSaleActiveStatusType.Reserved:
+                    return (int)GetUnitStatusType.Reserved;
+                case GetSaleActiveStatusType.Pending:
+                    return (int)GetUnitStatusType.Pending;
+                case GetSaleActiveStatusType.Sold:
+                    return (int)GetUnitStatusType.Sold;
+                case GetSaleActiveStatusType.Bankable:
+                    return (int)GetUnitStatusType.Bankable;
+                case GetSaleActiveStatusType.Registered:
+                    return (int)GetUnitStatusType.Registered;
+                default:
+                    break;
+            }
+            return 0;
+        }
+
+        public int GetSaleStatusTypes(GetSaleStatusType saleStatusType)
+        {
+            switch (saleStatusType)
+            {
+                case GetSaleStatusType.Active:
+                    return (int)GetSaleStatusType.Active;
+                case GetSaleStatusType.InActive:
+                    return (int)GetSaleStatusType.InActive;
+                case GetSaleStatusType.Declined:
+                    return (int)GetSaleStatusType.Declined;
+                case GetSaleStatusType.Cancelled:
+                    return (int)GetSaleStatusType.Cancelled;
+
+                default:
+                    break;
+            }
+            return 0;
+        }
+
 
     }
 }

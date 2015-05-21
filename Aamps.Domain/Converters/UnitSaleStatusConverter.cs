@@ -9,14 +9,5 @@ namespace Aamps.Domain.Converters
     public static class UnitSaleStatusConverter
     {
 
-        public static int SaleActiveStatusConverter(Aamps.Domain.ValueObjects.SaleActiveStatusType.GetSaleActiveStatusType status)
-        {
-            return (int)status;
-        }
-
-        public static int SaleStatusConverter(Aamps.Domain.ValueObjects.SaleActiveStatusType.GetSaleStatusType status)
-        {
-            return (int)status;
-        }
     }
 }

@@ -67,9 +67,13 @@
         var reservationDate = document.getElementById('txtReservationDate').value;
         var convertedReservationDate = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
         var tempDate = moment(convertedReservationDate, 'DD/MM/YYYY').add('days', 2).format('DD/MM/YYYY');
+
+        var numericInputControls = new Array("txtDepositPaid", "txtSaleBondRequiredAmount");
+
+        instance.initializeNumericInputValues(numericInputControls)
+
         $("#txtExpiryDate").datepicker("setValue", tempDate);
-
-
+        
         $('#checkReservationTimeExtention').change(function () {
             $("#selectTimeExtention").prop("disabled", !$(this).is(':checked'));
         });
@@ -86,17 +90,6 @@
             //$("#txtPurchaserContractSignedDate").prop("disabled", !$(this).is(':checked'));
             //$("#txtPurchaserContractSignedDate").val("", !$(this).is(':checked'));
         });
-
-        //$('#checkPurchaserContractSignedDatePending').change(function () {
-        //    if (!$(this).is(':checked')) {
-        //        $("#txtPurchaserContractSignedDatePending").prop("disabled", true);
-        //        $("#txtPurchaserContractSignedDatePending").val("");
-        //    }
-        //    else {
-        //        $("#txtPurchaserContractSignedDatePending").prop("disabled", false);
-        //        $("#txtPurchaserContractSignedDatePending").datepicker("setValue", new Date());
-        //    }
-        //});
         
         $('#checkPurchaserContractSigned').change(function () {
             if (!$(this).is(':checked')) {
@@ -188,8 +181,7 @@
             $("#txtSaleBondDueTime").datepicker("setValue", _saleBondDueTimeDt);
             $("#txtSaleBondDueExpiryDt").datepicker("setValue", _saleBondDueExpiryDt);
         });
-
-
+        
         $('#checkPendingSellerContractSigned').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtSellerContractSignedDate").prop("disabled", true);
@@ -237,7 +229,6 @@
                 label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
             input.trigger('fileselect', [numFiles, label]);
         });
-
 
         $('#selectTimeExtention').on('change', function () {
 
@@ -324,7 +315,6 @@
 
         });
 
-        // var value = $('#dropDownId').val()
         $('#selectFinanceType').on('change', function () {
             var value = $('#selectFinanceType').val();
             if (value == 0) {
@@ -576,6 +566,15 @@
                 console.log(data);
             }
         });
+    }
+
+    this.initializeNumericInputValues = function(controls)
+    {
+        for (var i = 0; i < controls.length; i++) {
+            $("#" + controls[i]).attr("data-a-sign", "R ");
+            $("#" + controls[i]).autoNumeric('init', { vMax: '9999999999999.99', vMin: '-9999999999999.99', mDec: 2 });
+        }
+       
     }
 
     this.validatePurchaser = function () {
