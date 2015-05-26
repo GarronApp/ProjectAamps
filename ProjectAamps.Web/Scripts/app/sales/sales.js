@@ -410,8 +410,10 @@
                     console.log(saleStatus);
                     if (saleStatus == 1) {
 
-                        //$("#collapseOne").removeClass('panel-collapse collapse').addClass('panel-collapse in');
-                        //$("#collapseOne").css("height", "auto");
+                        $("#collapseOne").removeClass("collapse").addClass("in");
+                        $("#collapseOne").css("height", "auto");
+                        $("#showPanelReservedOpenClose").removeClass("fa-plus-circle").addClass("fa-minus-circle");
+
                         console.log("we are here");
                         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
 
@@ -431,8 +433,9 @@
                     }
                     if (saleStatus == 2) {
 
-                        //$("#collapseTwo").removeClass("collapse").addClass("in");
-                        //$("#collapseTwo").css("height", "auto");
+                        $("#collapseOne").removeClass("collapse").addClass("in");
+                        $("#collapseOne").css("height", "auto");
+                        $("#showPanelReservedOpenClose").removeClass("fa-plus-circle").addClass("fa-minus-circle");
 
                         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSalePendingPanelStatus').val(data.CurrentSalesStatus);
@@ -462,8 +465,9 @@
                     }
                     if (saleStatus == 3) {
 
-                        //$("#collapseThree").removeClass("collapse").addClass("in");
-                        //$("#collapseThree").css("height", "auto");
+                        $("#collapseTwo").removeClass('panel-collapse collapse').addClass('panel-collapse in');
+                        $("#collapseTwo").css("height", "auto");
+                        $("#showPanelPendingOpenClose").removeClass("fa-plus-circle").addClass("fa-minus-circle");
 
                         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSalePendingPanelStatus').val(data.CurrentSalesStatus);
@@ -506,6 +510,10 @@
                     }
 
                     if (saleStatus >= 4) {
+
+                        $("#collapseThree").removeClass('panel-collapse collapse').addClass('panel-collapse in');
+                        $("#collapseThree").css("height", "auto");
+                        $("#showPanelSoldOpenClose").removeClass("fa-plus-circle").addClass("fa-minus-circle");
 
                         $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
                         $('#txtSalePendingPanelStatus').val(data.CurrentSalesStatus);
@@ -1089,7 +1097,8 @@
     }
 
     this.MapIndividualToPurchaser = function (data) {
-        console.log(data);
+        console.log(data.EntityTypeID);
+        $("#selectPurchaserType").val()
         $("#txtPurchaserDescription").val(data.IndividualName + " " + data.IndividualSurname);
         $("#txtPurchaserContactPerson").val(data.IndividualName + " " + data.IndividualSurname);
         $("#txtPurchaserContactCell").val(data.IndividualContactCell);
@@ -1152,11 +1161,24 @@
             var depositProofID = data.SalesDepositProofID;
             if (depositProofID > 0) {
                 $("#showNonCashPaymentSection").removeClass("hide");
+
                 instance.ConvertCurrentDate(data.SaleContractSignedPurchaserDt, "txtPurchaserContractSigned");
                 instance.ConvertCurrentDate(data.SalesDepoistPaidDt, "txtDepositPaidDate");
                 instance.ConvertCurrentDate(data.SalesDepositProofDt, "txtSalesDepositProofDt");
                 $("#txtDepositPaid").val(data.SalesTotalDepositAmount);
                 $("#selectSalesDepositProof").val(data.SalesDepositProofID);
+
+                if (data.SaleContractSignedPurchaserDt != null)
+                    $("#txtPurchaserContractSigned").addClass("disabledbutton");
+                if (data.SalesDepoistPaidDt != "")
+                    $("#txtDepositPaidDate").addClass("disabledbutton");
+                if (data.SalesDepositProofDt != "")
+                    $("#txtSalesDepositProofDt").addClass("disabledbutton");
+                if (data.SalesTotalDepositAmount != 0)
+                    $("#txtDepositPaid").addClass("disabledbutton");
+                if (data.SalesDepositProofID != "")
+                    $("#selectSalesDepositProof").addClass("disabledbutton");
+               
             }
             else {
                 $("#showNonCashPaymentSection").addClass("hide");
@@ -1170,6 +1192,11 @@
             instance.ConvertCurrentDate(data.SalesBondClientAcceptDt, "txtClientAccepted");
             instance.ConvertCurrentDate(data.SaleBondDueTimeDt, "txtSaleBondDueTime");
             instance.ConvertCurrentDate(data.SaleBondDueExpiryDt, "txtSaleBondDueExpiryDt");
+            $("#txtPurchaserContractSigned").removeClass("disabledbutton");
+            $("#txtDepositPaidDate").removeClass("disabledbutton");
+            $("#txtSalesDepositProofDt").removeClass("disabledbutton");
+            $("#txtDepositPaid").removeClass("disabledbutton");
+            $("#selectSalesDepositProof").removeClass("disabledbutton");
             $("#txtSaleBondBank").val(data.SaleBondBank);
             $("#txtSaleBondRequiredAmount").val("R " + data.SaleBondRequiredAmount);
             $("#selectFinanceType").val(data.SaleTypeID);

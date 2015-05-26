@@ -31,20 +31,20 @@ namespace Aamps.Domain.ViewModels.Reports.Sales
         public double? Deposit { get; set; }
         [DataMember]
         public DateTime DepositDate { get; set; }
-        [DataMember]
-        public string Proof { get; set; }
-        [DataMember]
-        public Nullable<System.DateTime> CntrSigned { get; set; }
-        [DataMember]
-        public string Bond { get; set; }
-        [DataMember]
-        public float BondReq { get; set; }
-        [DataMember]
-        public double? BondAmountGrant { get; set; }
-        [DataMember]
-        public Nullable<System.DateTime> Granted { get; set; }
-        [DataMember]
-        public double? AmountDue { get; set; }
+        //[DataMember]
+        //public string Proof { get; set; }
+        //[DataMember]
+        //public Nullable<System.DateTime> CntrSigned { get; set; }
+        //[DataMember]
+        //public string Bond { get; set; }
+        //[DataMember]
+        //public double? BondReq { get; set; }
+        //[DataMember]
+        //public double? BondAmountGrant { get; set; }
+        //[DataMember]
+        //public Nullable<System.DateTime> Granted { get; set; }
+        //[DataMember]
+        //public double? AmountDue { get; set; }
 
     }
 }
