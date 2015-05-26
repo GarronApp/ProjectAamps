@@ -64,6 +64,7 @@ namespace AAMPS.Web.Controllers
 
                 var units = aampService.GetAllUnits().ToList();
 
+                //var development = units.
                 var totalUnits = units.Count();
                 var totalUnitsPrice = units.Sum(x => x.UnitPriceIncluding);
                 var totalUnitsAvailable = units.Count(x => x.UnitStatusID == 1);
