@@ -501,3 +501,16 @@ Exception rethrown at [0]:
 ------------------------= End Exception =---------------------------
 
 
+-----------------------= Start Exception =--------------------------
+2015-05-26 11:15:44 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Controllers.SalesController.UpdateReservedSale(ReservedSaleViewModel sale) in c:\workspace\Aamps\ProjectAamps.Web\Controllers\SalesController.cs:line 254
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+

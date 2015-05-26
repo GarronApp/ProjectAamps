@@ -672,6 +672,14 @@
                     toastr.error("Deposit Paid or Contract signed required");
                     break;
                 }
+
+                if (form[i].value != '' && form[1].value === '') {
+                    validForm = true;
+                    instance.ReservedFormValid = true;
+                    $("#PendingFormCompleteAndValid").attr('value', 0);
+                    break;
+                }
+
             }
 
             if (controlName == "SalesDepoistPaidDt") {
