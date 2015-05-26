@@ -64,22 +64,30 @@ namespace AAMPS.Clients.Actions.Sales
             _currentSale.SaleModifiedDt = DateTime.Now;
             _currentSale.SaleModifiedByUser = 1;
 
-            if (_currentSale.SaleActiveStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending)
+
+            if (PendingSaleVM.PendingFormCompleteAndValid != 0 && PendingSaleVM.PendingFormCompleteAndValid != null)
             {
-                _currentSale.SaleActiveStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
-                PendingSaleVM.SaleStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
-                PendingSaleVM.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)_currentSale.SaleActiveStatusID).SaleActiveStatusDescription;
-            }
-            if (_linkedUnit.UnitStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending)
-            {
-                _linkedUnit.UnitStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
-                PendingSaleVM.UnitStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
-                _repoService.UpdateUnit(_linkedUnit);
+                if (_currentSale.SaleActiveStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending)
+                {
+                    _currentSale.SaleActiveStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
+                    PendingSaleVM.SaleStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
+                    PendingSaleVM.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)_currentSale.SaleActiveStatusID).SaleActiveStatusDescription;
+                }
+                if (_linkedUnit.UnitStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending)
+                {
+                    _linkedUnit.UnitStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
+                    PendingSaleVM.UnitStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
+                    _repoService.UpdateUnit(_linkedUnit);
+                }
+
+                _repoService.SaveUpdateReservation(_currentSale);
+
             }
 
-            _repoService.SaveUpdateReservation(_currentSale);
-
+            PendingSaleVM.PendingFormCompleteAndValid = PendingSaleVM.PendingFormCompleteAndValid;
+            
             query.PendingSaleViewVM = PendingSaleVM;
+            
 
             return PendingSaleVM;
         }

@@ -38,7 +38,7 @@ namespace Aamps.Domain.ViewModels.Reports.Sales
         [DataMember]
         public string Bond { get; set; }
         [DataMember]
-        public double? BondReq { get; set; }
+        public float BondReq { get; set; }
         [DataMember]
         public double? BondAmountGrant { get; set; }
         [DataMember]

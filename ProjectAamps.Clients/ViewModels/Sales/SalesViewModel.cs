@@ -21,6 +21,7 @@ namespace AAMPS.Clients.ViewModels.Sales
         public int CurrentSalesStatusId { get; set; }
         public string CurrentSalesStatus { get; set; }
         public string IsNewSale { get; set; }
+        public int PendingFormCompleteAndValid { get; set; }
 
         public virtual List<PreferedContactMethod> PreferedContactMethods { get; set; }
         public DateTime? ReservationLapses { get; set; }

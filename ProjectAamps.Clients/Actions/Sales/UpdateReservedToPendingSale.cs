@@ -55,6 +55,7 @@ namespace AAMPS.Clients.Actions.Sales
             _currentSale.SalesTotalDepositAmount = ReservedSaleVM.SalesTotalDepositAmount;
             _currentSale.SaleModifiedDt = DateTime.Now;
             _currentSale.SaleModifiedByUser = 1;
+            ReservedSaleVM.PendingFormCompleteAndValid = 0;
 
             if (_currentSale.SaleActiveStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Reserved)
             {

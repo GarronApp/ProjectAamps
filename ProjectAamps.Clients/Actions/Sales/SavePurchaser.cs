@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectAamps.Clients.Actions.Sales
+namespace AAMPS.Clients.Actions.Sales
 {
     public class SavePurchaser : ControllerAction
     {

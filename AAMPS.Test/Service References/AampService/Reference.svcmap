@@ -22,11 +22,14 @@
     <MetadataSource Address="http://localhost:1862/AampService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AampService.xsd" MetadataType="Schema" ID="b394558c-59f1-4f5d-b7dc-1c15d5881b5a" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd2" />
     <MetadataFile FileName="AampService.disco" MetadataType="Disco" ID="271f0d24-1403-4508-a809-2257962d4c45" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?disco" />
     <MetadataFile FileName="AampService1.xsd" MetadataType="Schema" ID="e6d7ff03-406d-4b99-b14c-84f4bcf862bc" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd1" />
-    <MetadataFile FileName="AampService.wsdl" MetadataType="Wsdl" ID="de72de08-9344-4137-9510-b82cd37d31d9" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?wsdl" />
     <MetadataFile FileName="AampService2.xsd" MetadataType="Schema" ID="9a7ae139-3b7f-43f3-bdbf-2e71ed14ed38" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AampService3.xsd" MetadataType="Schema" ID="2e6ac4a6-626c-4e1f-b230-a97a928b29e0" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AampService.xsd" MetadataType="Schema" ID="b394558c-59f1-4f5d-b7dc-1c15d5881b5a" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AampService31.xsd" MetadataType="Schema" ID="d126d211-57ad-413e-a948-f27720da4cbb" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd5" />
+    <MetadataFile FileName="AampService32.xsd" MetadataType="Schema" ID="bca56814-8af2-4dc9-8bf8-f9294425aa60" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd4" />
+    <MetadataFile FileName="AampService.wsdl" MetadataType="Wsdl" ID="de72de08-9344-4137-9510-b82cd37d31d9" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

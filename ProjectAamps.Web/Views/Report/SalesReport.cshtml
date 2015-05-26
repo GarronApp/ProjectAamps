@@ -48,8 +48,8 @@
                 <td>@*@item.CntrSigned.HasValue ? @item.CntrSigned.GetValueOrDefault().ToString() : No Date*@</td>
                 <td>@item.Bond</td>
                 <td>@item.BondReq</td>
-                <td>@item.BondAmountGrant</td>
-                <td>@*@item.Granted.HasValue ? @item.Granted.GetValueOrDefault().ToShortDateString(): No Date*@</td>
+                <td>@item.BondAmountGrant != null ? @item.BondAmountGrant.GetValueOrDefault() : 0.0</td>
+                <td>@item.Granted != null ? @item.Granted.GetValueOrDefault().ToShortDateString(): "No Date"</td>
                 <td>@item.AmountDue</td>
             </tr>
         </tbody>

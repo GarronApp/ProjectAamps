@@ -19,6 +19,10 @@ namespace AAMPS.Clients.ViewModels.Sales
         public double SalesTotalDepositAmount { get; set; }
         public string SalesDepoistPaidDt { get; set; }
         public int SaleDepositPaidBt { get; set; }
+        public int PendingFormCompleteAndValid { get; set; }
+
+
+
 
     }
 }

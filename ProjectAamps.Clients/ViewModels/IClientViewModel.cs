@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectAamps.Clients.ViewModels
+namespace AAMPS.Clients.ViewModels
 {
     public interface IClientViewModel
     {

@@ -6538,7 +6538,7 @@ namespace AAMPS.Clients.AampService {
         private System.Nullable<double> BondAmountGrantField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> BondReqField;
+        private float BondReqField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> CntrSignedField;
@@ -6652,7 +6652,7 @@ namespace AAMPS.Clients.AampService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> BondReq {
+        public float BondReq {
             get {
                 return this.BondReqField;
             }

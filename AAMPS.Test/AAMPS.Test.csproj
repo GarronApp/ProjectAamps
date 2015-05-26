@@ -83,13 +83,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.Bank.datasource" />
     <None Include="Properties\DataSources\AAMPS.Clients.AampService.Company.datasource" />
     <None Include="Properties\DataSources\AAMPS.Clients.AampService.Development.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.EntityType.datasource" />
     <None Include="Properties\DataSources\AAMPS.Clients.AampService.Estate.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.Individual.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.MOStatus.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.OriginatorTr.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.PreferedContactMethod.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.Purchaser.datasource" />
     <None Include="Properties\DataSources\AAMPS.Clients.AampService.Sale.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.SaleActiveStatus.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.SaleDepositProof.datasource" />
+    <None Include="Properties\DataSources\AAMPS.Clients.AampService.SaleType.datasource" />
     <None Include="Properties\DataSources\AAMPS.Clients.AampService.Unit.datasource" />
     <None Include="Properties\DataSources\AAMPS.Clients.AampService.UnitStatus.datasource" />
     <None Include="Properties\DataSources\AAMPS.Clients.AampService.UserList.datasource" />
+    <None Include="Service References\AampService\AAMPS.Test.AampService.SalesReportViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AampService\AampService.wsdl" />
     <None Include="Service References\AampService\AampService.xsd">
       <SubType>Designer</SubType>
@@ -108,6 +121,15 @@
     <None Include="Service References\AampService\AampService.disco" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\AampService\AampService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AampService\AampService31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AampService\AampService32.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AampService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>

@@ -16,7 +16,7 @@ using AAMPS.Clients.Actions.Sales;
 using AAMPS.Clients.Queries.Sales;
 using AAMPS.Clients.Actions.Development;
 using AAMPS.Clients.Queries.Development;
-using ProjectAamps.Clients.Actions.Sales;
+using AAMPS.Clients.Actions.Sales;
 using App.Common.Exceptions;
 
 

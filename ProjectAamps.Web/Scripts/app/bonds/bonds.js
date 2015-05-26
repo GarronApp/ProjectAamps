@@ -59,9 +59,12 @@
             instance.UpdateSalesBondDetails();
         });
 
+        var numericInputControls = new Array("txtOriginatorTrBondAmount");
+
+        instance.initializeNumericInputValues(numericInputControls)
+
         instance.LoadBanks();
         instance.LoadMOStatus();
-        //instance.LoadCurrentDates();
 
         $.ajax({
             url: instance.getBondDetails_Url,
@@ -249,6 +252,14 @@
     this.ConvertCurrentDate = function (currentDate, control) {
         var convertedCurrentDate = moment(currentDate, 'DD-MM-YYYY').format('DD/MM/YYYY');
         $("#" + control).datepicker("setValue", convertedCurrentDate);
+    }
+
+    this.initializeNumericInputValues = function (controls) {
+        for (var i = 0; i < controls.length; i++) {
+            $("#" + controls[i]).attr("data-a-sign", "R ");
+            $("#" + controls[i]).autoNumeric('init', { vMax: '9999999999999.99', vMin: '-9999999999999.99', mDec: 2 });
+        }
+
     }
 
 

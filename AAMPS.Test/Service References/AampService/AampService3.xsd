@@ -13,7 +13,7 @@
       <xs:element minOccurs="0" name="AmountDue" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="Bond" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BondAmountGrant" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="BondReq" type="xs:float" />
+      <xs:element minOccurs="0" name="BondReq" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="CntrSigned" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Deposit" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="DepositDate" type="xs:dateTime" />

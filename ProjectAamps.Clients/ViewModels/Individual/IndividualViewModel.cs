@@ -1,4 +1,4 @@
-﻿using ProjectAamps.Clients.ViewModels;
+﻿using AAMPS.Clients.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
