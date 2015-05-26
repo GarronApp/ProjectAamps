@@ -78,13 +78,15 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script type="text/javascript">
     function showReservations() {
+
         $('#ReservationDetailsModal').modal('show');
+
     }
+
 </script>
 
 <script type="text/javascript">
     $(function () {
-
 
         $.ajax({
             url: '@Url.Action("GetDevelopmentSummary", "Development")',

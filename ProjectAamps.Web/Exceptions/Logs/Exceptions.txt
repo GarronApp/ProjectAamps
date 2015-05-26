@@ -475,3 +475,29 @@ Exception rethrown at [0]:
 ------------------------= End Exception =---------------------------
 
 
+-----------------------= Start Exception =--------------------------
+2015-05-26 09:44:20 PM
+
+Could not find a part of the path 'C:\workspace\Aamps\Aamps.Service\'.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetSaleByUnitId(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetSaleByUnitId(Int32 id) in c:\workspace\Aamps\ProjectAamps.Clients\Service References\AampService\Reference.cs:line 7389
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnExecute() in c:\workspace\Aamps\ProjectAamps.Clients\Actions\Sales\LoadSaleDetails.cs:line 38
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnBindModel() in c:\workspace\Aamps\ProjectAamps.Clients\Actions\Sales\LoadSaleDetails.cs:line 33
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails..ctor(LoadSalesQuery _query) in c:\workspace\Aamps\ProjectAamps.Clients\Actions\Sales\LoadSaleDetails.cs:line 27
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\SalesController.cs:line 134
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+

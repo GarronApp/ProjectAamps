@@ -656,8 +656,7 @@
         return validForm;
     }
 
-    this.validateReservedUpdateSale = function()
-    {
+    this.validateReservedUpdateSale = function () {
         var form = $("#SalePendingForm").serializeArray();
         console.log(form);
 
@@ -666,7 +665,7 @@
         for (var i = 0; i < form.length; i++) {
             var controlName = form[i].name;
             if (controlName == "SaleContractSignedPurchaserDt") {
-                if (form[i].value === '' && form[1].value === '') {
+                if (form[i].value === '' && form[2].value === '') {
                     validForm = false;
                     instance.ReservedFormValid = false;
                     $("#PendingFormCompleteAndValid").attr('value', 0);
@@ -683,11 +682,41 @@
                     toastr.error("Deposit Paid or Contract signed required");
                     break;
                 }
+
+
+                if (form[i].value != '' && form[0].value === '' || form[0].value != '') {
+
+                    if (form[3].value === '') {
+                        validForm = false;
+                        instance.ReservedFormValid = false;
+                        $("#PendingFormCompleteAndValid").attr('value', 0);
+                        toastr.error("Deposit Type required");
+                        break;
+                    }
+
+                    if(form[4].value === '')
+                    {
+                        validForm = false;
+                        instance.ReservedFormValid = false;
+                        $("#PendingFormCompleteAndValid").attr('value', 0);
+                        toastr.error("Deposit Amount required");
+                        break;
+                    }
+
+                    if (form[5].value === '') {
+                        validForm = false;
+                        instance.ReservedFormValid = false;
+                        $("#PendingFormCompleteAndValid").attr('value', 0);
+                        toastr.error("Deposit Proof Date required");
+                        break;
+                    }
+                }
             }
+
         }
         instance.ReservedFormValid = true
         return validForm;
-    }
+    };
 
     this.validateReservedSale = function () {
         var form = $("#SalePendingForm").serializeArray();
