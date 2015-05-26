@@ -54,27 +54,27 @@
                                         <tr>
                                             <td class="col-md-4">Available</td>
                                             <td class="col-md-4">@Session["TotalUnitsAvailable"].ToString()</td>
-                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsAvailablePrice"].ToString()</td> @*Use Space seperation on 1000*@
+                                            <td class="col-md-4"><label id="lblTotalUnitsAvailablePrice">@Session["TotalUnitsAvailablePrice"].ToString()</label></td>
                                         </tr>
                                         <tr>
                                             <td class="col-md-4">Reserved</td>
                                             <td class="col-md-4">@Session["TotalUnitsReserved"].ToString()</td>
-                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsReservedPrice"].ToString()</td>@*Use Space seperation on 1000*@
+                                            <td class="col-md-4"><label id="lblTotalUnitsReservedPrice">@Session["TotalUnitsReservedPrice"].ToString()</label></td>
                                         </tr>
                                         <tr>
                                             <td class="col-md-4">Pending</td>
                                             <td class="col-md-4">@Session["TotalUnitsPending"].ToString()</td>
-                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsPendingPrice"].ToString()</td>@*Use Space seperation on 1000*@
+                                            <td class="col-md-4"><label id="lblTotalUnitsPendingPrice">@Session["TotalUnitsPendingPrice"].ToString()</label></td>
                                         </tr>
                                         <tr>
                                             <td class="col-md-4">Sold</td>
                                             <td class="col-md-4">@Session["TotalUnitsSold"].ToString()</td>
-                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsSoldPrice"].ToString()</td>@*Use Space seperation on 1000*@
+                                            <td class="col-md-4"><label id="lblTotalUnitsSoldPrice">@Session["TotalUnitsSoldPrice"].ToString()</label></td>
                                         </tr>
                                         <tr>
                                             <td class="col-md-4"><b>Total Units</b></td>
                                             <td class="col-md-4"><span class="badge"><b>@Session["TotalUnits"].ToString()</b></span></td>
-                                            <td class="col-md-4"><span class="badge"><b>R&nbsp;@Session["TotalUnitsPrice"].ToString()</b></span></td>
+                                            <td class="col-md-4"><span class="badge"><b><label id="lblTotalUnitsPrice">@Session["TotalUnitsPrice"].ToString()</label></b></span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -167,6 +167,18 @@
 
         });
     }
+
+     function formatNumber(num) {
+         return "R " + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+     }
+
+     function FormatSummaryTotalsCurrency() {
+         $("#lblTotalUnitsAvailablePrice").html(formatNumber($("#lblTotalUnitsAvailablePrice").html()));
+         $("#lblTotalUnitsReservedPrice").html(formatNumber($("#lblTotalUnitsReservedPrice").html()));
+         $("#lblTotalUnitsPendingPrice").html(formatNumber($("#lblTotalUnitsPendingPrice").html()));
+         $("#lblTotalUnitsSoldPrice").html(formatNumber($("#lblTotalUnitsSoldPrice").html()));
+         $("#lblTotalUnitsPrice").html(formatNumber($("#lblTotalUnitsPrice").html()));
+     }
 </script>
 <script type="text/javascript">
     $(function () {
@@ -180,6 +192,8 @@
                 $("#currentUser").html(data);
             }
         });
+
+        FormatSummaryTotalsCurrency();
 
         var items = [];
         $.getJSON("/Development/GetTotals", function (data) {
