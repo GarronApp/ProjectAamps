@@ -76,7 +76,6 @@ namespace AAMPS.Web.Controllers
                 var totalUnitsSold = units.Count(x => x.UnitStatusID == 4);
                 var totalUnitsSoldPrice = units.Where(x => x.UnitStatusID == 4).Sum(x => x.UnitPriceIncluding);
 
-
                 Session.Add("TotalUnits", totalUnits);
                 Session.Add("TotalUnitsPrice", totalUnitsPrice * totalUnits);
                 Session.Add("TotalUnitsAvailable", totalUnitsAvailable);
@@ -87,7 +86,7 @@ namespace AAMPS.Web.Controllers
                 Session.Add("TotalUnitsPendingPrice", totalUnitsPendingPrice * totalUnitsPending);
                 Session.Add("TotalUnitsReserved", totalUnitsReserved);
                 Session.Add("totalUnitsReservedPrice", totalUnitsReservedPrice * totalUnitsReserved);
-
+               
 
                 List<DevelopmentViewModel> list = new List<DevelopmentViewModel>();
 
@@ -106,10 +105,15 @@ namespace AAMPS.Web.Controllers
                         UnitActiveDate = item.UnitActiveDate,
                         UnitStatusID = aampService.GetUnitStatusById(item.UnitStatusID).UnitStatusDescription,
                         DevelopmentDescription = aampService.GetDevelopmentById(item.DevelopmentID).DevelopmentDescription
+
                     };
+
+                  
 
                     list.Add(viewModel);
                 }
+
+                Session.Add("DevelopmentName", list.FirstOrDefault().DevelopmentDescription);
            
               return View(list);
 
@@ -139,8 +143,10 @@ namespace AAMPS.Web.Controllers
                 UnitPriceIncluding = _currentUnit.UnitPriceIncluding,
                 UnitActiveDate = _currentUnit.UnitActiveDate,
                 UnitStatusID = aampService.GetUnitStatusById(_currentUnit.UnitStatusID).UnitStatusDescription,
-                DevelopmentDescription = aampService.GetDevelopmentById(_currentUnit.DevelopmentID).DevelopmentDescription
+                DevelopmentDescription = aampService.GetDevelopmentById(_currentUnit.DevelopmentID).DevelopmentDescription,
+               
             };
+           
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
@@ -178,6 +184,8 @@ namespace AAMPS.Web.Controllers
                 TotalUnits = units
 
             };
+
+           // Session.Add("DevelopmentName", viewModel.DevelopmentDescription);
 
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
