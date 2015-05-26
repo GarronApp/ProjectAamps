@@ -78,18 +78,19 @@
             $("#selectTimeExtention").prop("disabled", !$(this).is(':checked'));
         });
 
-        $('#checkPurchaserContractSigned').change(function () {
-            if (!$(this).is(':checked')) {
-                $("#txtPurchaserContractSignedDate").prop("disabled", true);
-                $("#txtPurchaserContractSignedDate").val("");
-            }
-            else {
-                $("#txtPurchaserContractSignedDate").prop("disabled", false);
-                $("#txtPurchaserContractSignedDate").datepicker("setValue", new Date());
-            }
-            //$("#txtPurchaserContractSignedDate").prop("disabled", !$(this).is(':checked'));
-            //$("#txtPurchaserContractSignedDate").val("", !$(this).is(':checked'));
-        });
+        //$('#checkPurchaserContractSigned').change(function () {
+        //    if (!$(this).is(':checked')) {
+        //        $("#txtPurchaserContractSignedDate").prop("disabled", true);
+        //        $("#txtPurchaserContractSignedDate").val("");
+        //    }
+        //    else {
+        //        $("#txtPurchaserContractSignedDate").prop("disabled", false);
+        //        $("#txtPurchaserContractSignedDate").prop("readonly", false);
+        //        $("#txtPurchaserContractSignedDate").datepicker("setValue", new Date());
+        //    }
+        //    //$("#txtPurchaserContractSignedDate").prop("disabled", !$(this).is(':checked'));
+        //    //$("#txtPurchaserContractSignedDate").val("", !$(this).is(':checked'));
+        //});
         
         $('#checkPurchaserContractSigned').change(function () {
             if (!$(this).is(':checked')) {
@@ -98,6 +99,7 @@
             }
             else {
                 $("#txtPurchaserContractSigned").prop("disabled", false);
+                $("#txtPurchaserContractSigned").prop("readonly", false);
                 var dateToday = new Date();
                 var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
                 $("#txtPurchaserContractSigned").datepicker("setValue", convertDateToday);
@@ -114,6 +116,7 @@
             else {
                 $(this).val(1);
                 $("#txtDepositPaidDate").prop("disabled", false);
+                $("#txtDepositPaidDate").prop("readonly", false);
                 var dateToday = new Date();
                 var convertDateToday = moment(reservationDate, 'DD/MM/YYYY').format('DD/MM/YYYY');
                 $("#txtDepositPaidDate").datepicker("setValue", convertDateToday);
@@ -318,7 +321,7 @@
                 instance.UpdateReservationDetails();
             }
             else {
-                toastr.warning("please add individual to continue");
+                toastr.warning("Please add an individual to continue");
             }
 
         });
@@ -416,6 +419,8 @@
 
                         $("#SaleReservedForm input").attr("disabled", false);
                         $("#SaleReservedForm select").prop('disabled', false);
+
+
 
                         $("#individualFormReserved input").attr("disabled", false);
                         $("#individualFormReserved select").attr("disabled", false);

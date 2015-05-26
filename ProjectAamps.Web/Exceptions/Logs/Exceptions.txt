@@ -303,3 +303,123 @@ Object reference not set to an instance of an object.
 ------------------------= End Exception =---------------------------
 
 
+-----------------------= Start Exception =--------------------------
+2015/05/26 12:20:43 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:37:51 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at AAMPS.Web.Controllers.SalesController.UpdateReservedSale(ReservedSaleViewModel sale) in c:\dev\Aamps\Repo\ProjectAamps.Web\Controllers\SalesController.cs:line 254
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:51:10 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:52:42 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:53:45 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:57:44 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 02:00:30 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 02:17:38 PM
+
+An error occurred while updating the entries. See the inner exception for details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.SaveUpdateReservation(Sale sale)
+   at AAMPS.Clients.AampService.AampServiceClient.SaveUpdateReservation(Sale sale) in c:\dev\Aamps\Repo\ProjectAamps.Clients\Service References\AampService\Reference.cs:line 7397
+   at AAMPS.Clients.Actions.Sales.UpdateReservedToPendingSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\UpdateReservedToPendingSale.cs:line 74
+   at AAMPS.Clients.Actions.Sales.UpdateReservedToPendingSale.OnBindModel() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\UpdateReservedToPendingSale.cs:line 41
+   at AAMPS.Clients.Actions.Sales.UpdateReservedToPendingSale..ctor(LoadSalesQuery _query) in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\UpdateReservedToPendingSale.cs:line 30
+   at AAMPS.Web.Controllers.SalesController.UpdateReservedSale(ReservedSaleViewModel sale) in c:\dev\Aamps\Repo\ProjectAamps.Web\Controllers\SalesController.cs:line 257
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 02:32:27 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 02:45:14 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
