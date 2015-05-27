@@ -10,18 +10,11 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Agency" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Agent" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="AmountDue" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="Bond" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BondAmountGrant" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="BondReq" type="xs:float" />
-      <xs:element minOccurs="0" name="CntrSigned" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Deposit" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="DepositDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Development" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Granted" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Phase" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="Proof" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Purchaser" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />

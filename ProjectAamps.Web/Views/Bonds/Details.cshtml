@@ -12,7 +12,7 @@
 
 </style>
 
-<div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top: 20px;">
+<div class="jumbotron" style="background-color:#fff; margin-top:0px; padding-bottom:10px;margin-top: 20px;">
         <div class="row pull-right" style="margin-top: -30px;">
             <a href="#" class="btn-cancel" style="font-size:0.85em" onclick="window.location.href='@Url.Action("Dashboard","Development")'">RETURN</a>
            
@@ -20,7 +20,7 @@
         </div>
         <div class="row text-center" style="margin-top: -20px;">
             <fieldset>
-                <legend class="well"></legend>
+                <legend class="well">Property <span style="padding: 55px;">Details</span></legend>
                 <div class="col-md-12" style="margin-top: -20px;">
                     <table style="width:100%" class="table text-center table-general">
                         <thead>
@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <fieldset>
-                            <legend class="well">Sale</legend>
+                            <legend class="well">Transaction <span style="padding: 75px;">Details</span></legend>
                             <table style="width:100%" class="table text-center">
                                 <thead>
                                     <tr>
@@ -74,13 +74,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </fieldset>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <fieldset>
-                            <legend class="well">Bond</legend>
                             <table style="width:100%" class="table text-left">
                                 <thead>
                                     <tr>
@@ -102,11 +95,12 @@
                         </fieldset>
                     </div>
                 </div>
+               
             </div>
             <div class="col-md-6">
                 <div class="col-md-12">
                     <fieldset>
-                        <legend class="well">Individual</legend>
+                        <legend class="well">Purchaser <span style="padding: 65px;">Details</span></legend>
                         <table style="width:100%;margin-top: 0px;" class="table text-left">
                             <tr>
                                 <td class="col-md-3">First Name:</td>
@@ -131,13 +125,14 @@
 
         </div>
     </div>
-<div class="row" style="background:#eee">
+    <div class="row" style="background:#fff">
     <form id="UpdateSalesBondDetailsFrom">
         <div class="col-md-12">
+            <div><h5 style="font-weight:400">BOND TRANSACTIONS</h5></div>
             <table style="width:100%" class="table text-left table-general">
                 <thead>
                     <tr>
-                        <td class="col-md-3 dark-orange"><strong>Client Contacted</strong></td>
+                        <td class="col-md-3 dark-orange"><strong>Have contacted the Purchaser</strong></td>
                         <td class="col-md-3 dark-orange"><strong>Documents Received</strong></td>
                         <td class="col-md-3 dark-orange"><strong>Bond Account No</strong></td>
                     </tr>
@@ -223,6 +218,7 @@
                                 <input type="text" name="OriginatorTrID" id="txtOriginatorTrID" style="display:none" />
                                 <input type="text" name="BankID" id="BankID" value=" " style="display:none" />
                                 <input type="text" name="MOStatusID" id="MOStatusID" value="" style="display:none" />
+                                @*<input type="text" name="OriginatorTrBondAmount" id="txtHiddenOriginatorTrBondAmount" value="" style="display:none" />*@
                             </div>
                             <div class="form-group" style="padding-bottom:30px">
                                 <label for="selectBankName" class="col-sm-4 control-label">Bank Name</label>
@@ -311,6 +307,7 @@
             $("#showModalUpdateOriginator").modal('show');
             $("#btnUpdateOriginatorTr").val("Submit");
             $("#ApplicationStatus").val("NewApplication");
+            $("#txtOriginatorTrBondAmount").val()
 
             var dateToday = new Date();
             var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
@@ -328,6 +325,7 @@
             $("#selectMOStatus select").attr('disabled', 'disabled');
             $("#selectMOStatus select option").attr('disabled', 'disabled');
             $("#selectMOStatus select option").prop('disabled',true);
+            
 
             $('#selectMOStatus')
                 .empty()
@@ -340,23 +338,31 @@
     $(function () {
         var bonds = new Bonds();
         bonds.load();
-        var clientContacted = @Model.SalesBondClientContactedBt;
+        @*var clientContacted = @Model.SalesBondClientContactedBt;
         if(clientContacted == 1)
         {
             $("#checkClientContacted").prop('checked', true);
+            $("#checkClientContacted").val(1);
         }
         else{
             $("#checkClientContacted").prop('checked', false);
+            $("#checkClientContacted").val(0);
         }
 
         var bondDocuments = @Model.SalesBondBondDocsRecBt;
         if(bondDocuments == 1)
         {
             $("#checkDocumentsRec").prop('checked', true);
+            $("#checkDocumentsRec").val(1);
         }
         else{
             $("#checkDocumentsRec").prop('checked', false);
-        }
+            $("#checkDocumentsRec").val(0);
+        }*@
+
+       
+
+        
 
 
 

@@ -187,7 +187,7 @@ namespace AAMPS.Web.Controllers
                 {
                     var _newIndividual = new SaveIndividual(individual);
 
-                    return Json(_newIndividual.newIndividualViewModel, JsonRequestBehavior.AllowGet);
+                    return Json(_newIndividual.IndividualViewModel, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
@@ -199,6 +199,7 @@ namespace AAMPS.Web.Controllers
             return null;
             
         }
+
 
         [HttpPost]
         public JsonResult SavePurchaser(PurchaserViewModel purchaser)
@@ -305,7 +306,7 @@ namespace AAMPS.Web.Controllers
             {
                 if (person != null)
                 {
-                    _repoService.SavePerson(person);
+                    _repoService.SaveIndividual(person);
                     return Json(person, JsonRequestBehavior.AllowGet);
                 }
             }

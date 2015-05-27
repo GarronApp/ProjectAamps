@@ -208,11 +208,17 @@
   <wsdl:message name="IAampService_GetCompanyByUserGroupId_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCompanyByUserGroupIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IAampService_SavePerson_InputMessage">
-    <wsdl:part name="parameters" element="tns:SavePerson" />
+  <wsdl:message name="IAampService_SaveIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveIndividual" />
   </wsdl:message>
-  <wsdl:message name="IAampService_SavePerson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SavePersonResponse" />
+  <wsdl:message name="IAampService_SaveIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveIndividualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdateIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdateIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIndividualResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetAllPreferedContactMethods_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllPreferedContactMethods" />
@@ -225,6 +231,12 @@
   </wsdl:message>
   <wsdl:message name="IAampService_GetPreferedContactMethodById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPreferedContactMethodByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetIndividualById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndividualById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetIndividualById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndividualByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_SavePurchaser_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePurchaser" />
@@ -413,9 +425,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetCompanyByUserGroupId" message="tns:IAampService_GetCompanyByUserGroupId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetCompanyByUserGroupIdResponse" message="tns:IAampService_GetCompanyByUserGroupId_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SavePerson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SavePerson" message="tns:IAampService_SavePerson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/SavePersonResponse" message="tns:IAampService_SavePerson_OutputMessage" />
+    <wsdl:operation name="SaveIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SaveIndividual" message="tns:IAampService_SaveIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/SaveIndividualResponse" message="tns:IAampService_SaveIndividual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/UpdateIndividual" message="tns:IAampService_UpdateIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/UpdateIndividualResponse" message="tns:IAampService_UpdateIndividual_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllPreferedContactMethods">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllPreferedContactMethods" message="tns:IAampService_GetAllPreferedContactMethods_InputMessage" />
@@ -424,6 +440,10 @@
     <wsdl:operation name="GetPreferedContactMethodById">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPreferedContactMethodById" message="tns:IAampService_GetPreferedContactMethodById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse" message="tns:IAampService_GetPreferedContactMethodById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIndividualById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetIndividualById" message="tns:IAampService_GetIndividualById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetIndividualByIdResponse" message="tns:IAampService_GetIndividualById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SavePurchaser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SavePurchaser" message="tns:IAampService_SavePurchaser_InputMessage" />
@@ -761,8 +781,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SavePerson">
-      <soap:operation soapAction="http://tempuri.org/IAampService/SavePerson" style="document" />
+    <wsdl:operation name="SaveIndividual">
+      <soap:operation soapAction="http://tempuri.org/IAampService/SaveIndividual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIndividual">
+      <soap:operation soapAction="http://tempuri.org/IAampService/UpdateIndividual" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -781,6 +810,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPreferedContactMethodById">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetPreferedContactMethodById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIndividualById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetIndividualById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

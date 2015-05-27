@@ -217,13 +217,21 @@ namespace Aamps.Service
              _salesRepo.Update(sale);
          }
 
-         public Individual SavePerson(Individual person)
+         public Individual SaveIndividual(Individual person)
         {
             _personRepo = new IndividualRepository(_dbContext);
             _personRepo.Add(person);
 
             return person;
         }
+
+         public Individual UpdateIndividual(Individual person)
+         {
+             _personRepo = new IndividualRepository(_dbContext);
+             _personRepo.Update(person);
+
+             return person;
+         }
 
          public Purchaser SavePurchaser(Purchaser purchaser)
          {
@@ -259,6 +267,13 @@ namespace Aamps.Service
         {
             _personRepo = new IndividualRepository(_dbContext);
             var results =_personRepo.GetPreferedContactMethodById(id);
+            return results;
+        }
+
+        public Individual GetIndividualById(int id)
+        {
+            _personRepo = new IndividualRepository(_dbContext);
+            var results = _personRepo.GetIndividualById(id);
             return results;
         }
 

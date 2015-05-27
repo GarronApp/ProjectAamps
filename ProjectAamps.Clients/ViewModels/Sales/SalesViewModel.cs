@@ -38,6 +38,7 @@ namespace AAMPS.Clients.ViewModels.Sales
         public string BondRequired { get; set; }
         public float CashPayment { get; set; }
 
+        public int IndividualID { get; set; }
         public string IndividualName { get; set; }
         public string IndividualSurname { get; set; }
         public string IndividualContactCell { get; set; }

@@ -10,6 +10,7 @@ namespace AAMPS.Clients.ViewModels.Individual
     public class IndividualViewModel : IClientViewModel
     {
         public int IndividualID { get; set; }
+        public int IsNewIndividual { get; set; }
         public string IndividualName { get; set; }
         public string IndividualSurname { get; set; }
         public string IndividualIDNumber { get; set; }
@@ -19,6 +20,7 @@ namespace AAMPS.Clients.ViewModels.Individual
         public string IndividualEmail { get; set; }
         public int PreferedContactMethodID { get; set; }
         public string IndividualCountryofOriginator { get; set; }
+        
 
 
         private bool individual = true;

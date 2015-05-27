@@ -68,7 +68,7 @@
     </p>
     <br /><br />
 
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered" id="tableUnits">
         <thead>
             <tr>
                 <td>#</td>
@@ -86,7 +86,7 @@
         @foreach (var item in Model)
         {
             <tbody>
-                <tr>
+                <tr id="tableUnitsRow">
                     <td>#</td>
                     <td>@item.UnitNumber</td>
                     <td>@item.UnitPhase</td>
@@ -94,7 +94,7 @@
                     <td>@item.UnitFloor</td>
                     <td class="text-center">@item.UnitSize</td>
                     <td>@item.UnitStatusID</td>
-                    <td class="text-right">R @item.UnitPriceIncluding</td>
+                    <td class="text-right"><label id="lblUnitPriceIncluding">@item.UnitPriceIncluding</label></td>
                     <td>@item.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>
                     @*<td><a onclick="showReservations('notavailable')" class="orange">Update</a></td>*@
                 </tr>
@@ -359,6 +359,12 @@
         return "R" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
     }
 
+    function LoadRows() {
+        $('#tableUnitsRow label#lblUnitPriceIncluding').each(function () {
+            $("#lblUnitPriceIncluding").html(formatNumber($("#lblUnitPriceIncluding").html()));
+        });
+    }
+
     function FormatSummaryTotalsCurrency()
     {
         $("#lblTotalUnitsAvailablePrice").html(formatNumber($("#lblTotalUnitsAvailablePrice").html()));
@@ -366,6 +372,8 @@
         $("#lblTotalUnitsPendingPrice").html(formatNumber($("#lblTotalUnitsPendingPrice").html()));
         $("#lblTotalUnitsSoldPrice").html(formatNumber($("#lblTotalUnitsSoldPrice").html()));
         $("#lblTotalUnitsPrice").html(formatNumber($("#lblTotalUnitsPrice").html()));
+        $("#lblUnitPriceIncluding").html(formatNumber($("#lblUnitPriceIncluding").html()));
+        
     }
 
 

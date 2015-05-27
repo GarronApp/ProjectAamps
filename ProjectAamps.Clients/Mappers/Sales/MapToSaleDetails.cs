@@ -144,6 +144,7 @@ namespace AAMPS.Clients.Mappers.Sales
 
         private void MapIndividual(SalesViewModel viewModel, Sale _currentSale)
         {
+            viewModel.IndividualID = _currentSale.Individual.IndividualID;
             viewModel.IndividualName = _currentSale.Individual.IndividualName;
             viewModel.IndividualSurname = _currentSale.Individual.IndividualSurname;
             viewModel.IndividualContactCell = _currentSale.Individual.IndividualContactCell;

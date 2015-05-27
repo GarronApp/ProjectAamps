@@ -6529,21 +6529,6 @@ namespace AAMPS.Clients.AampService {
         private string AgentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> AmountDueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BondField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<double> BondAmountGrantField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private float BondReqField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> CntrSignedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<double> DepositField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -6553,16 +6538,10 @@ namespace AAMPS.Clients.AampService {
         private string DevelopmentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> GrantedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PhaseField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<double> PriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ProofField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PurchaserField;
@@ -6613,71 +6592,6 @@ namespace AAMPS.Clients.AampService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> AmountDue {
-            get {
-                return this.AmountDueField;
-            }
-            set {
-                if ((this.AmountDueField.Equals(value) != true)) {
-                    this.AmountDueField = value;
-                    this.RaisePropertyChanged("AmountDue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Bond {
-            get {
-                return this.BondField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BondField, value) != true)) {
-                    this.BondField = value;
-                    this.RaisePropertyChanged("Bond");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<double> BondAmountGrant {
-            get {
-                return this.BondAmountGrantField;
-            }
-            set {
-                if ((this.BondAmountGrantField.Equals(value) != true)) {
-                    this.BondAmountGrantField = value;
-                    this.RaisePropertyChanged("BondAmountGrant");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public float BondReq {
-            get {
-                return this.BondReqField;
-            }
-            set {
-                if ((this.BondReqField.Equals(value) != true)) {
-                    this.BondReqField = value;
-                    this.RaisePropertyChanged("BondReq");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> CntrSigned {
-            get {
-                return this.CntrSignedField;
-            }
-            set {
-                if ((this.CntrSignedField.Equals(value) != true)) {
-                    this.CntrSignedField = value;
-                    this.RaisePropertyChanged("CntrSigned");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<double> Deposit {
             get {
                 return this.DepositField;
@@ -6717,19 +6631,6 @@ namespace AAMPS.Clients.AampService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Granted {
-            get {
-                return this.GrantedField;
-            }
-            set {
-                if ((this.GrantedField.Equals(value) != true)) {
-                    this.GrantedField = value;
-                    this.RaisePropertyChanged("Granted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Phase {
             get {
                 return this.PhaseField;
@@ -6751,19 +6652,6 @@ namespace AAMPS.Clients.AampService {
                 if ((this.PriceField.Equals(value) != true)) {
                     this.PriceField = value;
                     this.RaisePropertyChanged("Price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Proof {
-            get {
-                return this.ProofField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProofField, value) != true)) {
-                    this.ProofField = value;
-                    this.RaisePropertyChanged("Proof");
                 }
             }
         }
@@ -7101,11 +6989,17 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompanyByUserGroupId", ReplyAction="http://tempuri.org/IAampService/GetCompanyByUserGroupIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company> GetCompanyByUserGroupIdAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePerson", ReplyAction="http://tempuri.org/IAampService/SavePersonResponse")]
-        AAMPS.Clients.AampService.Individual SavePerson(AAMPS.Clients.AampService.Individual person);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveIndividual", ReplyAction="http://tempuri.org/IAampService/SaveIndividualResponse")]
+        AAMPS.Clients.AampService.Individual SaveIndividual(AAMPS.Clients.AampService.Individual person);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePerson", ReplyAction="http://tempuri.org/IAampService/SavePersonResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> SavePersonAsync(AAMPS.Clients.AampService.Individual person);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveIndividual", ReplyAction="http://tempuri.org/IAampService/SaveIndividualResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> SaveIndividualAsync(AAMPS.Clients.AampService.Individual person);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateIndividual", ReplyAction="http://tempuri.org/IAampService/UpdateIndividualResponse")]
+        AAMPS.Clients.AampService.Individual UpdateIndividual(AAMPS.Clients.AampService.Individual person);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateIndividual", ReplyAction="http://tempuri.org/IAampService/UpdateIndividualResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> UpdateIndividualAsync(AAMPS.Clients.AampService.Individual person);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllPreferedContactMethods", ReplyAction="http://tempuri.org/IAampService/GetAllPreferedContactMethodsResponse")]
         AAMPS.Clients.AampService.PreferedContactMethod[] GetAllPreferedContactMethods();
@@ -7118,6 +7012,12 @@ namespace AAMPS.Clients.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPreferedContactMethodById", ReplyAction="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod> GetPreferedContactMethodByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetIndividualById", ReplyAction="http://tempuri.org/IAampService/GetIndividualByIdResponse")]
+        AAMPS.Clients.AampService.Individual GetIndividualById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetIndividualById", ReplyAction="http://tempuri.org/IAampService/GetIndividualByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> GetIndividualByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePurchaser", ReplyAction="http://tempuri.org/IAampService/SavePurchaserResponse")]
         AAMPS.Clients.AampService.Purchaser SavePurchaser(AAMPS.Clients.AampService.Purchaser purchaser);
@@ -7465,12 +7365,20 @@ namespace AAMPS.Clients.AampService {
             return base.Channel.GetCompanyByUserGroupIdAsync(id);
         }
         
-        public AAMPS.Clients.AampService.Individual SavePerson(AAMPS.Clients.AampService.Individual person) {
-            return base.Channel.SavePerson(person);
+        public AAMPS.Clients.AampService.Individual SaveIndividual(AAMPS.Clients.AampService.Individual person) {
+            return base.Channel.SaveIndividual(person);
         }
         
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> SavePersonAsync(AAMPS.Clients.AampService.Individual person) {
-            return base.Channel.SavePersonAsync(person);
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> SaveIndividualAsync(AAMPS.Clients.AampService.Individual person) {
+            return base.Channel.SaveIndividualAsync(person);
+        }
+        
+        public AAMPS.Clients.AampService.Individual UpdateIndividual(AAMPS.Clients.AampService.Individual person) {
+            return base.Channel.UpdateIndividual(person);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> UpdateIndividualAsync(AAMPS.Clients.AampService.Individual person) {
+            return base.Channel.UpdateIndividualAsync(person);
         }
         
         public AAMPS.Clients.AampService.PreferedContactMethod[] GetAllPreferedContactMethods() {
@@ -7487,6 +7395,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod> GetPreferedContactMethodByIdAsync(int id) {
             return base.Channel.GetPreferedContactMethodByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.Individual GetIndividualById(int id) {
+            return base.Channel.GetIndividualById(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> GetIndividualByIdAsync(int id) {
+            return base.Channel.GetIndividualByIdAsync(id);
         }
         
         public AAMPS.Clients.AampService.Purchaser SavePurchaser(AAMPS.Clients.AampService.Purchaser purchaser) {

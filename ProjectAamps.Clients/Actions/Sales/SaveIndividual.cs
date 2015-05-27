@@ -16,7 +16,7 @@ namespace AAMPS.Clients.Actions.Sales
         #region Properties
         public bool IsNewIndividual { get; set; }
 
-        public IndividualViewModel newIndividualViewModel { get; set; }
+        public IndividualViewModel IndividualViewModel { get; set; }
 
         #endregion Properties
 
@@ -28,7 +28,7 @@ namespace AAMPS.Clients.Actions.Sales
         public SaveIndividual(IndividualViewModel _newIndividual)
             : base(_newIndividual)
         {
-            newIndividualViewModel = _newIndividual;
+            IndividualViewModel = _newIndividual;
             OnBindModel();
         }
 
@@ -37,7 +37,7 @@ namespace AAMPS.Clients.Actions.Sales
         #region Virtual Methods
         public override void OnBindModel()
         {
-            IsNewIndividual = newIndividualViewModel.IsNewIdentity;
+            IsNewIndividual = IndividualViewModel.IsNewIdentity;
 
             if (IsNewIndividual)
                 OnExecute();
@@ -45,30 +45,59 @@ namespace AAMPS.Clients.Actions.Sales
 
         public override object OnExecute()
         {
-            var _individual = new Individual();
+            if (IndividualViewModel.IsNewIndividual == 1)
+            {
+                var _individual = new Individual();
+                MapIndividual(_individual);
 
-            _individual.IndividualName = newIndividualViewModel.IndividualName;
-            _individual.IndividualSurname = newIndividualViewModel.IndividualSurname;
-            _individual.IndividualContactCell = newIndividualViewModel.IndividualContactCell;
-            _individual.IndividualContactHome = newIndividualViewModel.IndividualContactHome;
-            _individual.IndividualContactWork = newIndividualViewModel.IndividualContactWork;
-            _individual.IndividualEmail = newIndividualViewModel.IndividualEmail;
-            var contactMethod = newIndividualViewModel.PreferedContactMethodID.ToString();
+                var result = new AampServiceClient().SaveIndividual(_individual);
 
-            SetPreferedMethod(contactMethod, _individual);
+                _individual.IndividualID = result.IndividualID;
+                IndividualViewModel.IndividualID = result.IndividualID;
+                IndividualViewModel.PreferedContactMethodID = _individual.PreferedContactMethodID;
 
-            var result =  new AampServiceClient().SavePerson(_individual);
+                return _individual;
+            }
 
-              _individual.IndividualID = result.IndividualID;
-              newIndividualViewModel.IndividualID = result.IndividualID;
-              newIndividualViewModel.PreferedContactMethodID = _individual.PreferedContactMethodID;
+            if (IndividualViewModel.IsNewIndividual == 0)
+            {
+                var _individual = new AampServiceClient().GetIndividualById(IndividualViewModel.IndividualID);
 
-            return _individual;
+                if (_individual != null)
+                {
+                    MapIndividual(_individual);
+
+                    var result = new AampServiceClient().UpdateIndividual(_individual);
+
+                    _individual.IndividualID = result.IndividualID;
+                    IndividualViewModel.IndividualID = result.IndividualID;
+                    IndividualViewModel.PreferedContactMethodID = _individual.PreferedContactMethodID;
+
+                    return _individual;
+                }
+            }
+
+            return null;
+
         }
 
         #endregion Virtual Methods
 
         #region Private Methods
+
+        private void MapIndividual(Individual _individual)
+        {
+            _individual.IndividualName = IndividualViewModel.IndividualName;
+            _individual.IndividualSurname = IndividualViewModel.IndividualSurname;
+            _individual.IndividualContactCell = IndividualViewModel.IndividualContactCell;
+            _individual.IndividualContactHome = IndividualViewModel.IndividualContactHome;
+            _individual.IndividualContactWork = IndividualViewModel.IndividualContactWork;
+            _individual.IndividualEmail = IndividualViewModel.IndividualEmail;
+            var contactMethod = IndividualViewModel.PreferedContactMethodID.ToString();
+
+            SetPreferedMethod(contactMethod, _individual);
+        }
+
         private void SetPreferedMethod(string contactMethod, Individual individual)
         {
             switch (contactMethod)

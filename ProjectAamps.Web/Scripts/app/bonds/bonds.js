@@ -28,32 +28,63 @@
             $(this).datepicker('hide');
         });
 
+        $("#btnAddBankApplication").prop("disabled", true);
 
         $('#checkClientContacted').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtSalesBondClientContactedDt").prop("disabled", true);
                 $("#txtSalesBondClientContactedDt").val("");
+                $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+                $("#txtSalesBondBondDocsRecDt").val("");
+                $("#checkDocumentsRec").prop('checked', false);
+                $("#checkDocumentsRec").prop("disabled", true);
+                $("#btnAddBankApplication").prop("disabled", true);
             }
             else {
+
+                if ($('#checkDocumentsRec').is(":checked"))
+                {
+                    $("#btnAddBankApplication").prop("disabled", false);
+                }
+
                 $("#txtSalesBondClientContactedDt").prop("disabled", false);
+                $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+                $("#txtSalesBondBondDocsRecDt").val("");
+                $("#checkDocumentsRec").prop("disabled", false);
+                $("#checkDocumentsRec").prop("checked", false);
+                
                 var dateToday = new Date();
                 var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
                 $("#txtSalesBondClientContactedDt").datepicker("setValue", convertDateToday);
             }
         });
 
+
+
         $('#checkDocumentsRec').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
                 $("#txtSalesBondBondDocsRecDt").val("");
+                $("#btnAddBankApplication").prop("disabled", true);
             }
             else {
+
+                if ($('#checkClientContacted').is(":checked")) {
+
+                    $("#btnAddBankApplication").prop("disabled", false);
+                }
+
                 $("#txtSalesBondBondDocsRecDt").prop("disabled", false);
                 var dateToday = new Date();
                 var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
                 $("#txtSalesBondBondDocsRecDt").datepicker("setValue", convertDateToday);
             }
         });
+
+        if ($('#checkDocumentsRec').is(":checked") && $('#checkDocumentsRec').is(":checked"))
+        {
+            $("#btnAddBankApplication").prop("disabled", true);
+        }
 
         $("#btnUpdateSalesBondDetails").click(function () {
             instance.UpdateSalesBondDetails();
@@ -82,6 +113,7 @@
                 $("#txtReservationLapses").val(data.ReservationDate);
                 $('#txtSignedDate').val(data.DateSignedBySeller);
                 $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
+                $('#txtOriginatorTrBondAmount').val(data.OriginatorTrBondAmount);
 
                 $('#txtFirstNameReserved').val(data.IndividualFirstName);
                 $('#txtLastNameReserved').val(data.IndividualLastName);

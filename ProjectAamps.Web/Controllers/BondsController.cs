@@ -57,6 +57,7 @@ namespace AAMPS.Web.Controllers
                 UnitActiveDate = _currentUnit.UnitActiveDate,
                 UnitStatusID = _repoService.GetUnitStatusById(_currentUnit.UnitStatusID).UnitStatusDescription,
                 DevelopmentDescription = _repoService.GetDevelopmentById(_currentUnit.DevelopmentID).DevelopmentDescription,
+                OriginatorTrBondAmount = currentSalesAgent.SalesTotalDepositAmount != null ? (double)currentSalesAgent.SalesTotalDepositAmount : 0
                               
             };
 
