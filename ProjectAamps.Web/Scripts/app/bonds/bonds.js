@@ -91,6 +91,9 @@
         });
 
         var numericInputControls = new Array("txtOriginatorTrBondAmount");
+        var percentageInputControls = new Array("txtOriginatorTrIntRate")
+
+        instance.initializeNumericPercentageInputValues(percentageInputControls);
 
         instance.initializeNumericInputValues(numericInputControls)
 
@@ -105,7 +108,8 @@
             success: function (data) {
                 console.log(data);
                 $("#lblUnitPhase").html(data.UnitPhase);
-                $("#lblUnitPrice").html("R " + data.UnitPrice);
+                $("#lblUnitPrice").html(data.UnitPrice);
+                $("#lblUnitPrice").html(formatNumber($("#lblUnitPrice").html()));
                 $("#lblUnitNumber").html(data.UnitNumber);
                 $("#lblUnitSize").html(data.UnitSize);
                 $("#lblUnitFloor").html(data.UnitFloor);
@@ -114,7 +118,7 @@
                 $('#txtSignedDate').val(data.DateSignedBySeller);
                 $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
                 $('#txtOriginatorTrBondAmount').val(data.OriginatorTrBondAmount);
-
+                $('#txtHiddenInitialBondAmount').val(data.InitialBondAmount);
                 $('#txtFirstNameReserved').val(data.IndividualFirstName);
                 $('#txtLastNameReserved').val(data.IndividualLastName);
                 $('#txtCellNumberReserved').val(data.IndividualCellNo);
@@ -126,6 +130,24 @@
                 $('#txtWorkNumberPending').val(data.IndividualWorkNo);
                 $('#txtEmailPending').val(data.IndividualEmailAddress);
 
+                if(data.SalesBondClientContactedBt == 1)
+                {
+                    $("#checkClientContacted").val(1);
+                    instance.convertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+                }
+                else {
+                    $("#checkClientContacted").val(0);
+                    instance.convertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+                }
+                if (data.SalesBondClientContactedBt == 1) {
+                    $("#checkDocumentsRec").val(1);
+                    instance.convertCurrentDate(data.SalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
+                }
+                else {
+                    $("#checkDocumentsRec").val(0);
+                    instance.convertCurrentDate(data.SalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
+                }
+
             },
             error: function (data) {
                 console.log(data);
@@ -133,11 +155,23 @@
         });
     }
 
+
     this.showModalUpdateOriginator = function (id) {
         console.log(id);
         instance.loadOrginator(id);
         $('#showModalUpdateOriginator').modal('show');
     };
+
+    this.convertCurrentDate = function (currentDate, control) {
+        if (currentDate == "" || currentDate == null) {
+            $("#" + control).prop("disabled", true);
+            $("#" + control).val("");
+        }
+        else {
+            var convertedCurrentDate = moment(currentDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
+            $("#" + control).datepicker("setValue", convertedCurrentDate);
+        }
+    }
 
     this.GetBanks = function (data) {
         $("#selectBankName option").remove();
@@ -178,6 +212,8 @@
         $('#OriginatorTrID').val(data.OriginatorTrID);
         $('#txtOriginatorTrBondAmount').val(data.OriginatorTrBondAmount);
         $('#txtOriginatorTrIntRate').val(data.OriginatorTrIntRate);
+
+
        
 
     }
@@ -231,6 +267,7 @@
             $("#OriginatorTrGrantDt").prop('disabled', true);
             $("#OriginatorTrAcceptDt").prop('disabled', true);
         }
+      
 
     }
 
@@ -290,6 +327,14 @@
         for (var i = 0; i < controls.length; i++) {
             $("#" + controls[i]).attr("data-a-sign", "R ");
             $("#" + controls[i]).autoNumeric('init', { vMax: '9999999999999.99', vMin: '-9999999999999.99', mDec: 2 });
+        }
+
+    }
+
+    this.initializeNumericPercentageInputValues = function (controls) {
+        for (var i = 0; i < controls.length; i++) {
+            $("#" + controls[i]).attr("data-a-sign", " % ");
+            $("#" + controls[i]).autoNumeric('init', { vMax: '100.0', vMin: '-00.0', mDec: 1, pSign: 's' });
         }
 
     }

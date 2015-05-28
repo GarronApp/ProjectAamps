@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace AAMPS.Clients.Actions.Sales
 {
@@ -64,6 +65,10 @@ namespace AAMPS.Clients.Actions.Sales
             _currentSale.SaleModifiedDt = DateTime.Now;
             _currentSale.SaleModifiedByUser = 1;
 
+            if(_currentSale.SaleBondRequiredAmount != null && _currentSale.SaleBondRequiredAmount > 0)
+            {
+                HttpContext.Current.Session.Add("SalesRequiredBondAmount", _currentSale.SaleBondRequiredAmount);
+            }
 
             if (PendingSaleVM.PendingFormCompleteAndValid != 0 && PendingSaleVM.PendingFormCompleteAndValid != null)
             {

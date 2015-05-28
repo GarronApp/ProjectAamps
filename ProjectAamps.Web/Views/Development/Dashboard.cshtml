@@ -80,7 +80,6 @@
                 <td class="dark-orange">Unit Status</td>
                 <td class="text-right dark-orange">Selling Price</td>
                 <td class="dark-orange">Available Date</td>
-                @*<td class="dark-orange">Action</td>*@
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -96,7 +95,6 @@
                     <td>@item.UnitStatusID</td>
                     <td class="text-right"><label id="lblUnitPriceIncluding">@item.UnitPriceIncluding</label></td>
                     <td>@item.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>
-                    @*<td><a onclick="showReservations('notavailable')" class="orange">Update</a></td>*@
                 </tr>
             </tbody>
         }
@@ -113,7 +111,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <table class="table table-condensed" id="tableApps">
+                        <table class="table table-condensed" id="availableUnits">
                             <thead class="datagrid">
                                 <tr>
                                     <th class="dark-orange">
@@ -149,7 +147,7 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPriceIncluding
+                                            <label id="lblUnitPriceAvailableUnits">@item.UnitPriceIncluding</label>
                                         </td>
                                         <td>
                                             @item.UnitSize
@@ -183,7 +181,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <table class="table table-condensed" id="tableApps">
+                        <table class="table table-condensed" id="tableReservedPendingSoldUnits">
                             <thead class="datagrid">
                                 <tr>
                                     <th class="dark-orange">
@@ -207,7 +205,6 @@
                                 </tr>
                             </thead>
 
-
                             @foreach (var item in Model.Where(c => c.UnitStatusId != 1).OrderBy(c => c.UnitStatusId))
                             {
                                 <tbody>
@@ -222,7 +219,7 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPriceIncluding
+                                            <label id="lblUnitPriceReservedPendingSold">@item.UnitPriceIncluding</label>
                                         </td>
                                         <td>
                                             @item.UnitSize
@@ -259,7 +256,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <table class="table table-condensed" id="tableApps">
+                        <table class="table table-condensed" id="tableSoldUnits">
                             <thead class="datagrid">
                                 <tr>
                                     <th class="dark-orange">
@@ -295,7 +292,7 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPriceIncluding
+                                            <label id="lblUnitPriceSold">@item.UnitPriceIncluding</label>
                                         </td>
                                         <td>
                                             @item.UnitSize
@@ -359,11 +356,6 @@
         return "R" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
     }
 
-    function LoadRows() {
-        $('#tableUnitsRow label#lblUnitPriceIncluding').each(function () {
-            $("#lblUnitPriceIncluding").html(formatNumber($("#lblUnitPriceIncluding").html()));
-        });
-    }
 
     function FormatSummaryTotalsCurrency()
     {
@@ -372,7 +364,21 @@
         $("#lblTotalUnitsPendingPrice").html(formatNumber($("#lblTotalUnitsPendingPrice").html()));
         $("#lblTotalUnitsSoldPrice").html(formatNumber($("#lblTotalUnitsSoldPrice").html()));
         $("#lblTotalUnitsPrice").html(formatNumber($("#lblTotalUnitsPrice").html()));
-        $("#lblUnitPriceIncluding").html(formatNumber($("#lblUnitPriceIncluding").html()));
+
+        $("table#tableUnits > tbody > tr").each(function () {
+            $(this).find('td:eq(7)').html(formatNumber($("#lblUnitPriceIncluding").html()));
+        });
+        $("table#availableUnits > tbody > tr").each(function () {
+            $(this).find('td:eq(3)').html(formatNumber($("#lblUnitPriceAvailableUnits").html()));
+        });
+        $("table#tableReservedPendingSoldUnits > tbody > tr").each(function () {
+            $(this).find('td:eq(3)').html(formatNumber($("#lblUnitPriceReservedPendingSold").html()));
+        });
+        $("table#tableSoldUnits > tbody > tr").each(function () {
+            $(this).find('td:eq(3)').html(formatNumber($("#lblUnitPriceSold").html()));
+        });
+
+        
         
     }
 
@@ -400,6 +406,8 @@
         });
 
         FormatSummaryTotalsCurrency();
+
+
 
 
         var items = [];

@@ -57,7 +57,9 @@ namespace AAMPS.Web.Controllers
                 UnitActiveDate = _currentUnit.UnitActiveDate,
                 UnitStatusID = _repoService.GetUnitStatusById(_currentUnit.UnitStatusID).UnitStatusDescription,
                 DevelopmentDescription = _repoService.GetDevelopmentById(_currentUnit.DevelopmentID).DevelopmentDescription,
-                OriginatorTrBondAmount = currentSalesAgent.SalesTotalDepositAmount != null ? (double)currentSalesAgent.SalesTotalDepositAmount : 0
+                OriginatorTrBondAmount = currentSalesAgent.SalesTotalDepositAmount != null ? (double)currentSalesAgent.SalesTotalDepositAmount : 0,
+                CurrentUserDetails = Session["CurrentUserFullName"].ToString(),
+                InitialBondAmount = currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault()
                               
             };
 
@@ -86,7 +88,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
             }
 
             return Json(sale, JsonRequestBehavior.AllowGet);
@@ -156,6 +158,7 @@ namespace AAMPS.Web.Controllers
                                     {
                                         currentOrginator.OriginatorTrAcceptDt =  DateTime.ParseExact(orginator.OriginatorTrAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                                         currentOrginator.MOStatusID = 4;
+
                                     }
                                       break;
                                 
@@ -202,7 +205,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 return Json(ex.InnerException);
             }
 
@@ -290,7 +293,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
             }
         }
 

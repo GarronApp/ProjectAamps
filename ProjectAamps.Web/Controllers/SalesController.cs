@@ -148,7 +148,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 return Json(ex);
             }
 
@@ -170,7 +170,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 return Json(ex.InnerException);
             }
 
@@ -192,7 +192,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 return Json(ex.InnerException);
             }
 
@@ -215,7 +215,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 return Json(ex.InnerException);
             }
 
@@ -239,7 +239,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 return Json(ex.InnerException);
             }
 
@@ -267,7 +267,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 return Json(ex.InnerException);
             }
 
@@ -293,7 +293,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 return Json(ex.InnerException);
             }
 
@@ -312,7 +312,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+                
                 return Json(ex.InnerException);
             }
 

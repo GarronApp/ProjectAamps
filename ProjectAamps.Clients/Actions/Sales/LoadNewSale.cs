@@ -34,22 +34,6 @@ namespace AAMPS.Clients.Actions.Sales
 
         public override object OnExecute()
         {
-            try 
-	        {	        
-		      List<int> items = null;
-
-              foreach (var item in items)
-	          {
-		         Console.Write("testing..."); 
-	          }
-
-	        }
-	        catch (Exception ex)
-	        {
-                ExceptionHandler.HandleException(ex);
-               
-	        }
-
             var _currentUnit = new AAMPS.Clients.AampService.AampServiceClient().GetUnitById(Id);
 
             SalesViewModel viewModel = new SalesViewModel();

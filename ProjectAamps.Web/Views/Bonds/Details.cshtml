@@ -40,7 +40,7 @@
                                 <td>@Model.DevelopmentDescription</td>
                                 <td class="text-center">@Model.UnitSize</td>
                                 <td>@Model.UnitStatusID</td>
-                                <td class="text-center">R @Model.UnitPriceIncluding</td>
+                                <td class="text-center"><label id="lblUnitPriceIncluding">@Model.UnitPriceIncluding</label></td>
                                 <td>@Model.UnitPhase</td>
                                 @*<td>@Model.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>*@
                             </tr>
@@ -70,7 +70,7 @@
                                         <td class="col-md-3"><label>@Model.SaleContractSignedPurchaserDt</label></td>
                                         <td class="col-md-3"><label>@Model.DepositPaid</label></td>
                                         <td class="col-md-3"><label>@Model.SalesDepoistPaidDt</label></td>
-                                        <td class="col-md-3"><label>@Model.SalesTotalDepositAmount</label></td>
+                                        <td class="col-md-3"><label id="lblSalesTotalDepositAmount">@Model.SalesTotalDepositAmount</label></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -86,7 +86,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="col-md-3"><label>@Model.SalesBondRequiredBt</label></td>
-                                        <td class="col-md-3"><label>R @Model.SaleBondRequiredAmount</label></td>
+                                        <td class="col-md-3"><label id="lblSaleBondRequiredAmount">@Model.SaleBondRequiredAmount</label></td>
                                         <td class="col-md-3"><label>@Model.SalesBondRequiredDt</label></td>
                                         @* <td class="col-md-3"><label>@Model.SalesBondGrantedDt</label></td>*@
                                     </tr>
@@ -118,6 +118,22 @@
                                 <td class="col-md-3">Email Address:</td>
                                 <td class="col-md-3"><label id="lblEmailAddress">@Model.IndividualEmailAddress</label></td>
                             </tr>
+                        </table>
+                    </fieldset>
+                </div>
+                <div class="col-md-12">
+                    <fieldset>
+                        <legend class="well">Seller <span style="padding: 35px;">Details</span></legend>
+                        <table style="width:100%;margin-top: 0px;" class="table text-left">
+                            <tr>
+                                <td class="col-md-3">Seller Details:</td>
+                                <td class="col-md-3"><label id="lblFirstName">@Model.IndividualFirstName</label></td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-3">Agent Details:</td>
+                                <td class="col-md-3"><label id="lblLastName">@Session["CurrentUserFullName"].ToString()</label></td>
+                            </tr>
+                            
                         </table>
                     </fieldset>
                 </div>
@@ -218,7 +234,7 @@
                                 <input type="text" name="OriginatorTrID" id="txtOriginatorTrID" style="display:none" />
                                 <input type="text" name="BankID" id="BankID" value=" " style="display:none" />
                                 <input type="text" name="MOStatusID" id="MOStatusID" value="" style="display:none" />
-                                @*<input type="text" name="OriginatorTrBondAmount" id="txtHiddenOriginatorTrBondAmount" value="" style="display:none" />*@
+                                <input type="text" name="InitialBondAmount" id="txtHiddenInitialBondAmount" style="display:none" />
                             </div>
                             <div class="form-group" style="padding-bottom:30px">
                                 <label for="selectBankName" class="col-sm-4 control-label">Bank Name</label>
@@ -288,7 +304,7 @@
     <script src="~/Scripts/app/bonds/bonds.js"></script>
     <script type="text/javascript">
         function showModalUpdateOriginator(id)
-        {  
+        {
             var bonds = new Bonds();
             $('#txtOriginatorTrID').attr('value', id);
             $("#btnUpdateOriginatorTr").val("Update");
@@ -296,7 +312,7 @@
             bonds.showModalUpdateOriginator(id);
         }
         function UpdateOriginatorTr()
-        {  
+        {
             var bonds = new Bonds();
             bonds.SaveUpdateOrginator()
         }
@@ -325,7 +341,7 @@
             $("#selectMOStatus select").attr('disabled', 'disabled');
             $("#selectMOStatus select option").attr('disabled', 'disabled');
             $("#selectMOStatus select option").prop('disabled',true);
-            
+
 
             $('#selectMOStatus')
                 .empty()
@@ -333,37 +349,21 @@
             ;
 
         }
-    </script>
+        function formatNumber(num) {
+            return "R " + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+        }
+        function FormatSummaryTotalsCurrency() {
+            $("#lblUnitPriceIncluding").html(formatNumber($("#lblUnitPriceIncluding").html()));
+            $("#lblSalesTotalDepositAmount").html(formatNumber($("#lblSalesTotalDepositAmount").html()));
+            $("#lblSaleBondRequiredAmount").html(formatNumber($("#lblSaleBondRequiredAmount").html()));
+
+        }
+</script>
     <script type="text/javascript">
-    $(function () {
+        $(function () {
+            FormatSummaryTotalsCurrency();
         var bonds = new Bonds();
         bonds.load();
-        @*var clientContacted = @Model.SalesBondClientContactedBt;
-        if(clientContacted == 1)
-        {
-            $("#checkClientContacted").prop('checked', true);
-            $("#checkClientContacted").val(1);
-        }
-        else{
-            $("#checkClientContacted").prop('checked', false);
-            $("#checkClientContacted").val(0);
-        }
-
-        var bondDocuments = @Model.SalesBondBondDocsRecBt;
-        if(bondDocuments == 1)
-        {
-            $("#checkDocumentsRec").prop('checked', true);
-            $("#checkDocumentsRec").val(1);
-        }
-        else{
-            $("#checkDocumentsRec").prop('checked', false);
-            $("#checkDocumentsRec").val(0);
-        }*@
-
-       
-
-        
-
 
 
     });

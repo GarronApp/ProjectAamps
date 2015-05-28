@@ -120,7 +120,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
             }
 
             return View();

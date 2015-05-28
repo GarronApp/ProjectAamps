@@ -39,6 +39,7 @@ namespace AAMPS.Clients.ViewModels.Bonds
         public string SalesBondAccountNo { get; set; }
         public double SaleBondRequiredAmount { get; set; }
         public double SalesTotalDepositAmount { get; set; }
+        public double InitialBondAmount { get; set; }
         public IEnumerable<OrginatorViewModel> Orginators { get; set; }
         public string BankName { get; set; }
         public string MOStatus { get; set; }
@@ -51,6 +52,7 @@ namespace AAMPS.Clients.ViewModels.Bonds
         public double OriginatorTrIntRate { get; set; }
         public string OriginatorTrAddedDt { get; set; }
         public string OriginatorTrModifiedDt { get; set; }
+        public string CurrentUserDetails { get; set; }
 
         public int DevelopmentID { get; set; }
         public string DevelopmentDescription { get; set; }

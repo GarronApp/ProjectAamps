@@ -231,6 +231,7 @@
     <Content Include="Images\Yellowwood_Estate_Logo.gif" />
     <Content Include="LICENSE.txt" />
     <Content Include="Scripts\app\bonds\bonds.js" />
+    <Content Include="Scripts\app\resources.js" />
     <Content Include="Scripts\app\sales\sales.js" />
     <Content Include="Scripts\autoNumeric\autoNumeric-1.9.25.js" />
     <Content Include="Scripts\autoNumeric\autoNumeric-1.9.25.min.js" />
