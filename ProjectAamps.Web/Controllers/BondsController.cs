@@ -59,8 +59,9 @@ namespace AAMPS.Web.Controllers
                 DevelopmentDescription = _repoService.GetDevelopmentById(_currentUnit.DevelopmentID).DevelopmentDescription,
                 OriginatorTrBondAmount = currentSalesAgent.SalesTotalDepositAmount != null ? (double)currentSalesAgent.SalesTotalDepositAmount : 0,
                 CurrentUserDetails = Session["CurrentUserFullName"].ToString(),
-                InitialBondAmount = currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault()
-                              
+                InitialBondAmount = currentSalesAgent.SalesTotalDepositAmount.GetValueOrDefault(),
+                SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? currentSalesAgent.SalesBondClientContactedDt.GetValueOrDefault().ToString("dd/MM/yyyy") : string.Empty,
+                SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.GetValueOrDefault().ToString("dd/MM/yyyy") : string.Empty
             };
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
@@ -72,14 +73,23 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-
                 var _linkedSale = _repoService.GetSaleById(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
                 if (_linkedSale != null)
                 {
-                    _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
-                    _linkedSale.SalesBondBondDocsRecDt = sale.SalesBondBondDocsRecDt != null ? DateTime.ParseExact(sale.SalesBondBondDocsRecDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    _linkedSale.SalesBondClientContactedDt = sale.SalesBondClientContactedDt != null ? DateTime.ParseExact(sale.SalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                    if (sale.hiddenSalesBondClientContactedDt != null && sale.hiddenSalesBondBondDocsRecDt == null)
+                    {
+                        _linkedSale.SalesBondBondDocsRecDt = sale.hiddenSalesBondClientContactedDt != null ? DateTime.ParseExact(sale.hiddenSalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                        _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
+                    }
 
+                    if (sale.hiddenSalesBondClientContactedDt != null && sale.hiddenSalesBondBondDocsRecDt != null)
+                    {
+                        _linkedSale.SalesBondClientContactedDt = sale.hiddenSalesBondClientContactedDt != null ? DateTime.ParseExact(sale.hiddenSalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                        _linkedSale.SalesBondBondDocsRecDt = sale.hiddenSalesBondBondDocsRecDt != null ? DateTime.ParseExact(sale.hiddenSalesBondBondDocsRecDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                        _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
+                    }
+
+                    _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
                     _linkedSale.SaleModifiedDt = DateTime.Now;
                     _linkedSale.SaleModifiedByUser = 1;
 
@@ -88,7 +98,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-              
+            
             }
 
             return Json(sale, JsonRequestBehavior.AllowGet);
@@ -297,9 +307,6 @@ namespace AAMPS.Web.Controllers
             }
         }
 
-
-
-        
         [AampsAuthorize]
         [HttpGet]
         public ActionResult GetBanks()

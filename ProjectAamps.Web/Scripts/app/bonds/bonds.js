@@ -34,25 +34,9 @@
             if (!$(this).is(':checked')) {
                 $("#txtSalesBondClientContactedDt").prop("disabled", true);
                 $("#txtSalesBondClientContactedDt").val("");
-                $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
-                $("#txtSalesBondBondDocsRecDt").val("");
-                $("#checkDocumentsRec").prop('checked', false);
-                $("#checkDocumentsRec").prop("disabled", true);
-                $("#btnAddBankApplication").prop("disabled", true);
             }
             else {
-
-                if ($('#checkDocumentsRec').is(":checked"))
-                {
-                    $("#btnAddBankApplication").prop("disabled", false);
-                }
-
                 $("#txtSalesBondClientContactedDt").prop("disabled", false);
-                $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
-                $("#txtSalesBondBondDocsRecDt").val("");
-                $("#checkDocumentsRec").prop("disabled", false);
-                $("#checkDocumentsRec").prop("checked", false);
-                
                 var dateToday = new Date();
                 var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
                 $("#txtSalesBondClientContactedDt").datepicker("setValue", convertDateToday);
@@ -65,15 +49,8 @@
             if (!$(this).is(':checked')) {
                 $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
                 $("#txtSalesBondBondDocsRecDt").val("");
-                $("#btnAddBankApplication").prop("disabled", true);
             }
             else {
-
-                if ($('#checkClientContacted').is(":checked")) {
-
-                    $("#btnAddBankApplication").prop("disabled", false);
-                }
-
                 $("#txtSalesBondBondDocsRecDt").prop("disabled", false);
                 var dateToday = new Date();
                 var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
@@ -109,7 +86,7 @@
                 console.log(data);
                 $("#lblUnitPhase").html(data.UnitPhase);
                 $("#lblUnitPrice").html(data.UnitPrice);
-                $("#lblUnitPrice").html(formatNumber($("#lblUnitPrice").html()));
+                //$("#lblUnitPrice").html(formatNumber($("#lblUnitPrice").html()));
                 $("#lblUnitNumber").html(data.UnitNumber);
                 $("#lblUnitSize").html(data.UnitSize);
                 $("#lblUnitFloor").html(data.UnitFloor);
@@ -130,23 +107,49 @@
                 $('#txtWorkNumberPending').val(data.IndividualWorkNo);
                 $('#txtEmailPending').val(data.IndividualEmailAddress);
 
-                if(data.SalesBondClientContactedBt == 1)
-                {
-                    $("#checkClientContacted").val(1);
-                    instance.convertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
-                }
-                else {
+                if (data.SalesBondClientContactedDt == null && data.SalesBondBondDocsRecDt == null) {
+
                     $("#checkClientContacted").val(0);
-                    instance.convertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
-                }
-                if (data.SalesBondClientContactedBt == 1) {
-                    $("#checkDocumentsRec").val(1);
-                    instance.convertCurrentDate(data.SalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
-                }
-                else {
+                    $("#checkClientContacted").prop('checked', false);
+                    $("#checkClientContacted").prop("disabled", false);
+                    $("#txtSalesBondClientContactedDt").val("");
+                    $("#txtSalesBondClientContactedDt").prop("disabled", true);
                     $("#checkDocumentsRec").val(0);
-                    instance.convertCurrentDate(data.SalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
+                    $("#checkDocumentsRec").prop('checked', false);
+                    $("#checkDocumentsRec").prop("disabled", true);
+                    $("#txtSalesBondBondDocsRecDt").val("");
+                    $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
                 }
+
+                if (data.SalesBondClientContactedDt != null && data.SalesBondBondDocsRecDt == null) {
+                    instance.ConvertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+                    $("#checkClientContacted").val(1);
+                    $("#checkClientContacted").prop('checked', true);
+                    $("#txtSalesBondClientContactedDt").prop("disabled", true);
+                    $("#checkClientContacted").prop("disabled", true);
+                    $("#checkDocumentsRec").val(0);
+                    $("#checkDocumentsRec").prop('checked', false);
+                    $("#checkDocumentsRec").prop('disabled', false);
+                    $("#txtSalesBondBondDocsRecDt").val("");
+                    $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+
+                }
+
+                if (data.SalesBondClientContactedDt != null && data.SalesBondBondDocsRecDt != null) {
+                    instance.ConvertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+                    instance.ConvertCurrentDate(data.SalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
+                    $("#txtSalesBondClientContactedDt").prop("disabled", true);
+                    $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+                    $("#checkClientContacted").val(1);
+                    $("#checkClientContacted").prop('checked', true);
+                    $("#checkClientContacted").prop("disabled", true);
+                    $("#checkDocumentsRec").val(1);
+                    $("#checkDocumentsRec").prop('checked', true);
+                    $("#checkDocumentsRec").prop("disabled", true);
+
+                    $("#btnAddBankApplication").prop("disabled", false);
+                }
+
 
             },
             error: function (data) {
@@ -169,6 +172,17 @@
         }
         else {
             var convertedCurrentDate = moment(currentDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
+            $("#" + control).datepicker("setValue", convertedCurrentDate);
+        }
+    }
+
+    this.setCurrentDate = function (currentDate, control) {
+        if (currentDate == "" || currentDate == null) {
+            $("#" + control).prop("disabled", true);
+            $("#" + control).val("");
+        }
+        else {
+            var convertedCurrentDate = moment(currentDate, 'DD-MM-YYYY').format('DD/MM/YYYY');
             $("#" + control).datepicker("setValue", convertedCurrentDate);
         }
     }
@@ -213,8 +227,50 @@
         $('#txtOriginatorTrBondAmount').val(data.OriginatorTrBondAmount);
         $('#txtOriginatorTrIntRate').val(data.OriginatorTrIntRate);
 
+    }
 
-       
+    this.MapBondTransactions = function(data)
+    {
+        if (data.hiddenSalesBondClientContactedDt == null && data.hiddenSalesBondBondDocsRecDt == null) {
+
+            $("#checkClientContacted").val(0);
+            $("#checkClientContacted").prop('checked', false);
+            $("#checkClientContacted").prop("disabled", false);
+            $("#txtSalesBondClientContactedDt").val("");
+            $("#txtSalesBondClientContactedDt").prop("disabled", true);
+            $("#checkDocumentsRec").val(0);
+            $("#checkDocumentsRec").prop('checked', false);
+            $("#checkDocumentsRec").prop("disabled", true);
+            $("#txtSalesBondBondDocsRecDt").val("");
+            $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+        }
+
+        if (data.hiddenSalesBondClientContactedDt != null && data.hiddenSalesBondBondDocsRecDt == null) {
+            instance.setCurrentDate(data.hiddenSalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+            $("#checkClientContacted").val(1);
+            $("#checkClientContacted").prop('checked', true);
+            $("#txtSalesBondClientContactedDt").prop("disabled", true);
+            $("#checkClientContacted").prop("disabled", true);
+            $("#checkDocumentsRec").val(0);
+            $("#checkDocumentsRec").prop('checked', false);
+            $("#checkDocumentsRec").prop('disabled', false);
+            $("#txtSalesBondBondDocsRecDt").val("");
+            $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+
+        }
+
+        if (data.hiddenSalesBondClientContactedDt != null && data.hiddenSalesBondBondDocsRecDt != null) {
+            instance.setCurrentDate(data.hiddenSalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+            instance.setCurrentDate(data.hiddenSalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
+            $("#txtSalesBondClientContactedDt").prop("disabled", true);
+            $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+            $("#checkClientContacted").val(1);
+            $("#checkClientContacted").prop('checked', true);
+            $("#checkClientContacted").prop("disabled", true);
+            $("#checkDocumentsRec").val(1);
+            $("#checkDocumentsRec").prop('checked', true);
+            $("#checkDocumentsRec").prop("disabled", true);
+        }
 
     }
 
@@ -281,6 +337,9 @@
 
     this.UpdateSalesBondDetails = function () {
 
+        $("#hiddenSalesBondClientContactedDt").val($("#txtSalesBondClientContactedDt").val());
+        $("#hiddenSalesBondBondDocsRecDt").val($("#txtSalesBondBondDocsRecDt").val());
+
         var formData = $("#UpdateSalesBondDetailsFrom").serialize();
         $.ajax({
             url: instance.save_SaleBondsDetails_Url,
@@ -288,6 +347,7 @@
             data: formData,
             success: function (data) {
                 toastr.success('Sales details updated successfully');
+                instance.MapBondTransactions(data);
             },
             error: function (exception) {
                 console.log(exception);
@@ -302,6 +362,9 @@
         $("#OriginatorTrAIPDt").prop('disabled', false);
         $("#OriginatorTrGrantDt").prop('disabled', false);
         $("#OriginatorTrAcceptDt").prop('disabled', false);
+
+        $("#txtOriginatorTrBondAmount").val($("#txtOriginatorTrBondAmount").autoNumeric('get'));
+        $("#txtOriginatorTrIntRate").val($("#txtOriginatorTrIntRate").autoNumeric('get'));
 
         var formData = $("#OriginatorDetailsForm").serialize();
         $.ajax({

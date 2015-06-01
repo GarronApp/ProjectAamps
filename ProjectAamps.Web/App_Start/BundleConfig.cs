@@ -27,7 +27,8 @@ namespace AAMPS.Web
                       "~/Scripts/autoNumeric/autoNumeric-1.9.25.js",
                       "~/Scripts/moment.js",
                       "~/Scripts/d3.js",
-                      "~/Scripts/c3.js"));
+                      "~/Scripts/c3.js",
+                      "~/Scripts/app/resources.js"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",

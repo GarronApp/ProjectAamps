@@ -71,6 +71,8 @@ namespace AAMPS.Clients.ViewModels.Sales
         public string SalesBondAccountNo { get; set; }
         public string SalesBondClientContactedDt { get; set; }
         public string SalesBondBondDocsRecDt { get; set; }
+        public string hiddenSalesBondBondDocsRecDt { get; set; }
+        public string hiddenSalesBondClientContactedDt { get; set; }
         public string SalesBondGrantedDt { get; set; }
         public string SalesBondClientAcceptDt { get; set; }
         public int SalesBondCommDueBt { get; set; }
@@ -85,6 +87,8 @@ namespace AAMPS.Clients.ViewModels.Sales
         public int SalesBondClientContactedBt { get; set; }
         public int SalesBondClientAcceptBt { get; set; }
         public int SalesBondGrantedBt { get; set; }
+
+
 
 
         public string SaleBondBank { get; set; }

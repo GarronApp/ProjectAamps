@@ -82,7 +82,7 @@ namespace AAMPS.Clients.Mappers.Bonds
                 SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? currentSalesAgent.SalesBondClientContactedDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SalesBondClientContactedDt.GetValueOrDefault().ToString(),
                 SalesBondClientContactedBt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? 1 : 0,
                 SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.GetValueOrDefault().ToString("dd/MM/yyyy") : currentSalesAgent.SalesBondBondDocsRecDt.GetValueOrDefault().ToString(),
-                SalesBondBondDocsRecBt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? 1 : 0,
+                SalesBondBondDocsRecBt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue && currentSalesAgent.SalesBondClientContactedDt.HasValue ? 1 : 0,
                 SalesBondAccountNo = currentSalesAgent.SalesBondAccountNo,
                 Orginators = LoadOrginators()
             };

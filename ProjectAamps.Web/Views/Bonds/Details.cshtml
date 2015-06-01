@@ -13,16 +13,14 @@
 </style>
 
 <div class="jumbotron" style="background-color:#fff; margin-top:0px; padding-bottom:10px;margin-top: 20px;">
-        <div class="row pull-right" style="margin-top: -30px;">
-            <a href="#" class="btn-cancel" style="font-size:0.85em" onclick="window.location.href='@Url.Action("Dashboard","Development")'">RETURN</a>
-           
-            
+        <div class="row" style="margin-top: -30px;">
+            <a href="#" class="btn-cancel pull-right" style="font-size:0.85em" onclick="window.location.href='@Url.Action("Dashboard","Development")'">RETURN</a>
         </div>
-        <div class="row text-center" style="margin-top: -20px;">
+        <div class="row text-center">
             <fieldset>
-                <legend class="well">Property <span style="padding: 55px;">Details</span></legend>
-                <div class="col-md-12" style="margin-top: -20px;">
-                    <table style="width:100%" class="table text-center table-general">
+                <legend class="well"><span class="pull-left">Property Details</span></legend>
+                <div class="col-md-12" style="margin-top: 0px;">
+                    <table style="width:100%;font-size: 0.96em;margin-top:-10px; margin-bottom:-10px" class="table text-center">
                         <thead>
                             <tr>
                                 <td class="dark-orange">Unit Number</td>
@@ -54,8 +52,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <fieldset>
-                            <legend class="well">Transaction <span style="padding: 75px;">Details</span></legend>
-                            <table style="width:100%" class="table text-center">
+                            <legend class="well">Transaction Details</legend>
+                            <table style="width:100%;margin-top:-10px; margin-bottom:20px" class="table text-center">
                                 <thead>
                                     <tr>
                                         <td class="col-md-3 dark-orange"><strong>Contract Signed</strong></td>
@@ -74,7 +72,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <table style="width:100%" class="table text-left">
+                            <table style="width:100%;margin-top:-10px; margin-bottom:-10px" class="table text-left">
                                 <thead>
                                     <tr>
                                         <td class="col-md-3 dark-orange"><strong>Bond Required</strong></td>
@@ -100,30 +98,22 @@
             <div class="col-md-6">
                 <div class="col-md-12">
                     <fieldset>
-                        <legend class="well">Purchaser <span style="padding: 65px;">Details</span></legend>
+                        <legend class="well">Purchaser Details</legend>
                         <table style="width:100%;margin-top: 0px;" class="table text-left">
                             <tr>
-                                <td class="col-md-3">First Name:</td>
-                                <td class="col-md-3"><label id="lblFirstName">@Model.IndividualFirstName</label></td>
+                                <td class="col-md-5"><label id="lblFirstName">@Model.IndividualFirstName</label></td>
+                                <td class="col-md-1"><input type="button" id="btnViewPurchaserDetails" onclick="ShowModalPurchaserDetails()" class=" btn btn-primary pull-left " value="details" /></td>
                             </tr>
                             <tr>
-                                <td class="col-md-3">Last Name:</td>
-                                <td class="col-md-3"><label id="lblLastName">@Model.IndividualLastName</label></td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-3">Contact No:</td>
-                                <td class="col-md-3"><label id="lblContactNumber">@Model.IndividualCellNo</label></td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-3">Email Address:</td>
-                                <td class="col-md-3"><label id="lblEmailAddress">@Model.IndividualEmailAddress</label></td>
+                                <td class="col-md-5"><label id="lblLastName">@Model.IndividualLastName</label></td>
+                                <td class="col-md-1"><input type="button" id="BtnViewPurchaserDetails" onclick="ShowModalPurchaserDetails()" class=" btn btn-primary pull-left " value="details" /></td>
                             </tr>
                         </table>
                     </fieldset>
                 </div>
                 <div class="col-md-12">
                     <fieldset>
-                        <legend class="well">Seller <span style="padding: 35px;">Details</span></legend>
+                        <legend class="well">Seller Details</legend>
                         <table style="width:100%;margin-top: 0px;" class="table text-left">
                             <tr>
                                 <td class="col-md-3">Seller Details:</td>
@@ -141,184 +131,258 @@
 
         </div>
     </div>
+
+<div class="jumbotron" style="background-color:#fff; margin-top:0px; padding-bottom:10px;margin-top: 20px;">
     <div class="row" style="background:#fff">
-    <form id="UpdateSalesBondDetailsFrom">
+        <form id="UpdateSalesBondDetailsFrom">
+            <fieldset>
+                <legend class="well"><span class="pull-left">Bond Transactions</span></legend>
+                <div class="col-md-12">
+                    <input id="hiddenSalesBondClientContactedDt" name="hiddenSalesBondClientContactedDt" type="text" class="hide" />
+                    <input id="hiddenSalesBondBondDocsRecDt" name="hiddenSalesBondBondDocsRecDt" type="text" class="hide" />
+                    <table style="width:100%;font-size:0.88em" class="table text-left">
+                        <thead>
+                            <tr>
+                                <td class="col-md-3 dark-orange"><strong>Have contacted the Purchaser</strong></td>
+                                <td class="col-md-3 dark-orange"><strong>Documents Received</strong></td>
+                                <td class="col-md-3 dark-orange"><strong>Bond Account No</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-3">
+                                    <div class="col-sm-12">
+                                        <input type="checkbox" id="checkClientContacted" class="pull-left" value="">&nbsp;&nbsp;
+                                        <input type="text" class="form-control datepicker pull-left height28" style="width: 75%;margin-left: 15px;" disabled="disabled" id="txtSalesBondClientContactedDt" name="SalesBondClientContactedDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                    </div>
+                                </td>
+                                <td class="col-md-3">
+                                    <div class="col-sm-12">
+                                        <input type="checkbox" id="checkDocumentsRec" class="pull-left" value="">&nbsp;&nbsp;
+                                        <input type="text" class="form-control datepicker pull-left height28" style="width: 75%;margin-left: 15px;" disabled="disabled" id="txtSalesBondBondDocsRecDt" name="SalesBondBondDocsRecDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                    </div>
+
+                                </td>
+                                <td class="col-md-3">
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control height28" id="txtSalesBondAccountNo" style="width: 75%" name="salesbondaccountno" placeholder="">
+                                    </div>
+                                </td>
+                                <td class="col-md-3">
+                                    <div class="col-sm-12">
+                                        <input type="button" id="btnUpdateSalesBondDetails" class="btn btn-primary pull-left " value="Update" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                       
+                    </table>
+                </div>
+            </fieldset>
+        </form>
         <div class="col-md-12">
-            <div><h5 style="font-weight:400">BOND TRANSACTIONS</h5></div>
-            <table style="width:100%" class="table text-left table-general">
+            <input type="button" id="btnAddBankApplication" onclick="showNewBankApplicationModal();" class="btn btn-primary text-center" value="Submit Loan to Bank" />
+            <br /><br />
+            <table style="width: 100%; font-size: 0.82em;" class="table table-hover text-left" id="tableBondApplications">
                 <thead>
                     <tr>
-                        <td class="col-md-3 dark-orange"><strong>Have contacted the Purchaser</strong></td>
-                        <td class="col-md-3 dark-orange"><strong>Documents Received</strong></td>
-                        <td class="col-md-3 dark-orange"><strong>Bond Account No</strong></td>
+                        <td class="col-md-1 dark-orange"><strong>BANK</strong></td>
+                        <td class="col-md-1 dark-orange"><strong>STATUS</strong></td>
+                        <td class="col-md-1 dark-orange"><strong>AMOUNT</strong></td>
+                        <td class="col-md-1 dark-orange"><strong>RATE</strong></td>
+                        <td class="col-md-1 dark-orange"><strong>SUBMITTED</strong></td>
+                        <td class="col-md-1 dark-orange"><strong>AIP</strong></td>
+                        <td class="col-md-1 dark-orange"><strong>GRANTED</strong></td>
+                        <td class="col-md-1 dark-orange"><strong>CLIENT ACCEPTED</strong></td>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="col-md-3">
-                            <div class="col-sm-12">
-                                <input type="checkbox" id="checkClientContacted" class="pull-left" value="">&nbsp;&nbsp;
-                                <input type="text" class="form-control datepicker pull-left height28" style="width: 75%;margin-left: 15px;" disabled="disabled" id="txtSalesBondClientContactedDt" name="SalesBondClientContactedDt" data-date-format="dd/mm/yyyy" placeholder="">
-                            </div>
-                        </td>
-                        <td class="col-md-3">
-                            <div class="col-sm-12">
-                                <input type="checkbox" id="checkDocumentsRec" class="pull-left" value="">&nbsp;&nbsp;
-                                <input type="text" class="form-control datepicker pull-left height28" style="width: 75%;margin-left: 15px;" disabled="disabled" id="txtSalesBondBondDocsRecDt" name="SalesBondBondDocsRecDt" data-date-format="dd/mm/yyyy" placeholder="">
-                            </div>
-
-                        </td>
-                        <td class="col-md-3">
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control height28" id="txtSalesBondAccountNo" style="width: 75%" name="salesbondaccountno" placeholder="">
-                            </div>
-                        </td>
-                        <td class="col-md-3">
-                            <div class="col-sm-12">
-                                <input type="button" id="btnUpdateSalesBondDetails" class="btn btn-primary pull-left " value="Update"  />
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
+                @foreach (var item in Model.Orginators)
+                {
+                    <tbody>
+                        <tr onclick="showModalUpdateOriginator(@item.OriginatorTrID)">
+                            <td class="col-md-1"><label>@item.BankName</label></td>
+                            <td class="col-md-1"><label>@item.MOStatus</label></td>
+                            <td class="col-md-1"><label id="lblOriginatorTrBondAmount">@item.OriginatorTrBondAmount</label></td>
+                            <td class="col-md-1"><label id="lblOriginatorTrIntRate">@item.OriginatorTrIntRate %</label></td>
+                            <td class="col-md-1"><label>@item.OriginatorTrSubmittedDt</label></td>
+                            <td class="col-md-1"><label>@item.OriginatorTrAIPDt</label></td>
+                            <td class="col-md-1"><label>@item.OriginatorTrGrantDt</label></td>
+                            <td class="col-md-1"><label>@item.OriginatorTrAcceptDt</label></td>
+                        </tr>
+                    </tbody>
+                }
             </table>
         </div>
-    </form>
-    <div class="col-md-12">
-        <input type="button" id="btnAddBankApplication" onclick="showNewBankApplicationModal();" class="btn btn-primary text-center" value="Submit Loan to Bank"/>
-        <br /><br />
-        <table style="width:100%" class="table table-hover text-left table-general">
-            <thead>
-                <tr>
-                    <td class="col-md-1 dark-orange"><strong>BANK</strong></td>
-                    <td class="col-md-1 dark-orange"><strong>STATUS</strong></td>
-                    <td class="col-md-1 dark-orange"><strong>AMOUNT</strong></td>
-                    <td class="col-md-1 dark-orange"><strong>RATE</strong></td>
-                    <td class="col-md-1 dark-orange"><strong>SUBMITTED</strong></td>
-                    <td class="col-md-1 dark-orange"><strong>AIP</strong></td>
-                    <td class="col-md-1 dark-orange"><strong>GRANTED</strong></td>
-                    <td class="col-md-1 dark-orange"><strong>CLIENT ACCEPTED</strong></td>
-                </tr>
-            </thead>
-            @foreach (var item in Model.Orginators)
-            {
-                <tbody>
-                    <tr onclick="showModalUpdateOriginator(@item.OriginatorTrID)">
-                        <td class="col-md-1"><label>@item.BankName</label></td>
-                        <td class="col-md-1"><label>@item.MOStatus</label></td>
-                        <td class="col-md-1"><label>R @item.OriginatorTrBondAmount</label></td>
-                        <td class="col-md-1"><label>@item.OriginatorTrIntRate %</label></td>
-                        <td class="col-md-1"><label>@item.OriginatorTrSubmittedDt</label></td>
-                        <td class="col-md-1"><label>@item.OriginatorTrAIPDt</label></td>
-                        <td class="col-md-1"><label>@item.OriginatorTrGrantDt</label></td>
-                        <td class="col-md-1"><label>@item.OriginatorTrAcceptDt</label></td>
-                    </tr>
-                </tbody>
-            }
-        </table>
     </div>
- </div>
 
-<div class="modal fade" id="showModalUpdateOriginator" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <form id="OriginatorDetailsForm">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="modalEdit">Details</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div>
-                                <input type="text" name="ApplicationStatus" id="ApplicationStatus" style="display:none" />
-                                <input type="text" name="OriginatorTrID" id="txtOriginatorTrID" style="display:none" />
-                                <input type="text" name="BankID" id="BankID" value=" " style="display:none" />
-                                <input type="text" name="MOStatusID" id="MOStatusID" value="" style="display:none" />
-                                <input type="text" name="InitialBondAmount" id="txtHiddenInitialBondAmount" style="display:none" />
-                            </div>
-                            <div class="form-group" style="padding-bottom:30px">
-                                <label for="selectBankName" class="col-sm-4 control-label">Bank Name</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" id="selectBankName" name="BankName"></select>
+    <div class="modal fade" id="showModalUpdateOriginator" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="OriginatorDetailsForm">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="modalEdit">Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    <input type="text" name="ApplicationStatus" id="ApplicationStatus" style="display:none" />
+                                    <input type="text" name="OriginatorTrID" id="txtOriginatorTrID" style="display:none" />
+                                    <input type="text" name="BankID" id="BankID" value=" " style="display:none" />
+                                    <input type="text" name="MOStatusID" id="MOStatusID" value="" style="display:none" />
+                                    <input type="text" name="InitialBondAmount" id="txtHiddenInitialBondAmount" style="display:none" />
                                 </div>
-                            </div>
-                            <div class="form-group" style="padding-bottom:30px">
-                                <label for="selectMOStatus" class="col-sm-4 control-label">Status</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" id="selectMOStatus" name="MOStatus" disabled="disabled"></select>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="selectBankName" class="col-sm-4 control-label">Bank Name</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="selectBankName" name="BankName"></select>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="selectMOStatus" class="col-sm-4 control-label">Status</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="selectMOStatus" name="MOStatus" disabled="disabled"></select>
+                                    </div>
+                                </div>
 
-                            <div class="form-group" style="padding-bottom:30px">
-                                <label for="txtExpiryDate" class="col-sm-4 control-label">Bond Amount</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="txtOriginatorTrBondAmount" name="OriginatorTrBondAmount" placeholder="">
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtExpiryDate" class="col-sm-4 control-label">Bond Amount</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtOriginatorTrBondAmount" name="OriginatorTrBondAmount" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group" style="padding-bottom:30px">
-                                <label for="txtExpiryDate" class="col-sm-4 control-label">Rate</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="txtOriginatorTrIntRate" name="OriginatorTrIntRate" placeholder="">
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtExpiryDate" class="col-sm-4 control-label">Rate</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtOriginatorTrIntRate" name="OriginatorTrIntRate" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group" style="padding-bottom:30px">
-                                <label for="txtExtentionDate" class="col-sm-4 control-label">Submitted</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control datepicker" id="OriginatorTrSubmittedDt" name="OriginatorTrSubmittedDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtExtentionDate" class="col-sm-4 control-label">Submitted</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control datepicker" id="OriginatorTrSubmittedDt" name="OriginatorTrSubmittedDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group" style="padding-bottom:30px">
-                                <label for="txtExtentionDate" class="col-sm-4 control-label">AIP</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control datepicker" id="OriginatorTrAIPDt" name="OriginatorTrAIPDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtExtentionDate" class="col-sm-4 control-label">AIP</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control datepicker" id="OriginatorTrAIPDt" name="OriginatorTrAIPDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group" style="padding-bottom:30px">
-                                <label for="txtExtentionDate" class="col-sm-4 control-label">Granted</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control datepicker" id="OriginatorTrGrantDt" name="OriginatorTrGrantDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtExtentionDate" class="col-sm-4 control-label">Granted</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control datepicker" id="OriginatorTrGrantDt" name="OriginatorTrGrantDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group" style="padding-bottom:30px">
-                                <label for="txtExtentionDate" class="col-sm-4 control-label">Client Accepted</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control datepicker" id="OriginatorTrAcceptDt" name="OriginatorTrAcceptDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtExtentionDate" class="col-sm-4 control-label">Client Accepted</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control datepicker" id="OriginatorTrAcceptDt" name="OriginatorTrAcceptDt" data-date-format="dd/mm/yyyy" placeholder="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" id="btnUpdateOriginatorTr" onclick="UpdateOriginatorTr();" class="btn btn-primary" value="Update"/>
-                    <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel"/>
-                </div>
+                    <div class="modal-footer">
+                        <input type="button" id="btnUpdateOriginatorTr" onclick="UpdateOriginatorTr();" class="btn btn-primary" value="Update" />
+                        <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel" />
+                    </div>
 
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+
+    <div class="modal fade" id="showModalPurchaserDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="ViewPurchaserDetailsForm">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="modalEdit">Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                            
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="selectPurchaserType" class="col-sm-4 control-label">Purchaser Type</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="selectPurchaserType" name="EntityTypeID"></select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtFirstName" class="col-sm-4 control-label">Purchaser</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserDescription" name="PurchaserDescription" placeholder="purchaser">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtLastName" class="col-sm-4 control-label">Contact Person</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserContactPerson" name="PurchaserContactPerson" placeholder="contact person">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtCellNumber" class="col-sm-4 control-label">Cell No</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserContactCell" name="PurchaserContactCell" placeholder="cell number">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtWorkNumber" class="col-sm-4 control-label">Home No</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserContactHome" name="PurchaserContactHome" placeholder="home number">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtEmail" class="col-sm-4 control-label">Work No</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserContactWork" name="PurchaserContactWork" placeholder="work number">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtEmail" class="col-sm-4 control-label">Email Address</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserEmail" name="PurchaserEmail" placeholder="email address">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel" />
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    </div>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/moment.js"></script>
     <script src="~/Scripts/app/bonds/bonds.js"></script>
     <script type="text/javascript">
-        function showModalUpdateOriginator(id)
-        {
+        function showModalUpdateOriginator(id) {
             var bonds = new Bonds();
             $('#txtOriginatorTrID').attr('value', id);
             $("#btnUpdateOriginatorTr").val("Update");
             $("#ApplicationStatus").val("UpdateApplication");
             bonds.showModalUpdateOriginator(id);
         }
-        function UpdateOriginatorTr()
-        {
+        function UpdateOriginatorTr() {
             var bonds = new Bonds();
             bonds.SaveUpdateOrginator()
         }
 
-        function showNewBankApplicationModal()
-        {
+        function showNewBankApplicationModal() {
             $('#OriginatorDetailsForm')[0].reset();
             $("#showModalUpdateOriginator").modal('show');
             $("#btnUpdateOriginatorTr").val("Submit");
@@ -335,12 +399,12 @@
             $("#OriginatorTrGrantDt").prop('disabled', false);
             $("#OriginatorTrAcceptDt").prop('disabled', false);
 
-            $("#OriginatorTrAIPDt").prop('disabled',true);
-            $("#OriginatorTrGrantDt").prop('disabled',true);
-            $("#OriginatorTrAcceptDt").prop('disabled',true);
+            $("#OriginatorTrAIPDt").prop('disabled', true);
+            $("#OriginatorTrGrantDt").prop('disabled', true);
+            $("#OriginatorTrAcceptDt").prop('disabled', true);
             $("#selectMOStatus select").attr('disabled', 'disabled');
             $("#selectMOStatus select option").attr('disabled', 'disabled');
-            $("#selectMOStatus select option").prop('disabled',true);
+            $("#selectMOStatus select option").prop('disabled', true);
 
 
             $('#selectMOStatus')
@@ -348,6 +412,11 @@
                 .append('<option selected="selected" value="0">AS SUBMITTED</option>')
             ;
 
+        }
+
+        function ShowModalPurchaserDetails()
+        {
+            $("#showModalPurchaserDetails").modal('show');
         }
         function formatNumber(num) {
             return "R " + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
@@ -357,15 +426,22 @@
             $("#lblSalesTotalDepositAmount").html(formatNumber($("#lblSalesTotalDepositAmount").html()));
             $("#lblSaleBondRequiredAmount").html(formatNumber($("#lblSaleBondRequiredAmount").html()));
 
+
+            $("table#tableBondApplications > tbody > tr").each(function () {
+                $(this).find('td:eq(2)').html(formatNumber($("#lblOriginatorTrBondAmount").html()));
+            });
+
+
         }
-</script>
+    </script>
     <script type="text/javascript">
         $(function () {
             FormatSummaryTotalsCurrency();
-        var bonds = new Bonds();
-        bonds.load();
+            var bonds = new Bonds();
+            bonds.load();
 
 
-    });
-</script>
+
+        });
+    </script>
 
