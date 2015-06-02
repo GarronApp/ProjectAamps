@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -30,21 +31,22 @@ namespace Aamps.Domain.ViewModels.Reports.Sales
         [DataMember]
         public double? Deposit { get; set; }
         [DataMember]
-        public DateTime DepositDate { get; set; }
-        //[DataMember]
-        //public string Proof { get; set; }
-        //[DataMember]
-        //public Nullable<System.DateTime> CntrSigned { get; set; }
-        //[DataMember]
-        //public string Bond { get; set; }
-        //[DataMember]
-        //public double? BondReq { get; set; }
-        //[DataMember]
-        //public double? BondAmountGrant { get; set; }
-        //[DataMember]
-        //public Nullable<System.DateTime> Granted { get; set; }
-        //[DataMember]
-        //public double? AmountDue { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public Nullable<System.DateTime> DepositDate { get; set; }
+        [DataMember]
+        public string Proof { get; set; }
+        [DataMember]
+        public Nullable<System.DateTime> CntrSigned { get; set; }
+        [DataMember]
+        public string Bond { get; set; }
+        [DataMember]
+        public double? BondReq { get; set; }
+        [DataMember]
+        public double? BondAmountGrant { get; set; }
+        [DataMember]
+        public Nullable<System.DateTime> Granted { get; set; }
+        [DataMember]
+        public double? AmountDue { get; set; }
 
     }
 }

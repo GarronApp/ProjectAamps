@@ -616,7 +616,7 @@ Object reference not set to an instance of an object.
 2015-05-27 09:48:50 PM
 
 Object reference not set to an instance of an object.
-   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -639,8 +639,8 @@ Exception rethrown at [0]:
    at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
    at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
    at AAMPS.Clients.AampService.IAampService.GetDevelopmentById(Int32 id)
-   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentById(Int32 id) in c:\workspace\Aamps\ProjectAamps.Clients\Service References\AampService\Reference.cs:line 7329
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 95
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentById(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7329
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 95
 ----= Inner Exception Exception =----
 System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
    at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
@@ -661,7 +661,7 @@ Value cannot be null.
 Parameter name: String
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\SalesController.cs:line 132
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 132
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -684,8 +684,8 @@ Exception rethrown at [0]:
    at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
    at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
    at AAMPS.Clients.AampService.IAampService.GetDevelopmentById(Int32 id)
-   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentById(Int32 id) in c:\workspace\Aamps\ProjectAamps.Clients\Service References\AampService\Reference.cs:line 7329
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 95
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentById(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7329
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 95
 ----= Inner Exception Exception =----
 System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
    at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
@@ -700,7 +700,7 @@ System.Net.WebException: Unable to connect to the remote server ---> System.Net.
 2015-05-28 01:43:39 AM
 
 Object reference not set to an instance of an object.
-   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\ProjectAamps.Clients\Actions\Sales\LoadNewSale.cs:line 41
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------

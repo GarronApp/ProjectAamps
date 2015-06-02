@@ -4,11 +4,11 @@
     Layout = "~/Views/Report/_ReportLayout.cshtml";
 }
 
-<h4>SalesReport</h4>
+<h4>Sales Report for </h4>
 <table class="table table-bordered">
    <thead style="background-color:#000000; color:#ffffff">
        <tr>
-           <td>Development</td>
+           @*<td>Development</td>*@
            <td>Unit No</td>
            <td>Phase</td>
            <td>Price</td>
@@ -19,20 +19,20 @@
            <td>Purchaser</td>
            <td>Deposit</td>
            <td>Deposit Date</td>
-           @*<td>Proof</td>
+           <td>Proof</td>
            <td>Cntr Signed</td>
            <td>Bond</td>
            <td>Bond Req</td>
            <td>Bond Amount Grant</td>
            <td>Granted</td>
-           <td>Amount Due</td>*@
+           <td>Amount Due</td>
        </tr>
    </thead>
     @foreach (var item in Model)
     {
         <tbody>
             <tr>
-                <td>@item.Development</td>
+               @* <td>@item.Development</td>*@
                 <td>@item.UnitNo</td>
                 <td>@item.Phase</td>
                 <td>@item.Price</td>
@@ -42,14 +42,14 @@
                 <td>@item.Agent</td>
                 <td>@item.Purchaser</td>
                 <td>@item.Deposit</td>
-               <td>@item.DepositDate</td>
-                @*<td>@item.Proof</td>
-                <td>@item.CntrSigned.HasValue ? @item.CntrSigned.GetValueOrDefault().ToString() : No Date</td>
+                <td>@item.DepositDate</td>
+                <td>@item.Proof</td>
+                <td>@item.CntrSigned</td>
                 <td>@item.Bond</td>
                 <td>@item.BondReq</td>
-                <td>@item.BondAmountGrant != null ? @item.BondAmountGrant.GetValueOrDefault() : 0.0</td>
-                <td>@item.Granted != null ? @item.Granted.GetValueOrDefault().ToShortDateString(): "No Date"</td>
-                <td>@item.AmountDue</td>*@
+                <td>@item.BondAmountGrant</td>
+                <td>@item.Granted</td>
+                <td>@item.AmountDue</td>
             </tr>
         </tbody>
     }
