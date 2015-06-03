@@ -120,7 +120,7 @@
                     $("#hasClientAccepted").attr('value', 0);
                 }
 
-                if (data.SalesBondClientContactedDt == null && data.SalesBondBondDocsRecDt == null) {
+                if (data.SalesBondClientContactedDt == "" && data.SalesBondBondDocsRecDt == "") {
 
                     $("#checkClientContacted").val(0);
                     $("#checkClientContacted").prop('checked', false);
@@ -134,7 +134,7 @@
                     $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
                 }
 
-                if (data.SalesBondClientContactedDt != null && data.SalesBondBondDocsRecDt == null) {
+                if (data.SalesBondClientContactedDt != "" && data.SalesBondBondDocsRecDt == "") {
                     instance.ConvertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
                     $("#checkClientContacted").val(1);
                     $("#checkClientContacted").prop('checked', true);
@@ -148,7 +148,7 @@
 
                 }
 
-                if (data.SalesBondClientContactedDt != null && data.SalesBondBondDocsRecDt != null) {
+                if (data.SalesBondClientContactedDt != "" && data.SalesBondBondDocsRecDt != "") {
                     instance.ConvertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
                     instance.ConvertCurrentDate(data.SalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
                     $("#txtSalesBondClientContactedDt").prop("disabled", true);
@@ -236,6 +236,22 @@
         var dateToday = new Date();
         var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
         $("#" + controlId).datepicker("setValue", convertDateToday);
+    }
+
+    this.validateOrginatorInterestRate = function () {
+        var form = $("#OriginatorDetailsForm").serializeArray();
+        var validForm = true;
+        for (var i = 0; i < form.length; i++) {
+            var controlName = form[i].name;
+            if (controlName == "OriginatorTrGrantDt") {
+                if (form[i].value != '' && form[6].value === '' || form[6].value === '0' || form[6].value === '0.0') {
+                    validForm = false;
+                    $("#txt" + controlName).addClass("required-field");
+                    break;
+                }
+            }
+        }
+        return validForm
     }
 
     this.MapBondPurchaserDetails = function (data) {
@@ -414,39 +430,40 @@
     }
 
     this.SaveUpdateOrginator = function () {
+        if (instance.validateOrginatorInterestRate()) {
+            $("#selectBankName").prop('disabled', false);
+            $("#OriginatorTrSubmittedDt").prop('disabled', false);
+            $("#OriginatorTrAIPDt").prop('disabled', false);
+            $("#OriginatorTrGrantDt").prop('disabled', false);
+            $("#OriginatorTrAcceptDt").prop('disabled', false);
 
-        $("#selectBankName").prop('disabled', false);
-        $("#OriginatorTrSubmittedDt").prop('disabled', false);
-        $("#OriginatorTrAIPDt").prop('disabled', false);
-        $("#OriginatorTrGrantDt").prop('disabled', false);
-        $("#OriginatorTrAcceptDt").prop('disabled', false);
+            $("#txtOriginatorTrBondAmount").val($("#txtOriginatorTrBondAmount").autoNumeric('get'));
+            $("#txtOriginatorTrIntRate").val($("#txtOriginatorTrIntRate").autoNumeric('get'));
 
-        $("#txtOriginatorTrBondAmount").val($("#txtOriginatorTrBondAmount").autoNumeric('get'));
-        $("#txtOriginatorTrIntRate").val($("#txtOriginatorTrIntRate").autoNumeric('get'));
+            var formData = $("#OriginatorDetailsForm").serialize();
+            $.ajax({
+                url: instance.save_BondsOrginator_Url,
+                type: "POST",
+                data: formData,
+                success: function (data) {
+                    if (data.ClientAccepted == 1) {
+                        $("table#tableBondApplications tr").removeAttr("onclick");
+                        $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
+                        window.location.reload(true);
+                        toastr.success('Orginator has been updated');
 
-        var formData = $("#OriginatorDetailsForm").serialize();
-        $.ajax({
-            url: instance.save_BondsOrginator_Url,
-            type: "POST",
-            data: formData,
-            success: function (data) {
-                if (data.ClientAccepted == 1)
-                {
-                    $("table#tableBondApplications tr").removeAttr("onclick");
-                    $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
-                    window.location.reload(true);
-                    toastr.success('Orginator has been updated');
-                    
+                    }
+                    else {
+                        window.location.reload(true);
+                        toastr.success('Orginator has been updated');
+                    }
+                },
+                error: function (exception) {
+                    console.log(exception);
                 }
-                else {
-                    window.location.reload(true);
-                    toastr.success('Orginator has been updated');
-                }
-            },
-            error: function (exception) {
-                console.log(exception);
-            }
-        });
+            });
+        }
+        else { toastr.error("Interest Rate required"); }
     }
 
     this.ConvertCurrentDate = function (currentDate, control) {

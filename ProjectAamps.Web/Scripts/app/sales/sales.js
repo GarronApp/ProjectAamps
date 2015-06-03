@@ -82,7 +82,6 @@
         
         $('#checkPurchaserContractSigned').change(function () {
             if (!$(this).is(':checked')) {
-                $("#txtPurchaserContractSigned").prop("disabled", true);
                 $("#txtPurchaserContractSigned").val("");
             }
             else {
@@ -96,7 +95,6 @@
 
         $('#checkDepositPaid').change(function () {
             if (!$(this).is(':checked')) {
-                $("#txtDepositPaidDate").prop("disabled", true);
                 $("#txtDepositPaidDate").val("");
                 $("#showNonCashPaymentSection").addClass('hide');
                 $(this).val(0);

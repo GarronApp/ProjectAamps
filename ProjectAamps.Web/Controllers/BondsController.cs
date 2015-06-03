@@ -84,7 +84,7 @@ namespace AAMPS.Web.Controllers
                 {
                     if (sale.hiddenSalesBondClientContactedDt != null && sale.hiddenSalesBondBondDocsRecDt == null)
                     {
-                        _linkedSale.SalesBondBondDocsRecDt = sale.hiddenSalesBondClientContactedDt != null ? DateTime.ParseExact(sale.hiddenSalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                        _linkedSale.SalesBondClientContactedDt = sale.hiddenSalesBondClientContactedDt != null ? DateTime.ParseExact(sale.hiddenSalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
                         _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
                     }
 
