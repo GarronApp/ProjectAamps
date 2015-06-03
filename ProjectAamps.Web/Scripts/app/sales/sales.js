@@ -366,7 +366,10 @@
         });
 
         $("#btnPendingUpdatePersonDetails").click(function () {
-            instance.UpdatePendingPersonDetails();
+            if (instance.validateClient()) {
+                instance.UpdatePendingPersonDetails();
+            }
+            
         });
 
         instance.LoadSaleTypes();
@@ -671,7 +674,8 @@
                     break;
                 }
 
-                if (form[i].value != '' && form[1].value === '') {
+                    //if (form[i].value != '' && form[2].value === '' || form[2].value != '') {
+                  if (form[i].value != '' && form[2].value === '') {
                     validForm = true;
                     instance.ReservedFormValid = true;
                     $("#PendingFormCompleteAndValid").attr('value', 0);
@@ -681,7 +685,7 @@
             }
 
             if (controlName == "SalesDepoistPaidDt") {
-                if (form[i].value === '' && form[0].value === '') {
+                if (form[i].value === '' && form[1].value === '') {
                     validForm = false;
                     instance.ReservedFormValid = false;
                     $("#PendingFormCompleteAndValid").attr('value', 0);
@@ -706,6 +710,14 @@
                         instance.ReservedFormValid = false;
                         $("#PendingFormCompleteAndValid").attr('value', 0);
                         toastr.error("Deposit Amount required");
+                        break;
+                    }
+
+                    if (form[4].value === '0' || form[4].value === 0.00 || form[4].value === 'R 0.00') {
+                        validForm = false;
+                        instance.ReservedFormValid = false;
+                        $("#PendingFormCompleteAndValid").attr('value', 0);
+                        toastr.error("Deposit Amount cannot be Zero");
                         break;
                     }
 
@@ -754,7 +766,14 @@
                 if (form[i].value === '' ) {
                     validForm = false;
                     instance.ReservedFormValid = false;
-                    toastr.error("Deposit Amount required");
+                    toastr.error("Deposit Amount  as required");
+                    break;
+                }
+
+                if (form[i].value === '0' || form[i].value === 0.00 || form[i].value === 'R 0.00') {
+                    validForm = false;
+                    instance.ReservedFormValid = false;
+                    toastr.error("Deposit amount cannot be zero");
                     break;
                 }
             }
@@ -782,25 +801,25 @@
         instance.PendingFormValid = false;
         for (var i = 0; i < form.length; i++) {
             var controlName = form[i].name;
-            if (controlName == "SaleContractSignedSellerDt") {
-                if (form[i].value === '') {
-                    validForm = false;
-                    instance.PendingFormValid = false;
-                    $("#PendingFormCompleteAndValid").attr('value', 1);
-                    toastr.error("Contract signed by seller required");
-                    break;
-                }
-            }
+            //if (controlName == "SaleContractSignedSellerDt") {
+            //    if (form[i].value === '') {
+            //        validForm = false;
+            //        instance.PendingFormValid = false;
+            //        $("#PendingFormCompleteAndValid").attr('value', 1);
+            //        toastr.error("Contract signed by seller required");
+            //        break;
+            //    }
+            //}
 
-            if (controlName == "SaleTypeID") {
-                if (form[i].value === '1' && form[2].value === '') {
-                    validForm = false;
-                    instance.PendingFormValid = false;
-                    $("#PendingFormCompleteAndValid").attr('value', 1);
-                    toastr.error("Contract signed by seller required");
-                    break;
-                }
-            }
+            //if (controlName == "SaleTypeID") {
+            //    if (form[i].value === '1' && form[2].value === '') {
+            //        validForm = false;
+            //        instance.PendingFormValid = false;
+            //        $("#PendingFormCompleteAndValid").attr('value', 1);
+            //        toastr.error("Contract signed by seller required");
+            //        break;
+            //    }
+            //}
 
             if (controlName == "SalesBondRequiredDt") {
                 if (form[i].value === '' && form[3].value === '0') {
@@ -870,19 +889,19 @@
                 }
             }
             if (controlName == "IndividualContactCell") {
-                if (form[i].value === '' && form[5].value === '') {
+                if (form[i].value === '') {
                     validForm = false;
                     instance.IndividualAdded = false;
-                    toastr.error("Individual Email or Cell required");
+                    toastr.error("Individual Cell required");
                     break;
                 }
             }
 
             if (controlName == "IndividualEmail") {
-                if (form[i].value === '' && form[3].value === '') {
+                if (form[i].value === '') {
                     validForm = false;
                     instance.IndividualAdded = false;
-                    toastr.error("Individual Email or Cell required");
+                    toastr.error("Individual Email required");
                     break;
                 }
             }
