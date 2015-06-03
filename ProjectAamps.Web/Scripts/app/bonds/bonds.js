@@ -422,6 +422,7 @@
             success: function (data) {
                 toastr.success('Sales details updated successfully');
                 instance.MapBondTransactions(data);
+                window.location.reload(true);
             },
             error: function (exception) {
                 console.log(exception);
