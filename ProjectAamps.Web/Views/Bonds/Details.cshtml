@@ -101,6 +101,7 @@
                         <legend class="well">Purchaser Details</legend>
                         <table style="width:100%;margin-top: 0px;" class="table text-left">
                             <tr>
+                               
                                 <td class="col-md-5"><label id="lblFirstName">@Model.IndividualFirstName</label></td>
                                 <td class="col-md-1"><input type="button" id="btnViewPurchaserDetails" onclick="ShowModalPurchaserDetails()" class=" btn btn-primary pull-left " value="details" /></td>
                             </tr>
@@ -110,6 +111,7 @@
                             </tr>
                         </table>
                     </fieldset>
+                    <input type="text" name="PurchaserID" id="txtPurchaserID" class="hide" />
                 </div>
                 <div class="col-md-12">
                     <fieldset>
@@ -183,6 +185,7 @@
         <div class="col-md-12">
             <input type="button" id="btnAddBankApplication" onclick="showNewBankApplicationModal();" class="btn btn-primary text-center" value="Submit Loan to Bank" />
             <br /><br />
+            <input type="text" class="hide" id="hasClientAccepted" />
             <table style="width: 100%; font-size: 0.82em;" class="table table-hover text-left" id="tableBondApplications">
                 <thead>
                     <tr>
@@ -207,7 +210,7 @@
                             <td class="col-md-1"><label>@item.OriginatorTrSubmittedDt</label></td>
                             <td class="col-md-1"><label>@item.OriginatorTrAIPDt</label></td>
                             <td class="col-md-1"><label>@item.OriginatorTrGrantDt</label></td>
-                            <td class="col-md-1"><label>@item.OriginatorTrAcceptDt</label></td>
+                            <td class="col-md-1"><label id="txtClientAcceptedInfo">@item.OriginatorTrAcceptDt</label></td>
                         </tr>
                     </tbody>
                 }
@@ -284,6 +287,13 @@
                                         <input type="text" class="form-control datepicker" id="OriginatorTrAcceptDt" name="OriginatorTrAcceptDt" data-date-format="dd/mm/yyyy" placeholder="">
                                     </div>
                                 </div>
+
+                                <div class="form-group hide" style="padding-bottom:30px" id="divApplicationBondNumber">
+                                    <label for="txtBondApplicationNumber" class="col-sm-4 control-label">Bond Application Number</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtBondApplicationNumber" name="SalesBondAccountNo" placeholder="enter bond application number">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -302,7 +312,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="modalEdit">Details</h4>
                     </div>
                     <div class="modal-body">
@@ -312,44 +322,82 @@
                                 <div class="form-group" style="padding-bottom:30px">
                                     <label for="selectPurchaserType" class="col-sm-4 control-label">Purchaser Type</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control" id="selectPurchaserType" name="EntityTypeID"></select>
+                                        <select class="form-control" id="selectPurchaserType" name="EntityTypeID" disabled="disabled"></select>
                                     </div>
                                 </div>
 
                                 <div class="form-group" style="padding-bottom:30px">
                                     <label for="txtFirstName" class="col-sm-4 control-label">Purchaser</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtPurchaserDescription" name="PurchaserDescription" placeholder="purchaser">
+                                        <input type="text" class="form-control" id="txtPurchaserDescription" name="PurchaserDescription" disabled="disabled" placeholder="purchaser">
                                     </div>
                                 </div>
                                 <div class="form-group" style="padding-bottom:30px">
                                     <label for="txtLastName" class="col-sm-4 control-label">Contact Person</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtPurchaserContactPerson" name="PurchaserContactPerson" placeholder="contact person">
+                                        <input type="text" class="form-control" id="txtPurchaserContactPerson" name="PurchaserContactPerson" disabled="disabled" placeholder="contact person">
                                     </div>
                                 </div>
                                 <div class="form-group" style="padding-bottom:30px">
                                     <label for="txtCellNumber" class="col-sm-4 control-label">Cell No</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtPurchaserContactCell" name="PurchaserContactCell" placeholder="cell number">
+                                        <input type="text" class="form-control" id="txtPurchaserContactCell" name="PurchaserContactCell" disabled="disabled" placeholder="cell number">
                                     </div>
                                 </div>
                                 <div class="form-group" style="padding-bottom:30px">
                                     <label for="txtWorkNumber" class="col-sm-4 control-label">Home No</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtPurchaserContactHome" name="PurchaserContactHome" placeholder="home number">
+                                        <input type="text" class="form-control" id="txtPurchaserContactHome" name="PurchaserContactHome" disabled="disabled" placeholder="home number">
                                     </div>
                                 </div>
                                 <div class="form-group" style="padding-bottom:30px">
                                     <label for="txtEmail" class="col-sm-4 control-label">Work No</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtPurchaserContactWork" name="PurchaserContactWork" placeholder="work number">
+                                        <input type="text" class="form-control" id="txtPurchaserContactWork" name="PurchaserContactWork" disabled="disabled" placeholder="work number">
                                     </div>
                                 </div>
                                 <div class="form-group" style="padding-bottom:30px">
                                     <label for="txtEmail" class="col-sm-4 control-label">Email Address</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="txtPurchaserEmail" name="PurchaserEmail" placeholder="email address">
+                                        <input type="text" class="form-control" id="txtPurchaserEmail" name="PurchaserEmail" disabled="disabled" placeholder="email address">
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtEmail" class="col-sm-4 control-label">Address</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserAddress" name="PurchaserAddress" disabled="disabled" placeholder="address">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label class="col-sm-4 control-label">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserAddress1" name="PurchaserAddress1" disabled="disabled" placeholder="address 1">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label class="col-sm-4 control-label">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserAddress2" name="PurchaserAddress2" disabled="disabled" placeholder="address 2">
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label class="col-sm-4 control-label">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserAddress3" name="PurchaserAddress3" disabled="disabled" placeholder="address 3">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label class="col-sm-4 control-label">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserSuburb" name="PurchaserSuburb" disabled="disabled" placeholder="suburb">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label class="col-sm-4 control-label">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtPurchaserPostalCode" name="PurchaserPostalCode" disabled="disabled" placeholder="postal code">
                                     </div>
                                 </div>
 
@@ -371,52 +419,89 @@
     <script src="~/Scripts/app/bonds/bonds.js"></script>
     <script type="text/javascript">
         function showModalUpdateOriginator(id) {
-            var bonds = new Bonds();
-            $('#txtOriginatorTrID').attr('value', id);
-            $("#btnUpdateOriginatorTr").val("Update");
-            $("#ApplicationStatus").val("UpdateApplication");
-            bonds.showModalUpdateOriginator(id);
+            var clientInfo = $("#hasClientAccepted").val();
+            if(clientInfo != 1)
+            {
+                var bonds = new Bonds();
+                $('#txtOriginatorTrID').attr('value', id);
+                $("#btnUpdateOriginatorTr").val("Update");
+                $("#ApplicationStatus").val("UpdateApplication");
+                $("#divApplicationBondNumber").addClass("hide");
+                bonds.showModalUpdateOriginator(id);
+            }
         }
+
         function UpdateOriginatorTr() {
-            var bonds = new Bonds();
-            bonds.SaveUpdateOrginator()
+
+            var isDisabled = $("#OriginatorTrAcceptDt").is(':disabled');
+            if (!isDisabled) {
+                var clientAccepted = $("#OriginatorTrAcceptDt").val();
+                if(clientAccepted)
+                {
+                    $("#divApplicationBondNumber").removeClass("hide");
+                    var applicationBondNumber = $("#txtBondApplicationNumber").val();
+
+                    if(applicationBondNumber)
+                    {
+                        var bonds = new Bonds();
+                        bonds.SaveUpdateOrginator()
+                    }
+                    else{
+                        $("#OriginatorTrAcceptDt").prop("disabled",false);
+                    }
+                }
+            }
+            else
+            {
+                var bonds = new Bonds();
+                bonds.SaveUpdateOrginator();
+            }
+
         }
 
         function showNewBankApplicationModal() {
-            $('#OriginatorDetailsForm')[0].reset();
-            $("#showModalUpdateOriginator").modal('show');
-            $("#btnUpdateOriginatorTr").val("Submit");
-            $("#ApplicationStatus").val("NewApplication");
-            $("#txtOriginatorTrBondAmount").val()
 
-            var dateToday = new Date();
-            var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
-            $("#OriginatorTrSubmittedDt").datepicker("setValue", convertDateToday);
+            var clientInfo = $("#hasClientAccepted").val();
+            if(clientInfo != 1)
+            {
+                $('#OriginatorDetailsForm')[0].reset();
+                $("#showModalUpdateOriginator").modal('show');
+                $("#btnUpdateOriginatorTr").val("Submit");
+                $("#ApplicationStatus").val("NewApplication");
+                $("#txtOriginatorTrBondAmount").val($("#txtHiddenInitialBondAmount").val());
+                $("#divApplicationBondNumber").addClass("hide");
 
-            $("#selectBankName").prop('disabled', false);
-            $("#OriginatorTrSubmittedDt").prop('disabled', false);
-            $("#OriginatorTrAIPDt").prop('disabled', false);
-            $("#OriginatorTrGrantDt").prop('disabled', false);
-            $("#OriginatorTrAcceptDt").prop('disabled', false);
+                var dateToday = new Date();
+                var convertDateToday = moment(dateToday, 'DD/MM/YYYY').format('DD/MM/YYYY');
+                $("#OriginatorTrSubmittedDt").datepicker("setValue", convertDateToday);
 
-            $("#OriginatorTrAIPDt").prop('disabled', true);
-            $("#OriginatorTrGrantDt").prop('disabled', true);
-            $("#OriginatorTrAcceptDt").prop('disabled', true);
-            $("#selectMOStatus select").attr('disabled', 'disabled');
-            $("#selectMOStatus select option").attr('disabled', 'disabled');
-            $("#selectMOStatus select option").prop('disabled', true);
+                $("#selectBankName").prop('disabled', false);
+                $("#OriginatorTrSubmittedDt").prop('disabled', false);
+                $("#OriginatorTrAIPDt").prop('disabled', false);
+                $("#OriginatorTrGrantDt").prop('disabled', false);
+                $("#OriginatorTrAcceptDt").prop('disabled', false);
+
+                $("#OriginatorTrAIPDt").prop('disabled', true);
+                $("#OriginatorTrGrantDt").prop('disabled', true);
+                $("#OriginatorTrAcceptDt").prop('disabled', true);
+                $("#selectMOStatus select").attr('disabled', 'disabled');
+                $("#selectMOStatus select option").attr('disabled', 'disabled');
+                $("#selectMOStatus select option").prop('disabled', true);
 
 
-            $('#selectMOStatus')
-                .empty()
-                .append('<option selected="selected" value="0">AS SUBMITTED</option>')
-            ;
+                $('#selectMOStatus')
+                    .empty()
+                    .append('<option selected="selected" value="0">AS SUBMITTED</option>')
+                ;
+            }
 
         }
 
         function ShowModalPurchaserDetails()
         {
-            $("#showModalPurchaserDetails").modal('show');
+            var bonds = new Bonds();
+            var id = $('#txtPurchaserID').val();
+            bonds.showModalPurchaserDetails(id);
         }
         function formatNumber(num) {
             return "R " + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")

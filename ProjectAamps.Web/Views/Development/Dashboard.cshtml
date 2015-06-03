@@ -278,7 +278,7 @@
                             </thead>
 
 
-                            @foreach (var item in Model.Where(c => c.UnitStatusId == 4))
+                            @foreach (var item in Model.Where(c => c.UnitStatusId == 4 || c.UnitStatusId == 6))
                             {
                                 <tbody>
                                     <tr>

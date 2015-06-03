@@ -1,5 +1,6 @@
 ﻿using AAMPS.Clients.AampService;
 using AAMPS.Clients.ViewModels.Originator;
+using AAMPS.Clients.ViewModels.Purchaser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace AAMPS.Clients.ViewModels.Bonds
         public string IndividualWorkNo { get; set; }
         public int IndividualContactMethod { get; set; }
         public string IndividualEmailAddress { get; set; }
-
+        public int PurchaserID { get; set; }
         public DateTime? SaleReservationDt { get; set; }
         public DateTime? ReservationTimeExtention { get; set; }
         public string CommentOnExtention { get; set; }
@@ -53,6 +54,8 @@ namespace AAMPS.Clients.ViewModels.Bonds
         public string OriginatorTrAddedDt { get; set; }
         public string OriginatorTrModifiedDt { get; set; }
         public string CurrentUserDetails { get; set; }
+
+        public bool ClientAccepted { get; set; }
 
         public int DevelopmentID { get; set; }
         public string DevelopmentDescription { get; set; }

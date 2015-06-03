@@ -23,5 +23,7 @@ namespace AAMPS.Clients.ViewModels.Originator
         public double OriginatorTrIntRate { get; set; }
         public string OriginatorTrAddedDt { get; set; }
         public string OriginatorTrModifiedDt { get; set; }
+        public int ClientAccepted { get; set; }
+        public string SalesBondAccountNo { get; set; }
     }
 }
