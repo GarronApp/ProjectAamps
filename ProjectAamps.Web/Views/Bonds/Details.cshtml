@@ -1,6 +1,6 @@
 ﻿@model AAMPS.Clients.ViewModels.Bonds.BondsViewModel
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Bond Details";
 }
 <style>
     .datepicker {
@@ -102,7 +102,7 @@
                         <table style="width:100%;margin-top: 0px;" class="table text-left">
                             <tr>
                                
-                                <td class="col-md-5"><label id="lblFirstName">@Model.IndividualFirstName</label></td>
+                                <td class="col-md-5"><label id="lblFirstName">@Model.IndividualFirstName @Model.IndividualLastName</label></td>
                                 <td class="col-md-1"><input type="button" id="btnViewPurchaserDetails" onclick="ShowModalPurchaserDetails()" class=" btn btn-primary pull-left " value="details" /></td>
                             </tr>
                             <tr>
@@ -313,7 +313,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="modalEdit">Details</h4>
+                        <h4 class="modal-title" id="modalEdit">Purchaser Information</h4>
                     </div>
                     <div class="modal-body">
                         <div class="row">
