@@ -54,7 +54,7 @@ namespace AAMPS.Clients.Actions.Sales
             _currentSale.SaleBondDueTimeDt = PendingSaleVM.SaleBondDueTimeDt != null ? DateTime.ParseExact(PendingSaleVM.SaleBondDueTimeDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SaleBondDueExpiryDt = PendingSaleVM.SaleBondDueExpiryDt != null ? DateTime.ParseExact(PendingSaleVM.SaleBondDueExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SaleBondRequiredAmount = PendingSaleVM.SaleBondRequiredAmount != null ? (float)PendingSaleVM.SaleBondRequiredAmount : 0.00;
-            _currentSale.SaleTypeID = PendingSaleVM.SaleTypeID == 0 ? 1 : 2;
+            _currentSale.SaleTypeID = ResolveSaleTypeId(PendingSaleVM.SaleTypeID);
             _currentSale.SalesBondGrantedDt = PendingSaleVM.SalesBondGrantedDt != null ? DateTime.ParseExact(PendingSaleVM.SalesBondGrantedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SalesBondClientAcceptDt = PendingSaleVM.SalesBondClientAcceptDt != null ? DateTime.ParseExact(PendingSaleVM.SalesBondClientAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SalesBondAmount = PendingSaleVM.SalesBondAmount != null ? (double)PendingSaleVM.SalesBondAmount : 0.0;
@@ -99,5 +99,23 @@ namespace AAMPS.Clients.Actions.Sales
 
             return PendingSaleVM;
         }
+
+        private int ResolveSaleTypeId(int saleTypeID)
+        {
+            switch (saleTypeID)
+            {
+                case 0:
+                    return 1;
+                case 1:
+                    return 2;
+                case 2:
+                    return 3;
+                default:
+                    break;
+            }
+            return 0;
+        }
+
+
     }
 }

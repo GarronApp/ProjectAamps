@@ -355,7 +355,7 @@
         });
 
         $("#btnReservedUpdatePersonDetails").click(function () {
-            if (instance.validateClient()) {
+            if (instance.validateClient("individualFormReserved")) {
                 instance.UpdateIndividualDetails();
                 instance.IndividualAdded = true;
             }
@@ -364,7 +364,7 @@
         });
 
         $("#btnPendingUpdatePersonDetails").click(function () {
-            if (instance.validateClient()) {
+            if (instance.validateClient("individualFormPending")) {
                 instance.UpdatePendingPersonDetails();
             }
             
@@ -672,8 +672,7 @@
                     break;
                 }
 
-                    //if (form[i].value != '' && form[2].value === '' || form[2].value != '') {
-                  if (form[i].value != '' && form[2].value === '') {
+                if (form[i].value != '' && form[1].value === '') {
                     validForm = true;
                     instance.ReservedFormValid = true;
                     $("#PendingFormCompleteAndValid").attr('value', 0);
@@ -683,7 +682,7 @@
             }
 
             if (controlName == "SalesDepoistPaidDt") {
-                if (form[i].value === '' && form[1].value === '') {
+                if (form[i].value === '' && form[0].value === '') {
                     validForm = false;
                     instance.ReservedFormValid = false;
                     $("#PendingFormCompleteAndValid").attr('value', 0);
@@ -799,25 +798,25 @@
         instance.PendingFormValid = false;
         for (var i = 0; i < form.length; i++) {
             var controlName = form[i].name;
-            //if (controlName == "SaleContractSignedSellerDt") {
-            //    if (form[i].value === '') {
-            //        validForm = false;
-            //        instance.PendingFormValid = false;
-            //        $("#PendingFormCompleteAndValid").attr('value', 1);
-            //        toastr.error("Contract signed by seller required");
-            //        break;
-            //    }
-            //}
+            if (controlName == "SaleContractSignedSellerDt") {
+                if (form[i].value === '') {
+                    validForm = false;
+                    instance.PendingFormValid = false;
+                    $("#PendingFormCompleteAndValid").attr('value', 1);
+                    toastr.error("Contract signed by seller required");
+                    break;
+                }
+            }
 
-            //if (controlName == "SaleTypeID") {
-            //    if (form[i].value === '1' && form[2].value === '') {
-            //        validForm = false;
-            //        instance.PendingFormValid = false;
-            //        $("#PendingFormCompleteAndValid").attr('value', 1);
-            //        toastr.error("Contract signed by seller required");
-            //        break;
-            //    }
-            //}
+            if (controlName == "SaleTypeID") {
+                if (form[i].value === '1' && form[2].value === '') {
+                    validForm = false;
+                    instance.PendingFormValid = false;
+                    $("#PendingFormCompleteAndValid").attr('value', 1);
+                    toastr.error("Contract signed by seller required");
+                    break;
+                }
+            }
 
             if (controlName == "SalesBondRequiredDt") {
                 if (form[i].value === '' && form[3].value === '0') {
@@ -863,8 +862,8 @@
         }
     }
 
-    this.validateClient = function () {
-        var form = $("#individualFormReserved").serializeArray();
+    this.validateClient = function (formId) {
+        var form = $("#" + formId).serializeArray();
         var validForm = true;
         instance.ReservedFormValid = false;
 
@@ -907,6 +906,7 @@
         }
         return validForm;
     }
+
 
     this.UpdateReservationDetails = function () {
         var formData = $("#SaleReservedForm").serialize();
