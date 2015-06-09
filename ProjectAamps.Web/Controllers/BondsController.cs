@@ -159,6 +159,8 @@ namespace AAMPS.Web.Controllers
                                         currentOrginator.OriginatorTrGrantDt = DateTime.ParseExact(orginator.OriginatorTrGrantDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                                         currentOrginator.MOStatusID = 3;
                                         orginator.ClientAccepted = 0;
+
+                                        UpdateSaleBondDetails(currentOrginator, orginator.SalesBondAccountNo);
                                     }
 
                                     break;

@@ -296,10 +296,14 @@
                                 </div>
 
                                 <div class="form-group hide" style="padding-bottom:30px" id="divApplicationBondNumber">
-                                    <label for="txtBondApplicationNumber" class="col-sm-4 control-label">Bond Application No</label>
-                                    <div class="col-sm-8">
+                                    <label for="txtBondApplicationNumber" class="col-sm-4 control-label">Confirm Application No</label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" id="checkConfirmBondApplicationNumber">
+                                    </div>
+                                    <div class="col-sm-7">
                                         <input type="text" class="form-control" id="txtBondApplicationNumber" name="SalesBondAccountNo" placeholder="enter bond application number">
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -494,6 +498,7 @@
 
         function UpdateOriginatorTr() {
 
+            $("#txtGrantedBondApplicationNumber").prop("disabled",false);
             var isGrantedDisabled = $("#OriginatorTrGrantDt").is(':disabled');
 
             if(!isGrantedDisabled){
@@ -521,9 +526,11 @@
                 if(clientAccepted)
                 {
                     $("#divApplicationBondNumber").removeClass("hide");
+                    $("#txtBondApplicationNumber").val($("#txtSalesBondAccountNo").val());
                     var applicationBondNumber = $("#txtBondApplicationNumber").val();
-
-                    if(applicationBondNumber)
+                    $("#txtGrantedBondApplicationNumber").prop("disabled",true);
+                    
+                    if(applicationBondNumber && $("#checkConfirmBondApplicationNumber").is(":checked"))
                     {
                         var bonds = new Bonds();
                         bonds.SaveUpdateOrginator()

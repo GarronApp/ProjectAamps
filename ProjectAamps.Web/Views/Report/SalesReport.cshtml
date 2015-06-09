@@ -48,7 +48,7 @@
                 <td>@item.Bond</td>
                 <td>@item.BondReq</td>
                 <td>@item.BondAmountGrant</td>
-                <td>@item.Granted</td>
+                <td><label id="lblDateGranted">@item.Granted</label></td>
                 <td>@item.AmountDue</td>
             </tr>
         </tbody>
@@ -61,6 +61,7 @@
         var resources = new Resources();
         resources.formatTableColumnRandValue("tableSalesReport", 2, "lblPrice");
         resources.formatTableColumnRandValue("tableSalesReport", 8, "lblDeposit");
+        resources.formatTableColumnDateValue("tableSalesReport", 15, "lblDateGranted");
     });
 </script>
 

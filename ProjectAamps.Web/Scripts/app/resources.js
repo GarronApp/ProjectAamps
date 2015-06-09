@@ -64,6 +64,22 @@
         });
     }
 
+    this.formatTableColumnDateValue = function (tableID, columnIndex, element) {
+        $("table#" + tableID + "> tbody > tr").each(function () {
+            var currentDate = $(this).find('td:eq(' + columnIndex + ')').html();
+            var convertedCurrentDate = moment(currentDate, 'YYYY-MM-DD hh:mm A').format('DD/MM/YYYY');
+            if (convertedCurrentDate == "01/01/0000")
+            {
+                $(this).find('td:eq(' + columnIndex + ')').html("");
+            }
+            else {
+                $(this).find('td:eq(' + columnIndex + ')').html(convertedCurrentDate);
+            }
+               
+        });
+    };
+
+
     this.MaskCellPhone = function () {
         $(".cellphone").mask('000 000 0000');
     }
