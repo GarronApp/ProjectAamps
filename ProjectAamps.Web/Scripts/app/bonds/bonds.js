@@ -10,6 +10,7 @@
     instance.getBondDetails_Url = "/Bonds/GetDetails";
     instance.getOrginatorDetails_Url = "/Bonds/LoadData/";
     instance.getPurchaserDetails_Url = "/Bonds/LoadPurchaser/";
+    instance.getIndividualDetails_Url = "/Bonds/LoadIndividual/";
     instance.getBanks_Url = "/Bonds/GetBanks";
     instance.getMOStatus_Url = "/Bonds/GetMOStatus";
 
@@ -110,6 +111,7 @@
                 $('#txtWorkNumberPending').val(data.IndividualWorkNo);
                 $('#txtEmailPending').val(data.IndividualEmailAddress);
                 $("#txtPurchaserID").val(data.PurchaserID);
+                $("#txtIndividualID").val(data.IndividualID);
                 $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
                 if (data.ClientAccepted == true)
                 {
@@ -182,6 +184,12 @@
         console.log(id);
         instance.loadPurchaser(id);
         $("#showModalPurchaserDetails").modal('show');
+    };
+
+    this.showModalIndividualDetails = function (id) {
+        console.log(id);
+        instance.loadIndividual(id);
+        $("#showModalIndividualDetails").modal('show');
     };
 
     this.convertCurrentDate = function (currentDate, control) {
@@ -269,6 +277,14 @@
         $("#txtPurchaserAddress3").val(data.PurchaserAddress3);
         $("#txtPurchaserSuburb").val(data.PurchaserSuburb);
         $("#txtPurchaserPostalCode").val(data.PurchaserPostalCode);
+    }
+
+    this.MapIndividualDetails = function (data) {
+        $("#txtFirstName").val(data.IndividualName);
+        $("#txtLastName").val(data.IndividualSurname);
+        $("#txtCellNumber").val(data.IndividualContactCell);
+        $("#txtWorkNumber").val(data.IndividualContactWork);
+        $("#txtEmail").val(data.IndividualEmail);
     }
 
     this.MapIndividualToPurchaser = function (data) {
@@ -514,6 +530,20 @@
                 console.log(data);
                 instance.LoadPurchaserEntityTypes();
                 instance.MapBondPurchaserDetails(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    this.loadIndividual = function (id) {
+        $.ajax({
+            url: instance.getIndividualDetails_Url + id,
+            type: 'POST',
+            success: function (data) {
+                console.log(data);
+                instance.MapIndividualDetails(data);
             },
             error: function (data) {
                 console.log(data);

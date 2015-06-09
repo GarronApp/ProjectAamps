@@ -5,7 +5,7 @@
 }
 
 <h4>Sales Report for </h4>
-<table class="table table-bordered">
+<table class="table table-bordered" id="tableSalesReport">
    <thead style="background-color:#000000; color:#ffffff">
        <tr>
            @*<td>Development</td>*@
@@ -35,7 +35,7 @@
                @* <td>@item.Development</td>*@
                 <td>@item.UnitNo</td>
                 <td>@item.Phase</td>
-                <td>@item.Price</td>
+                <td><label id="lblPrice">@item.Price</label></td>
                 <td>@item.Type</td>
                 <td>@item.Status</td>
                 <td>@item.Agency</td>
@@ -54,6 +54,16 @@
         </tbody>
     }
 </table>
+
+@section Scripts {
+<script>
+    $(function () {
+        var resources = new Resources();
+        resources.formatTableColumnRandValue("tableSalesReport", 2, "lblPrice");
+    });
+</script>
+
+}
 
 
 

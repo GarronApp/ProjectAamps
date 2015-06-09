@@ -14,6 +14,7 @@ using AAMPS.Clients.ViewModels.Originator;
 using AAMPS.Clients.ViewModels.Bonds;
 using App.Common.Exceptions;
 using AAMPS.Clients.ViewModels.Purchaser;
+using AAMPS.Clients.ViewModels.Individual;
 
 
 namespace AAMPS.Web.Controllers
@@ -64,9 +65,9 @@ namespace AAMPS.Web.Controllers
                 SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? currentSalesAgent.SalesBondClientContactedDt.GetValueOrDefault().ToString("dd/MM/yyyy") : string.Empty,
                 SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.GetValueOrDefault().ToString("dd/MM/yyyy") : string.Empty,
                 PurchaserID = currentSalesAgent.Purchaser.PurchaserID,
+                IndividualID = currentSalesAgent.Individual.IndividualID,
                 SalesBondAccountNo = currentSalesAgent.SalesBondAccountNo,
                 ClientAccepted = CheckClientAcceptedBond(currentSalesAgent.SaleID),
-        
 
             };
 
@@ -266,6 +267,24 @@ namespace AAMPS.Web.Controllers
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
 
+
+        [HttpPost]
+        public JsonResult LoadIndividual(int id)
+        {
+            var _individual = _repoService.GetIndividualById(id);
+            var viewModel = new IndividualViewModel();
+
+            if (_individual != null)
+            {
+                viewModel.IndividualName = _individual.IndividualName;
+                viewModel.IndividualSurname = _individual.IndividualSurname;
+                viewModel.IndividualContactCell = _individual.IndividualContactCell;
+                viewModel.IndividualContactWork = _individual.IndividualContactWork;
+                viewModel.IndividualEmail = _individual.IndividualEmail;
+            }
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public JsonResult LoadData(int id)
         {
@@ -359,26 +378,8 @@ namespace AAMPS.Web.Controllers
                 _linkedSale.SaleModifiedDt = DateTime.Now;
                 _linkedSale.SaleModifiedByUser = 1;
 
-                if(_linkedSale.SaleActiveStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold)
-                {
-                    _linkedSale.SaleActiveStatusID = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Bankable;
-                }
-
                 _repoService.UpdateSale(_linkedSale);
-
-                int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
-
-                if(_currentUnitId != null)
-                {
-                    var _linkedUnit = _repoService.GetUnitById(_currentUnitId);
-
-                    if (_linkedUnit.UnitStatusID == (int)AAMPS.Clients.AampService.GetUnitStatusType.Sold)
-                    {
-                        _linkedUnit.UnitStatusID = (int)AAMPS.Clients.AampService.GetUnitStatusType.Bankable;
-                        _repoService.UpdateUnit(_linkedUnit);
-                    }
-                }
-                
+          
             }
             catch (Exception ex)
             {

@@ -1,10 +1,9 @@
 ﻿function Resources()
 {
-    var instance;
+    var instance = this;
 
     this.load = function()
     {
-        instance = this;
 
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
@@ -53,6 +52,30 @@
             $("#" + control).datepicker("setValue", convertedCurrentDate);
         }
     }
+
+    this.formatNumber = function(num) {
+        return "R " + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+
+    this.formatTableColumnRandValue = function(tableID, columnIndex, element)
+    {
+        $("table#" + tableID + "> tbody > tr").each(function () {
+            $(this).find('td:eq(' + columnIndex + ')').html(instance.formatNumber($("#" + element).html()));
+        });
+    }
+
+    this.MaskCellPhone = function () {
+        $(".cellphone").mask('000 000 0000');
+    }
+
+    this.MaskWorkPhone = function () {
+        $(".workphone").mask('000 000 0000');
+    }
+
+    this.validateEmailAddress = function (email) {
+        var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        return filter.test(email);
+     }
 
     this.redirectToDashBoard = function (url) {
         window.location.href = url;

@@ -107,11 +107,12 @@
                             </tr>
                             <tr>
                                 <td class="col-md-5"><label id="lblLastName">@Model.IndividualLastName</label></td>
-                                <td class="col-md-1"><input type="button" id="BtnViewPurchaserDetails" onclick="ShowModalPurchaserDetails()" class=" btn btn-primary pull-left " value="details" /></td>
+                                <td class="col-md-1"><input type="button" id="BtnViewPurchaserDetails" onclick="ShowModalIndividualDetails()" class=" btn btn-primary pull-left " value="details" /></td>
                             </tr>
                         </table>
                     </fieldset>
                     <input type="text" name="PurchaserID" id="txtPurchaserID" class="hide" />
+                    <input type="text" name="IndividualID" id="txtIndividualID" class="hide" />
                 </div>
                 <div class="col-md-12">
                     <fieldset>
@@ -281,6 +282,12 @@
                                         <input type="text" class="form-control datepicker" id="OriginatorTrGrantDt" name="OriginatorTrGrantDt" data-date-format="dd/mm/yyyy" placeholder="">
                                     </div>
                                 </div>
+                                <div class="form-group hide" style="padding-bottom:30px" id="divGrantedApplicationBondNumber">
+                                    <label for="txtGrantedBondApplicationNumber" class="col-sm-4 control-label">Bond Application No</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtGrantedBondApplicationNumber" name="SalesBondAccountNo" placeholder="enter bond application number">
+                                    </div>
+                                </div>
                                 <div class="form-group" style="padding-bottom:30px">
                                     <label for="txtExtentionDate" class="col-sm-4 control-label">Client Accepted</label>
                                     <div class="col-sm-8">
@@ -289,7 +296,7 @@
                                 </div>
 
                                 <div class="form-group hide" style="padding-bottom:30px" id="divApplicationBondNumber">
-                                    <label for="txtBondApplicationNumber" class="col-sm-4 control-label">Bond Application Number</label>
+                                    <label for="txtBondApplicationNumber" class="col-sm-4 control-label">Bond Application No</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="txtBondApplicationNumber" name="SalesBondAccountNo" placeholder="enter bond application number">
                                     </div>
@@ -413,6 +420,60 @@
         </form>
     </div>
 
+    <div class="modal fade" id="showModalIndividualDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="ViewIndividualDetailsForm">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="modalEdit">Individual Information</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtFirstName" class="col-sm-4 control-label">First Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtFirstName" name="IndividualName" placeholder="first name">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtLastName" class="col-sm-4 control-label">Last Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtLastName" name="IndividualSurname" placeholder="last name">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtCellNumber" class="col-sm-4 control-label">Cell No</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control cellphone" id="txtCellNumber" name="IndividualContactCell" placeholder="cell number">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtWorkNumber" class="col-sm-4 control-label">Work No</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control workphone" id="txtWorkNumber" name="IndividualContactWork" placeholder="work number">
+                                    </div>
+                                </div>
+                                <div class="form-group" style="padding-bottom:30px">
+                                    <label for="txtEmail" class="col-sm-4 control-label">Email Address</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="txtEmail" name="IndividualEmail" placeholder="email address">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-primary" data-dismiss="modal" value="Cancel" />
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
     </div>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/moment.js"></script>
@@ -433,8 +494,29 @@
 
         function UpdateOriginatorTr() {
 
+            var isGrantedDisabled = $("#OriginatorTrGrantDt").is(':disabled');
+
+            if(!isGrantedDisabled){
+                var clientGranted = $("#OriginatorTrGrantDt").val();
+                if(clientGranted)
+                {
+                    $("#divGrantedApplicationBondNumber").removeClass("hide");
+                    var applicationBondNumber = $("#txtGrantedBondApplicationNumber").val();
+                    
+                    if(applicationBondNumber)
+                    {
+                        var bonds = new Bonds();
+                        bonds.SaveUpdateOrginator()
+                    }
+                }
+                else
+                {
+                    $("#OriginatorTrGrantDt").prop("disabled",false);
+                }
+            }
+
             var isDisabled = $("#OriginatorTrAcceptDt").is(':disabled');
-            if (!isDisabled) {
+            if (!isDisabled && isGrantedDisabled) {
                 var clientAccepted = $("#OriginatorTrAcceptDt").val();
                 if(clientAccepted)
                 {
@@ -453,8 +535,11 @@
             }
             else
             {
-                var bonds = new Bonds();
-                bonds.SaveUpdateOrginator();
+                if($("#divGrantedApplicationBondNumber").hasClass("hide"))
+                {
+                    var bonds = new Bonds();
+                    bonds.SaveUpdateOrginator();
+                }
             }
 
         }
@@ -504,6 +589,14 @@
             var id = $('#txtPurchaserID').val();
             bonds.showModalPurchaserDetails(id);
         }
+
+        function ShowModalIndividualDetails()
+        {
+            var bonds = new Bonds();
+            var id = $('#txtIndividualID').val();
+            bonds.showModalIndividualDetails(id);
+        }
+
         function formatNumber(num) {
             return "R " + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
         }

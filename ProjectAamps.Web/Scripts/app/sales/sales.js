@@ -18,7 +18,14 @@
     instance.ReservedFormValid = false;
     instance.PendingFormValid = false;
 
+    instance.resources = null;
+
     this.load = function () {
+
+        instance.resources = new Resources();
+        instance.resources.MaskCellPhone();
+        instance.resources.MaskWorkPhone();
+
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
@@ -325,7 +332,6 @@
         $("#btnAddUpdatePurchaser").click(function () {
             if (instance.validatePurchaser()) {
                 instance.UpdatePurchaserDetails();
-                toastr.success("Updated Successfully");
             }
 
         });
@@ -650,6 +656,22 @@
                     $("#txt" + controlName).removeClass("required-field");
                 }
             }
+            if (controlName == "PurchaserEmail") {
+                if (form[i].value != '') {
+                    var email = $("#txtPurchaserEmail").val();
+                    if (!instance.resources.validateEmailAddress(email))
+                    {
+                        validForm = false;
+                        instance.PurchaserFormValid = false;
+                        toastr.error("Purchaser Email Address Invalid");
+                        $("#txt" + controlName).addClass("required-field");
+                        break;
+                    }
+                }
+                else {
+                    $("#txt" + controlName).removeClass("required-field");
+                }
+            }
 
         }
         return validForm;
@@ -900,6 +922,24 @@
                     instance.IndividualAdded = false;
                     toastr.error("Individual Email required");
                     break;
+                }
+            }
+
+            if (controlName == "IndividualEmail") {
+                if (formId == "individualFormPending") {
+                    var email = $("#txtEmailPending").val();
+                } else {
+                    var email = $("#txtEmailReserved").val();
+                }
+
+                if (form[i].value != '') {
+                   
+                    if (!instance.resources.validateEmailAddress(email)) {
+                        validForm = false;
+                        instance.IndividualAdded = false;
+                        toastr.error("Email address invalid");
+                        break;
+                    }
                 }
             }
 

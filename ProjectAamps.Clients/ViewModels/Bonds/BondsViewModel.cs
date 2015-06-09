@@ -11,13 +11,15 @@ namespace AAMPS.Clients.ViewModels.Bonds
 {
     public class BondsViewModel
     {
+        
         public string IndividualFirstName { get; set; }
         public string IndividualLastName { get; set; }
         public string IndividualCellNo { get; set; }
         public string IndividualWorkNo { get; set; }
         public int IndividualContactMethod { get; set; }
         public string IndividualEmailAddress { get; set; }
-        public int PurchaserID { get; set; }
+        public int IndividualID { get; set; }
+         public int PurchaserID { get; set; }
         public DateTime? SaleReservationDt { get; set; }
         public DateTime? ReservationTimeExtention { get; set; }
         public string CommentOnExtention { get; set; }

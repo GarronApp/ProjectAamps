@@ -28,6 +28,7 @@ namespace AAMPS.Web
                       "~/Scripts/moment.js",
                       "~/Scripts/d3.js",
                       "~/Scripts/c3.js",
+                      "~/Scripts/jquery.mask.js",
                       "~/Scripts/app/resources.js"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
