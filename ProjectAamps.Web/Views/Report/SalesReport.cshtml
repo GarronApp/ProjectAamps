@@ -41,7 +41,7 @@
                 <td>@item.Agency</td>
                 <td>@item.Agent</td>
                 <td>@item.Purchaser</td>
-                <td>@item.Deposit</td>
+                <td><label id="lblDeposit">@item.Deposit</label></td>
                 <td>@item.DepositDate</td>
                 <td>@item.Proof</td>
                 <td>@item.CntrSigned</td>
@@ -60,6 +60,7 @@
     $(function () {
         var resources = new Resources();
         resources.formatTableColumnRandValue("tableSalesReport", 2, "lblPrice");
+        resources.formatTableColumnRandValue("tableSalesReport", 8, "lblDeposit");
     });
 </script>
 
