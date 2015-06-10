@@ -85,7 +85,7 @@
     }
 
     this.MaskWorkPhone = function () {
-        $(".workphone").mask('000 000 0000');
+        $(".workphone").mask('(000) 000 0000');
     }
 
     this.validateEmailAddress = function (email) {

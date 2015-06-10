@@ -54,7 +54,7 @@ namespace AAMPS.Clients.Actions.Sales
             _currentSale.SaleBondDueTimeDt = PendingSaleVM.SaleBondDueTimeDt != null ? DateTime.ParseExact(PendingSaleVM.SaleBondDueTimeDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SaleBondDueExpiryDt = PendingSaleVM.SaleBondDueExpiryDt != null ? DateTime.ParseExact(PendingSaleVM.SaleBondDueExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SaleBondRequiredAmount = PendingSaleVM.SaleBondRequiredAmount != null ? (float)PendingSaleVM.SaleBondRequiredAmount : 0.00;
-            _currentSale.SaleTypeID = ResolveSaleTypeId(PendingSaleVM.SaleTypeID);
+            _currentSale.SaleTypeID = PendingSaleVM.SaleTypeID;
             _currentSale.SalesBondGrantedDt = PendingSaleVM.SalesBondGrantedDt != null ? DateTime.ParseExact(PendingSaleVM.SalesBondGrantedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SalesBondClientAcceptDt = PendingSaleVM.SalesBondClientAcceptDt != null ? DateTime.ParseExact(PendingSaleVM.SalesBondClientAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SalesBondAmount = PendingSaleVM.SalesBondAmount != null ? (double)PendingSaleVM.SalesBondAmount : 0.0;
@@ -72,7 +72,7 @@ namespace AAMPS.Clients.Actions.Sales
 
             if (PendingSaleVM.PendingFormCompleteAndValid != 0 && PendingSaleVM.PendingFormCompleteAndValid != null)
             {
-                if (PendingSaleVM.SaleContractSignedSellerDt != null && PendingSaleVM.SaleTypeID == 0 || PendingSaleVM.SaleTypeID == 1)
+                if (PendingSaleVM.SaleContractSignedSellerDt != null && PendingSaleVM.SaleTypeID == 1 || PendingSaleVM.SaleTypeID == 2)
                 {
                     if (_currentSale.SaleActiveStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Pending)
                     {

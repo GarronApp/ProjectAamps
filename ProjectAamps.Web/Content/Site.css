@@ -404,6 +404,11 @@ fieldset > legend.well{
     opacity: 0.4;
 }
 
+.disabledControls {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
 /*.the-legend {
     border-style: none;
     border-width: 0;

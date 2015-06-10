@@ -100,11 +100,11 @@
                 $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
                 $('#txtOriginatorTrBondAmount').val(data.OriginatorTrBondAmount);
                 $('#txtHiddenInitialBondAmount').attr('value',data.InitialBondAmount);
-                $('#txtFirstNameReserved').val(data.IndividualFirstName);
-                $('#txtLastNameReserved').val(data.IndividualLastName);
-                $('#txtCellNumberReserved').val(data.IndividualCellNo);
-                $('#txtWorkNumberReserved').val(data.IndividualWorkNo);
-                $('#txtEmailReserved').val(data.IndividualEmailAddress);
+                $('#txtIndividualName').val(data.IndividualFirstName);
+                $('#txtIndividualSurname').val(data.IndividualLastName);
+                $('#txtIndividualContactCell').val(data.IndividualCellNo);
+                $('#txtIndividualContactWork').val(data.IndividualWorkNo);
+                $('#txtIndividualEmail').val(data.IndividualEmailAddress);
                 $('#txtFirstNamePending').val(data.IndividualFirstName);
                 $('#txtLastNamePending').val(data.IndividualLastName);
                 $('#txtCellNumberPending').val(data.IndividualCellNo);
