@@ -21,6 +21,7 @@ namespace AAMPS.Clients.ViewModels.Sales
         public int CurrentSalesStatusId { get; set; }
         public string CurrentSalesStatus { get; set; }
         public string IsNewSale { get; set; }
+        public int PendingFormCompleteAndValid { get; set; }
 
         public virtual List<PreferedContactMethod> PreferedContactMethods { get; set; }
         public DateTime? ReservationLapses { get; set; }
@@ -37,6 +38,7 @@ namespace AAMPS.Clients.ViewModels.Sales
         public string BondRequired { get; set; }
         public float CashPayment { get; set; }
 
+        public int IndividualID { get; set; }
         public string IndividualName { get; set; }
         public string IndividualSurname { get; set; }
         public string IndividualContactCell { get; set; }
@@ -69,6 +71,8 @@ namespace AAMPS.Clients.ViewModels.Sales
         public string SalesBondAccountNo { get; set; }
         public string SalesBondClientContactedDt { get; set; }
         public string SalesBondBondDocsRecDt { get; set; }
+        public string hiddenSalesBondBondDocsRecDt { get; set; }
+        public string hiddenSalesBondClientContactedDt { get; set; }
         public string SalesBondGrantedDt { get; set; }
         public string SalesBondClientAcceptDt { get; set; }
         public int SalesBondCommDueBt { get; set; }
@@ -83,6 +87,8 @@ namespace AAMPS.Clients.ViewModels.Sales
         public int SalesBondClientContactedBt { get; set; }
         public int SalesBondClientAcceptBt { get; set; }
         public int SalesBondGrantedBt { get; set; }
+
+
 
 
         public string SaleBondBank { get; set; }

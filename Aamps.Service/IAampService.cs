@@ -121,11 +121,15 @@ namespace Aamps.Service
 
         //Individual
          [OperationContract]
-         Individual SavePerson(Individual person);
+         Individual SaveIndividual(Individual person);
+         [OperationContract]
+         Individual UpdateIndividual(Individual person);
          [OperationContract]
          List<PreferedContactMethod> GetAllPreferedContactMethods();
          [OperationContract]
          PreferedContactMethod GetPreferedContactMethodById(int id);
+         [OperationContract]
+         Individual GetIndividualById(int id);
 
         //Purchaser
          [OperationContract]
@@ -148,6 +152,13 @@ namespace Aamps.Service
 
         [OperationContract]
         int GetUnitStatusTypes(GetUnitStatusType type);
+
+        [OperationContract]
+        int GetSaleActiveStatusTypes(GetSaleActiveStatusType type);
+
+        [OperationContract]
+        int GetSaleStatusTypes(GetSaleStatusType type);
+
         
     }
 }

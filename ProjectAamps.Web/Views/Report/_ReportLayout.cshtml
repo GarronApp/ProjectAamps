@@ -30,7 +30,7 @@
                     </div>
                     <div class="pull-right">
                         <button type="button" onclick="location.href='@Url.Action("ExportToPdf", "Report")'" class="btn btn-primary btn-sm">Export PDF</button>
-                        @*<button type="button" onclick="location.href='@Url.Action("ExportToExcel", "Report")'" class="btn btn-primary btn-sm">Export Excel</button>*@
+                        <a href="#" class="btn-cancel pull-left" style="font-size:0.85em" onclick="window.location.href='@Url.Action("Dashboard","Development")'">RETURN</a>
                     </div>
                 </div>
             </div>
@@ -51,9 +51,12 @@
             </div>
         </div>
     </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
-<script src="~/Scripts/jquery-1.10.2.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
 <script>
     function ExportPDF() {
         var url = '@Url.Action("TestReport", "Report")';

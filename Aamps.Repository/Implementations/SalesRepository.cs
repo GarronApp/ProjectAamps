@@ -123,9 +123,9 @@ namespace Aamps.Repository.Implementations
 
             using (var dc = new AampsContext())
             {
-                var result = dc.Database.SqlQuery<Aamps.Domain.ViewModels.Reports.Sales.SalesReportViewModel>("exec dbo.sp_SalesReport @DevelopmentID", development).ToList();
 
-                return result;
+                var result = dc.Database.SqlQuery<Aamps.Domain.ViewModels.Reports.Sales.SalesReportViewModel>("exec dbo.sp_SalesReport @DevelopmentID", development);
+                return result.ToList();
             }
         }
 

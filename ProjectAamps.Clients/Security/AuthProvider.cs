@@ -30,6 +30,7 @@ namespace AAMPS.Clients.Security
                             var SessionIdentity = Guid.NewGuid();
                             System.Web.HttpContext.Current.Session.Add("CurrentUserSession", SessionIdentity);
                             System.Web.HttpContext.Current.Session.Add("CurrentUser", _currentUser.UserListName);
+                            System.Web.HttpContext.Current.Session.Add("CurrentUserFullName", _currentUser.UserListName + " " + _currentUser.UserListSurname);
                             return true;
                         }
                     }
@@ -38,7 +39,7 @@ namespace AAMPS.Clients.Security
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleException(ex);
+              
                 _serviceProvider.Close();
             }
             finally

@@ -36,15 +36,13 @@
     <div class="container">
         <div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
             <div class="row text-center" style="margin-top:-40px">
-                <h3 style="font-size:1.49em;font-weight:bold">Development Summary</h3>
+                <h3 style="font-size:1.49em;font-weight:bold">Development Summary for @Session["DevelopmentName"].ToString()</h3>
             </div>
             <fieldset>
                         <div class="row text-center">
-                            <div class="col-md-2 col-sm-12 col-xs-12">
-                                &nbsp;
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <table style="font-size:0.69em; font-weight:400;margin-top:15px" class="table-striped text-center">
+                          
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <table style="font-size:0.8em; font-weight:400;margin-top:10px" class="table-striped text-center">
                                     <thead>
                                         <tr>
                                             <td class="col-md-4"><b>Status</b></td>
@@ -56,27 +54,27 @@
                                         <tr>
                                             <td class="col-md-4">Available</td>
                                             <td class="col-md-4">@Session["TotalUnitsAvailable"].ToString()</td>
-                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsAvailablePrice"].ToString()</td>
+                                            <td class="col-md-4"><label id="lblTotalUnitsAvailablePrice">@Session["TotalUnitsAvailablePrice"].ToString()</label></td>
                                         </tr>
                                         <tr>
                                             <td class="col-md-4">Reserved</td>
                                             <td class="col-md-4">@Session["TotalUnitsReserved"].ToString()</td>
-                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsReservedPrice"].ToString()</td>
+                                            <td class="col-md-4"><label id="lblTotalUnitsReservedPrice">@Session["TotalUnitsReservedPrice"].ToString()</label></td>
                                         </tr>
                                         <tr>
                                             <td class="col-md-4">Pending</td>
                                             <td class="col-md-4">@Session["TotalUnitsPending"].ToString()</td>
-                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsPendingPrice"].ToString()</td>
+                                            <td class="col-md-4"><label id="lblTotalUnitsPendingPrice">@Session["TotalUnitsPendingPrice"].ToString()</label></td>
                                         </tr>
                                         <tr>
                                             <td class="col-md-4">Sold</td>
                                             <td class="col-md-4">@Session["TotalUnitsSold"].ToString()</td>
-                                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsSoldPrice"].ToString()</td>
+                                            <td class="col-md-4"><label id="lblTotalUnitsSoldPrice">@Session["TotalUnitsSoldPrice"].ToString()</label></td>
                                         </tr>
                                         <tr>
                                             <td class="col-md-4"><b>Total Units</b></td>
                                             <td class="col-md-4"><span class="badge"><b>@Session["TotalUnits"].ToString()</b></span></td>
-                                            <td class="col-md-4"><span class="badge"><b>R&nbsp;@Session["TotalUnitsPrice"].ToString()</b></span></td>
+                                            <td class="col-md-4"><span class="badge"><b><label id="lblTotalUnitsPrice">@Session["TotalUnitsPrice"].ToString()</label></b></span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -93,7 +91,7 @@
             <fieldset>
                 <div class="col-md-12">
                     <table style="width:100%" class="table-striped text-center">
-                        <thead style="font-size:1.25em;font-weight:400;">
+                        <thead>
                             <tr>
                                 <td class="col-md-20"><strong>Unit No</strong></td>
                                 <td class="col-md-20"><strong>Unit Phase</strong></td>
@@ -102,7 +100,7 @@
                                 <td class="col-md-20"><strong>Unit Status</strong></td>
                             </tr>
                         </thead>
-                        <tbody style="font-size:1.2em;font-weight:400;">
+                        <tbody>
                             <tr>
                                 <td class="col-md-20"><label id="lblUnitNumber"></label></td>
                                 <td class="col-md-20"><label id="lblUnitPhase"></label></td>
@@ -151,9 +149,6 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<script src="~/Scripts/d3.js"></script>
-<script src="~/Scripts/c3.js"></script>
-<link href="~/Content/c3.css" rel="stylesheet" />
  <script>
     function LogoutUser() {
         var url = '@Url.Action("CloseCurrentSession", "Account")';
@@ -172,6 +167,18 @@
 
         });
     }
+
+     function formatNumber(num) {
+         return "R " + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+     }
+
+     function FormatSummaryTotalsCurrency() {
+         $("#lblTotalUnitsAvailablePrice").html(formatNumber($("#lblTotalUnitsAvailablePrice").html()));
+         $("#lblTotalUnitsReservedPrice").html(formatNumber($("#lblTotalUnitsReservedPrice").html()));
+         $("#lblTotalUnitsPendingPrice").html(formatNumber($("#lblTotalUnitsPendingPrice").html()));
+         $("#lblTotalUnitsSoldPrice").html(formatNumber($("#lblTotalUnitsSoldPrice").html()));
+         $("#lblTotalUnitsPrice").html(formatNumber($("#lblTotalUnitsPrice").html()));
+     }
 </script>
 <script type="text/javascript">
     $(function () {
@@ -185,6 +192,8 @@
                 $("#currentUser").html(data);
             }
         });
+
+        FormatSummaryTotalsCurrency();
 
         var items = [];
         $.getJSON("/Development/GetTotals", function (data) {
@@ -211,6 +220,7 @@
         });
     });
 </script>
+
 
 
 

@@ -6,8 +6,11 @@
     instance.save_SaleBondsDetails_Url = "/Bonds/SaveSalesBondDetails";
     instance.save_ReservedSale_Url = "/Sales/UpdateReservedSale"
     instance.save_Individual_Url = "/Sales/SaveIndividual";
+    instance.getPurchaserEntityTypes_Url = "/Sales/GetPurchaserEntityTypes";
     instance.getBondDetails_Url = "/Bonds/GetDetails";
     instance.getOrginatorDetails_Url = "/Bonds/LoadData/";
+    instance.getPurchaserDetails_Url = "/Bonds/LoadPurchaser/";
+    instance.getIndividualDetails_Url = "/Bonds/LoadIndividual/";
     instance.getBanks_Url = "/Bonds/GetBanks";
     instance.getMOStatus_Url = "/Bonds/GetMOStatus";
 
@@ -28,6 +31,7 @@
             $(this).datepicker('hide');
         });
 
+        $("#btnAddBankApplication").prop("disabled", true);
 
         $('#checkClientContacted').change(function () {
             if (!$(this).is(':checked')) {
@@ -42,6 +46,8 @@
             }
         });
 
+
+
         $('#checkDocumentsRec').change(function () {
             if (!$(this).is(':checked')) {
                 $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
@@ -55,13 +61,25 @@
             }
         });
 
+        if ($('#checkDocumentsRec').is(":checked") && $('#checkDocumentsRec').is(":checked"))
+        {
+            $("#btnAddBankApplication").prop("disabled", true);
+        }
+
         $("#btnUpdateSalesBondDetails").click(function () {
             instance.UpdateSalesBondDetails();
         });
 
+        var numericInputControls = new Array("txtOriginatorTrBondAmount");
+        var percentageInputControls = new Array("txtOriginatorTrIntRate")
+
+        instance.initializeNumericPercentageInputValues(percentageInputControls);
+
+        instance.initializeNumericInputValues(numericInputControls)
+
         instance.LoadBanks();
         instance.LoadMOStatus();
-        //instance.LoadCurrentDates();
+
 
         $.ajax({
             url: instance.getBondDetails_Url,
@@ -71,7 +89,8 @@
             success: function (data) {
                 console.log(data);
                 $("#lblUnitPhase").html(data.UnitPhase);
-                $("#lblUnitPrice").html("R " + data.UnitPrice);
+                $("#lblUnitPrice").html(data.UnitPrice);
+                //$("#lblUnitPrice").html(formatNumber($("#lblUnitPrice").html()));
                 $("#lblUnitNumber").html(data.UnitNumber);
                 $("#lblUnitSize").html(data.UnitSize);
                 $("#lblUnitFloor").html(data.UnitFloor);
@@ -79,17 +98,73 @@
                 $("#txtReservationLapses").val(data.ReservationDate);
                 $('#txtSignedDate').val(data.DateSignedBySeller);
                 $('#txtSaleReservedPanelStatus').val(data.CurrentSalesStatus);
-
-                $('#txtFirstNameReserved').val(data.IndividualFirstName);
-                $('#txtLastNameReserved').val(data.IndividualLastName);
-                $('#txtCellNumberReserved').val(data.IndividualCellNo);
-                $('#txtWorkNumberReserved').val(data.IndividualWorkNo);
-                $('#txtEmailReserved').val(data.IndividualEmailAddress);
+                $('#txtOriginatorTrBondAmount').val(data.OriginatorTrBondAmount);
+                $('#txtHiddenInitialBondAmount').attr('value',data.InitialBondAmount);
+                $('#txtIndividualName').val(data.IndividualFirstName);
+                $('#txtIndividualSurname').val(data.IndividualLastName);
+                $('#txtIndividualContactCell').val(data.IndividualCellNo);
+                $('#txtIndividualContactWork').val(data.IndividualWorkNo);
+                $('#txtIndividualEmail').val(data.IndividualEmailAddress);
                 $('#txtFirstNamePending').val(data.IndividualFirstName);
                 $('#txtLastNamePending').val(data.IndividualLastName);
                 $('#txtCellNumberPending').val(data.IndividualCellNo);
                 $('#txtWorkNumberPending').val(data.IndividualWorkNo);
                 $('#txtEmailPending').val(data.IndividualEmailAddress);
+                $("#txtPurchaserID").val(data.PurchaserID);
+                $("#txtIndividualID").val(data.IndividualID);
+                $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
+                if (data.ClientAccepted == true)
+                {
+                    $("#hasClientAccepted").attr('value', 1);
+                }
+                if (data.ClientAccepted == false)
+                {
+                    $("#hasClientAccepted").attr('value', 0);
+                }
+
+                if (data.SalesBondClientContactedDt == "" && data.SalesBondBondDocsRecDt == "") {
+
+                    $("#checkClientContacted").val(0);
+                    $("#checkClientContacted").prop('checked', false);
+                    $("#checkClientContacted").prop("disabled", false);
+                    $("#txtSalesBondClientContactedDt").val("");
+                    $("#txtSalesBondClientContactedDt").prop("disabled", true);
+                    $("#checkDocumentsRec").val(0);
+                    $("#checkDocumentsRec").prop('checked', false);
+                    $("#checkDocumentsRec").prop("disabled", true);
+                    $("#txtSalesBondBondDocsRecDt").val("");
+                    $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+                }
+
+                if (data.SalesBondClientContactedDt != "" && data.SalesBondBondDocsRecDt == "") {
+                    instance.ConvertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+                    $("#checkClientContacted").val(1);
+                    $("#checkClientContacted").prop('checked', true);
+                    $("#txtSalesBondClientContactedDt").prop("disabled", true);
+                    $("#checkClientContacted").prop("disabled", true);
+                    $("#checkDocumentsRec").val(0);
+                    $("#checkDocumentsRec").prop('checked', false);
+                    $("#checkDocumentsRec").prop('disabled', false);
+                    $("#txtSalesBondBondDocsRecDt").val("");
+                    $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+
+                }
+
+                if (data.SalesBondClientContactedDt != "" && data.SalesBondBondDocsRecDt != "") {
+                    instance.ConvertCurrentDate(data.SalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+                    instance.ConvertCurrentDate(data.SalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
+                    $("#txtSalesBondClientContactedDt").prop("disabled", true);
+                    $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+                    $("#checkClientContacted").val(1);
+                    $("#checkClientContacted").prop('checked', true);
+                    $("#checkClientContacted").prop("disabled", true);
+                    $("#checkDocumentsRec").val(1);
+                    $("#checkDocumentsRec").prop('checked', true);
+                    $("#checkDocumentsRec").prop("disabled", true);
+
+                    $("#btnAddBankApplication").prop("disabled", false);
+                }
+
 
             },
             error: function (data) {
@@ -98,11 +173,46 @@
         });
     }
 
+
     this.showModalUpdateOriginator = function (id) {
         console.log(id);
         instance.loadOrginator(id);
         $('#showModalUpdateOriginator').modal('show');
     };
+
+    this.showModalPurchaserDetails = function (id) {
+        console.log(id);
+        instance.loadPurchaser(id);
+        $("#showModalPurchaserDetails").modal('show');
+    };
+
+    this.showModalIndividualDetails = function (id) {
+        console.log(id);
+        instance.loadIndividual(id);
+        $("#showModalIndividualDetails").modal('show');
+    };
+
+    this.convertCurrentDate = function (currentDate, control) {
+        if (currentDate == "" || currentDate == null) {
+            $("#" + control).prop("disabled", true);
+            $("#" + control).val("");
+        }
+        else {
+            var convertedCurrentDate = moment(currentDate, 'YYYY-MM-DD').format('DD/MM/YYYY');
+            $("#" + control).datepicker("setValue", convertedCurrentDate);
+        }
+    }
+
+    this.setCurrentDate = function (currentDate, control) {
+        if (currentDate == "" || currentDate == null) {
+            $("#" + control).prop("disabled", true);
+            $("#" + control).val("");
+        }
+        else {
+            var convertedCurrentDate = moment(currentDate, 'DD-MM-YYYY').format('DD/MM/YYYY');
+            $("#" + control).datepicker("setValue", convertedCurrentDate);
+        }
+    }
 
     this.GetBanks = function (data) {
         $("#selectBankName option").remove();
@@ -136,6 +246,59 @@
         $("#" + controlId).datepicker("setValue", convertDateToday);
     }
 
+    this.validateOrginatorInterestRate = function () {
+        var form = $("#OriginatorDetailsForm").serializeArray();
+        var validForm = true;
+        for (var i = 0; i < form.length; i++) {
+            var controlName = form[i].name;
+            if (controlName == "OriginatorTrGrantDt") {
+                if (form[i].value != '' && form[6].value === '' || form[6].value === '0' || form[6].value === '0.0') {
+                    validForm = false;
+                    $("#txt" + controlName).addClass("required-field");
+                    break;
+                }
+            }
+        }
+        return validForm
+    }
+
+    this.MapBondPurchaserDetails = function (data) {
+        $("#selectPurchaserType").val("" +data.EntityTypeID + "");
+        $('#txtPurchaserType').val(data.EntityTypeID);
+        $('#txtPurchaserDescription').val(data.PurchaserDescription);
+        $('#txtPurchaserContactPerson').val(data.PurchaserContactPerson);
+        $('#txtPurchaserContactCell').val(data.PurchaserContactCell);
+        $('#txtPurchaserContactHome').val(data.PurchaserContactHome);
+        $('#txtPurchaserContactWork').val(data.PurchaserContactWork);
+        $('#txtPurchaserEmail').val(data.PurchaserEmail);
+        $("#txtPurchaserAddress").val(data.PurchaserAddress);
+        $("#txtPurchaserAddress1").val(data.PurchaserAddress1);
+        $("#txtPurchaserAddress2").val(data.PurchaserAddress2);
+        $("#txtPurchaserAddress3").val(data.PurchaserAddress3);
+        $("#txtPurchaserSuburb").val(data.PurchaserSuburb);
+        $("#txtPurchaserPostalCode").val(data.PurchaserPostalCode);
+    }
+
+    this.MapIndividualDetails = function (data) {
+        $("#txtFirstName").val(data.IndividualName);
+        $("#txtLastName").val(data.IndividualSurname);
+        $("#txtCellNumber").val(data.IndividualContactCell);
+        $("#txtWorkNumber").val(data.IndividualContactWork);
+        $("#txtEmail").val(data.IndividualEmail);
+    }
+
+    this.MapIndividualToPurchaser = function (data) {
+        console.log(data.EntityTypeID);
+        $("#selectPurchaserType").val()
+        $("#txtPurchaserDescription").val(data.IndividualName + " " + data.IndividualSurname);
+        $("#txtPurchaserContactPerson").val(data.IndividualName + " " + data.IndividualSurname);
+        $("#txtPurchaserContactCell").val(data.IndividualContactCell);
+        $("#txtPurchaserContactHome").val(data.IndividualContactHome);
+        $("#txtPurchaserContactWork").val(data.IndividualContactWork);
+        $("#txtPurchaserEmail").val(data.IndividualEmail);
+    }
+
+
     this.MapBondDefaults = function(data)
     {
         instance.setSelectControlValue("selectBankName", data.BankName);
@@ -143,7 +306,51 @@
         $('#OriginatorTrID').val(data.OriginatorTrID);
         $('#txtOriginatorTrBondAmount').val(data.OriginatorTrBondAmount);
         $('#txtOriginatorTrIntRate').val(data.OriginatorTrIntRate);
-       
+
+    }
+
+    this.MapBondTransactions = function(data)
+    {
+        if (data.hiddenSalesBondClientContactedDt == null && data.hiddenSalesBondBondDocsRecDt == null) {
+
+            $("#checkClientContacted").val(0);
+            $("#checkClientContacted").prop('checked', false);
+            $("#checkClientContacted").prop("disabled", false);
+            $("#txtSalesBondClientContactedDt").val("");
+            $("#txtSalesBondClientContactedDt").prop("disabled", true);
+            $("#checkDocumentsRec").val(0);
+            $("#checkDocumentsRec").prop('checked', false);
+            $("#checkDocumentsRec").prop("disabled", true);
+            $("#txtSalesBondBondDocsRecDt").val("");
+            $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+        }
+
+        if (data.hiddenSalesBondClientContactedDt != null && data.hiddenSalesBondBondDocsRecDt == null) {
+            instance.setCurrentDate(data.hiddenSalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+            $("#checkClientContacted").val(1);
+            $("#checkClientContacted").prop('checked', true);
+            $("#txtSalesBondClientContactedDt").prop("disabled", true);
+            $("#checkClientContacted").prop("disabled", true);
+            $("#checkDocumentsRec").val(0);
+            $("#checkDocumentsRec").prop('checked', false);
+            $("#checkDocumentsRec").prop('disabled', false);
+            $("#txtSalesBondBondDocsRecDt").val("");
+            $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+
+        }
+
+        if (data.hiddenSalesBondClientContactedDt != null && data.hiddenSalesBondBondDocsRecDt != null) {
+            instance.setCurrentDate(data.hiddenSalesBondClientContactedDt, "txtSalesBondClientContactedDt");
+            instance.setCurrentDate(data.hiddenSalesBondBondDocsRecDt, "txtSalesBondBondDocsRecDt");
+            $("#txtSalesBondClientContactedDt").prop("disabled", true);
+            $("#txtSalesBondBondDocsRecDt").prop("disabled", true);
+            $("#checkClientContacted").val(1);
+            $("#checkClientContacted").prop('checked', true);
+            $("#checkClientContacted").prop("disabled", true);
+            $("#checkDocumentsRec").val(1);
+            $("#checkDocumentsRec").prop('checked', true);
+            $("#checkDocumentsRec").prop("disabled", true);
+        }
 
     }
 
@@ -196,6 +403,7 @@
             $("#OriginatorTrGrantDt").prop('disabled', true);
             $("#OriginatorTrAcceptDt").prop('disabled', true);
         }
+      
 
     }
 
@@ -207,7 +415,20 @@
         $("#OriginatorTrAcceptDt").datepicker("setValue", new Date());
     }
 
+    this.GetPurchaserEntityTypes = function (data) {
+        $("#selectPurchaserType option").remove();
+        $.each(data, function (index, item) {
+            var index = index + 1;
+            $("#selectPurchaserType").append('<option value=' + index + '>' + item + '</option>');
+        });
+    }
+
+
+
     this.UpdateSalesBondDetails = function () {
+
+        $("#hiddenSalesBondClientContactedDt").val($("#txtSalesBondClientContactedDt").val());
+        $("#hiddenSalesBondBondDocsRecDt").val($("#txtSalesBondBondDocsRecDt").val());
 
         var formData = $("#UpdateSalesBondDetailsFrom").serialize();
         $.ajax({
@@ -216,28 +437,7 @@
             data: formData,
             success: function (data) {
                 toastr.success('Sales details updated successfully');
-            },
-            error: function (exception) {
-                console.log(exception);
-            }
-        });
-    }
-
-    this.SaveUpdateOrginator = function () {
-
-        $("#selectBankName").prop('disabled', false);
-        $("#OriginatorTrSubmittedDt").prop('disabled', false);
-        $("#OriginatorTrAIPDt").prop('disabled', false);
-        $("#OriginatorTrGrantDt").prop('disabled', false);
-        $("#OriginatorTrAcceptDt").prop('disabled', false);
-
-        var formData = $("#OriginatorDetailsForm").serialize();
-        $.ajax({
-            url: instance.save_BondsOrginator_Url,
-            type: "POST",
-            data: formData,
-            success: function (data) {
-                toastr.success('Orginator has been updated');
+                instance.MapBondTransactions(data);
                 window.location.reload(true);
             },
             error: function (exception) {
@@ -246,9 +446,62 @@
         });
     }
 
+    this.SaveUpdateOrginator = function () {
+        if (instance.validateOrginatorInterestRate()) {
+            $("#selectBankName").prop('disabled', false);
+            $("#OriginatorTrSubmittedDt").prop('disabled', false);
+            $("#OriginatorTrAIPDt").prop('disabled', false);
+            $("#OriginatorTrGrantDt").prop('disabled', false);
+            $("#OriginatorTrAcceptDt").prop('disabled', false);
+
+            $("#txtOriginatorTrBondAmount").val($("#txtOriginatorTrBondAmount").autoNumeric('get'));
+            $("#txtOriginatorTrIntRate").val($("#txtOriginatorTrIntRate").autoNumeric('get'));
+
+            var formData = $("#OriginatorDetailsForm").serialize();
+            $.ajax({
+                url: instance.save_BondsOrginator_Url,
+                type: "POST",
+                data: formData,
+                success: function (data) {
+                    if (data.ClientAccepted == 1) {
+                        $("table#tableBondApplications tr").removeAttr("onclick");
+                        $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
+                        window.location.reload(true);
+                        toastr.success('Orginator has been updated');
+
+                    }
+                    else {
+                        window.location.reload(true);
+                        toastr.success('Orginator has been updated');
+                    }
+                },
+                error: function (exception) {
+                    console.log(exception);
+                }
+            });
+        }
+        else { toastr.error("Interest Rate required"); }
+    }
+
     this.ConvertCurrentDate = function (currentDate, control) {
         var convertedCurrentDate = moment(currentDate, 'DD-MM-YYYY').format('DD/MM/YYYY');
         $("#" + control).datepicker("setValue", convertedCurrentDate);
+    }
+
+    this.initializeNumericInputValues = function (controls) {
+        for (var i = 0; i < controls.length; i++) {
+            $("#" + controls[i]).attr("data-a-sign", "R ");
+            $("#" + controls[i]).autoNumeric('init', { vMax: '9999999999999.99', vMin: '-9999999999999.99', mDec: 2 });
+        }
+
+    }
+
+    this.initializeNumericPercentageInputValues = function (controls) {
+        for (var i = 0; i < controls.length; i++) {
+            $("#" + controls[i]).attr("data-a-sign", " % ");
+            $("#" + controls[i]).autoNumeric('init', { vMax: '100.0', vMin: '-00.0', mDec: 1, pSign: 's' });
+        }
+
     }
 
 
@@ -259,12 +512,57 @@
             type: 'POST',
             success: function (data) {
                 console.log(data);
-
+               
                 instance.MapOrginatorDetails(data);
                 
             },
             error: function (data) {
                 console.log(data);
+            }
+        });
+    }
+
+    this.loadPurchaser = function (id) {
+        $.ajax({
+            url: instance.getPurchaserDetails_Url + id,
+            type: 'POST',
+            success: function (data) {
+                console.log(data);
+                instance.LoadPurchaserEntityTypes();
+                instance.MapBondPurchaserDetails(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    this.loadIndividual = function (id) {
+        $.ajax({
+            url: instance.getIndividualDetails_Url + id,
+            type: 'POST',
+            success: function (data) {
+                console.log(data);
+                instance.MapIndividualDetails(data);
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    this.LoadPurchaserEntityTypes = function () {
+        $.ajax({
+            url: instance.getPurchaserEntityTypes_Url,
+            type: "GET",
+            data: {},
+            async: true,
+            cache: false,
+            success: function (data) {
+                instance.GetPurchaserEntityTypes(data);
+            },
+            error: function (exception) {
+                console.log(exception);
             }
         });
     }

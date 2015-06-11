@@ -1,5 +1,6 @@
 ﻿using AAMPS.Clients.AampService;
 using AAMPS.Clients.ViewModels.Originator;
+using AAMPS.Clients.ViewModels.Purchaser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,15 @@ namespace AAMPS.Clients.ViewModels.Bonds
 {
     public class BondsViewModel
     {
+        
         public string IndividualFirstName { get; set; }
         public string IndividualLastName { get; set; }
         public string IndividualCellNo { get; set; }
         public string IndividualWorkNo { get; set; }
         public int IndividualContactMethod { get; set; }
         public string IndividualEmailAddress { get; set; }
-
+        public int IndividualID { get; set; }
+         public int PurchaserID { get; set; }
         public DateTime? SaleReservationDt { get; set; }
         public DateTime? ReservationTimeExtention { get; set; }
         public string CommentOnExtention { get; set; }
@@ -39,6 +42,7 @@ namespace AAMPS.Clients.ViewModels.Bonds
         public string SalesBondAccountNo { get; set; }
         public double SaleBondRequiredAmount { get; set; }
         public double SalesTotalDepositAmount { get; set; }
+        public double InitialBondAmount { get; set; }
         public IEnumerable<OrginatorViewModel> Orginators { get; set; }
         public string BankName { get; set; }
         public string MOStatus { get; set; }
@@ -51,6 +55,9 @@ namespace AAMPS.Clients.ViewModels.Bonds
         public double OriginatorTrIntRate { get; set; }
         public string OriginatorTrAddedDt { get; set; }
         public string OriginatorTrModifiedDt { get; set; }
+        public string CurrentUserDetails { get; set; }
+
+        public bool ClientAccepted { get; set; }
 
         public int DevelopmentID { get; set; }
         public string DevelopmentDescription { get; set; }

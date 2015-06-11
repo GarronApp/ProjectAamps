@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using AAMPS.Clients.Security;
 
 namespace AAMPS.Test.Authentication
 {
@@ -13,12 +14,11 @@ namespace AAMPS.Test.Authentication
             var username = "test";
             var password = "test";
 
-            AAMPS.Clients.Security.AuthProvider _authenticationProvider = new Clients.Security.AuthProvider();
+            //AAMPS.Clients.Security.AuthProvider _authenticationProvider = new Clients.Security.AuthProvider();
 
-            var user = _authenticationProvider.ValidateUser(username, password);
+            var _currentUser = new AuthProvider().ValidateUser(username, password);
 
-            Assert.IsNotNull(user);
-            Assert.IsTrue(user);
+            Assert.IsNotNull(_currentUser);
 
         }
     }

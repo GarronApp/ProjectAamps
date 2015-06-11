@@ -16,7 +16,8 @@ using AAMPS.Clients.Actions.Sales;
 using AAMPS.Clients.Queries.Sales;
 using AAMPS.Clients.Actions.Development;
 using AAMPS.Clients.Queries.Development;
-using ProjectAamps.Clients.Actions.Sales;
+using AAMPS.Clients.Actions.Sales;
+using App.Common.Exceptions;
 
 
 namespace AAMPS.Web.Controllers
@@ -147,6 +148,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
+              
                 return Json(ex);
             }
 
@@ -168,6 +170,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
+              
                 return Json(ex.InnerException);
             }
 
@@ -182,32 +185,21 @@ namespace AAMPS.Web.Controllers
             {
                 if (individual != null)
                 {
-                    var _individual = new Individual();
+                    var _newIndividual = new SaveIndividual(individual);
 
-                    _individual.IndividualName = individual.IndividualName;
-                    _individual.IndividualSurname = individual.IndividualSurname;
-                    _individual.IndividualContactCell = individual.IndividualContactCell;
-                    _individual.IndividualContactHome = individual.IndividualContactHome;
-                    _individual.IndividualContactWork = individual.IndividualContactWork;
-                    _individual.IndividualEmail = individual.IndividualEmail;
-                    var contactMethod = individual.PreferedContactMethodID.ToString();
-                    SetPreferedMethod(contactMethod, _individual);
-                    individual.PreferedContactMethodID = _individual.PreferedContactMethodID;
-
-                    var result = _repoService.SavePerson(_individual);
-                    individual.IndividualID = result.IndividualID;
-
-                    return Json(individual, JsonRequestBehavior.AllowGet);
+                    return Json(_newIndividual.IndividualViewModel, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
             {
+              
                 return Json(ex.InnerException);
             }
 
             return null;
             
         }
+
 
         [HttpPost]
         public JsonResult SavePurchaser(PurchaserViewModel purchaser)
@@ -216,29 +208,14 @@ namespace AAMPS.Web.Controllers
             {
                 if (purchaser != null)
                 {
-                    var _purchaser = new Purchaser();
+                    var _newPurchaser = new SavePurchaser(purchaser);
 
-                    _purchaser.EntityTypeID = purchaser.EntityTypeID;
-                    _purchaser.PurchaserDescription = purchaser.PurchaserDescription;
-                    _purchaser.PurchaserContactPerson = purchaser.PurchaserContactPerson;
-                    _purchaser.PurchaserContactHome = purchaser.PurchaserContactHome;
-                    _purchaser.PurchaserContactCell = purchaser.PurchaserContactCell;
-                    _purchaser.PurchaserContactWork = purchaser.PurchaserContactWork;
-                    _purchaser.PurchaserEmail = purchaser.PurchaserEmail;
-                    _purchaser.PurchaserAddress = purchaser.PurchaserAddress;
-                    _purchaser.PurchaserAddress1 = purchaser.PurchaserAddress1;
-                    _purchaser.PurchaserAddress2 = purchaser.PurchaserAddress2;
-                    _purchaser.PurchaserSuburb = purchaser.PurchaserSuburb;
-                    _purchaser.PurchaserPostalCode = purchaser.PurchaserPostalCode;
-                    _purchaser.PurchaserRegID = Guid.NewGuid().ToString().Substring(0, 8);
-
-                    var result =  _repoService.SavePurchaser(_purchaser);
-                    purchaser.PurchaserID = result.PurchaserID;
-                    return Json(purchaser, JsonRequestBehavior.AllowGet);
+                    return Json(_newPurchaser.newPurchaserViewModel, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
             {
+              
                 return Json(ex.InnerException);
             }
 
@@ -253,41 +230,16 @@ namespace AAMPS.Web.Controllers
             {
                 if (reservation != null)
                 {
-                    
-                    var newSale = new Sale();
-                   
-                    var _linkedUnit = _repoService.GetUnitById(int.Parse(SessionHandler.GetSessionContext("CurrentUnit")));
+                    var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
 
-                    newSale.SaleActiveStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
-                    reservation.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved);
-                    reservation.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)newSale.SaleActiveStatusID).SaleActiveStatusDescription;
-
-                    _linkedUnit.UnitStatusID = (int)AAMPS.Clients.AampService.GetUnitStatusType.Reserved;
-                    reservation.UnitStatusId = (int)AAMPS.Clients.AampService.GetUnitStatusType.Reserved;
-                    _repoService.UpdateUnit(_linkedUnit);
-
-                    newSale.UnitID = _linkedUnit.UnitID;
-                    newSale.SaleStatusID = UnitSaleStatusConverter.SaleStatusConverter(SaleActiveStatusType.GetSaleStatusType.Active);
-                    newSale.SaleReservationDt = reservation.SaleReservationDt != null ? DateTime.ParseExact(reservation.SaleReservationDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    newSale.SaleReservationExpiryDt = reservation.SaleReservationExpiryDt != null ? DateTime.ParseExact(reservation.SaleReservationExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture): (DateTime?)null;
-                    newSale.SaleReservationExtentionDt = reservation.SaleReservationExtentionDt != null ? DateTime.ParseExact(reservation.SaleReservationExtentionDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    newSale.IndividualID = reservation.CurrentIndividualID;
-                    newSale.SaleAddedDt = DateTime.Now;
-                    newSale.SaleModifiedDt = DateTime.Now;
-                    newSale.SaleAddedByUser = 1;
-                    newSale.SaleModifiedByUser = 1;
-                    newSale.SaleDepositPaidBt = false;
-                    newSale.SalesBondRequiredBt = false;
-                    newSale.SalesReferalCommDueBt = false;
-                    newSale.SalesBondCommDueBt = false;
-                    newSale.SaleBondRequiredAmount = 0;
-
-                    _repoService.AddSale(newSale);
-                    return Json(reservation, JsonRequestBehavior.AllowGet);
+                    var response = new LoadAndSaveAvailableSale(new LoadSalesQuery() { UnitId = unitId, AvailableReservationVM = reservation });
+                                       
+                    return Json(response.avaialableReservationVM, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
             {
+              
                 return Json(ex.InnerException);
             }
 
@@ -300,39 +252,22 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-                var _currentSale = _repoService.GetSaleById(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
-                var _linkedUnit = _repoService.GetUnitById(int.Parse(SessionHandler.GetSessionContext("CurrentUnit")));
+                var _currentSale = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
+                var _linkedUnit = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
 
-                if (_currentSale.SaleActiveStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved))
-                    {
-                        _currentSale.SaleActiveStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
-                        sale.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
-                        sale.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)_currentSale.SaleActiveStatusID).SaleActiveStatusDescription;
-                    }
+                var response = new UpdateReservedToPendingSale(new LoadSalesQuery()
+                {
+                    UnitId = _linkedUnit,
+                    SaleId = _currentSale,
+                    ReservedSaleVM = sale
+                });
 
-                if (_linkedUnit.UnitStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Reserved))
-                    {
-                        _linkedUnit.UnitStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
-                        sale.UnitStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending);
-                        _repoService.UpdateUnit(_linkedUnit);
-                    }
-
-                    _currentSale.SaleContractSignedPurchaserDt = sale.SaleContractSignedPurchaserDt != null ? DateTime.ParseExact(sale.SaleContractSignedPurchaserDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    _currentSale.SalesDepositProofID = sale.SalesDepositProofID;
-                    _currentSale.SaleDepositPaidBt = sale.SaleDepositPaidBt == 1 ? true : false;
-                    _currentSale.SalesDepoistPaidDt = sale.SalesDepoistPaidDt != null ? DateTime.ParseExact(sale.SalesDepoistPaidDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    _currentSale.SalesDepositProofDt = sale.SalesDepositProofDt != null ? DateTime.ParseExact(sale.SalesDepositProofDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    //_currentSale.SalesTotalDepositAmount = sale.SalesTotalDepositAmount != null ? (double)sale.SalesTotalDepositAmount : 0.0;
-                    _currentSale.SalesTotalDepositAmount = sale.SalesTotalDepositAmount;
-                    _currentSale.SaleModifiedDt = DateTime.Now;
-                    _currentSale.SaleModifiedByUser = 1;
-
-                    _repoService.SaveUpdateReservation(_currentSale);
-                    return Json(sale, JsonRequestBehavior.AllowGet);
+                return Json(response.ReservedSaleVM, JsonRequestBehavior.AllowGet);
                 
             }
             catch (Exception ex)
             {
+              
                 return Json(ex.InnerException);
             }
 
@@ -343,45 +278,22 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-                var _currentSale = _repoService.GetSaleById(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
-                var _linkedUnit = _repoService.GetUnitById(int.Parse(SessionHandler.GetSessionContext("CurrentUnit")));
-                if (_currentSale.SaleActiveStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending))
-                {
-                    _currentSale.SaleActiveStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
-                    sale.SaleStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
-                    sale.CurrentSalesStatus = _repoService.GetSaleActiveStatus((int)_currentSale.SaleActiveStatusID).SaleActiveStatusDescription;
-                }
-                if (_linkedUnit.UnitStatusID == UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Pending))
-                {
-                    _linkedUnit.UnitStatusID = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
-                    sale.UnitStatusId = UnitSaleStatusConverter.SaleActiveStatusConverter(SaleActiveStatusType.GetSaleActiveStatusType.Sold);
-                    _repoService.UpdateUnit(_linkedUnit);
-                }
+                var _currentSale = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
+                var _linkedUnit =  int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
 
-                _currentSale.PurchaserID = sale.CurrentPurchaserID;
-                _currentSale.SaleContractSignedSellerDt = sale.SaleContractSignedSellerDt != null ? DateTime.ParseExact(sale.SaleContractSignedSellerDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondRequiredBt = sale.SalesBondRequiredBt == 1 ? true : false;
-                _currentSale.SalesBondRequiredDt = sale.SalesBondRequiredDt != null ? DateTime.ParseExact(sale.SalesBondRequiredDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SaleBondDueTimeDt = sale.SaleBondDueTimeDt != null ? DateTime.ParseExact(sale.SaleBondDueTimeDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SaleBondDueExpiryDt = sale.SaleBondDueExpiryDt != null ? DateTime.ParseExact(sale.SaleBondDueExpiryDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SaleBondRequiredAmount = sale.SaleBondRequiredAmount != null ? (float)sale.SaleBondRequiredAmount : 0.00;
-                _currentSale.SaleTypeID = sale.SaleTypeID == 0 ? 1 : 2;
-                _currentSale.SalesBondGrantedDt = sale.SalesBondGrantedDt != null ? DateTime.ParseExact(sale.SalesBondGrantedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondClientAcceptDt = sale.SalesBondClientAcceptDt != null ? DateTime.ParseExact(sale.SalesBondClientAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondAmount = sale.SalesBondAmount != null ? (double)sale.SalesBondAmount : 0.0;
-                _currentSale.SalesBondClientContactedDt = sale.SalesBondClientContactedDt != null ? DateTime.ParseExact(sale.SalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondBondDocsRecDt = sale.SalesBondBondDocsRecDt != null ? DateTime.ParseExact(sale.SalesBondBondDocsRecDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                _currentSale.SalesBondCommDueBt = sale.SalesBondCommDueBt == 1 ? true : false;
-                _currentSale.SalesBondInterestRate = sale.SalesBondInterestRate;
-                _currentSale.SaleModifiedDt = DateTime.Now;
-                _currentSale.SaleModifiedByUser = 1;
+                var response = new UpdatePendingToSoldSale(new LoadSalesQuery()
+                {
+                    UnitId = _linkedUnit,
+                    SaleId = _currentSale,
+                    PendingSaleViewVM = sale
+                });
 
-                _repoService.SaveUpdateReservation(_currentSale);
-                return Json(sale, JsonRequestBehavior.AllowGet);
+                return Json(response.PendingSaleVM, JsonRequestBehavior.AllowGet);
 
             }
             catch (Exception ex)
             {
+              
                 return Json(ex.InnerException);
             }
 
@@ -394,12 +306,13 @@ namespace AAMPS.Web.Controllers
             {
                 if (person != null)
                 {
-                    _repoService.SavePerson(person);
+                    _repoService.SaveIndividual(person);
                     return Json(person, JsonRequestBehavior.AllowGet);
                 }
             }
             catch (Exception ex)
             {
+                
                 return Json(ex.InnerException);
             }
 
@@ -408,37 +321,6 @@ namespace AAMPS.Web.Controllers
         }
 
 
-        public void SetPreferedMethod(string method, Individual individual)
-        {
-            switch (method)
-            {
-                case "0":
-                    {
-                        individual.PreferedContactMethodID = 1;
-                        break;
-                    }
-
-                case "1":
-                    {
-                        individual.PreferedContactMethodID = 4;
-                        break;
-                    }
-                case "2":
-                    {
-                        individual.PreferedContactMethodID = 2;
-                        break;
-                    }
-                case "3":
-                    {
-                        individual.PreferedContactMethodID = 3;
-                        break;
-
-                    }
-                default:
-                    break;
-
-
-            }
-        }
+       
 	}
 }

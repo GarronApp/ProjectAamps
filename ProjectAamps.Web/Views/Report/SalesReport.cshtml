@@ -4,11 +4,11 @@
     Layout = "~/Views/Report/_ReportLayout.cshtml";
 }
 
-<h4>SalesReport</h4>
-<table class="table table-bordered">
+<h4>Sales Report for </h4>
+<table class="table table-bordered" id="tableSalesReport">
    <thead style="background-color:#000000; color:#ffffff">
        <tr>
-           <td>Development</td>
+           @*<td>Development</td>*@
            <td>Unit No</td>
            <td>Phase</td>
            <td>Price</td>
@@ -32,29 +32,40 @@
     {
         <tbody>
             <tr>
-                <td>@item.Development</td>
+               @* <td>@item.Development</td>*@
                 <td>@item.UnitNo</td>
                 <td>@item.Phase</td>
-                <td>@item.Price</td>
+                <td><label id="lblPrice">@item.Price</label></td>
                 <td>@item.Type</td>
                 <td>@item.Status</td>
                 <td>@item.Agency</td>
                 <td>@item.Agent</td>
                 <td>@item.Purchaser</td>
-                <td>@item.Deposit</td>
-                <td>@*@item.DepositDate*@</td>
+                <td><label id="lblDeposit">@item.Deposit</label></td>
+                <td>@item.DepositDate</td>
                 <td>@item.Proof</td>
-
-                <td>@*@item.CntrSigned.HasValue ? @item.CntrSigned.GetValueOrDefault().ToString() : No Date*@</td>
+                <td>@item.CntrSigned</td>
                 <td>@item.Bond</td>
                 <td>@item.BondReq</td>
                 <td>@item.BondAmountGrant</td>
-                <td>@*@item.Granted.HasValue ? @item.Granted.GetValueOrDefault().ToShortDateString(): No Date*@</td>
+                <td><label id="lblDateGranted">@item.Granted</label></td>
                 <td>@item.AmountDue</td>
             </tr>
         </tbody>
     }
 </table>
+
+@section Scripts {
+<script>
+    $(function () {
+        var resources = new Resources();
+        resources.formatTableColumnRandValue("tableSalesReport", 2, "lblPrice");
+        resources.formatTableColumnRandValue("tableSalesReport", 8, "lblDeposit");
+        resources.formatTableColumnDateValue("tableSalesReport", 15, "lblDateGranted");
+    });
+</script>
+
+}
 
 
 

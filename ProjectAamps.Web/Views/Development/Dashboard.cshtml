@@ -4,17 +4,15 @@
 }
 
 @model IEnumerable<AAMPS.Clients.ViewModels.Development.DevelopmentViewModel>
+
 <div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
     <div class="row text-center" style="margin-top:-40px">
-        <h3 style="font-size:1.49em;font-weight:bold">Development Dashboard</h3>
+        <h3 style="font-size:1.49em;font-weight:bold">Development Dashboard for @Session["DevelopmentName"].ToString() </h3>
     </div>
     <fieldset>
         <div class="row text-center">
-            <div class="col-md-2 col-sm-12 col-xs-12">
-                &nbsp;
-            </div>
-            <div class="col-md-4 col-sm-12 col-xs-12">
-                <table style="font-size:0.69em; font-weight:400;margin-top:15px" class="table-striped text-center">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <table style="font-size:0.8em; font-weight:400;margin-top:10px" class="table-striped text-center">
                     <thead>
                         <tr>
                             <td class="col-md-4"><b>Status</b></td>
@@ -26,27 +24,27 @@
                         <tr>
                             <td class="col-md-4">Available</td>
                             <td class="col-md-4">@Session["TotalUnitsAvailable"].ToString()</td>
-                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsAvailablePrice"].ToString()</td>
+                            <td class="col-md-4"><label id="lblTotalUnitsAvailablePrice">@Session["TotalUnitsAvailablePrice"].ToString()</label></td>
                         </tr>
                         <tr>
                             <td class="col-md-4">Reserved</td>
                             <td class="col-md-4">@Session["TotalUnitsReserved"].ToString()</td>
-                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsReservedPrice"].ToString()</td>
+                            <td class="col-md-4"><label id="lblTotalUnitsReservedPrice">@Session["TotalUnitsReservedPrice"].ToString()</label></td> 
                         </tr>
                         <tr>
                             <td class="col-md-4">Pending</td>
                             <td class="col-md-4">@Session["TotalUnitsPending"].ToString()</td>
-                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsPendingPrice"].ToString()</td>
+                            <td class="col-md-4"><label id="lblTotalUnitsPendingPrice">@Session["TotalUnitsPendingPrice"].ToString()</label></td> 
                         </tr>
                         <tr>
                             <td class="col-md-4">Sold</td>
                             <td class="col-md-4">@Session["TotalUnitsSold"].ToString()</td>
-                            <td class="col-md-4">R&nbsp;@Session["TotalUnitsSoldPrice"].ToString()</td>
+                            <td class="col-md-4"><label id="lblTotalUnitsSoldPrice">@Session["TotalUnitsSoldPrice"].ToString()</label></td>
                         </tr>
                         <tr>
                             <td class="col-md-4"><b>Total Units</b></td>
                             <td class="col-md-4"><span class="badge"><b>@Session["TotalUnits"].ToString()</b></span></td>
-                            <td class="col-md-4"><span class="badge"><b>R&nbsp;@Session["TotalUnitsPrice"].ToString()</b></span></td>
+                            <td class="col-md-4"><span class="badge"><b><label id="lblTotalUnitsPrice">@Session["TotalUnitsPrice"].ToString()</label></b></span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -70,33 +68,33 @@
     </p>
     <br /><br />
 
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered" id="tableUnits">
         <thead>
             <tr>
                 <td>#</td>
                 <td class="dark-orange">Unit Number</td>
-                <td class="dark-orange">Description</td>
+                <td class="dark-orange">Phase</td>
+                <td class="dark-orange">Block</td>
+                <td class="dark-orange">Floor</td>
                 <td class="text-center dark-orange">Unit Size</td>
                 <td class="dark-orange">Unit Status</td>
-                <td class="text-right dark-orange">Price Incl.VAT</td>
-                <td class="dark-orange">Phase</td>
+                <td class="text-right dark-orange">Selling Price</td>
                 <td class="dark-orange">Available Date</td>
-                @*<td class="dark-orange">Action</td>*@
             </tr>
         </thead>
         @foreach (var item in Model)
         {
             <tbody>
-                <tr>
+                <tr id="tableUnitsRow">
                     <td>#</td>
                     <td>@item.UnitNumber</td>
-                    <td>@item.DevelopmentDescription</td>
+                    <td>@item.UnitPhase</td>
+                    <td>@item.UnitBlock</td>
+                    <td>@item.UnitFloor</td>
                     <td class="text-center">@item.UnitSize</td>
                     <td>@item.UnitStatusID</td>
-                    <td class="text-right">R @item.UnitPriceIncluding</td>
-                    <td>Phase</td>
+                    <td class="text-right"><label id="lblUnitPriceIncluding">@item.UnitPriceIncluding</label></td>
                     <td>@item.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>
-                    @*<td><a onclick="showReservations('notavailable')" class="orange">Update</a></td>*@
                 </tr>
             </tbody>
         }
@@ -113,7 +111,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <table class="table table-condensed" id="tableApps">
+                        <table class="table table-condensed" id="availableUnits">
                             <thead class="datagrid">
                                 <tr>
                                     <th class="dark-orange">
@@ -149,7 +147,7 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPriceIncluding
+                                            <label id="lblUnitPriceAvailableUnits">@item.UnitPriceIncluding</label>
                                         </td>
                                         <td>
                                             @item.UnitSize
@@ -183,7 +181,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <table class="table table-condensed" id="tableApps">
+                        <table class="table table-condensed" id="tableReservedPendingSoldUnits">
                             <thead class="datagrid">
                                 <tr>
                                     <th class="dark-orange">
@@ -207,7 +205,6 @@
                                 </tr>
                             </thead>
 
-
                             @foreach (var item in Model.Where(c => c.UnitStatusId != 1).OrderBy(c => c.UnitStatusId))
                             {
                                 <tbody>
@@ -222,7 +219,7 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPriceIncluding
+                                            <label id="lblUnitPriceReservedPendingSold">@item.UnitPriceIncluding</label>
                                         </td>
                                         <td>
                                             @item.UnitSize
@@ -259,7 +256,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <table class="table table-condensed" id="tableApps">
+                        <table class="table table-condensed" id="tableSoldUnits">
                             <thead class="datagrid">
                                 <tr>
                                     <th class="dark-orange">
@@ -281,7 +278,7 @@
                             </thead>
 
 
-                            @foreach (var item in Model.Where(c => c.UnitStatusId == 4))
+                            @foreach (var item in Model.Where(c => c.UnitStatusId == 4 || c.UnitStatusId == 6))
                             {
                                 <tbody>
                                     <tr>
@@ -295,7 +292,7 @@
                                             @item.UnitFloor
                                         </td>
                                         <td>
-                                            R @item.UnitPriceIncluding
+                                            <label id="lblUnitPriceSold">@item.UnitPriceIncluding</label>
                                         </td>
                                         <td>
                                             @item.UnitSize
@@ -351,6 +348,38 @@
         window.location.href = '@Url.Action("Index", "Report")';
     }
 
+    function formatNumber(num) {
+        return "R " + num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+
+    function currencyFormat(num) {
+        return "R" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+
+
+    function FormatSummaryTotalsCurrency()
+    {
+        $("#lblTotalUnitsAvailablePrice").html(formatNumber($("#lblTotalUnitsAvailablePrice").html()));
+        $("#lblTotalUnitsReservedPrice").html(formatNumber($("#lblTotalUnitsReservedPrice").html()));
+        $("#lblTotalUnitsPendingPrice").html(formatNumber($("#lblTotalUnitsPendingPrice").html()));
+        $("#lblTotalUnitsSoldPrice").html(formatNumber($("#lblTotalUnitsSoldPrice").html()));
+        $("#lblTotalUnitsPrice").html(formatNumber($("#lblTotalUnitsPrice").html()));
+
+        $("table#tableUnits > tbody > tr").each(function () {
+            $(this).find('td:eq(7)').html(formatNumber($("#lblUnitPriceIncluding").html()));
+        });
+        $("table#availableUnits > tbody > tr").each(function () {
+            $(this).find('td:eq(3)').html(formatNumber($("#lblUnitPriceAvailableUnits").html()));
+        });
+        $("table#tableReservedPendingSoldUnits > tbody > tr").each(function () {
+            $(this).find('td:eq(3)').html(formatNumber($("#lblUnitPriceReservedPendingSold").html()));
+        });
+        $("table#tableSoldUnits > tbody > tr").each(function () {
+            $(this).find('td:eq(3)').html(formatNumber($("#lblUnitPriceSold").html()));
+        });
+        
+    }
+
 
 </script>
 
@@ -374,6 +403,11 @@
             }
         });
 
+        FormatSummaryTotalsCurrency();
+
+
+
+
         var items = [];
         $.getJSON("GetTotals", function (data) {
 
@@ -396,7 +430,7 @@
 
             });
         });
-      
+
     });
 </script>
 

@@ -17,6 +17,16 @@ namespace Aamps.Repository.Implementations
 
         }
 
+        public Individual GetIndividualById(int id)
+        {
+            AampsContext _dbContext = new AampsContext();
+            var results = (from x in _dbContext.Individuals
+                           where x.IndividualID == id
+                           select x).FirstOrDefault();
+            return results;
+        }
+
+
         public PreferedContactMethod GetPreferedContactMethodById(int id)
         {
             AampsContext _dbContext = new AampsContext();

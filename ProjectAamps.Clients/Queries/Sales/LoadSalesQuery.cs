@@ -11,6 +11,14 @@ namespace AAMPS.Clients.Queries.Sales
     {
         public int UnitId { get; set; }
 
+        public int SaleId { get; set; }
+
         public SalesViewModel QueryResult { get; set; }
+
+        public ReservationViewModel AvailableReservationVM { get; set; }
+
+        public ReservedSaleViewModel ReservedSaleVM { get; set; }
+
+        public PendingSaleViewModel PendingSaleViewVM { get; set; }
     }
 }

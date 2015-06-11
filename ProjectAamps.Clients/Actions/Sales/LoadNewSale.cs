@@ -1,19 +1,20 @@
 ﻿using AAMPS.Clients.Queries.Sales;
 using AAMPS.Clients.ViewModels.Sales;
 using App.Common.Controllers.Actions;
+using App.Common.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectAamps.Clients.Actions.Sales
+namespace AAMPS.Clients.Actions.Sales
 {
     public class LoadNewSale : ControllerAction
     {
         public int Id { get; set; }
         public LoadSalesQuery query { get; set; }
-          public LoadNewSale()
+        public LoadNewSale()
          {
 
          }
@@ -46,6 +47,8 @@ namespace ProjectAamps.Clients.Actions.Sales
             viewModel.UnitPhase = _currentUnit.UnitPhase;
             viewModel.UnitFloor = _currentUnit.UnitFloor;
             viewModel.PlotSize = _currentUnit.UnitErfSize;
+
+            query.QueryResult = viewModel;
 
             return viewModel;
         }

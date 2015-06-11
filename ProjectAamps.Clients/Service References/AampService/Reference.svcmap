@@ -27,6 +27,7 @@
     <MetadataFile FileName="AampService2.xsd" MetadataType="Schema" ID="51156e48-56a9-4d89-a8b6-76a6acd5358a" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd0" />
     <MetadataFile FileName="AampService3.xsd" MetadataType="Schema" ID="0c8047e5-c62c-4d7c-bcb0-75f85fd3eecd" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd3" />
     <MetadataFile FileName="AampService.xsd" MetadataType="Schema" ID="fb032179-bdf0-42c4-a4d3-caeb3d207b5a" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AampService5.xsd" MetadataType="Schema" ID="fdad5d31-6758-4de0-bdd7-70c24ae35507" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd5" />
     <MetadataFile FileName="AampService4.xsd" MetadataType="Schema" ID="e9068691-0d92-42b1-a2a7-a9389076cfc3" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd4" />
     <MetadataFile FileName="AampService.wsdl" MetadataType="Wsdl" ID="6a97201e-b560-4105-9130-2d551b8e9ade" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?wsdl" />
   </Metadata>

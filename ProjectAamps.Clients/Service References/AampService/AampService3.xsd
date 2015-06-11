@@ -16,7 +16,7 @@
       <xs:element minOccurs="0" name="BondReq" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="CntrSigned" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Deposit" nillable="true" type="xs:double" />
-      <xs:element minOccurs="0" name="DepositDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DepositDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Development" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Granted" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Phase" nillable="true" type="xs:string" />

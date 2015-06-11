@@ -5,6 +5,9 @@
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAampService_GetAllUnits_InputMessage">
@@ -61,6 +64,18 @@
   <wsdl:message name="IAampService_UpdateUnit_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUnitResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_UpdateOrginator_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrginator" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdateOrginator_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrginatorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_SaveOrginator_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrginator" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_SaveOrginator_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveOrginatorResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_GetAllSales_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllSales" />
   </wsdl:message>
@@ -73,11 +88,89 @@
   <wsdl:message name="IAampService_GetSaleById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSaleByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleActiveStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleActiveStatus" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleActiveStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleActiveStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDepositTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepositTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDepositTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDepositTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetBankById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBankById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetBankById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBankByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllBanks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBanks" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllBanks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBanksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetMOStatusById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMOStatusById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetMOStatusById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMOStatusByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllMOStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMOStatus" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllMOStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMOStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetOriginatorBySalesId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOriginatorBySalesId" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetOriginatorBySalesId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOriginatorBySalesIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetOriginatorById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOriginatorById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetOriginatorById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOriginatorByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSalesReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalesReport" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSalesReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalesReportResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_GetSaleByUnitId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSaleByUnitId" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetSaleByUnitId_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSaleByUnitIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_SaveUpdateReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUpdateReservation" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_SaveUpdateReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveUpdateReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_AddSale_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSale" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_AddSale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdateSale_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSale" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdateSale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSaleResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetAllDevelopments_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllDevelopments" />
@@ -121,6 +214,42 @@
   <wsdl:message name="IAampService_SavePerson_OutputMessage">
     <wsdl:part name="parameters" element="tns:SavePersonResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_GetAllPreferedContactMethods_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPreferedContactMethods" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllPreferedContactMethods_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPreferedContactMethodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPreferedContactMethodById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferedContactMethodById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPreferedContactMethodById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferedContactMethodByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_SavePurchaser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePurchaser" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_SavePurchaser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePurchaserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdatePurchaser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePurchaser" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_UpdatePurchaser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePurchaserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPurchaserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchaserById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPurchaserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchaserByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPurchaserEntityTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchaserEntityTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetPurchaserEntityTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPurchaserEntityTypesResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_GetUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUser" />
   </wsdl:message>
@@ -132,6 +261,24 @@
   </wsdl:message>
   <wsdl:message name="IAampService_GetCurrentUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitStatusTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitStatusTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitStatusTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitStatusTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleActiveStatusTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleActiveStatusTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleActiveStatusTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleActiveStatusTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleStatusTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleStatusTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetSaleStatusTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSaleStatusTypesResponse" />
   </wsdl:message>
   <wsdl:portType name="IAampService">
     <wsdl:operation name="GetAllUnits">
@@ -170,6 +317,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/UpdateUnit" message="tns:IAampService_UpdateUnit_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/UpdateUnitResponse" message="tns:IAampService_UpdateUnit_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateOrginator">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/UpdateOrginator" message="tns:IAampService_UpdateOrginator_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/UpdateOrginatorResponse" message="tns:IAampService_UpdateOrginator_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrginator">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SaveOrginator" message="tns:IAampService_SaveOrginator_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/SaveOrginatorResponse" message="tns:IAampService_SaveOrginator_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllSales">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllSales" message="tns:IAampService_GetAllSales_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllSalesResponse" message="tns:IAampService_GetAllSales_OutputMessage" />
@@ -178,9 +333,61 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleById" message="tns:IAampService_GetSaleById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleByIdResponse" message="tns:IAampService_GetSaleById_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetSaleActiveStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleActiveStatus" message="tns:IAampService_GetSaleActiveStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleActiveStatusResponse" message="tns:IAampService_GetSaleActiveStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleTypes" message="tns:IAampService_GetSaleTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleTypesResponse" message="tns:IAampService_GetSaleTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepositTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDepositTypes" message="tns:IAampService_GetDepositTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDepositTypesResponse" message="tns:IAampService_GetDepositTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBankById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetBankById" message="tns:IAampService_GetBankById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetBankByIdResponse" message="tns:IAampService_GetBankById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBanks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllBanks" message="tns:IAampService_GetAllBanks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllBanksResponse" message="tns:IAampService_GetAllBanks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMOStatusById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetMOStatusById" message="tns:IAampService_GetMOStatusById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetMOStatusByIdResponse" message="tns:IAampService_GetMOStatusById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMOStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllMOStatus" message="tns:IAampService_GetAllMOStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllMOStatusResponse" message="tns:IAampService_GetAllMOStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOriginatorBySalesId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetOriginatorBySalesId" message="tns:IAampService_GetOriginatorBySalesId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetOriginatorBySalesIdResponse" message="tns:IAampService_GetOriginatorBySalesId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOriginatorById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetOriginatorById" message="tns:IAampService_GetOriginatorById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetOriginatorByIdResponse" message="tns:IAampService_GetOriginatorById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSalesReport" message="tns:IAampService_GetSalesReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSalesReportResponse" message="tns:IAampService_GetSalesReport_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetSaleByUnitId">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleByUnitId" message="tns:IAampService_GetSaleByUnitId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleByUnitIdResponse" message="tns:IAampService_GetSaleByUnitId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdateReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SaveUpdateReservation" message="tns:IAampService_SaveUpdateReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/SaveUpdateReservationResponse" message="tns:IAampService_SaveUpdateReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSale">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/AddSale" message="tns:IAampService_AddSale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/AddSaleResponse" message="tns:IAampService_AddSale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSale">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/UpdateSale" message="tns:IAampService_UpdateSale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/UpdateSaleResponse" message="tns:IAampService_UpdateSale_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllDevelopments">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllDevelopments" message="tns:IAampService_GetAllDevelopments_InputMessage" />
@@ -210,6 +417,30 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SavePerson" message="tns:IAampService_SavePerson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/SavePersonResponse" message="tns:IAampService_SavePerson_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllPreferedContactMethods">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllPreferedContactMethods" message="tns:IAampService_GetAllPreferedContactMethods_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllPreferedContactMethodsResponse" message="tns:IAampService_GetAllPreferedContactMethods_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferedContactMethodById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPreferedContactMethodById" message="tns:IAampService_GetPreferedContactMethodById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse" message="tns:IAampService_GetPreferedContactMethodById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePurchaser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SavePurchaser" message="tns:IAampService_SavePurchaser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/SavePurchaserResponse" message="tns:IAampService_SavePurchaser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchaser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/UpdatePurchaser" message="tns:IAampService_UpdatePurchaser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/UpdatePurchaserResponse" message="tns:IAampService_UpdatePurchaser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaserById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPurchaserById" message="tns:IAampService_GetPurchaserById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPurchaserByIdResponse" message="tns:IAampService_GetPurchaserById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaserEntityTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPurchaserEntityTypes" message="tns:IAampService_GetPurchaserEntityTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPurchaserEntityTypesResponse" message="tns:IAampService_GetPurchaserEntityTypes_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUser" message="tns:IAampService_GetUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUserResponse" message="tns:IAampService_GetUser_OutputMessage" />
@@ -217,6 +448,18 @@
     <wsdl:operation name="GetCurrentUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetCurrentUser" message="tns:IAampService_GetCurrentUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetCurrentUserResponse" message="tns:IAampService_GetCurrentUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitStatusTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusTypes" message="tns:IAampService_GetUnitStatusTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusTypesResponse" message="tns:IAampService_GetUnitStatusTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleActiveStatusTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleActiveStatusTypes" message="tns:IAampService_GetSaleActiveStatusTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleActiveStatusTypesResponse" message="tns:IAampService_GetSaleActiveStatusTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleStatusTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleStatusTypes" message="tns:IAampService_GetSaleStatusTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleStatusTypesResponse" message="tns:IAampService_GetSaleStatusTypes_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAampService" type="tns:IAampService">
@@ -302,6 +545,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="UpdateOrginator">
+      <soap:operation soapAction="http://tempuri.org/IAampService/UpdateOrginator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveOrginator">
+      <soap:operation soapAction="http://tempuri.org/IAampService/SaveOrginator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllSales">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetAllSales" style="document" />
       <wsdl:input>
@@ -320,8 +581,125 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetSaleActiveStatus">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetSaleActiveStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleTypes">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetSaleTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepositTypes">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetDepositTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBankById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetBankById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBanks">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetAllBanks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMOStatusById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetMOStatusById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMOStatus">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetAllMOStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOriginatorBySalesId">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetOriginatorBySalesId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOriginatorById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetOriginatorById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesReport">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetSalesReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetSaleByUnitId">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetSaleByUnitId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUpdateReservation">
+      <soap:operation soapAction="http://tempuri.org/IAampService/SaveUpdateReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSale">
+      <soap:operation soapAction="http://tempuri.org/IAampService/AddSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSale">
+      <soap:operation soapAction="http://tempuri.org/IAampService/UpdateSale" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -392,6 +770,60 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAllPreferedContactMethods">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetAllPreferedContactMethods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferedContactMethodById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetPreferedContactMethodById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePurchaser">
+      <soap:operation soapAction="http://tempuri.org/IAampService/SavePurchaser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePurchaser">
+      <soap:operation soapAction="http://tempuri.org/IAampService/UpdatePurchaser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaserById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetPurchaserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurchaserEntityTypes">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetPurchaserEntityTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetUser">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetUser" style="document" />
       <wsdl:input>
@@ -403,6 +835,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetCurrentUser">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetCurrentUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitStatusTypes">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitStatusTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleActiveStatusTypes">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetSaleActiveStatusTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSaleStatusTypes">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetSaleStatusTypes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

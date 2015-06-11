@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -30,7 +31,8 @@ namespace Aamps.Domain.ViewModels.Reports.Sales
         [DataMember]
         public double? Deposit { get; set; }
         [DataMember]
-        public DateTime DepositDate { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public Nullable<System.DateTime> DepositDate { get; set; }
         [DataMember]
         public string Proof { get; set; }
         [DataMember]

@@ -85,7 +85,7 @@ namespace AAMPS.Clients.Mappers.Sales
             viewModel.SalesDepoistPaidDt = _currentSale.SalesDepoistPaidDt.HasValue ? _currentSale.SalesDepoistPaidDt.Value.ToString() : string.Empty;
             viewModel.SalesBondAmount = _currentSale.SalesBondAmount != null ? (double)_currentSale.SalesBondAmount : 0.0;
             viewModel.SaleDepositPaidBt = _currentSale.SaleDepositPaidBt == true ? 1 : 0;
-
+            viewModel.SaleTypeID = _currentSale.SaleTypeID != null ? (int)_currentSale.SaleTypeID : 0;
             viewModel.SalesBondAccountNo = _currentSale.SalesBondAccountNo;
             viewModel.SalesBondInterestRate = _currentSale.SalesBondInterestRate != null ? (float)_currentSale.SalesBondInterestRate : 0;
             viewModel.SalesTotalDepositAmount = _currentSale.SalesTotalDepositAmount != null ? (float)_currentSale.SalesTotalDepositAmount : 0;
@@ -144,6 +144,7 @@ namespace AAMPS.Clients.Mappers.Sales
 
         private void MapIndividual(SalesViewModel viewModel, Sale _currentSale)
         {
+            viewModel.IndividualID = _currentSale.Individual.IndividualID;
             viewModel.IndividualName = _currentSale.Individual.IndividualName;
             viewModel.IndividualSurname = _currentSale.Individual.IndividualSurname;
             viewModel.IndividualContactCell = _currentSale.Individual.IndividualContactCell;

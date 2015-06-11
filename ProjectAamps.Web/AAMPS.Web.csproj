@@ -182,7 +182,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\MoneyMaskBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -213,6 +212,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Exceptions\Logs\Exceptions.txt" />
     <Content Include="favicon.ico" />
     <Content Include="files\HtmlPage.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -231,7 +231,10 @@
     <Content Include="Images\Yellowwood_Estate_Logo.gif" />
     <Content Include="LICENSE.txt" />
     <Content Include="Scripts\app\bonds\bonds.js" />
+    <Content Include="Scripts\app\resources.js" />
     <Content Include="Scripts\app\sales\sales.js" />
+    <Content Include="Scripts\autoNumeric\autoNumeric-1.9.25.js" />
+    <Content Include="Scripts\autoNumeric\autoNumeric-1.9.25.min.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -250,6 +253,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.moneymask.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -337,10 +342,6 @@
     <ProjectReference Include="..\Aamps.Repository\Aamps.Repository.csproj">
       <Project>{e45bbf28-92e4-4a4c-aee9-a79c2ca87b5d}</Project>
       <Name>Aamps.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Aamps.Service\Aamps.Service.csproj">
-      <Project>{1d24b4a4-26f2-4c65-a4e3-4e79a7f992b8}</Project>
-      <Name>Aamps.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\App.Common\App.Common.csproj">
       <Project>{736ef188-0087-413f-bbc8-f6289f1ef55c}</Project>

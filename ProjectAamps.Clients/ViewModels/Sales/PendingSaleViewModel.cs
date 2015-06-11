@@ -30,6 +30,7 @@ namespace AAMPS.Clients.ViewModels.Sales
         public string SaleBondDueTimeDt { get; set; }
         public string SaleBondDueExpiryDt { get; set; }
         public int CurrentPurchaserID { get; set; }
+        public int PendingFormCompleteAndValid { get; set; }
 
 
 

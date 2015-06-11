@@ -1,0 +1,708 @@
+﻿-----------------------= Start Exception =--------------------------
+2015-05-22 01:05:32 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-23 03:52:06 PM
+
+The request channel timed out while waiting for a reply after 00:00:59.9752600. Increase the timeout value passed to the call to Request or increase the SendTimeout value on the Binding. The time allotted to this operation may have been a portion of a longer timeout.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetCurrentUser(String username)
+   at AAMPS.Clients.AampService.AampServiceClient.GetCurrentUser(String username) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7533
+   at AAMPS.Clients.Security.AuthProvider.ValidateUser(String UserName, String Password) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthProvider.cs:line 20
+----= Inner Exception Exception =----
+System.TimeoutException: The HTTP request to 'http://localhost:1862/AampService.svc/soap' has exceeded the allotted timeout of 00:00:59.9890000. The time allotted to this operation may have been a portion of a longer timeout. ---> System.Net.WebException: The operation has timed out
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-25 08:25:50 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-25 09:33:44 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetCurrentUser(String username)
+   at AAMPS.Clients.AampService.AampServiceClient.GetCurrentUser(String username) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7533
+   at AAMPS.Clients.Security.AuthProvider.ValidateUser(String UserName, String Password) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthProvider.cs:line 20
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-25 09:33:51 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetCurrentUser(String username)
+   at AAMPS.Clients.AampService.AampServiceClient.GetCurrentUser(String username) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7533
+   at AAMPS.Clients.Security.AuthProvider.ValidateUser(String UserName, String Password) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthProvider.cs:line 20
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-25 09:37:07 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetCurrentUser(String username)
+   at AAMPS.Clients.AampService.AampServiceClient.GetCurrentUser(String username) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7533
+   at AAMPS.Clients.Security.AuthProvider.ValidateUser(String UserName, String Password) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthProvider.cs:line 20
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-25 09:37:20 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetCurrentUser(String username)
+   at AAMPS.Clients.AampService.AampServiceClient.GetCurrentUser(String username) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7533
+   at AAMPS.Clients.Security.AuthProvider.ValidateUser(String UserName, String Password) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthProvider.cs:line 20
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-25 09:37:27 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetCurrentUser(String username)
+   at AAMPS.Clients.AampService.AampServiceClient.GetCurrentUser(String username) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7533
+   at AAMPS.Clients.Security.AuthProvider.ValidateUser(String UserName, String Password) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthProvider.cs:line 20
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 02:25:54 AM
+
+Could not find a part of the path 'C:\workspace\Aamps\Aamps.Service\'.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetSaleByUnitId(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetSaleByUnitId(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7389
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 38
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnBindModel() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 33
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails..ctor(LoadSalesQuery _query) in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 27
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 134
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 02:26:11 AM
+
+Could not find a part of the path 'C:\workspace\Aamps\Aamps.Service\'.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetSaleByUnitId(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetSaleByUnitId(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7389
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 38
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnBindModel() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 33
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails..ctor(LoadSalesQuery _query) in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 27
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 134
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 02:26:22 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 02:47:32 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 02:57:10 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 03:03:17 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 11:47:14 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 12:20:43 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:37:51 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at AAMPS.Web.Controllers.SalesController.UpdateReservedSale(ReservedSaleViewModel sale) in c:\dev\Aamps\Repo\AAMPS.Web\Controllers\SalesController.cs:line 254
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:51:10 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:52:42 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:53:45 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 01:57:44 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 02:00:30 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 02:17:38 PM
+
+An error occurred while updating the entries. See the inner exception for details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.SaveUpdateReservation(Sale sale)
+   at AAMPS.Clients.AampService.AampServiceClient.SaveUpdateReservation(Sale sale) in c:\dev\Aamps\Repo\AAMPS.Clients\Service References\AampService\Reference.cs:line 7397
+   at AAMPS.Clients.Actions.Sales.UpdateReservedToPendingSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\UpdateReservedToPendingSale.cs:line 74
+   at AAMPS.Clients.Actions.Sales.UpdateReservedToPendingSale.OnBindModel() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\UpdateReservedToPendingSale.cs:line 41
+   at AAMPS.Clients.Actions.Sales.UpdateReservedToPendingSale..ctor(LoadSalesQuery _query) in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\UpdateReservedToPendingSale.cs:line 30
+   at AAMPS.Web.Controllers.SalesController.UpdateReservedSale(ReservedSaleViewModel sale) in c:\dev\Aamps\Repo\AAMPS.Web\Controllers\SalesController.cs:line 257
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 02:32:27 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015/05/26 02:45:14 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\dev\Aamps\Repo\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 09:23:56 PM
+
+Could not find a part of the path 'C:\workspace\Aamps\Aamps.Service\'.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetSaleByUnitId(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetSaleByUnitId(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7389
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 38
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnBindModel() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 33
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails..ctor(LoadSalesQuery _query) in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 27
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 134
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 09:24:35 PM
+
+Could not find a part of the path 'C:\workspace\Aamps\Aamps.Service\'.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetSaleByUnitId(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetSaleByUnitId(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7389
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 38
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnBindModel() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 33
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails..ctor(LoadSalesQuery _query) in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 27
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 134
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 09:44:20 PM
+
+Could not find a part of the path 'C:\workspace\Aamps\Aamps.Service\'.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetSaleByUnitId(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetSaleByUnitId(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7389
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 38
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnBindModel() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 33
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails..ctor(LoadSalesQuery _query) in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 27
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 134
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-26 11:15:44 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Controllers.SalesController.UpdateReservedSale(ReservedSaleViewModel sale) in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 254
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 12:37:06 AM
+
+An error occurred while receiving the HTTP response to http://localhost:1862/AampService.svc/soap. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetDevelopmentById(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentById(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7429
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 95
+----= Inner Exception Exception =----
+System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 01:04:44 AM
+
+Could not find a part of the path 'C:\workspace\Aamps\Aamps.Service\'.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.ServiceChannel.ThrowIfFaultUnderstood(Message reply, MessageFault fault, String action, MessageVersion version, FaultConverter faultConverter)
+   at System.ServiceModel.Channels.ServiceChannel.HandleReply(ProxyOperationRuntime operation, ProxyRpc& rpc)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetSaleByUnitId(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetSaleByUnitId(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7389
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 38
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails.OnBindModel() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 33
+   at AAMPS.Clients.Actions.Sales.LoadSaleDetails..ctor(LoadSalesQuery _query) in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadSaleDetails.cs:line 27
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 134
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 08:29:54 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 08:32:10 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 08:33:41 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 08:50:06 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 09:48:50 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 10:20:58 PM
+
+An error occurred while receiving the HTTP response to http://localhost:1862/AampService.svc/soap. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetDevelopmentById(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentById(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7329
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 95
+----= Inner Exception Exception =----
+System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 11:00:40 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Controllers.SalesController.GetAgentSaleDetails() in c:\workspace\Aamps\AAMPS.Web\Controllers\SalesController.cs:line 132
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-27 11:50:22 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetDevelopmentById(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentById(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 7329
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 95
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-05-28 01:43:39 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Actions.Sales.LoadNewSale.OnExecute() in c:\workspace\Aamps\AAMPS.Clients\Actions\Sales\LoadNewSale.cs:line 41
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+

@@ -17,8 +17,8 @@ header, footer, nav, section {
 -----------------------------------------------------------*/
 fieldset {
     border: 1px solid #ddd;
-    padding: 0 1.4em 1.4em 1.4em;
-    margin: 0 0 1.5em 0;
+    padding: 0 0.4em 0.4em;
+    margin: 0 0 1.0em 0;
 }
 
 legend {
@@ -144,7 +144,7 @@ margin-right: -15px;
 .jumbotron {
     padding: 30px;
     margin-bottom: 30px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 200;
     color: inherit;
     background-color: #eeeeee;
@@ -362,6 +362,37 @@ input.money-bank{
   }
 }
 
+/*Custom Styles*/
+label{
+    font-weight: 400;
+    font-size: 1.02em;
+}
+
+fieldset > table > thead{
+    font-size: 0.89em;
+    font-weight: 400;
+}
+
+fieldset > table > tbody{
+    font-size: 0.85em;
+    font-weight: 400;
+}
+
+
+.table-general{
+    font-weight: 400;
+    font-size: 0.97em;
+}
+
+fieldset > legend.well{
+    font-weight: 400;
+    font-size: 0.96em;
+}
+
+.height28{
+    height: 28px;
+}
+
 /* Reporting*/
 
 .report-background{
@@ -373,7 +404,12 @@ input.money-bank{
     opacity: 0.4;
 }
 
-.the-legend {
+.disabledControls {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/*.the-legend {
     border-style: none;
     border-width: 0;
     font-size: 14px;
@@ -384,13 +420,10 @@ input.money-bank{
     border: 2px groove threedface #444;
     -webkit-box-shadow:  0px 0px 0px 0px #000;
             box-shadow:  0px 0px 0px 0px #000;
-}
+}*/
 .well {
+    width: 100%;
     background-color: transparent;
-    border-radius: 4px;
-    padding:0px;
-    border-color: transparent;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 legend {
@@ -398,5 +431,23 @@ legend {
     line-height: 0px;
     border-bottom: 0px;
     width:0px;
+}
+
+
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width:auto;
+    padding:0 10px;
+    border-bottom:none;
 }
 

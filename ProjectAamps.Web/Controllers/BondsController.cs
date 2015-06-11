@@ -12,6 +12,9 @@ using System.Globalization;
 using AAMPS.Clients.ViewModels.Sales;
 using AAMPS.Clients.ViewModels.Originator;
 using AAMPS.Clients.ViewModels.Bonds;
+using App.Common.Exceptions;
+using AAMPS.Clients.ViewModels.Purchaser;
+using AAMPS.Clients.ViewModels.Individual;
 
 
 namespace AAMPS.Web.Controllers
@@ -56,7 +59,16 @@ namespace AAMPS.Web.Controllers
                 UnitActiveDate = _currentUnit.UnitActiveDate,
                 UnitStatusID = _repoService.GetUnitStatusById(_currentUnit.UnitStatusID).UnitStatusDescription,
                 DevelopmentDescription = _repoService.GetDevelopmentById(_currentUnit.DevelopmentID).DevelopmentDescription,
-                              
+                OriginatorTrBondAmount = currentSalesAgent.SalesTotalDepositAmount != null ? (double)currentSalesAgent.SalesTotalDepositAmount : 0,
+                CurrentUserDetails = Session["CurrentUserFullName"].ToString(),
+                InitialBondAmount = currentSalesAgent.SaleBondRequiredAmount,
+                SalesBondClientContactedDt = currentSalesAgent.SalesBondClientContactedDt.HasValue ? currentSalesAgent.SalesBondClientContactedDt.GetValueOrDefault().ToString("dd/MM/yyyy") : string.Empty,
+                SalesBondBondDocsRecDt = currentSalesAgent.SalesBondBondDocsRecDt.HasValue ? currentSalesAgent.SalesBondBondDocsRecDt.GetValueOrDefault().ToString("dd/MM/yyyy") : string.Empty,
+                PurchaserID = currentSalesAgent.Purchaser.PurchaserID,
+                IndividualID = currentSalesAgent.Individual.IndividualID,
+                SalesBondAccountNo = currentSalesAgent.SalesBondAccountNo,
+                ClientAccepted = CheckClientAcceptedBond(currentSalesAgent.SaleID),
+
             };
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
@@ -68,23 +80,32 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-
                 var _linkedSale = _repoService.GetSaleById(int.Parse(SessionHandler.GetSessionContext("CurrentSaleId")));
                 if (_linkedSale != null)
                 {
-                    _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
-                    _linkedSale.SalesBondBondDocsRecDt = sale.SalesBondBondDocsRecDt != null ? DateTime.ParseExact(sale.SalesBondBondDocsRecDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
-                    _linkedSale.SalesBondClientContactedDt = sale.SalesBondClientContactedDt != null ? DateTime.ParseExact(sale.SalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                    if (sale.hiddenSalesBondClientContactedDt != null && sale.hiddenSalesBondBondDocsRecDt == null)
+                    {
+                        _linkedSale.SalesBondClientContactedDt = sale.hiddenSalesBondClientContactedDt != null ? DateTime.ParseExact(sale.hiddenSalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                        _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
+                    }
 
+                    if (sale.hiddenSalesBondClientContactedDt != null && sale.hiddenSalesBondBondDocsRecDt != null)
+                    {
+                        _linkedSale.SalesBondClientContactedDt = sale.hiddenSalesBondClientContactedDt != null ? DateTime.ParseExact(sale.hiddenSalesBondClientContactedDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                        _linkedSale.SalesBondBondDocsRecDt = sale.hiddenSalesBondBondDocsRecDt != null ? DateTime.ParseExact(sale.hiddenSalesBondBondDocsRecDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
+                        _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
+                    }
+
+                    _linkedSale.SalesBondAccountNo = sale.SalesBondAccountNo;
                     _linkedSale.SaleModifiedDt = DateTime.Now;
                     _linkedSale.SaleModifiedByUser = 1;
 
                     _repoService.UpdateSale(_linkedSale);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+            
             }
 
             return Json(sale, JsonRequestBehavior.AllowGet);
@@ -120,6 +141,7 @@ namespace AAMPS.Web.Controllers
                                     {
                                         currentOrginator.OriginatorTrAIPDt =  DateTime.ParseExact(orginator.OriginatorTrAIPDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                                         currentOrginator.MOStatusID = 2;
+                                        orginator.ClientAccepted = 0;
                                     }
                                     break;
                                 }
@@ -136,6 +158,9 @@ namespace AAMPS.Web.Controllers
                                     {
                                         currentOrginator.OriginatorTrGrantDt = DateTime.ParseExact(orginator.OriginatorTrGrantDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                                         currentOrginator.MOStatusID = 3;
+                                        orginator.ClientAccepted = 0;
+
+                                        UpdateSaleBondDetails(currentOrginator, orginator.SalesBondAccountNo);
                                     }
 
                                     break;
@@ -154,6 +179,9 @@ namespace AAMPS.Web.Controllers
                                     {
                                         currentOrginator.OriginatorTrAcceptDt =  DateTime.ParseExact(orginator.OriginatorTrAcceptDt, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                                         currentOrginator.MOStatusID = 4;
+                                        orginator.ClientAccepted = 1;
+                                         
+
                                     }
                                       break;
                                 
@@ -169,7 +197,8 @@ namespace AAMPS.Web.Controllers
 
                          if (currentOrginator.MOStatusID == 4)
                          {
-                             UpdateSaleBondDetails(currentOrginator);
+                             UpdateSaleBondDetails(currentOrginator, orginator.SalesBondAccountNo);
+                             orginator.ClientAccepted = 1;
                          }
 
                         return Json(orginator, JsonRequestBehavior.AllowGet);
@@ -200,11 +229,62 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
+              
                 return Json(ex.InnerException);
             }
 
             return null;
 
+        }
+
+        [HttpPost]
+        public JsonResult LoadPurchaser(int id)
+        {
+            var _purchaser = _repoService.GetPurchaserById(id);
+            var viewModel = new PurchaserViewModel();
+
+            if(_purchaser != null)
+            {
+                viewModel.EntityTypeID = _purchaser.EntityTypeID;
+                viewModel.PurchaserDescription = _purchaser.PurchaserDescription;
+                viewModel.PurchaserContactPerson = _purchaser.PurchaserContactPerson;
+                viewModel.PurchaserContactCell = _purchaser.PurchaserContactCell;
+                viewModel.PurchaserContactHome = _purchaser.PurchaserContactHome;
+                viewModel.PurchaserContactWork = _purchaser.PurchaserContactWork;
+                viewModel.PurchaserEmail = _purchaser.PurchaserEmail;
+                viewModel.PurchaserAddress = _purchaser.PurchaserAddress;
+                viewModel.PurchaserAddress1 = _purchaser.PurchaserAddress1;
+                viewModel.PurchaserAddress2 = _purchaser.PurchaserAddress2;
+                viewModel.PurchaserAddress3 = _purchaser.PurchaserAddress3;
+                viewModel.PurchaserSuburb = _purchaser.PurchaserSuburb;
+                viewModel.PurchaserPostalCode = _purchaser.PurchaserPostalCode;
+
+                viewModel.PurchaserAddress = _purchaser.PurchaserAddress;
+                viewModel.PurchaserAddress1 = _purchaser.PurchaserAddress1;
+                viewModel.PurchaserAddress2 = _purchaser.PurchaserAddress2;
+                viewModel.PurchaserAddress3 = _purchaser.PurchaserAddress3;
+                viewModel.PurchaserSuburb = _purchaser.PurchaserSuburb;
+                viewModel.PurchaserPostalCode = _purchaser.PurchaserPostalCode;
+            }
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public JsonResult LoadIndividual(int id)
+        {
+            var _individual = _repoService.GetIndividualById(id);
+            var viewModel = new IndividualViewModel();
+
+            if (_individual != null)
+            {
+                viewModel.IndividualName = _individual.IndividualName;
+                viewModel.IndividualSurname = _individual.IndividualSurname;
+                viewModel.IndividualContactCell = _individual.IndividualContactCell;
+                viewModel.IndividualContactWork = _individual.IndividualContactWork;
+                viewModel.IndividualEmail = _individual.IndividualEmail;
+            }
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -269,7 +349,23 @@ namespace AAMPS.Web.Controllers
 
         }
 
-        public void UpdateSaleBondDetails(OriginatorTr orginator)
+        public bool CheckClientAcceptedBond(int id)
+        {
+            var orginators = _repoService.GetOriginatorBySalesId(id);
+
+            foreach (var item in orginators)
+	        {
+		       if(item.OriginatorTrAcceptDt.HasValue)
+               {
+                   return true;
+                  
+               }
+	        }
+
+            return false;
+        }
+
+        public void UpdateSaleBondDetails(OriginatorTr orginator, string bondAccountNumber)
         {
             try
             {
@@ -279,22 +375,20 @@ namespace AAMPS.Web.Controllers
                 _linkedSale.SalesBondGrantedDt = orginator.OriginatorTrGrantDt;
                 _linkedSale.SalesBondClientAcceptDt = orginator.OriginatorTrAcceptDt;
                 _linkedSale.BankID = orginator.BankID;
+                _linkedSale.SalesBondAccountNo = bondAccountNumber;
 
                 _linkedSale.SaleModifiedDt = DateTime.Now;
                 _linkedSale.SaleModifiedByUser = 1;
 
                 _repoService.UpdateSale(_linkedSale);
+          
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+              
             }
         }
 
-
-
-        
         [AampsAuthorize]
         [HttpGet]
         public ActionResult GetBanks()

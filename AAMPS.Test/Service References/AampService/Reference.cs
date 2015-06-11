@@ -9,7 +9,395 @@
 //------------------------------------------------------------------------------
 
 namespace AAMPS.Test.AampService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SalesReportViewModel", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales")]
+    [System.SerializableAttribute()]
+    public partial class SalesReportViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AgencyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AgentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> AmountDueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BondField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> BondAmountGrantField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> BondReqField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> CntrSignedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> DepositField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DepositDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DevelopmentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> GrantedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhaseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProofField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PurchaserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnitNoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Agency {
+            get {
+                return this.AgencyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgencyField, value) != true)) {
+                    this.AgencyField = value;
+                    this.RaisePropertyChanged("Agency");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Agent {
+            get {
+                return this.AgentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgentField, value) != true)) {
+                    this.AgentField = value;
+                    this.RaisePropertyChanged("Agent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> AmountDue {
+            get {
+                return this.AmountDueField;
+            }
+            set {
+                if ((this.AmountDueField.Equals(value) != true)) {
+                    this.AmountDueField = value;
+                    this.RaisePropertyChanged("AmountDue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Bond {
+            get {
+                return this.BondField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BondField, value) != true)) {
+                    this.BondField = value;
+                    this.RaisePropertyChanged("Bond");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> BondAmountGrant {
+            get {
+                return this.BondAmountGrantField;
+            }
+            set {
+                if ((this.BondAmountGrantField.Equals(value) != true)) {
+                    this.BondAmountGrantField = value;
+                    this.RaisePropertyChanged("BondAmountGrant");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> BondReq {
+            get {
+                return this.BondReqField;
+            }
+            set {
+                if ((this.BondReqField.Equals(value) != true)) {
+                    this.BondReqField = value;
+                    this.RaisePropertyChanged("BondReq");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> CntrSigned {
+            get {
+                return this.CntrSignedField;
+            }
+            set {
+                if ((this.CntrSignedField.Equals(value) != true)) {
+                    this.CntrSignedField = value;
+                    this.RaisePropertyChanged("CntrSigned");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> Deposit {
+            get {
+                return this.DepositField;
+            }
+            set {
+                if ((this.DepositField.Equals(value) != true)) {
+                    this.DepositField = value;
+                    this.RaisePropertyChanged("Deposit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DepositDate {
+            get {
+                return this.DepositDateField;
+            }
+            set {
+                if ((this.DepositDateField.Equals(value) != true)) {
+                    this.DepositDateField = value;
+                    this.RaisePropertyChanged("DepositDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Development {
+            get {
+                return this.DevelopmentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DevelopmentField, value) != true)) {
+                    this.DevelopmentField = value;
+                    this.RaisePropertyChanged("Development");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Granted {
+            get {
+                return this.GrantedField;
+            }
+            set {
+                if ((this.GrantedField.Equals(value) != true)) {
+                    this.GrantedField = value;
+                    this.RaisePropertyChanged("Granted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Phase {
+            get {
+                return this.PhaseField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhaseField, value) != true)) {
+                    this.PhaseField = value;
+                    this.RaisePropertyChanged("Phase");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Proof {
+            get {
+                return this.ProofField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProofField, value) != true)) {
+                    this.ProofField = value;
+                    this.RaisePropertyChanged("Proof");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Purchaser {
+            get {
+                return this.PurchaserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PurchaserField, value) != true)) {
+                    this.PurchaserField = value;
+                    this.RaisePropertyChanged("Purchaser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UnitNo {
+            get {
+                return this.UnitNoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnitNoField, value) != true)) {
+                    this.UnitNoField = value;
+                    this.RaisePropertyChanged("UnitNo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetUnitStatusType", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects")]
+    public enum GetUnitStatusType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Available = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Reserved = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Pending = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Sold = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Occupied = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Bankable = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Registered = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Unavailable = 8,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetSaleActiveStatusType", Namespace="http://schemas.datacontract.org/2004/07/")]
+    public enum GetSaleActiveStatusType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Available = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Reserved = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Pending = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Sold = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Bankable = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Registered = 6,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetSaleStatusType", Namespace="http://schemas.datacontract.org/2004/07/")]
+    public enum GetSaleStatusType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Active = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Cancelled = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Declined = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        InActive = 4,
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AampService.IAampService")]
@@ -69,6 +457,18 @@ namespace AAMPS.Test.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateUnit", ReplyAction="http://tempuri.org/IAampService/UpdateUnitResponse")]
         System.Threading.Tasks.Task UpdateUnitAsync(AAMPS.Clients.AampService.Unit unit);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateOrginator", ReplyAction="http://tempuri.org/IAampService/UpdateOrginatorResponse")]
+        void UpdateOrginator(AAMPS.Clients.AampService.OriginatorTr originatorTr);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateOrginator", ReplyAction="http://tempuri.org/IAampService/UpdateOrginatorResponse")]
+        System.Threading.Tasks.Task UpdateOrginatorAsync(AAMPS.Clients.AampService.OriginatorTr originatorTr);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveOrginator", ReplyAction="http://tempuri.org/IAampService/SaveOrginatorResponse")]
+        void SaveOrginator(AAMPS.Clients.AampService.OriginatorTr originatorTr);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveOrginator", ReplyAction="http://tempuri.org/IAampService/SaveOrginatorResponse")]
+        System.Threading.Tasks.Task SaveOrginatorAsync(AAMPS.Clients.AampService.OriginatorTr originatorTr);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllSales", ReplyAction="http://tempuri.org/IAampService/GetAllSalesResponse")]
         AAMPS.Clients.AampService.Sale[] GetAllSales();
         
@@ -81,11 +481,89 @@ namespace AAMPS.Test.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleById", ReplyAction="http://tempuri.org/IAampService/GetSaleByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Sale> GetSaleByIdAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleActiveStatus", ReplyAction="http://tempuri.org/IAampService/GetSaleActiveStatusResponse")]
+        AAMPS.Clients.AampService.SaleActiveStatus GetSaleActiveStatus(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleActiveStatus", ReplyAction="http://tempuri.org/IAampService/GetSaleActiveStatusResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleActiveStatus> GetSaleActiveStatusAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleTypesResponse")]
+        AAMPS.Clients.AampService.SaleType[] GetSaleTypes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleTypesResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleType[]> GetSaleTypesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDepositTypes", ReplyAction="http://tempuri.org/IAampService/GetDepositTypesResponse")]
+        AAMPS.Clients.AampService.SaleDepositProof[] GetDepositTypes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDepositTypes", ReplyAction="http://tempuri.org/IAampService/GetDepositTypesResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleDepositProof[]> GetDepositTypesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetBankById", ReplyAction="http://tempuri.org/IAampService/GetBankByIdResponse")]
+        AAMPS.Clients.AampService.Bank GetBankById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetBankById", ReplyAction="http://tempuri.org/IAampService/GetBankByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Bank> GetBankByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllBanks", ReplyAction="http://tempuri.org/IAampService/GetAllBanksResponse")]
+        AAMPS.Clients.AampService.Bank[] GetAllBanks();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllBanks", ReplyAction="http://tempuri.org/IAampService/GetAllBanksResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Bank[]> GetAllBanksAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetMOStatusById", ReplyAction="http://tempuri.org/IAampService/GetMOStatusByIdResponse")]
+        AAMPS.Clients.AampService.MOStatus GetMOStatusById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetMOStatusById", ReplyAction="http://tempuri.org/IAampService/GetMOStatusByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.MOStatus> GetMOStatusByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllMOStatus", ReplyAction="http://tempuri.org/IAampService/GetAllMOStatusResponse")]
+        AAMPS.Clients.AampService.MOStatus[] GetAllMOStatus();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllMOStatus", ReplyAction="http://tempuri.org/IAampService/GetAllMOStatusResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.MOStatus[]> GetAllMOStatusAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorBySalesId", ReplyAction="http://tempuri.org/IAampService/GetOriginatorBySalesIdResponse")]
+        AAMPS.Clients.AampService.OriginatorTr[] GetOriginatorBySalesId(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorBySalesId", ReplyAction="http://tempuri.org/IAampService/GetOriginatorBySalesIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr[]> GetOriginatorBySalesIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorById", ReplyAction="http://tempuri.org/IAampService/GetOriginatorByIdResponse")]
+        AAMPS.Clients.AampService.OriginatorTr GetOriginatorById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetOriginatorById", ReplyAction="http://tempuri.org/IAampService/GetOriginatorByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr> GetOriginatorByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSalesReport", ReplyAction="http://tempuri.org/IAampService/GetSalesReportResponse")]
+        AAMPS.Test.AampService.SalesReportViewModel[] GetSalesReport();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSalesReport", ReplyAction="http://tempuri.org/IAampService/GetSalesReportResponse")]
+        System.Threading.Tasks.Task<AAMPS.Test.AampService.SalesReportViewModel[]> GetSalesReportAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleByUnitId", ReplyAction="http://tempuri.org/IAampService/GetSaleByUnitIdResponse")]
         AAMPS.Clients.AampService.Sale GetSaleByUnitId(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleByUnitId", ReplyAction="http://tempuri.org/IAampService/GetSaleByUnitIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Sale> GetSaleByUnitIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveUpdateReservation", ReplyAction="http://tempuri.org/IAampService/SaveUpdateReservationResponse")]
+        void SaveUpdateReservation(AAMPS.Clients.AampService.Sale sale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveUpdateReservation", ReplyAction="http://tempuri.org/IAampService/SaveUpdateReservationResponse")]
+        System.Threading.Tasks.Task SaveUpdateReservationAsync(AAMPS.Clients.AampService.Sale sale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/AddSale", ReplyAction="http://tempuri.org/IAampService/AddSaleResponse")]
+        void AddSale(AAMPS.Clients.AampService.Sale sale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/AddSale", ReplyAction="http://tempuri.org/IAampService/AddSaleResponse")]
+        System.Threading.Tasks.Task AddSaleAsync(AAMPS.Clients.AampService.Sale sale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateSale", ReplyAction="http://tempuri.org/IAampService/UpdateSaleResponse")]
+        void UpdateSale(AAMPS.Clients.AampService.Sale sale);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateSale", ReplyAction="http://tempuri.org/IAampService/UpdateSaleResponse")]
+        System.Threading.Tasks.Task UpdateSaleAsync(AAMPS.Clients.AampService.Sale sale);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllDevelopments", ReplyAction="http://tempuri.org/IAampService/GetAllDevelopmentsResponse")]
         AAMPS.Clients.AampService.Development[] GetAllDevelopments();
@@ -124,10 +602,46 @@ namespace AAMPS.Test.AampService {
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company> GetCompanyByUserGroupIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePerson", ReplyAction="http://tempuri.org/IAampService/SavePersonResponse")]
-        void SavePerson(AAMPS.Clients.AampService.Individual person);
+        AAMPS.Clients.AampService.Individual SavePerson(AAMPS.Clients.AampService.Individual person);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePerson", ReplyAction="http://tempuri.org/IAampService/SavePersonResponse")]
-        System.Threading.Tasks.Task SavePersonAsync(AAMPS.Clients.AampService.Individual person);
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> SavePersonAsync(AAMPS.Clients.AampService.Individual person);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllPreferedContactMethods", ReplyAction="http://tempuri.org/IAampService/GetAllPreferedContactMethodsResponse")]
+        AAMPS.Clients.AampService.PreferedContactMethod[] GetAllPreferedContactMethods();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllPreferedContactMethods", ReplyAction="http://tempuri.org/IAampService/GetAllPreferedContactMethodsResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod[]> GetAllPreferedContactMethodsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPreferedContactMethodById", ReplyAction="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse")]
+        AAMPS.Clients.AampService.PreferedContactMethod GetPreferedContactMethodById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPreferedContactMethodById", ReplyAction="http://tempuri.org/IAampService/GetPreferedContactMethodByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod> GetPreferedContactMethodByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePurchaser", ReplyAction="http://tempuri.org/IAampService/SavePurchaserResponse")]
+        AAMPS.Clients.AampService.Purchaser SavePurchaser(AAMPS.Clients.AampService.Purchaser purchaser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePurchaser", ReplyAction="http://tempuri.org/IAampService/SavePurchaserResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> SavePurchaserAsync(AAMPS.Clients.AampService.Purchaser purchaser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdatePurchaser", ReplyAction="http://tempuri.org/IAampService/UpdatePurchaserResponse")]
+        AAMPS.Clients.AampService.Purchaser UpdatePurchaser(AAMPS.Clients.AampService.Purchaser purchaser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdatePurchaser", ReplyAction="http://tempuri.org/IAampService/UpdatePurchaserResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> UpdatePurchaserAsync(AAMPS.Clients.AampService.Purchaser purchaser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserById", ReplyAction="http://tempuri.org/IAampService/GetPurchaserByIdResponse")]
+        AAMPS.Clients.AampService.Purchaser GetPurchaserById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserById", ReplyAction="http://tempuri.org/IAampService/GetPurchaserByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> GetPurchaserByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserEntityTypes", ReplyAction="http://tempuri.org/IAampService/GetPurchaserEntityTypesResponse")]
+        AAMPS.Clients.AampService.EntityType[] GetPurchaserEntityTypes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserEntityTypes", ReplyAction="http://tempuri.org/IAampService/GetPurchaserEntityTypesResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.EntityType[]> GetPurchaserEntityTypesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUser", ReplyAction="http://tempuri.org/IAampService/GetUserResponse")]
         AAMPS.Clients.AampService.UserList GetUser(int identity);
@@ -140,6 +654,24 @@ namespace AAMPS.Test.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCurrentUser", ReplyAction="http://tempuri.org/IAampService/GetCurrentUserResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.UserList> GetCurrentUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetUnitStatusTypesResponse")]
+        int GetUnitStatusTypes(AAMPS.Test.AampService.GetUnitStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetUnitStatusTypesResponse")]
+        System.Threading.Tasks.Task<int> GetUnitStatusTypesAsync(AAMPS.Test.AampService.GetUnitStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleActiveStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleActiveStatusTypesResponse")]
+        int GetSaleActiveStatusTypes(AAMPS.Test.AampService.GetSaleActiveStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleActiveStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleActiveStatusTypesResponse")]
+        System.Threading.Tasks.Task<int> GetSaleActiveStatusTypesAsync(AAMPS.Test.AampService.GetSaleActiveStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleStatusTypesResponse")]
+        int GetSaleStatusTypes(AAMPS.Test.AampService.GetSaleStatusType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleStatusTypes", ReplyAction="http://tempuri.org/IAampService/GetSaleStatusTypesResponse")]
+        System.Threading.Tasks.Task<int> GetSaleStatusTypesAsync(AAMPS.Test.AampService.GetSaleStatusType type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -241,6 +773,22 @@ namespace AAMPS.Test.AampService {
             return base.Channel.UpdateUnitAsync(unit);
         }
         
+        public void UpdateOrginator(AAMPS.Clients.AampService.OriginatorTr originatorTr) {
+            base.Channel.UpdateOrginator(originatorTr);
+        }
+        
+        public System.Threading.Tasks.Task UpdateOrginatorAsync(AAMPS.Clients.AampService.OriginatorTr originatorTr) {
+            return base.Channel.UpdateOrginatorAsync(originatorTr);
+        }
+        
+        public void SaveOrginator(AAMPS.Clients.AampService.OriginatorTr originatorTr) {
+            base.Channel.SaveOrginator(originatorTr);
+        }
+        
+        public System.Threading.Tasks.Task SaveOrginatorAsync(AAMPS.Clients.AampService.OriginatorTr originatorTr) {
+            return base.Channel.SaveOrginatorAsync(originatorTr);
+        }
+        
         public AAMPS.Clients.AampService.Sale[] GetAllSales() {
             return base.Channel.GetAllSales();
         }
@@ -257,12 +805,116 @@ namespace AAMPS.Test.AampService {
             return base.Channel.GetSaleByIdAsync(id);
         }
         
+        public AAMPS.Clients.AampService.SaleActiveStatus GetSaleActiveStatus(int id) {
+            return base.Channel.GetSaleActiveStatus(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleActiveStatus> GetSaleActiveStatusAsync(int id) {
+            return base.Channel.GetSaleActiveStatusAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.SaleType[] GetSaleTypes() {
+            return base.Channel.GetSaleTypes();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleType[]> GetSaleTypesAsync() {
+            return base.Channel.GetSaleTypesAsync();
+        }
+        
+        public AAMPS.Clients.AampService.SaleDepositProof[] GetDepositTypes() {
+            return base.Channel.GetDepositTypes();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SaleDepositProof[]> GetDepositTypesAsync() {
+            return base.Channel.GetDepositTypesAsync();
+        }
+        
+        public AAMPS.Clients.AampService.Bank GetBankById(int id) {
+            return base.Channel.GetBankById(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Bank> GetBankByIdAsync(int id) {
+            return base.Channel.GetBankByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.Bank[] GetAllBanks() {
+            return base.Channel.GetAllBanks();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Bank[]> GetAllBanksAsync() {
+            return base.Channel.GetAllBanksAsync();
+        }
+        
+        public AAMPS.Clients.AampService.MOStatus GetMOStatusById(int id) {
+            return base.Channel.GetMOStatusById(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.MOStatus> GetMOStatusByIdAsync(int id) {
+            return base.Channel.GetMOStatusByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.MOStatus[] GetAllMOStatus() {
+            return base.Channel.GetAllMOStatus();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.MOStatus[]> GetAllMOStatusAsync() {
+            return base.Channel.GetAllMOStatusAsync();
+        }
+        
+        public AAMPS.Clients.AampService.OriginatorTr[] GetOriginatorBySalesId(int id) {
+            return base.Channel.GetOriginatorBySalesId(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr[]> GetOriginatorBySalesIdAsync(int id) {
+            return base.Channel.GetOriginatorBySalesIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.OriginatorTr GetOriginatorById(int id) {
+            return base.Channel.GetOriginatorById(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.OriginatorTr> GetOriginatorByIdAsync(int id) {
+            return base.Channel.GetOriginatorByIdAsync(id);
+        }
+        
+        public AAMPS.Test.AampService.SalesReportViewModel[] GetSalesReport() {
+            return base.Channel.GetSalesReport();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Test.AampService.SalesReportViewModel[]> GetSalesReportAsync() {
+            return base.Channel.GetSalesReportAsync();
+        }
+        
         public AAMPS.Clients.AampService.Sale GetSaleByUnitId(int id) {
             return base.Channel.GetSaleByUnitId(id);
         }
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Sale> GetSaleByUnitIdAsync(int id) {
             return base.Channel.GetSaleByUnitIdAsync(id);
+        }
+        
+        public void SaveUpdateReservation(AAMPS.Clients.AampService.Sale sale) {
+            base.Channel.SaveUpdateReservation(sale);
+        }
+        
+        public System.Threading.Tasks.Task SaveUpdateReservationAsync(AAMPS.Clients.AampService.Sale sale) {
+            return base.Channel.SaveUpdateReservationAsync(sale);
+        }
+        
+        public void AddSale(AAMPS.Clients.AampService.Sale sale) {
+            base.Channel.AddSale(sale);
+        }
+        
+        public System.Threading.Tasks.Task AddSaleAsync(AAMPS.Clients.AampService.Sale sale) {
+            return base.Channel.AddSaleAsync(sale);
+        }
+        
+        public void UpdateSale(AAMPS.Clients.AampService.Sale sale) {
+            base.Channel.UpdateSale(sale);
+        }
+        
+        public System.Threading.Tasks.Task UpdateSaleAsync(AAMPS.Clients.AampService.Sale sale) {
+            return base.Channel.UpdateSaleAsync(sale);
         }
         
         public AAMPS.Clients.AampService.Development[] GetAllDevelopments() {
@@ -313,12 +965,60 @@ namespace AAMPS.Test.AampService {
             return base.Channel.GetCompanyByUserGroupIdAsync(id);
         }
         
-        public void SavePerson(AAMPS.Clients.AampService.Individual person) {
-            base.Channel.SavePerson(person);
+        public AAMPS.Clients.AampService.Individual SavePerson(AAMPS.Clients.AampService.Individual person) {
+            return base.Channel.SavePerson(person);
         }
         
-        public System.Threading.Tasks.Task SavePersonAsync(AAMPS.Clients.AampService.Individual person) {
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> SavePersonAsync(AAMPS.Clients.AampService.Individual person) {
             return base.Channel.SavePersonAsync(person);
+        }
+        
+        public AAMPS.Clients.AampService.PreferedContactMethod[] GetAllPreferedContactMethods() {
+            return base.Channel.GetAllPreferedContactMethods();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod[]> GetAllPreferedContactMethodsAsync() {
+            return base.Channel.GetAllPreferedContactMethodsAsync();
+        }
+        
+        public AAMPS.Clients.AampService.PreferedContactMethod GetPreferedContactMethodById(int id) {
+            return base.Channel.GetPreferedContactMethodById(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.PreferedContactMethod> GetPreferedContactMethodByIdAsync(int id) {
+            return base.Channel.GetPreferedContactMethodByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.Purchaser SavePurchaser(AAMPS.Clients.AampService.Purchaser purchaser) {
+            return base.Channel.SavePurchaser(purchaser);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> SavePurchaserAsync(AAMPS.Clients.AampService.Purchaser purchaser) {
+            return base.Channel.SavePurchaserAsync(purchaser);
+        }
+        
+        public AAMPS.Clients.AampService.Purchaser UpdatePurchaser(AAMPS.Clients.AampService.Purchaser purchaser) {
+            return base.Channel.UpdatePurchaser(purchaser);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> UpdatePurchaserAsync(AAMPS.Clients.AampService.Purchaser purchaser) {
+            return base.Channel.UpdatePurchaserAsync(purchaser);
+        }
+        
+        public AAMPS.Clients.AampService.Purchaser GetPurchaserById(int id) {
+            return base.Channel.GetPurchaserById(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Purchaser> GetPurchaserByIdAsync(int id) {
+            return base.Channel.GetPurchaserByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.EntityType[] GetPurchaserEntityTypes() {
+            return base.Channel.GetPurchaserEntityTypes();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.EntityType[]> GetPurchaserEntityTypesAsync() {
+            return base.Channel.GetPurchaserEntityTypesAsync();
         }
         
         public AAMPS.Clients.AampService.UserList GetUser(int identity) {
@@ -335,6 +1035,30 @@ namespace AAMPS.Test.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.UserList> GetCurrentUserAsync(string username) {
             return base.Channel.GetCurrentUserAsync(username);
+        }
+        
+        public int GetUnitStatusTypes(AAMPS.Test.AampService.GetUnitStatusType type) {
+            return base.Channel.GetUnitStatusTypes(type);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetUnitStatusTypesAsync(AAMPS.Test.AampService.GetUnitStatusType type) {
+            return base.Channel.GetUnitStatusTypesAsync(type);
+        }
+        
+        public int GetSaleActiveStatusTypes(AAMPS.Test.AampService.GetSaleActiveStatusType type) {
+            return base.Channel.GetSaleActiveStatusTypes(type);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetSaleActiveStatusTypesAsync(AAMPS.Test.AampService.GetSaleActiveStatusType type) {
+            return base.Channel.GetSaleActiveStatusTypesAsync(type);
+        }
+        
+        public int GetSaleStatusTypes(AAMPS.Test.AampService.GetSaleStatusType type) {
+            return base.Channel.GetSaleStatusTypes(type);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetSaleStatusTypesAsync(AAMPS.Test.AampService.GetSaleStatusType type) {
+            return base.Channel.GetSaleStatusTypesAsync(type);
         }
     }
 }
