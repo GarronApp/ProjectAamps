@@ -57,6 +57,14 @@ namespace Aamps.Service
             return results;
         }
 
+        public List<Unit> GetUnitsByDevelopment(int id)
+        {
+            _unitRepo = new UnitRepository(_dbContext);
+            var results = _unitRepo.GetUnitByDevelopmentId(id);
+
+            return results;
+        }
+
         public Unit GetUnitById(int id)
         {
             try

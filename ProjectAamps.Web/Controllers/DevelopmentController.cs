@@ -20,12 +20,24 @@ namespace AAMPS.Web.Controllers
         [AampsAuthorize]
         public ActionResult HomePage()
         {
-            return View();
+            try
+            {
+                var developments = aampService.GetAllDevelopments();
+
+                return View(developments);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
         }
 
         public JsonResult GetTotals()
         {
-            var units = aampService.GetAllUnits().ToList();
+            int id = int.Parse(SessionHandler.GetSessionContext("DevelopmentID"));
+            var units = aampService.GetUnitsByDevelopment(id);
+            
             var items = new List<SummaryViewModel>();
             var model = new SummaryViewModel();
 
@@ -64,9 +76,20 @@ namespace AAMPS.Web.Controllers
             {
                 Session.Remove("CurrentUnit");
 
-                var units = aampService.GetAllUnits().ToList();
+                 var development = HttpContext.Request.QueryString["DevelopmentID"];
 
-                //var development = units.
+                 if (!String.IsNullOrEmpty(development))
+                 {
+                     SessionHandler.SessionContext("DevelopmentID", development);
+                 }
+
+                 int id = int.Parse(SessionHandler.GetSessionContext("DevelopmentID"));
+
+                 var developmentLogo = aampService.GetDevelopmentById(id).DevelopmentUrlImage;
+                 SessionHandler.SessionContext("DevelopmentImage", developmentLogo);
+
+                 var units = aampService.GetUnitsByDevelopment(id);
+
                 var totalUnits = units.Count();
                 var totalUnitsPrice = units.Sum(x => x.UnitPriceIncluding);
                 var totalUnitsAvailable = units.Count(x => x.UnitStatusID == 1);
@@ -106,7 +129,7 @@ namespace AAMPS.Web.Controllers
                         UnitPriceIncluding = item.UnitPriceIncluding,
                         UnitActiveDate = item.UnitActiveDate,
                         UnitStatusID = aampService.GetUnitStatusById(item.UnitStatusID).UnitStatusDescription,
-                        DevelopmentDescription = aampService.GetDevelopmentById(item.DevelopmentID).DevelopmentDescription
+                        DevelopmentDescription = aampService.GetDevelopmentById(item.DevelopmentID).DevelopmentDescription,
 
                     };
 

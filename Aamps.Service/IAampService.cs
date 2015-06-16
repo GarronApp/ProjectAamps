@@ -28,6 +28,9 @@ namespace Aamps.Service
         List<Unit> GetAllAvailableUnits(int id);
 
         [OperationContract]
+        List<Unit> GetUnitsByDevelopment(int id);
+
+        [OperationContract]
         List<Unit> GetAllUnAvailableUnits(int id);
 
         [OperationContract]

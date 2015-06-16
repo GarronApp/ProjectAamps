@@ -6889,6 +6889,12 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllAvailableUnits", ReplyAction="http://tempuri.org/IAampService/GetAllAvailableUnitsResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Unit[]> GetAllAvailableUnitsAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitsByDevelopment", ReplyAction="http://tempuri.org/IAampService/GetUnitsByDevelopmentResponse")]
+        AAMPS.Clients.AampService.Unit[] GetUnitsByDevelopment(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitsByDevelopment", ReplyAction="http://tempuri.org/IAampService/GetUnitsByDevelopmentResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Unit[]> GetUnitsByDevelopmentAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllUnAvailableUnits", ReplyAction="http://tempuri.org/IAampService/GetAllUnAvailableUnitsResponse")]
         AAMPS.Clients.AampService.Unit[] GetAllUnAvailableUnits(int id);
         
@@ -7209,6 +7215,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Unit[]> GetAllAvailableUnitsAsync(int id) {
             return base.Channel.GetAllAvailableUnitsAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.Unit[] GetUnitsByDevelopment(int id) {
+            return base.Channel.GetUnitsByDevelopment(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Unit[]> GetUnitsByDevelopmentAsync(int id) {
+            return base.Channel.GetUnitsByDevelopmentAsync(id);
         }
         
         public AAMPS.Clients.AampService.Unit[] GetAllUnAvailableUnits(int id) {

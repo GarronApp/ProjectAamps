@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<AAMPS.Clients.AampService.Development>
 @{
     ViewBag.Title = "HomePage";
 }
@@ -9,18 +9,35 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3">
-        <a href='@Url.Action("Dashboard", "Development")'><img class="img-thumbnail" src='@Url.Content("~/Images/Dunnottar_Estate_Logo.jpg")' style="width:100%;height:150px" /></a>
-    </div>
-    <div class="col-md-3">
-        <a href='@Url.Action("Dashboard", "Development")'><img class="img-thumbnail" src='@Url.Content("~/Images/ParkView_Estate_Logo.jpg")' style="width:100%;height:150px" /></a>
-</div>
-    <div class="col-md-3">
-        <a href='@Url.Action("Dashboard", "Development")'><img class="img-thumbnail" src='@Url.Content("~/Images/Yellowwood_Estate_Logo.gif")' style="width:100%;height:150px" /></a>
-</div>
-    <div class="col-md-3">
-        <a href='@Url.Action("Dashboard", "Development")'><img class="img-thumbnail" src='@Url.Content("~/Images/DevRegimentsTrimmed.jpg")' style="width:100%;height:150px" /></a>
-    </div>
+    @foreach (var development in Model)
+    {
+        <div class="col-md-3" style="margin-bottom:15px">
+            <a style="color:#eee;text-decoration:none" href='@Url.Action("Dashboard", "Development", new { development.DevelopmentID})'>
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h4><span class="text-content"><span>@development.DevelopmentDescription</span></span></h4>
+                    </div>
+                    <img id="" class="img-thumbnail" src='@Url.Content("~/Images/" + development.DevelopmentUrlImage)' style="width:100%;height:150px;" />
+                </div>
+            </a>
+        </div>
+    }
 </div>
 <br /><br />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+
+    $(function () {
+        $('.thumbnail').hover(
+       function () {
+
+           $(this).find('.caption').fadeIn(150); //.fadeIn(250)
+       },
+       function () {
+           $(this).find('.caption').fadeOut(150); //.fadeOut(205)
+       }
+   );
+    })
+</script>
+
  

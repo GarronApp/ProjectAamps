@@ -46,6 +46,16 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
+        public List<Unit> GetUnitsByDevelopment(int id)
+        {
+            AampsContext _dbContext = new AampsContext();
+            var results = (from x in _dbContext.Units
+                           where x.DevelopmentID == id
+                           select x).ToList();
+
+            return results;
+        }
+
         public Unit GetUnitById(int id)
         {
             try

@@ -405,7 +405,8 @@
 
         FormatSummaryTotalsCurrency();
 
-
+        $("#developmentLogo").removeClass('hide');
+        $("#developmentLogo").attr("src", '@Url.Content("~/Images/" + Session["DevelopmentImage"].ToString())');
 
 
         var items = [];

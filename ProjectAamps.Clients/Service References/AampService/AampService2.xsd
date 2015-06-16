@@ -44,6 +44,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetUnitsByDevelopment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUnitsByDevelopmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitsByDevelopmentResult" nillable="true" type="q4:ArrayOfUnit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAllUnAvailableUnits">
     <xs:complexType>
       <xs:sequence>
@@ -54,7 +68,7 @@
   <xs:element name="GetAllUnAvailableUnitsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllUnAvailableUnitsResult" nillable="true" type="q4:ArrayOfUnit" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllUnAvailableUnitsResult" nillable="true" type="q5:ArrayOfUnit" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -68,7 +82,7 @@
   <xs:element name="GetUnitByUnitBlockResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitByUnitBlockResult" nillable="true" type="q5:Unit" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitByUnitBlockResult" nillable="true" type="q6:Unit" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -82,7 +96,7 @@
   <xs:element name="GetUnitByAddedUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitByAddedUserResult" nillable="true" type="q6:Unit" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitByAddedUserResult" nillable="true" type="q7:Unit" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -96,7 +110,7 @@
   <xs:element name="GetUnitByAgentIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitByAgentIdResult" nillable="true" type="q7:Unit" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitByAgentIdResult" nillable="true" type="q8:Unit" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -110,14 +124,14 @@
   <xs:element name="GetUnitByDevelopmentIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitByDevelopmentIdResult" nillable="true" type="q8:ArrayOfUnit" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitByDevelopmentIdResult" nillable="true" type="q9:ArrayOfUnit" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateUnit">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="unit" nillable="true" type="q9:Unit" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="unit" nillable="true" type="q10:Unit" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -129,7 +143,7 @@
   <xs:element name="UpdateOrginator">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="originatorTr" nillable="true" type="q10:OriginatorTr" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="originatorTr" nillable="true" type="q11:OriginatorTr" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +155,7 @@
   <xs:element name="SaveOrginator">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="originatorTr" nillable="true" type="q11:OriginatorTr" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="originatorTr" nillable="true" type="q12:OriginatorTr" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -158,7 +172,7 @@
   <xs:element name="GetAllSalesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllSalesResult" nillable="true" type="q12:ArrayOfSale" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllSalesResult" nillable="true" type="q13:ArrayOfSale" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -172,7 +186,7 @@
   <xs:element name="GetSaleByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetSaleByIdResult" nillable="true" type="q13:Sale" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetSaleByIdResult" nillable="true" type="q14:Sale" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -186,7 +200,7 @@
   <xs:element name="GetSaleActiveStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetSaleActiveStatusResult" nillable="true" type="q14:SaleActiveStatus" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetSaleActiveStatusResult" nillable="true" type="q15:SaleActiveStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -198,7 +212,7 @@
   <xs:element name="GetSaleTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetSaleTypesResult" nillable="true" type="q15:ArrayOfSaleType" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetSaleTypesResult" nillable="true" type="q16:ArrayOfSaleType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -210,7 +224,7 @@
   <xs:element name="GetDepositTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetDepositTypesResult" nillable="true" type="q16:ArrayOfSaleDepositProof" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetDepositTypesResult" nillable="true" type="q17:ArrayOfSaleDepositProof" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -224,7 +238,7 @@
   <xs:element name="GetBankByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetBankByIdResult" nillable="true" type="q17:Bank" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetBankByIdResult" nillable="true" type="q18:Bank" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -236,7 +250,7 @@
   <xs:element name="GetAllBanksResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllBanksResult" nillable="true" type="q18:ArrayOfBank" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllBanksResult" nillable="true" type="q19:ArrayOfBank" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -250,7 +264,7 @@
   <xs:element name="GetMOStatusByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetMOStatusByIdResult" nillable="true" type="q19:MOStatus" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetMOStatusByIdResult" nillable="true" type="q20:MOStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -262,7 +276,7 @@
   <xs:element name="GetAllMOStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllMOStatusResult" nillable="true" type="q20:ArrayOfMOStatus" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllMOStatusResult" nillable="true" type="q21:ArrayOfMOStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -276,7 +290,7 @@
   <xs:element name="GetOriginatorBySalesIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetOriginatorBySalesIdResult" nillable="true" type="q21:ArrayOfOriginatorTr" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetOriginatorBySalesIdResult" nillable="true" type="q22:ArrayOfOriginatorTr" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -290,7 +304,7 @@
   <xs:element name="GetOriginatorByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetOriginatorByIdResult" nillable="true" type="q22:OriginatorTr" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetOriginatorByIdResult" nillable="true" type="q23:OriginatorTr" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -302,7 +316,7 @@
   <xs:element name="GetSalesReportResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales" minOccurs="0" name="GetSalesReportResult" nillable="true" type="q23:ArrayOfSalesReportViewModel" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales" minOccurs="0" name="GetSalesReportResult" nillable="true" type="q24:ArrayOfSalesReportViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -316,14 +330,14 @@
   <xs:element name="GetSaleByUnitIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetSaleByUnitIdResult" nillable="true" type="q24:Sale" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetSaleByUnitIdResult" nillable="true" type="q25:Sale" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveUpdateReservation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="sale" nillable="true" type="q25:Sale" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="sale" nillable="true" type="q26:Sale" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -335,7 +349,7 @@
   <xs:element name="AddSale">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="sale" nillable="true" type="q26:Sale" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="sale" nillable="true" type="q27:Sale" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -347,7 +361,7 @@
   <xs:element name="UpdateSale">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="sale" nillable="true" type="q27:Sale" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="sale" nillable="true" type="q28:Sale" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -364,7 +378,7 @@
   <xs:element name="GetAllDevelopmentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllDevelopmentsResult" nillable="true" type="q28:ArrayOfDevelopment" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllDevelopmentsResult" nillable="true" type="q29:ArrayOfDevelopment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -378,7 +392,7 @@
   <xs:element name="GetDevelopmentByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetDevelopmentByIdResult" nillable="true" type="q29:Development" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetDevelopmentByIdResult" nillable="true" type="q30:Development" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -392,7 +406,7 @@
   <xs:element name="GetEstateByDevelopmentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetEstateByDevelopmentResult" nillable="true" type="q30:Estate" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetEstateByDevelopmentResult" nillable="true" type="q31:Estate" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -406,7 +420,7 @@
   <xs:element name="GetUnitStatusByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitStatusByIdResult" nillable="true" type="q31:UnitStatus" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUnitStatusByIdResult" nillable="true" type="q32:UnitStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -418,7 +432,7 @@
   <xs:element name="GetCompaniesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetCompaniesResult" nillable="true" type="q32:ArrayOfCompany" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetCompaniesResult" nillable="true" type="q33:ArrayOfCompany" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -432,35 +446,35 @@
   <xs:element name="GetCompanyByUserGroupIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetCompanyByUserGroupIdResult" nillable="true" type="q33:Company" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetCompanyByUserGroupIdResult" nillable="true" type="q34:Company" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveIndividual">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="person" nillable="true" type="q34:Individual" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="person" nillable="true" type="q35:Individual" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveIndividualResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="SaveIndividualResult" nillable="true" type="q35:Individual" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="SaveIndividualResult" nillable="true" type="q36:Individual" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateIndividual">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="person" nillable="true" type="q36:Individual" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="person" nillable="true" type="q37:Individual" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateIndividualResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="UpdateIndividualResult" nillable="true" type="q37:Individual" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="UpdateIndividualResult" nillable="true" type="q38:Individual" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -472,7 +486,7 @@
   <xs:element name="GetAllPreferedContactMethodsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllPreferedContactMethodsResult" nillable="true" type="q38:ArrayOfPreferedContactMethod" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetAllPreferedContactMethodsResult" nillable="true" type="q39:ArrayOfPreferedContactMethod" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -486,7 +500,7 @@
   <xs:element name="GetPreferedContactMethodByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetPreferedContactMethodByIdResult" nillable="true" type="q39:PreferedContactMethod" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetPreferedContactMethodByIdResult" nillable="true" type="q40:PreferedContactMethod" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -500,35 +514,35 @@
   <xs:element name="GetIndividualByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetIndividualByIdResult" nillable="true" type="q40:Individual" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetIndividualByIdResult" nillable="true" type="q41:Individual" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SavePurchaser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="purchaser" nillable="true" type="q41:Purchaser" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="purchaser" nillable="true" type="q42:Purchaser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SavePurchaserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="SavePurchaserResult" nillable="true" type="q42:Purchaser" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="SavePurchaserResult" nillable="true" type="q43:Purchaser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePurchaser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="purchaser" nillable="true" type="q43:Purchaser" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="purchaser" nillable="true" type="q44:Purchaser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdatePurchaserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="UpdatePurchaserResult" nillable="true" type="q44:Purchaser" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="UpdatePurchaserResult" nillable="true" type="q45:Purchaser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -542,7 +556,7 @@
   <xs:element name="GetPurchaserByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetPurchaserByIdResult" nillable="true" type="q45:Purchaser" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetPurchaserByIdResult" nillable="true" type="q46:Purchaser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -554,7 +568,7 @@
   <xs:element name="GetPurchaserEntityTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetPurchaserEntityTypesResult" nillable="true" type="q46:ArrayOfEntityType" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetPurchaserEntityTypesResult" nillable="true" type="q47:ArrayOfEntityType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -568,7 +582,7 @@
   <xs:element name="GetUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUserResult" nillable="true" type="q47:UserList" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUserResult" nillable="true" type="q48:UserList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -582,7 +596,7 @@
   <xs:element name="GetCurrentUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetCurrentUserResult" nillable="true" type="q48:UserList" />
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetCurrentUserResult" nillable="true" type="q49:UserList" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -596,14 +610,14 @@
   <xs:element name="GetUserPermissionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUserPermissionsResult" nillable="true" type="q49:UserRight" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUserPermissionsResult" nillable="true" type="q50:UserRight" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUnitStatusTypes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" minOccurs="0" name="type" type="q50:GetUnitStatusType" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" minOccurs="0" name="type" type="q51:GetUnitStatusType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -617,7 +631,7 @@
   <xs:element name="GetSaleActiveStatusTypes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q51:GetSaleActiveStatusType" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q52:GetSaleActiveStatusType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -631,7 +645,7 @@
   <xs:element name="GetSaleStatusTypes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q52:GetSaleStatusType" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q53:GetSaleStatusType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -18,6 +18,7 @@ namespace AAMPS.Clients.ViewModels.Development
         public int DevelopmentDevID { get; set; }
         public int DevelopmentTransAttID { get; set; }
         public int DevelopmentSalesCoID { get; set; }
+        public string DevelopmentUrlImage { get; set; }
         public virtual DevelopmentType DevelopmentType { get; set; }
         public virtual Estate Estate { get; set; }
         public virtual ICollection<Unit> Units { get; set; }

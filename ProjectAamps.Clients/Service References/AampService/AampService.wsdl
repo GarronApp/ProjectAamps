@@ -28,6 +28,12 @@
   <wsdl:message name="IAampService_GetAllAvailableUnits_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllAvailableUnitsResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitsByDevelopment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitsByDevelopment" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetUnitsByDevelopment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnitsByDevelopmentResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_GetAllUnAvailableUnits_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllUnAvailableUnits" />
   </wsdl:message>
@@ -311,6 +317,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllAvailableUnits" message="tns:IAampService_GetAllAvailableUnits_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllAvailableUnitsResponse" message="tns:IAampService_GetAllAvailableUnits_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetUnitsByDevelopment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitsByDevelopment" message="tns:IAampService_GetUnitsByDevelopment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitsByDevelopmentResponse" message="tns:IAampService_GetUnitsByDevelopment_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllUnAvailableUnits">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllUnAvailableUnits" message="tns:IAampService_GetAllUnAvailableUnits_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllUnAvailableUnitsResponse" message="tns:IAampService_GetAllUnAvailableUnits_OutputMessage" />
@@ -514,6 +524,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllAvailableUnits">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetAllAvailableUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByDevelopment">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitsByDevelopment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
