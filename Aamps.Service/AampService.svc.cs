@@ -1,4 +1,5 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.Rules.Individual;
 using Aamps.Domain.ValueObjects;
 using Aamps.Domain.ViewModels.Reports.Sales;
 using Aamps.Repository.Implementations;
@@ -240,6 +241,11 @@ namespace Aamps.Service
              _personRepo.Update(person);
 
              return person;
+         }
+
+         public List<Individual> ValidateIndividual(string lastname, string cellphone, string email)
+         {
+            return new IndividualDuplicationRule().GetDuplicationIndividuals(lastname, cellphone, email);
          }
 
          public Purchaser SavePurchaser(Purchaser purchaser)

@@ -8,7 +8,7 @@ namespace App.Common.Controllers.Actions
     {
         #region Properties
 
-        public object Property { get; set; } 
+        public object Property { get; set; }
 
         protected virtual bool AutoValidate
         {
@@ -17,6 +17,8 @@ namespace App.Common.Controllers.Actions
                 return true;
             }
         }
+
+        public bool InvalidRequest { get; set; }
 
         protected object Context { get; private set; }
 

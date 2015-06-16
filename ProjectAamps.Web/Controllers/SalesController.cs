@@ -190,6 +190,14 @@ namespace AAMPS.Web.Controllers
                 {
                     var _newIndividual = new SaveIndividual(individual);
 
+                    //DUPLICATION SECTION TO BE COMPLETED*
+
+                    //if(_newIndividual.DuplicationIndividuals.Count > 0)
+                    //{
+
+                    //    return Json(_newIndividual.DuplicationIndividuals, JsonRequestBehavior.AllowGet);
+                    //}
+
                     return Json(_newIndividual.IndividualViewModel, JsonRequestBehavior.AllowGet);
                 }
             }

@@ -159,6 +159,9 @@
     <Compile Include="Models\UserRight.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\Individual\IndividualDuplicationRule.cs" />
+    <Compile Include="Rules\Individual\IndividualRules.cs" />
+    <Compile Include="Rules\RuleBaseProvider.cs" />
     <Compile Include="ValueObjects\BankTypes.cs" />
     <Compile Include="ValueObjects\BooleanType.cs" />
     <Compile Include="ValueObjects\MOStatusTypes.cs" />

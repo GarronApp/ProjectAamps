@@ -133,6 +133,10 @@ namespace Aamps.Service
          PreferedContactMethod GetPreferedContactMethodById(int id);
          [OperationContract]
          Individual GetIndividualById(int id);
+         [OperationContract]
+         [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped)]
+         List<Individual> ValidateIndividual(string lastname, string cellphone, string email);
+         
 
         //Purchaser
          [OperationContract]

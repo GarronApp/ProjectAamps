@@ -244,6 +244,12 @@
   <wsdl:message name="IAampService_GetIndividualById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetIndividualByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_ValidateIndividual_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateIndividual" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_ValidateIndividual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateIndividualResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_SavePurchaser_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePurchaser" />
   </wsdl:message>
@@ -460,6 +466,10 @@
     <wsdl:operation name="GetIndividualById">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetIndividualById" message="tns:IAampService_GetIndividualById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetIndividualByIdResponse" message="tns:IAampService_GetIndividualById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateIndividual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/ValidateIndividual" message="tns:IAampService_ValidateIndividual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/ValidateIndividualResponse" message="tns:IAampService_ValidateIndividual_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SavePurchaser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SavePurchaser" message="tns:IAampService_SavePurchaser_InputMessage" />
@@ -848,6 +858,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetIndividualById">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetIndividualById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateIndividual">
+      <soap:operation soapAction="http://tempuri.org/IAampService/ValidateIndividual" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

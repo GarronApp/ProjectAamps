@@ -47,6 +47,7 @@ namespace AAMPS.Clients.Actions.Sales
             var _currentSale = _repoService.GetSaleById(SaleId);
             var _linkedUnit = _repoService.GetUnitById(Id);
 
+
             _currentSale.PurchaserID = PendingSaleVM.CurrentPurchaserID;
             _currentSale.SaleContractSignedSellerDt = PendingSaleVM.SaleContractSignedSellerDt != null ? DateTime.ParseExact(PendingSaleVM.SaleContractSignedSellerDt, "dd/MM/yyyy", CultureInfo.InvariantCulture) : (DateTime?)null;
             _currentSale.SalesBondRequiredBt = PendingSaleVM.SalesBondRequiredBt == 1 ? true : false;
@@ -86,8 +87,9 @@ namespace AAMPS.Clients.Actions.Sales
                         PendingSaleVM.UnitStatusId = (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Sold;
                         _repoService.UpdateUnit(_linkedUnit);
                     }
-                }
 
+
+                }
                     _repoService.SaveUpdateReservation(_currentSale);
                 
             }

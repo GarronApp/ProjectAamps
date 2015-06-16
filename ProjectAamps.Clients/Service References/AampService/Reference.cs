@@ -7105,6 +7105,12 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetIndividualById", ReplyAction="http://tempuri.org/IAampService/GetIndividualByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> GetIndividualByIdAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/ValidateIndividual", ReplyAction="http://tempuri.org/IAampService/ValidateIndividualResponse")]
+        AAMPS.Clients.AampService.Individual[] ValidateIndividual(string lastname, string cellphone, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/ValidateIndividual", ReplyAction="http://tempuri.org/IAampService/ValidateIndividualResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual[]> ValidateIndividualAsync(string lastname, string cellphone, string email);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SavePurchaser", ReplyAction="http://tempuri.org/IAampService/SavePurchaserResponse")]
         AAMPS.Clients.AampService.Purchaser SavePurchaser(AAMPS.Clients.AampService.Purchaser purchaser);
         
@@ -7503,6 +7509,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual> GetIndividualByIdAsync(int id) {
             return base.Channel.GetIndividualByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.Individual[] ValidateIndividual(string lastname, string cellphone, string email) {
+            return base.Channel.ValidateIndividual(lastname, cellphone, email);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Individual[]> ValidateIndividualAsync(string lastname, string cellphone, string email) {
+            return base.Channel.ValidateIndividualAsync(lastname, cellphone, email);
         }
         
         public AAMPS.Clients.AampService.Purchaser SavePurchaser(AAMPS.Clients.AampService.Purchaser purchaser) {

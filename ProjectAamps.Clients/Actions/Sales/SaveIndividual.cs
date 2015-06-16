@@ -18,6 +18,8 @@ namespace AAMPS.Clients.Actions.Sales
 
         public IndividualViewModel IndividualViewModel { get; set; }
 
+        public List<Individual> DuplicationIndividuals { get; set; }
+
         #endregion Properties
 
         #region Constructors
@@ -37,6 +39,7 @@ namespace AAMPS.Clients.Actions.Sales
         #region Virtual Methods
         public override void OnBindModel()
         {
+            
             IsNewIndividual = IndividualViewModel.IsNewIdentity;
 
             if (IsNewIndividual)
@@ -45,6 +48,14 @@ namespace AAMPS.Clients.Actions.Sales
 
         public override object OnExecute()
         {
+            //DUPLICATION SECTION TO BE COMPLETED*
+            //var records = ValidateIndividual(IndividualViewModel.IndividualSurname, IndividualViewModel.IndividualContactCell, IndividualViewModel.IndividualEmail);
+
+            //if (records.Count > 0)
+            //{
+            //    return DuplicationIndividuals = records.ToList();
+            //}
+
             if (IndividualViewModel.IsNewIndividual == 1)
             {
                 var _individual = new Individual();
@@ -79,6 +90,11 @@ namespace AAMPS.Clients.Actions.Sales
 
             return null;
 
+        }
+
+        private List<AampService.Individual> ValidateIndividual(string surname, string cellphone, string email)
+        {
+            return new AampServiceClient().ValidateIndividual(IndividualViewModel.IndividualSurname, IndividualViewModel.IndividualContactCell, IndividualViewModel.IndividualEmail).ToList();
         }
 
         #endregion Virtual Methods
@@ -131,7 +147,11 @@ namespace AAMPS.Clients.Actions.Sales
             }
         }
 
+
+
         #endregion Private Methods
+
+  
 
     }
 }
