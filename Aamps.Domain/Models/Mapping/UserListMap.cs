@@ -46,12 +46,7 @@ namespace Aamps.Domain.Models.Mapping
             this.HasRequired(t => t.Company)
                 .WithMany(t => t.UserLists)
                 .HasForeignKey(d => d.CompanyID);
-            this.HasRequired(t => t.UserGroup)
-                .WithMany(t => t.UserLists)
-                .HasForeignKey(d => d.UserGroupID);
-            this.HasRequired(t => t.UserType)
-                .WithMany(t => t.UserLists)
-                .HasForeignKey(d => d.UserTypeID);
+
 
         }
     }

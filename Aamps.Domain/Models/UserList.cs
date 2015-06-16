@@ -47,6 +47,7 @@ namespace Aamps.Domain.Models
         public virtual UserType UserType { get; set; }
         [DataMember]
         public virtual ICollection<UserRight> UserRights { get; set; }
+
         
     }
 }

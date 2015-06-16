@@ -1,10 +1,12 @@
 ﻿body {
-    font-size: 1.3em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    /*font-size: 1.3em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;*/
     color: #232323;
     background-color: #c3c3c3;
 
-   
+    font-size: 13px;
+    /*font: 16px/24px Georgia, serif;*/
+    font-family:Arial;
 
 }
 
@@ -369,7 +371,7 @@ label{
 }
 
 fieldset > table > thead{
-    font-size: 0.89em;
+    font-size: 0.96em;
     font-weight: 400;
 }
 
@@ -386,7 +388,7 @@ fieldset > table > tbody{
 
 fieldset > legend.well{
     font-weight: 400;
-    font-size: 0.96em;
+    font-size: 17.5px;
 }
 
 .height28{
@@ -449,5 +451,15 @@ legend.scheduler-border {
     width:auto;
     padding:0 10px;
     border-bottom:none;
+}
+
+/* BONDS SCREEN  */
+
+.legend-heading{
+    font-size: 18px
+}
+
+.bond-label{
+    font-size:14px;
 }
 

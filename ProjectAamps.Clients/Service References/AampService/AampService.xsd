@@ -419,7 +419,6 @@
       <xs:element minOccurs="0" name="GroupRights" nillable="true" type="tns:ArrayOfGroupRight" />
       <xs:element minOccurs="0" name="UserGroupDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserGroupID" type="xs:int" />
-      <xs:element minOccurs="0" name="UserLists" nillable="true" type="tns:ArrayOfUserList" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserGroup" nillable="true" type="tns:UserGroup" />
@@ -493,7 +492,6 @@
   <xs:element name="ArrayOfUserList" nillable="true" type="tns:ArrayOfUserList" />
   <xs:complexType name="UserType">
     <xs:sequence>
-      <xs:element minOccurs="0" name="UserLists" nillable="true" type="tns:ArrayOfUserList" />
       <xs:element minOccurs="0" name="UserTypeDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="UserTypeID" type="xs:int" />
     </xs:sequence>

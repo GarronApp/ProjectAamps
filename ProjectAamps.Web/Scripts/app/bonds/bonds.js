@@ -298,7 +298,6 @@
         $("#txtPurchaserEmail").val(data.IndividualEmail);
     }
 
-
     this.MapBondDefaults = function(data)
     {
         instance.setSelectControlValue("selectBankName", data.BankName);
@@ -407,6 +406,10 @@
 
     }
 
+    this.HandleUnauthorizedPermissions = function (data) {
+        toastr.error(data.description);
+    }
+
     this.LoadCurrentDates = function ()
     {
         $("#OriginatorTrSubmittedDt").datepicker("setValue", new Date());
@@ -423,8 +426,6 @@
         });
     }
 
-
-
     this.UpdateSalesBondDetails = function () {
 
         $("#hiddenSalesBondClientContactedDt").val($("#txtSalesBondClientContactedDt").val());
@@ -436,9 +437,14 @@
             type: "POST",
             data: formData,
             success: function (data) {
-                toastr.success('Sales details updated successfully');
-                instance.MapBondTransactions(data);
-                window.location.reload(true);
+                if (data.PermissionStatus != 'Unauthorized') {
+                    toastr.success('Sales details updated successfully');
+                    instance.MapBondTransactions(data);
+                    window.location.reload(true);
+                }
+                else {
+                    instance.HandleUnauthorizedPermissions(data);
+                }
             },
             error: function (exception) {
                 console.log(exception);
@@ -463,16 +469,21 @@
                 type: "POST",
                 data: formData,
                 success: function (data) {
-                    if (data.ClientAccepted == 1) {
-                        $("table#tableBondApplications tr").removeAttr("onclick");
-                        $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
-                        window.location.reload(true);
-                        toastr.success('Orginator has been updated');
+                    if (data.PermissionStatus != 'Unauthorized') {
+                        if (data.ClientAccepted == 1) {
+                            $("table#tableBondApplications tr").removeAttr("onclick");
+                            $("#txtSalesBondAccountNo").val(data.SalesBondAccountNo);
+                            window.location.reload(true);
+                            toastr.success('Orginator has been updated');
 
+                        }
+                        else {
+                            window.location.reload(true);
+                            toastr.success('Orginator has been updated');
+                        }
                     }
                     else {
-                        window.location.reload(true);
-                        toastr.success('Orginator has been updated');
+                        instance.HandleUnauthorizedPermissions(data);
                     }
                 },
                 error: function (exception) {
@@ -504,16 +515,20 @@
 
     }
 
-
     this.loadOrginator = function(id)
     {
         $.ajax({
             url: instance.getOrginatorDetails_Url + id,
             type: 'POST',
             success: function (data) {
-                console.log(data);
-               
-                instance.MapOrginatorDetails(data);
+                if (data.PermissionStatus != 'Unauthorized') {
+                    console.log(data);
+                    instance.MapOrginatorDetails(data);
+                }
+                else {
+                    $('#showModalUpdateOriginator').modal('hide');
+                    instance.HandleUnauthorizedPermissions(data);
+                }
                 
             },
             error: function (data) {
@@ -527,9 +542,15 @@
             url: instance.getPurchaserDetails_Url + id,
             type: 'POST',
             success: function (data) {
-                console.log(data);
-                instance.LoadPurchaserEntityTypes();
-                instance.MapBondPurchaserDetails(data);
+                if (data.PermissionStatus != 'Unauthorized') {
+                    console.log(data);
+                    instance.LoadPurchaserEntityTypes();
+                    instance.MapBondPurchaserDetails(data);
+                }
+                else {
+                    $("#showModalPurchaserDetails").modal('hide');
+                    instance.HandleUnauthorizedPermissions(data);
+                }
             },
             error: function (data) {
                 console.log(data);
@@ -542,8 +563,14 @@
             url: instance.getIndividualDetails_Url + id,
             type: 'POST',
             success: function (data) {
-                console.log(data);
-                instance.MapIndividualDetails(data);
+                if (data.PermissionStatus != 'Unauthorized') {
+                    console.log(data);
+                    instance.MapIndividualDetails(data);
+                }
+                else {
+                    $("#showModalIndividualDetails").modal('hide');
+                    instance.HandleUnauthorizedPermissions(data);
+                }
             },
             error: function (data) {
                 console.log(data);

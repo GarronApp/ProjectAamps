@@ -586,10 +586,24 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetUserPermissions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserPermissionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" minOccurs="0" name="GetUserPermissionsResult" nillable="true" type="q49:UserRight" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetUnitStatusTypes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" minOccurs="0" name="type" type="q49:GetUnitStatusType" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" minOccurs="0" name="type" type="q50:GetUnitStatusType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -603,7 +617,7 @@
   <xs:element name="GetSaleActiveStatusTypes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q50:GetSaleActiveStatusType" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q51:GetSaleActiveStatusType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -617,7 +631,7 @@
   <xs:element name="GetSaleStatusTypes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q51:GetSaleStatusType" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/" minOccurs="0" name="type" type="q52:GetSaleStatusType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

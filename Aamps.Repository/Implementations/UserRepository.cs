@@ -24,6 +24,10 @@ namespace Aamps.Repository.Implementations
                            where x.UserListID == identity
                            select x).FirstOrDefault();
 
+            _dbContext.Entry(user).Reference(x => x.UserGroup).Load();
+            _dbContext.Entry(user).Reference(x => x.UserType).Load();
+            _dbContext.Entry(user).Collection(x => x.UserRights).Load();
+
             return user;
         }
 

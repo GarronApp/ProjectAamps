@@ -20,6 +20,7 @@ namespace Aamps.Service
         PurchaserRepository _purchaserRepo;
         UserRepository _userRepo;
         OrginatorRepository _orginatorRepo;
+        UserPermissionRepository _permissionRepo;
 
         public AampService()
         {
@@ -338,6 +339,15 @@ namespace Aamps.Service
             var user = _userRepo.GetUserbyId(identity);
 
             return user;
+        }
+
+        public UserRight GetUserPermissions(int user)
+        {
+            _permissionRepo = new UserPermissionRepository(_dbContext);
+            var permissions = _permissionRepo.GetUserPermissions(user);
+
+            return permissions;
+
         }
 
         public UserList GetCurrentUser(string username)

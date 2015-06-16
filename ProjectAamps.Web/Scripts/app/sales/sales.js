@@ -1034,8 +1034,13 @@
             type: "POST",
             data: formData,
             success: function (data) {
-                instance.RedirectToDashBoard();
-                toastr.success('Reservation has been updated');
+                if (data.PermissionStatus != 'Unauthorized') {
+                    instance.RedirectToDashBoard();
+                    toastr.success('Reservation has been updated');
+                }
+                else {
+                    instance.HandleUnauthorizedPermissions(data);
+                }
             },
             error: function (exception) {
                 console.log(exception);
@@ -1053,18 +1058,19 @@
             type: "POST",
             data: formData,
             success: function (data) {
-
-                if (data.PendingFormCompleteAndValid != 0)
-                {
-                    instance.RedirectToDashBoard();
-                    toastr.success('Updated successful');
+                if (data.PermissionStatus != 'Unauthorized') {
+                    if (data.PendingFormCompleteAndValid != 0) {
+                        instance.RedirectToDashBoard();
+                        toastr.success('Updated successful');
+                    }
+                    else {
+                        window.location.reload(true);
+                        toastr.success('Updated successful');
+                    }
                 }
-                else
-                {
-                    window.location.reload(true);
-                    toastr.success('Updated successful');
+                else {
+                    instance.HandleUnauthorizedPermissions(data);
                 }
-                
             },
             error: function (exception) {
                 console.log(exception);
@@ -1082,8 +1088,13 @@
             type: "POST",
             data: formData,
             success: function (data) {
-                instance.RedirectToDashBoard();
-                toastr.success('Updated successful');
+                if (data.PermissionStatus != 'Unauthorized') {
+                    instance.RedirectToDashBoard();
+                    toastr.success('Updated successful');
+                }
+                else {
+                    instance.HandleUnauthorizedPermissions(data);
+                }
             },
             error: function (exception) {
                 console.log(exception);
@@ -1102,11 +1113,17 @@
             },
             error: function (exception) {
                 console.log(exception);
+                
+               
             }
 
         });
     }
 
+    this.HandleUnauthorizedPermissions = function (data) {
+        toastr.error(data.description);
+    }
+    
     this.UpdateIndividualDetails = function () {
 
         var formData = $("#individualFormReserved").serialize();
@@ -1117,9 +1134,13 @@
             async: true,
             cache: false,
             success: function (data) {
-                instance.MapIndividualDetails(data);
-                toastr.success("Individual added successfully");
-
+                if (data.PermissionStatus != 'Unauthorized') {
+                    instance.MapIndividualDetails(data);
+                    toastr.success("Individual added successfully");
+                }
+                else {
+                    instance.HandleUnauthorizedPermissions(data);
+                }
 
             },
             error: function (exception) {
@@ -1137,8 +1158,13 @@
             async: true,
             cache: false,
             success: function (data) {
-                instance.MapPurchaserlDetails(data);
-                toastr.success("Purchaser added successfully");
+                if (data.PermissionStatus != 'Unauthorized') {
+                    instance.MapPurchaserlDetails(data);
+                    toastr.success("Purchaser added successfully");
+                }
+                else {
+                    instance.HandleUnauthorizedPermissions(data);
+                }
 
             },
             error: function (exception) {
@@ -1160,9 +1186,13 @@
             async: true,
             cache: false,
             success: function (data) {
-                instance.MapIndividualDetails(data);
-                toastr.success("Individual updated successfully");
-
+                if (data.PermissionStatus != 'Unauthorized') {
+                    instance.MapIndividualDetails(data);
+                    toastr.success("Individual updated successfully");
+                }
+                else {
+                    instance.HandleUnauthorizedPermissions(data);
+                }
             },
             error: function (exception) {
                 console.log(exception);

@@ -148,6 +148,10 @@ namespace Aamps.Service
         [OperationContract]
         UserList GetCurrentUser(string username);
 
+
+        [OperationContract]
+        UserRight GetUserPermissions(int user);
+
         //Enums
 
         [OperationContract]

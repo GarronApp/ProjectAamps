@@ -18,6 +18,7 @@ using AAMPS.Clients.Actions.Development;
 using AAMPS.Clients.Queries.Development;
 using AAMPS.Clients.Actions.Sales;
 using App.Common.Exceptions;
+using AAMPS.Clients.Security;
 
 
 namespace AAMPS.Web.Controllers
@@ -179,6 +180,8 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.Add)]
         public JsonResult SaveIndividual(IndividualViewModel individual)
         {
             try
@@ -202,6 +205,8 @@ namespace AAMPS.Web.Controllers
 
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.Add)]
         public JsonResult SavePurchaser(PurchaserViewModel purchaser)
         {
             try
@@ -224,6 +229,8 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.Add)]
         public JsonResult SaveAvailableReservation(ReservationViewModel reservation)
         {
             try
@@ -248,6 +255,8 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.Edit)]
         public JsonResult UpdateReservedSale(ReservedSaleViewModel sale)
         {
             try
@@ -274,6 +283,8 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.Edit)]
         public JsonResult UpdatePendingSale(PendingSaleViewModel sale)
         {
             try

@@ -15,6 +15,7 @@ using AAMPS.Clients.ViewModels.Bonds;
 using App.Common.Exceptions;
 using AAMPS.Clients.ViewModels.Purchaser;
 using AAMPS.Clients.ViewModels.Individual;
+using AAMPS.Clients.Security;
 
 
 namespace AAMPS.Web.Controllers
@@ -36,6 +37,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpGet]
+        [AampsAuthorize]
         public JsonResult GetDetails()
         {
             SalesViewModel saleAgent = new SalesViewModel();
@@ -76,6 +78,8 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.Add | Permissions.Edit)]
         public JsonResult SaveSalesBondDetails(SalesViewModel sale)
         {
             try
@@ -112,6 +116,8 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.Add | Permissions.Edit)]
         public JsonResult SaveUpdateOrginator(OrginatorViewModel orginator)
         {
             try
@@ -238,6 +244,8 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.View)]
         public JsonResult LoadPurchaser(int id)
         {
             var _purchaser = _repoService.GetPurchaserById(id);
@@ -269,8 +277,9 @@ namespace AAMPS.Web.Controllers
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
 
-
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.View)]
         public JsonResult LoadIndividual(int id)
         {
             var _individual = _repoService.GetIndividualById(id);
@@ -288,6 +297,8 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.View)]
         public JsonResult LoadData(int id)
         {
             Invariant.IsNotNull(id, () => "orginator id is null");
@@ -365,6 +376,9 @@ namespace AAMPS.Web.Controllers
             return false;
         }
 
+        [HttpPost]
+        [AampsAuthorize]
+        [AuthPermission(Permissions.Add | Permissions.Edit)]
         public void UpdateSaleBondDetails(OriginatorTr orginator, string bondAccountNumber)
         {
             try
