@@ -1,4 +1,8 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.Queries.Developments;
+using Aamps.Domain.Queries.Reports.Bonds;
+using Aamps.Domain.Queries.Reports.Sales;
+using Aamps.Domain.Queries.Units;
 using Aamps.Domain.ValueObjects;
 using Aamps.Domain.ViewModels.Reports.Sales;
 using System;
@@ -90,7 +94,18 @@ namespace Aamps.Service
         OriginatorTr GetOriginatorById(int id);
 
         [OperationContract]
-        List<SalesReportViewModel> GetSalesReport();
+        List<SalesReportQuery> GetSalesReport(int id);
+
+        [OperationContract]
+        List<BondsReportQuery> GetBondsReport(int id);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped)]
+        List<SelectRelevantUnitsQuery> GetRelevantUnits(int userId, int userTypeId, int DevelopmentId);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped)]
+        List<SelectRelevantDevelopmentQuery> GetRelevantDevelopments(int userId, int groupId, int companyId, int userTypeId);
 
         [OperationContract]
         Sale GetSaleByUnitId(int id);

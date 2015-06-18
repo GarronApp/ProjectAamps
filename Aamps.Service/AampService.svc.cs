@@ -1,4 +1,8 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.Queries.Developments;
+using Aamps.Domain.Queries.Reports.Bonds;
+using Aamps.Domain.Queries.Reports.Sales;
+using Aamps.Domain.Queries.Units;
 using Aamps.Domain.Rules.Individual;
 using Aamps.Domain.ValueObjects;
 using Aamps.Domain.ViewModels.Reports.Sales;
@@ -201,12 +205,34 @@ namespace Aamps.Service
             return results;
         }
 
-        public List<SalesReportViewModel> GetSalesReport()
+        public List<SalesReportQuery> GetSalesReport(int id)
         {
             _salesRepo = new SalesRepository(_dbContext);
-            var results = _salesRepo.GetSalesReport();
+            var results = _salesRepo.GetSalesReport(id);
             return results;
 
+        }
+
+        public List<BondsReportQuery> GetBondsReport(int id)
+        {
+            _salesRepo = new SalesRepository(_dbContext);
+            var results = _salesRepo.GetBondsReport(id);
+            return results;
+        }
+
+        public List<SelectRelevantUnitsQuery> GetRelevantUnits(int userId, int userTypeId, int DevelopmentId)
+        {
+            _unitRepo = new UnitRepository(_dbContext);
+            var results = _unitRepo.GetRelevantUnits(userId, userTypeId, DevelopmentId);
+            return results;
+        }
+
+
+        public List<SelectRelevantDevelopmentQuery> GetRelevantDevelopments(int userId, int groupId, int companyId, int userTypeId)
+        {
+            _devRepo = new DevelopmentRepository(_dbContext);
+            var results = _devRepo.GetRelevantDevelopments(userId, groupId,companyId,userTypeId);
+            return results;
         }
 
          public void SaveUpdateReservation(Sale reservation)

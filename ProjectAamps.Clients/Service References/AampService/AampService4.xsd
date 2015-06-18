@@ -1,65 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:simpleType name="GetUnitStatusType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Available">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Reserved">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Pending">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Sold">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Occupied">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Bankable">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Registered">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Unavailable">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="GetUnitStatusType" nillable="true" type="tns:GetUnitStatusType" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfBondsReportQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BondsReportQuery" nillable="true" type="tns:BondsReportQuery" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBondsReportQuery" nillable="true" type="tns:ArrayOfBondsReportQuery" />
+  <xs:complexType name="BondsReportQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Agency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Agent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bank" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BondAmountGrant" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BondDueDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BondReq" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BondShortFall" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BondStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DaysLeft" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Deposit" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Development" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InstToMODt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Purchaser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesBondClientAcceptDt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UnitNo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BondsReportQuery" nillable="true" type="tns:BondsReportQuery" />
 </xs:schema>

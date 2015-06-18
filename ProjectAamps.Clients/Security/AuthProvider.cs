@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using App.Extentions;
+
 
 namespace AAMPS.Clients.Security
 {
@@ -19,7 +21,7 @@ namespace AAMPS.Clients.Security
             {
                 var _currentUser = _serviceProvider.GetCurrentUser(UserName);
 
-                if (_currentUser != null)
+                if (_currentUser.IsNotNull())
                 {
                     if (!String.IsNullOrEmpty(Password))
                     {
@@ -62,20 +64,25 @@ namespace AAMPS.Clients.Security
             {
                 var UserRights = _serviceProvider.GetUserPermissions(userIdentity);
 
-                var Read = Convert.ToInt32(UserRights.UserRightView);
-                System.Web.HttpContext.Current.Session.Add("ReadAccess", Read);
-                var Write = Convert.ToInt32(UserRights.UserRightAdd);
-                System.Web.HttpContext.Current.Session.Add("WriteAccess", Write);
-                var Delete = Convert.ToInt32(UserRights.UserRightDelete);
-                System.Web.HttpContext.Current.Session.Add("DeleteAccess", Delete);
-                var Edit = Convert.ToInt32(UserRights.UserRightEdit);
-                System.Web.HttpContext.Current.Session.Add("EditAccess", Edit);
-                var Full = Convert.ToInt32(UserRights.UserRightFull);
-                System.Web.HttpContext.Current.Session.Add("FullAccess", Full);
+                if (UserRights.IsNotNull())
+                {
+
+                    var Read = Convert.ToInt32(UserRights.UserRightView);
+                    System.Web.HttpContext.Current.Session.Add("ReadAccess", Read);
+                    var Write = Convert.ToInt32(UserRights.UserRightAdd);
+                    System.Web.HttpContext.Current.Session.Add("WriteAccess", Write);
+                    var Delete = Convert.ToInt32(UserRights.UserRightDelete);
+                    System.Web.HttpContext.Current.Session.Add("DeleteAccess", Delete);
+                    var Edit = Convert.ToInt32(UserRights.UserRightEdit);
+                    System.Web.HttpContext.Current.Session.Add("EditAccess", Edit);
+                    var Full = Convert.ToInt32(UserRights.UserRightFull);
+                    System.Web.HttpContext.Current.Session.Add("FullAccess", Full);
+                }
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                ExceptionHandler.HandleException(ex);
             }
             
         }

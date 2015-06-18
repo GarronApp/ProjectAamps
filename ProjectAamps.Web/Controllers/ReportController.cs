@@ -15,6 +15,7 @@ using SelectPdf;
 using iTextSharp.text.html.simpleparser;
 using App.Common.Reporting;
 using AAMPS.Clients.ViewModels.Development;
+using App.Common.Security;
 
 namespace AAMPS.Web.Controllers
 {
@@ -29,13 +30,16 @@ namespace AAMPS.Web.Controllers
 
         public ActionResult SalesReport()
         {
-            var result = aampService.GetSalesReport();
+            var developmentId = int.Parse(SessionHandler.GetSessionContext("DevelopmentID").ToString());
+            var result = aampService.GetSalesReport(developmentId);
             return View(result);
         }
 
         public ActionResult BondsReport()
         {
-            return View();
+            var developmentId = int.Parse(SessionHandler.GetSessionContext("DevelopmentID").ToString());
+            var result = aampService.GetBondsReport(developmentId);
+            return View(result);
         }
 
         public void ExportToPdf()

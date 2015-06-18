@@ -5,9 +5,12 @@
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Reports.Sales" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Sales" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Units" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAampService_GetAllUnits_InputMessage">
@@ -153,6 +156,24 @@
   </wsdl:message>
   <wsdl:message name="IAampService_GetSalesReport_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSalesReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetBondsReport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBondsReport" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetBondsReport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBondsReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetRelevantUnits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelevantUnits" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetRelevantUnits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelevantUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetRelevantDevelopments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelevantDevelopments" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetRelevantDevelopments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelevantDevelopmentsResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetSaleByUnitId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSaleByUnitId" />
@@ -406,6 +427,18 @@
     <wsdl:operation name="GetSalesReport">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSalesReport" message="tns:IAampService_GetSalesReport_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSalesReportResponse" message="tns:IAampService_GetSalesReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBondsReport">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetBondsReport" message="tns:IAampService_GetBondsReport_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetBondsReportResponse" message="tns:IAampService_GetBondsReport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelevantUnits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetRelevantUnits" message="tns:IAampService_GetRelevantUnits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetRelevantUnitsResponse" message="tns:IAampService_GetRelevantUnits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelevantDevelopments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetRelevantDevelopments" message="tns:IAampService_GetRelevantDevelopments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetRelevantDevelopmentsResponse" message="tns:IAampService_GetRelevantDevelopments_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSaleByUnitId">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleByUnitId" message="tns:IAampService_GetSaleByUnitId_InputMessage" />
@@ -723,6 +756,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetSalesReport">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetSalesReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBondsReport">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetBondsReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelevantUnits">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetRelevantUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelevantDevelopments">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetRelevantDevelopments" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

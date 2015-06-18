@@ -113,18 +113,33 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
-        public List<Aamps.Domain.ViewModels.Reports.Sales.SalesReportViewModel> GetSalesReport()
+        public List<Aamps.Domain.Queries.Reports.Sales.SalesReportQuery> GetSalesReport(int developmentID)
         {
             var development = new SqlParameter
             {
                 ParameterName = "DevelopmentID",
-                Value = "3"
+                Value = developmentID
             };
 
             using (var dc = new AampsContext())
             {
 
-                var result = dc.Database.SqlQuery<Aamps.Domain.ViewModels.Reports.Sales.SalesReportViewModel>("exec dbo.csp_Report_Sales @DevelopmentID", development);
+                var result = dc.Database.SqlQuery<Aamps.Domain.Queries.Reports.Sales.SalesReportQuery>("exec dbo.csp_Report_Sales @DevelopmentID", development);
+                return result.ToList();
+            }
+        }
+
+        public List<Aamps.Domain.Queries.Reports.Bonds.BondsReportQuery> GetBondsReport(int developmentID)
+        {
+            var development = new SqlParameter
+            {
+                ParameterName = "DevelopmentID",
+                Value = developmentID
+            };
+
+            using (var dc = new AampsContext())
+            {
+                var result = dc.Database.SqlQuery<Aamps.Domain.Queries.Reports.Bonds.BondsReportQuery>("exec dbo.csp_Report_Bonds @DevelopmentID", development);
                 return result.ToList();
             }
         }

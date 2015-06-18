@@ -2,6 +2,7 @@
 using Aamps.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,23 @@ namespace Aamps.Repository.Implementations
                            select x).FirstOrDefault();
 
             return results;
+        }
+
+        public List<Aamps.Domain.Queries.Developments.SelectRelevantDevelopmentQuery> GetRelevantDevelopments(int userId, int groupId, int companyId, int userTypeId)
+        {
+            var query = new List<SqlParameterCollection>();
+            {
+                new SqlParameter() { ParameterName = "UserListID", Value = userId };
+                new SqlParameter() { ParameterName = "UserGroupID", Value = groupId };
+                new SqlParameter() { ParameterName = "UserCompanyID", Value = companyId };
+                new SqlParameter() { ParameterName = "UserTypeID", Value = userTypeId };
+            };
+
+            using (var dc = new AampsContext())
+            {
+                var result = dc.Database.SqlQuery<Aamps.Domain.Queries.Developments.SelectRelevantDevelopmentQuery>("exec dbo.csp_Select_RelevantDevelopments @UserListID @UserGroupID @UserCompanyID @UserTypeID", query);
+                return result.ToList();
+            }
         }
 
     }

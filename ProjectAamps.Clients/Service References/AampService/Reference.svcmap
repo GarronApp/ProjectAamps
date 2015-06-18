@@ -22,6 +22,8 @@
     <MetadataSource Address="http://localhost:1862/AampService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="AampService6.xsd" MetadataType="Schema" ID="87b37094-7b56-4260-9461-e6dbc518b25e" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd8" />
+    <MetadataFile FileName="AampService61.xsd" MetadataType="Schema" ID="7232f648-a2b6-43c6-99d3-cff55c1514a3" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd6" />
     <MetadataFile FileName="AampService.disco" MetadataType="Disco" ID="45699998-b708-4b40-aeb0-0665b5b1a96e" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?disco" />
     <MetadataFile FileName="AampService1.xsd" MetadataType="Schema" ID="3fd4e304-51b9-4f4d-9831-bcc6af848817" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd1" />
     <MetadataFile FileName="AampService2.xsd" MetadataType="Schema" ID="51156e48-56a9-4d89-a8b6-76a6acd5358a" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd0" />
@@ -29,6 +31,7 @@
     <MetadataFile FileName="AampService.xsd" MetadataType="Schema" ID="fb032179-bdf0-42c4-a4d3-caeb3d207b5a" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd2" />
     <MetadataFile FileName="AampService5.xsd" MetadataType="Schema" ID="fdad5d31-6758-4de0-bdd7-70c24ae35507" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd5" />
     <MetadataFile FileName="AampService4.xsd" MetadataType="Schema" ID="e9068691-0d92-42b1-a2a7-a9389076cfc3" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd4" />
+    <MetadataFile FileName="AampService62.xsd" MetadataType="Schema" ID="0a65af98-ace8-462f-8019-ff3f4fe60931" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?xsd=xsd7" />
     <MetadataFile FileName="AampService.wsdl" MetadataType="Wsdl" ID="6a97201e-b560-4105-9130-2d551b8e9ade" SourceId="1" SourceUrl="http://localhost:1862/AampService.svc?wsdl" />
   </Metadata>
   <Extensions>

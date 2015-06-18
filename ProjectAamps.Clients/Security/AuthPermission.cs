@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using App.Extentions;
 
 namespace AAMPS.Clients.Security
 {
@@ -46,7 +47,7 @@ namespace AAMPS.Clients.Security
 
                 var user = httpContext.Session["USER"];
 
-                if (user != null)
+                if (user.IsNotNull())
                 {
                     if (HasPermission(required, httpContext))
                     {

@@ -2,6 +2,7 @@
 using Aamps.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -156,6 +157,22 @@ namespace Aamps.Repository.Implementations
                            select x).Count();
 
             return results;
+        }
+
+        public List<Aamps.Domain.Queries.Units.SelectRelevantUnitsQuery> GetRelevantUnits(int userId, int userTypeId, int DevelopmentId)
+        {
+            var query = new List<SqlParameterCollection>();
+            {
+                new SqlParameter() { ParameterName = "UserListID", Value = userId };
+                new SqlParameter() { ParameterName = "UserTypeID", Value = userTypeId };
+                new SqlParameter() { ParameterName = "DevelopmentID", Value = DevelopmentId };
+            };
+
+            using (var dc = new AampsContext())
+            {
+                var result = dc.Database.SqlQuery<Aamps.Domain.Queries.Units.SelectRelevantUnitsQuery>("exec dbo.csp_Select_RelevantUnits @UserListID @UserTypeID @DevelopmentID", query);
+                return result.ToList();
+            }
         }
 
 
