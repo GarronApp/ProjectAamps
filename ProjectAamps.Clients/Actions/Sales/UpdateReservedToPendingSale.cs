@@ -54,7 +54,13 @@ namespace AAMPS.Clients.Actions.Sales
             //_currentSale.SalesTotalDepositAmount = sale.SalesTotalDepositAmount != null ? (double)sale.SalesTotalDepositAmount : 0.0;
             _currentSale.SalesTotalDepositAmount = ReservedSaleVM.SalesTotalDepositAmount;
             _currentSale.SaleModifiedDt = DateTime.Now;
-            _currentSale.SaleModifiedByUser = 1;
+            var userIdentity = int.Parse(SessionHandler.GetSessionContext("CurrentUserId"));
+            if (userIdentity != null)
+            {
+                _currentSale.SaleModifiedByUser = userIdentity;
+                _currentSale.SalePrimAgentID = userIdentity;
+                _currentSale.SaleAddedByUser = userIdentity;
+            }
             ReservedSaleVM.PendingFormCompleteAndValid = 0;
 
             if (_currentSale.SaleActiveStatusID == (int)AAMPS.Clients.AampService.GetSaleActiveStatusType.Reserved)

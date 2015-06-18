@@ -144,8 +144,14 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <input type="button" id="btnReservedUpdatePersonDetails" class="btn btn-primary btn-sm" value="Update Individual's Details" />
+                                <span id="progress" class="hide"><span class="disabledControls">Loading...</span> 
+                                    <img style="height:20px" src="~/Images/ajax-loader.gif" />
+                                </span> 
                             </div>
+                           
+                          
                         </div>
+                       
 
                     </form>
 
@@ -598,6 +604,53 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="DuplicateIndividualDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <form id="DuplicateIndividualDetailsForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="clearIndividualForm"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="modalEdit">Duplicate Individuals</h4>
+                    <span>select the correct individual</span>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <table class="table table-condensed table-hover" id="duplicateIndividuals">
+                            <thead class="datagrid">
+                                <tr>
+                                    <th class="dark-orange">
+                                        First Name
+                                    </th>
+                                    <th class="dark-orange">
+                                        Last Name
+                                    </th>
+                                    <th class="dark-orange">
+                                        CellPhone
+                                    </th>
+                                    <th class="dark-orange">
+                                        Email Address
+                                    </th>
+                                    <th class="dark-orange">
+                                        Company
+                                    </th>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </thead>
+                                <tbody></tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="clearIndividualForm">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
 </div>
 
 @section Scripts {

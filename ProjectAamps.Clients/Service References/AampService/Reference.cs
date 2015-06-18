@@ -2454,6 +2454,9 @@ namespace AAMPS.Clients.AampService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IndividualCoAddIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IndividualContactCellField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2481,6 +2484,9 @@ namespace AAMPS.Clients.AampService {
         private string IndividualSurnameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IndividualUserAddedIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private AAMPS.Clients.AampService.PreferedContactMethod PreferedContactMethodField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2496,6 +2502,19 @@ namespace AAMPS.Clients.AampService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IndividualCoAddID {
+            get {
+                return this.IndividualCoAddIDField;
+            }
+            set {
+                if ((this.IndividualCoAddIDField.Equals(value) != true)) {
+                    this.IndividualCoAddIDField = value;
+                    this.RaisePropertyChanged("IndividualCoAddID");
+                }
             }
         }
         
@@ -2617,6 +2636,19 @@ namespace AAMPS.Clients.AampService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IndividualUserAddedID {
+            get {
+                return this.IndividualUserAddedIDField;
+            }
+            set {
+                if ((this.IndividualUserAddedIDField.Equals(value) != true)) {
+                    this.IndividualUserAddedIDField = value;
+                    this.RaisePropertyChanged("IndividualUserAddedID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public AAMPS.Clients.AampService.PreferedContactMethod PreferedContactMethod {
             get {
                 return this.PreferedContactMethodField;
@@ -2693,6 +2725,9 @@ namespace AAMPS.Clients.AampService {
         private string PurchaserAddress3Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PurchaserCoAddedIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PurchaserContactCellField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2724,6 +2759,9 @@ namespace AAMPS.Clients.AampService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PurchaserSuburbField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PurchaserUserAddedIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2809,6 +2847,19 @@ namespace AAMPS.Clients.AampService {
                 if ((object.ReferenceEquals(this.PurchaserAddress3Field, value) != true)) {
                     this.PurchaserAddress3Field = value;
                     this.RaisePropertyChanged("PurchaserAddress3");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PurchaserCoAddedID {
+            get {
+                return this.PurchaserCoAddedIDField;
+            }
+            set {
+                if ((this.PurchaserCoAddedIDField.Equals(value) != true)) {
+                    this.PurchaserCoAddedIDField = value;
+                    this.RaisePropertyChanged("PurchaserCoAddedID");
                 }
             }
         }
@@ -2952,6 +3003,19 @@ namespace AAMPS.Clients.AampService {
                 if ((object.ReferenceEquals(this.PurchaserSuburbField, value) != true)) {
                     this.PurchaserSuburbField = value;
                     this.RaisePropertyChanged("PurchaserSuburb");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PurchaserUserAddedID {
+            get {
+                return this.PurchaserUserAddedIDField;
+            }
+            set {
+                if ((this.PurchaserUserAddedIDField.Equals(value) != true)) {
+                    this.PurchaserUserAddedIDField = value;
+                    this.RaisePropertyChanged("PurchaserUserAddedID");
                 }
             }
         }

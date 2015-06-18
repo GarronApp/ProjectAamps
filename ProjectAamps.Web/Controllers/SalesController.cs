@@ -192,11 +192,11 @@ namespace AAMPS.Web.Controllers
 
                     //DUPLICATION SECTION TO BE COMPLETED*
 
-                    //if(_newIndividual.DuplicationIndividuals.Count > 0)
-                    //{
+                    if (_newIndividual.DuplicationIndividuals.Count > 0)
+                    {
 
-                    //    return Json(_newIndividual.DuplicationIndividuals, JsonRequestBehavior.AllowGet);
-                    //}
+                        return Json(_newIndividual.DuplicationIndividuals, JsonRequestBehavior.AllowGet);
+                    }
 
                     return Json(_newIndividual.IndividualViewModel, JsonRequestBehavior.AllowGet);
                 }
@@ -210,7 +210,6 @@ namespace AAMPS.Web.Controllers
             return null;
             
         }
-
 
         [HttpPost]
         [AampsAuthorize]
@@ -242,7 +241,7 @@ namespace AAMPS.Web.Controllers
         public JsonResult SaveAvailableReservation(ReservationViewModel reservation)
         {
             try
-            {
+            {   
                 if (reservation != null)
                 {
                     var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));

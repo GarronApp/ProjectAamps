@@ -17,6 +17,7 @@
     instance.PurchaserFormValid = false;
     instance.ReservedFormValid = false;
     instance.PendingFormValid = false;
+    instance.dublicateIndividualRecords = null;
 
     instance.resources = null;
 
@@ -381,6 +382,26 @@
             }
             
         });
+
+        $("#clearIndividualForm").click(function () {
+            $("#duplicateIndividuals").find("tr:gt(0)").remove();
+            $('#DuplicateIndividualDetailsModal').modal('hide');
+            $('#individualFormReserved').trigger("reset");
+            $('#individualFormReserved')[0].reset();
+        });
+
+        $("#clearIndividualForm").click(function () {
+            $("#duplicateIndividuals").find("tr:gt(0)").remove();
+            $('#DuplicateIndividualDetailsModal').modal('hide');
+            $('#individualFormReserved').trigger("reset");
+            $('#individualFormReserved')[0].reset();
+        });
+
+        $("#selectedDuplicateIndividualRecord").on('click', function () {
+
+            alert('clicked');
+        });
+
 
         instance.LoadSaleTypes();
         instance.LoadContactPreferedTypes();
@@ -1123,10 +1144,54 @@
     this.HandleUnauthorizedPermissions = function (data) {
         toastr.error(data.description);
     }
+
+    this.isArray = function(ob) {
+        return ob.constructor === Array;
+    }
+
+    this.LoadDuplicateIndividuals = function(data)
+    {
+        instance.dublicateIndividualRecords = data;
+
+        $("#duplicateIndividuals").find("tr:gt(0)").remove();
+        for (var i = 0; i < data.length; i++) {
+            tr = $('<tr/>');
+            tr.append("<td class='hide'>" + data[i].IndividualID + "</td>");
+            tr.append("<td>" + data[i].IndividualName + "</td>");
+            tr.append("<td>" + data[i].IndividualSurname + "</td>");
+            tr.append("<td>" + data[i].IndividualContactCell + "</td>");
+            tr.append("<td>" + data[i].IndividualEmail + "</td>");
+            tr.append("<td>" + "Company XYZ" + "</td>");
+            tr.append("<td>" + '<a id="selectedDuplicateIndividualRecord" individualID=' + data[i].IndividualID + ' class="btn btn-xs btn-default selectIndividual"><span class="glyphicon glyphicon-ok"></span> select</a>' + "</td>");
+           
+            $('#duplicateIndividuals').append(tr);
+
+            $("#DuplicateIndividualDetailsModal").modal('show');
+        }
+
+        $(".selectIndividual").on('click', function () {
+            var id = $(this).attr('individualID');
+            for (var i = 0; i < instance.dublicateIndividualRecords.length; i++) {
+                if(instance.dublicateIndividualRecords[i].IndividualID == id)
+                {
+                    $('#individualFormReserved').trigger("reset");
+                    $('#individualFormReserved')[0].reset();
+                    $("#txtIndividualName").val(instance.dublicateIndividualRecords[i].IndividualName);
+                    $("#txtIndividualSurname").val(instance.dublicateIndividualRecords[i].IndividualSurname);
+                    $("#txtIndividualContactCell").val(instance.dublicateIndividualRecords[i].IndividualContactCell);
+                    $("#txtIndividualEmail").val(instance.dublicateIndividualRecords[i].IndividualEmail);
+
+                    $('#DuplicateIndividualDetailsModal').modal('hide');
+                    break;
+                }
+            }
+        });
+    }
     
     this.UpdateIndividualDetails = function () {
 
         var formData = $("#individualFormReserved").serialize();
+        $("#progress").removeClass('hide');
         $.ajax({
             url: instance.save_Individual_Url,
             type: "POST",
@@ -1134,9 +1199,16 @@
             async: true,
             cache: false,
             success: function (data) {
+                console.log(data);
                 if (data.PermissionStatus != 'Unauthorized') {
-                    instance.MapIndividualDetails(data);
-                    toastr.success("Individual added successfully");
+                    if (instance.isArray(data)) {
+                        toastr.info("Duplicate records found");
+                        instance.LoadDuplicateIndividuals(data);
+                    }
+                    else {
+                        instance.MapIndividualDetails(data);
+                        toastr.success("Individual added successfully");
+                    }
                 }
                 else {
                     instance.HandleUnauthorizedPermissions(data);
@@ -1146,7 +1218,7 @@
             error: function (exception) {
                 console.log(exception);
             }
-        });
+        }).done(function () { $("#progress").addClass('hide'); });
     }
 
     this.UpdatePurchaserDetails = function () {
@@ -1579,7 +1651,8 @@
             }
         });
     }
-};
+}
+
 
 
 

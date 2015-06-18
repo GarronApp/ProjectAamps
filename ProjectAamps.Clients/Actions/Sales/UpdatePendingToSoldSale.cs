@@ -64,7 +64,14 @@ namespace AAMPS.Clients.Actions.Sales
             _currentSale.SalesBondCommDueBt = PendingSaleVM.SalesBondCommDueBt == 1 ? true : false;
             _currentSale.SalesBondInterestRate = PendingSaleVM.SalesBondInterestRate;
             _currentSale.SaleModifiedDt = DateTime.Now;
-            _currentSale.SaleModifiedByUser = 1;
+
+            var userIdentity = int.Parse(SessionHandler.GetSessionContext("CurrentUserId"));
+            if (userIdentity != null)
+            {
+                _currentSale.SaleModifiedByUser = userIdentity;
+                _currentSale.SalePrimAgentID = userIdentity;
+                _currentSale.SaleAddedByUser = userIdentity;
+            }
 
             if(_currentSale.SaleBondRequiredAmount != null && _currentSale.SaleBondRequiredAmount > 0)
             {

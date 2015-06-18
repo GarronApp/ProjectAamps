@@ -499,6 +499,7 @@
   <xs:element name="UserType" nillable="true" type="tns:UserType" />
   <xs:complexType name="Individual">
     <xs:sequence>
+      <xs:element minOccurs="0" name="IndividualCoAddID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="IndividualContactCell" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IndividualContactHome" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IndividualContactWork" nillable="true" type="xs:string" />
@@ -508,6 +509,7 @@
       <xs:element minOccurs="0" name="IndividualIDNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IndividualName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IndividualSurname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IndividualUserAddedID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PreferedContactMethod" nillable="true" type="tns:PreferedContactMethod" />
       <xs:element minOccurs="0" name="PreferedContactMethodID" type="xs:int" />
       <xs:element minOccurs="0" name="PurchaserIndividualLinks" nillable="true" type="tns:ArrayOfPurchaserIndividualLink" />
@@ -553,6 +555,7 @@
       <xs:element minOccurs="0" name="PurchaserAddress1" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PurchaserAddress2" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PurchaserAddress3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PurchaserCoAddedID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PurchaserContactCell" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PurchaserContactHome" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PurchaserContactPerson" nillable="true" type="xs:string" />
@@ -564,6 +567,7 @@
       <xs:element minOccurs="0" name="PurchaserPostalCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PurchaserRegID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PurchaserSuburb" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PurchaserUserAddedID" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Purchaser" nillable="true" type="tns:Purchaser" />

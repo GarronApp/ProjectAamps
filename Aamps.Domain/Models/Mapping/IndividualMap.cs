@@ -35,6 +35,11 @@ namespace Aamps.Domain.Models.Mapping
             this.Property(t => t.IndividualCountryofOriginan)
                 .HasMaxLength(65);
 
+            this.Property(t => t.IndividualCoAddID);
+
+            this.Property(t => t.IndividualUserAddedID);
+
+
             // Table & Column Mappings
             this.ToTable("Individual", "Master");
             this.Property(t => t.IndividualID).HasColumnName("IndividualID");
@@ -47,6 +52,8 @@ namespace Aamps.Domain.Models.Mapping
             this.Property(t => t.IndividualEmail).HasColumnName("IndividualEmail");
             this.Property(t => t.PreferedContactMethodID).HasColumnName("PreferedContactMethodID");
             this.Property(t => t.IndividualCountryofOriginan).HasColumnName("IndividualCountryofOriginan");
+            this.Property(t => t.IndividualCoAddID).HasColumnName("IndividualCoAddID");
+            this.Property(t => t.IndividualUserAddedID).HasColumnName("IndividualUserAddedID");
 
             // Relationships
             this.HasRequired(t => t.PreferedContactMethod)

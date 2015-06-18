@@ -39,12 +39,13 @@ namespace Aamps.Domain.Rules.Individual
 
         public List<Models.Individual> GetDuplicationIndividuals(string lastname, string cellphone, string email)
         {
+            var list = new List<Models.Individual>();
             if(ValidateUniqueIndividual(lastname,cellphone,email))
             {
                 return _context.Individuals.Where(x => x.IndividualSurname == lastname && x.IndividualContactCell == cellphone && x.IndividualEmail == email).ToList();
             }
 
-            return null;
+            return list;
         }
 
     }

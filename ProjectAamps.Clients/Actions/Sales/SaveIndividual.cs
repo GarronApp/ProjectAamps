@@ -39,7 +39,7 @@ namespace AAMPS.Clients.Actions.Sales
         #region Virtual Methods
         public override void OnBindModel()
         {
-            
+            DuplicationIndividuals = new List<Individual>();
             IsNewIndividual = IndividualViewModel.IsNewIdentity;
 
             if (IsNewIndividual)
@@ -49,12 +49,12 @@ namespace AAMPS.Clients.Actions.Sales
         public override object OnExecute()
         {
             //DUPLICATION SECTION TO BE COMPLETED*
-            //var records = ValidateIndividual(IndividualViewModel.IndividualSurname, IndividualViewModel.IndividualContactCell, IndividualViewModel.IndividualEmail);
+            var records = ValidateIndividual(IndividualViewModel.IndividualSurname, IndividualViewModel.IndividualContactCell, IndividualViewModel.IndividualEmail);
 
-            //if (records.Count > 0)
-            //{
-            //    return DuplicationIndividuals = records.ToList();
-            //}
+            if (records.Count > 0)
+            {
+                return DuplicationIndividuals = records.ToList();
+            }
 
             if (IndividualViewModel.IsNewIndividual == 1)
             {

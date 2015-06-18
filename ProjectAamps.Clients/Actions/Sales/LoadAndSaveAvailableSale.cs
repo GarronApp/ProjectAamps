@@ -62,8 +62,15 @@ namespace AAMPS.Clients.Actions.Sales
             _availableSale.IndividualID = avaialableReservationVM.CurrentIndividualID;
             _availableSale.SaleAddedDt = DateTime.Now;
             _availableSale.SaleModifiedDt = DateTime.Now;
-            _availableSale.SaleAddedByUser = 1;
-            _availableSale.SaleModifiedByUser = 1;
+
+            var userIdentity = int.Parse(SessionHandler.GetSessionContext("CurrentUserId"));
+            if (userIdentity != null)
+            {
+                _availableSale.SaleModifiedByUser = userIdentity;
+                _availableSale.SalePrimAgentID = userIdentity;
+                _availableSale.SaleAddedByUser = userIdentity;
+            }
+            
             _availableSale.SaleDepositPaidBt = false;
             _availableSale.SalesBondRequiredBt = false;
             _availableSale.SalesReferalCommDueBt = false;

@@ -55,6 +55,11 @@ namespace Aamps.Domain.Models.Mapping
             this.Property(t => t.PurchaserSuburb)
                 .HasMaxLength(65);
 
+            this.Property(t => t.PurchaserCoAddedID);
+
+            this.Property(t => t.PurchaserUserAddedID);
+         
+
             // Table & Column Mappings
             this.ToTable("Purchaser", "Master");
             this.Property(t => t.PurchaserID).HasColumnName("PurchaserID");
@@ -72,6 +77,8 @@ namespace Aamps.Domain.Models.Mapping
             this.Property(t => t.PurchaserAddress3).HasColumnName("PurchaserAddress3");
             this.Property(t => t.PurchaserPostalCode).HasColumnName("PurchaserPostalCode");
             this.Property(t => t.PurchaserSuburb).HasColumnName("PurchaserSuburb");
+            this.Property(t => t.PurchaserCoAddedID).HasColumnName("PurchaserCoAddedID");
+            this.Property(t => t.PurchaserUserAddedID).HasColumnName("PurchaserUserAddedID");
 
             // Relationships
             this.HasRequired(t => t.EntityType)

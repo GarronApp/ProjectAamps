@@ -42,6 +42,10 @@ namespace Aamps.Domain.Models
         [DataMember]
         public string PurchaserSuburb { get; set; }
         [DataMember]
+        public Nullable<int> PurchaserCoAddedID { get; set; }
+        [DataMember]
+        public Nullable<int> PurchaserUserAddedID { get; set; }
+        [DataMember]
         public virtual EntityType EntityType { get; set; }
         [DataMember]
         public virtual ICollection<PurchaserIndividualLink> PurchaserIndividualLinks { get; set; }

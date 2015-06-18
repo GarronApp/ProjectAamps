@@ -34,6 +34,13 @@ namespace Aamps.Domain.Models
         [DataMember]
         public virtual PreferedContactMethod PreferedContactMethod { get; set; }
         [DataMember]
+        public Nullable<int> IndividualCoAddID { get; set; }
+        [DataMember]
+        public Nullable<int> IndividualUserAddedID { get; set; }
+
+
+
+        [DataMember]
         public virtual ICollection<PurchaserIndividualLink> PurchaserIndividualLinks { get; set; }
         //public virtual ICollection<Sale> Sales { get; set; }
     }
