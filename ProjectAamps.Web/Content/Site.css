@@ -14,7 +14,9 @@ header, footer, nav, section {
     display: block;
 }
 
-
+.width100{
+    width: 100%;
+}
 /* Styles for basic forms
 -----------------------------------------------------------*/
 fieldset {

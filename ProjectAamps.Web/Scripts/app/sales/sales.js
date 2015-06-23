@@ -18,6 +18,7 @@
     instance.ReservedFormValid = false;
     instance.PendingFormValid = false;
     instance.dublicateIndividualRecords = null;
+    instance.updateIndividualRecord = false;
 
     instance.resources = null;
 
@@ -383,23 +384,21 @@
             
         });
 
-        $("#clearIndividualForm").click(function () {
-            $("#duplicateIndividuals").find("tr:gt(0)").remove();
-            $('#DuplicateIndividualDetailsModal').modal('hide');
-            $('#individualFormReserved').trigger("reset");
-            $('#individualFormReserved')[0].reset();
-        });
+        $(".clearDuplicateIndividualForm").click(function () {
+            if (instance.updateIndividualRecord == true) {
 
-        $("#clearIndividualForm").click(function () {
-            $("#duplicateIndividuals").find("tr:gt(0)").remove();
-            $('#DuplicateIndividualDetailsModal').modal('hide');
-            $('#individualFormReserved').trigger("reset");
-            $('#individualFormReserved')[0].reset();
-        });
+                $("#txtCellNumberPending").val("");
+                $("#txtWorkNumberPending").val("");
+                $("#txtEmailPending").val("");
 
-        $("#selectedDuplicateIndividualRecord").on('click', function () {
-
-            alert('clicked');
+                instance.updateIndividualRecord == false;
+            }
+            else {
+                $("#duplicateIndividuals").find("tr:gt(0)").remove();
+                $('#DuplicateIndividualDetailsModal').modal('hide');
+                $('#individualFormReserved').trigger("reset");
+                $('#individualFormReserved')[0].reset();
+            }
         });
 
 
@@ -1172,17 +1171,30 @@
         $(".selectIndividual").on('click', function () {
             var id = $(this).attr('individualID');
             for (var i = 0; i < instance.dublicateIndividualRecords.length; i++) {
+
                 if(instance.dublicateIndividualRecords[i].IndividualID == id)
                 {
-                    $('#individualFormReserved').trigger("reset");
-                    $('#individualFormReserved')[0].reset();
-                    $("#txtIndividualName").val(instance.dublicateIndividualRecords[i].IndividualName);
-                    $("#txtIndividualSurname").val(instance.dublicateIndividualRecords[i].IndividualSurname);
-                    $("#txtIndividualContactCell").val(instance.dublicateIndividualRecords[i].IndividualContactCell);
-                    $("#txtIndividualEmail").val(instance.dublicateIndividualRecords[i].IndividualEmail);
+                    if (instance.updateIndividualRecord == true) {
+                        $("#txtCellNumberPending").val(instance.dublicateIndividualRecords[i].IndividualContactCell);
+                        $("#txtEmailPending").val(instance.dublicateIndividualRecords[i].IndividualEmail);
 
-                    $('#DuplicateIndividualDetailsModal').modal('hide');
-                    break;
+                        instance.updateIndividualRecord == false;
+                        $('#DuplicateIndividualDetailsModal').modal('hide');
+                        break;
+                    }
+                    else {
+
+                        $('#individualFormReserved').trigger("reset");
+                        $('#individualFormReserved')[0].reset();
+                        $("#txtIndividualName").val(instance.dublicateIndividualRecords[i].IndividualName);
+                        $("#txtIndividualSurname").val(instance.dublicateIndividualRecords[i].IndividualSurname);
+                        $("#txtIndividualContactCell").val(instance.dublicateIndividualRecords[i].IndividualContactCell);
+                        $("#txtIndividualEmail").val(instance.dublicateIndividualRecords[i].IndividualEmail);
+
+                        $('#DuplicateIndividualDetailsModal').modal('hide');
+                       
+                        break;
+                    }
                 }
             }
         });
@@ -1202,7 +1214,7 @@
                 console.log(data);
                 if (data.PermissionStatus != 'Unauthorized') {
                     if (instance.isArray(data)) {
-                        toastr.info("Duplicate records found");
+                        toastr.info("Duplicate record(s) found");
                         instance.LoadDuplicateIndividuals(data);
                     }
                     else {
@@ -1259,8 +1271,15 @@
             cache: false,
             success: function (data) {
                 if (data.PermissionStatus != 'Unauthorized') {
-                    instance.MapIndividualDetails(data);
-                    toastr.success("Individual updated successfully");
+                    if (instance.isArray(data)) {
+                        toastr.info("Duplicate record(s) found");
+                        instance.updateIndividualRecord = true;
+                        instance.LoadDuplicateIndividuals(data);
+                    }
+                    else {
+                        instance.MapIndividualDetails(data);
+                        toastr.success("Individual updated successfully");
+                    }
                 }
                 else {
                     instance.HandleUnauthorizedPermissions(data);

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using App.Extentions;
+using System.Web.Routing;
 
 namespace AAMPS.Clients.Security
 {
@@ -35,6 +36,7 @@ namespace AAMPS.Clients.Security
                     UnauthorizedResult.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
                     filterContext.Result = UnauthorizedResult;
                 }
+               
             }
 
         }

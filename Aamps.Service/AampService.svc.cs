@@ -70,6 +70,9 @@ namespace Aamps.Service
             return results;
         }
 
+
+
+
         public Unit GetUnitById(int id)
         {
             try
@@ -220,18 +223,29 @@ namespace Aamps.Service
             return results;
         }
 
-        public List<SelectRelevantUnitsQuery> GetRelevantUnits(int userId, int userTypeId, int DevelopmentId)
+        public List<Unit> GetDevelopmentUnits(SelectRelevantUnitsQuery SelectRelevantUnitsQuery)
         {
             _unitRepo = new UnitRepository(_dbContext);
-            var results = _unitRepo.GetRelevantUnits(userId, userTypeId, DevelopmentId);
+            var results = _unitRepo.GetRelevantUnits(new SelectRelevantUnitsQuery()
+            {
+                UserListID = SelectRelevantUnitsQuery.UserListID,
+                UserTypeID = SelectRelevantUnitsQuery.UserTypeID,
+                DevelopmentID = SelectRelevantUnitsQuery.DevelopmentID
+            });
             return results;
         }
 
 
-        public List<SelectRelevantDevelopmentQuery> GetRelevantDevelopments(int userId, int groupId, int companyId, int userTypeId)
+        public List<SelectRelevantDevelopmentQueryResult> GetAgentDevelopments(SelectRelevantDevelopmentQuery SelectRelevantDevelopmentQuery)
         {
             _devRepo = new DevelopmentRepository(_dbContext);
-            var results = _devRepo.GetRelevantDevelopments(userId, groupId,companyId,userTypeId);
+            var results = _devRepo.GetRelevantDevelopments(new SelectRelevantDevelopmentQuery()
+            {
+                 UserListID = SelectRelevantDevelopmentQuery.UserListID,
+                 UserGroupID = SelectRelevantDevelopmentQuery.UserGroupID,
+                 UserTypeID = SelectRelevantDevelopmentQuery.UserTypeID,
+                 CompanyID = SelectRelevantDevelopmentQuery.CompanyID
+            });
             return results;
         }
 

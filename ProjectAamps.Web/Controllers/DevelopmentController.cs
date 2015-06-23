@@ -8,35 +8,46 @@ using App.Common.Security;
 using AAMPS.Clients.ViewModels.Development;
 using App.Common.Exceptions;
 using AAMPS.Clients.Security;
+using App.Extentions;
+using AAMPS.Web.Providers;
 
 
 namespace AAMPS.Web.Controllers
 {
-    public class DevelopmentController : Controller
+    public class DevelopmentController : BaseController
     {
-
-        AampServiceClient aampService = new AampServiceClient();
-
         [AampsAuthorize]
         public ActionResult HomePage()
         {
             try
             {
-                var developments = aampService.GetAllDevelopments();
 
-                return View(developments);
+                if (USER.IsNotNull())
+                {
+                    var developments = _serviceProvider.GetAgentDevelopments(new SelectRelevantDevelopmentQuery()
+                    {
+                        UserListID = USER.UserListID,
+                        UserGroupID = USER.UserGroupID,
+                        UserTypeID = USER.UserTypeID,
+                        CompanyID = USER.CompanyID
+                    });
+
+                    return View(developments);
+                }
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+
+                ExceptionHandler.HandleException(ex);
             }
+
+            return View();
         }
 
         public JsonResult GetTotals()
         {
-            int id = int.Parse(SessionHandler.GetSessionContext("DevelopmentID"));
-            var units = aampService.GetUnitsByDevelopment(id);
+            var units = _serviceProvider.GetUnitsByDevelopment(DevelopmentID);
             
             var items = new List<SummaryViewModel>();
             var model = new SummaryViewModel();
@@ -75,43 +86,40 @@ namespace AAMPS.Web.Controllers
             try
             {
                 Session.Remove("CurrentUnit");
-
-                 var development = HttpContext.Request.QueryString["DevelopmentID"];
-
-                 if (!String.IsNullOrEmpty(development))
-                 {
-                     SessionHandler.SessionContext("DevelopmentID", development);
-                 }
-
-                 int id = int.Parse(SessionHandler.GetSessionContext("DevelopmentID"));
-
-                 var developmentLogo = aampService.GetDevelopmentById(id).DevelopmentUrlImage;
-                 SessionHandler.SessionContext("DevelopmentImage", developmentLogo);
-
-                 var units = aampService.GetUnitsByDevelopment(id);
-
-                var totalUnits = units.Count();
-                var totalUnitsPrice = units.Sum(x => x.UnitPriceIncluding);
-                var totalUnitsAvailable = units.Count(x => x.UnitStatusID == 1);
-                var totalUnitsAvailablePrice = units.Where(x => x.UnitStatusID == 1).Sum(x => x.UnitPriceIncluding);
-                var totalUnitsReserved = units.Count(x => x.UnitStatusID == 2);
-                var totalUnitsReservedPrice = units.Where(x => x.UnitStatusID == 2).Sum(x => x.UnitPriceIncluding);
-                var totalUnitsPending = units.Count(x => x.UnitStatusID == 3);
-                var totalUnitsPendingPrice = units.Where(x => x.UnitStatusID == 3).Sum(x => x.UnitPriceIncluding);
-                var totalUnitsSold = units.Count(x => x.UnitStatusID == 4);
-                var totalUnitsSoldPrice = units.Where(x => x.UnitStatusID == 4).Sum(x => x.UnitPriceIncluding);
-
-                Session.Add("TotalUnits", totalUnits);
-                Session.Add("TotalUnitsPrice", totalUnitsPrice * totalUnits);
-                Session.Add("TotalUnitsAvailable", totalUnitsAvailable);
-                Session.Add("TotalUnitsAvailablePrice", totalUnitsAvailablePrice * totalUnitsAvailable);
-                Session.Add("TotalUnitsSold", totalUnitsSold);
-                Session.Add("totalUnitsSoldPrice", totalUnitsSoldPrice * totalUnitsSold);
-                Session.Add("TotalUnitsPending", totalUnitsPending);
-                Session.Add("TotalUnitsPendingPrice", totalUnitsPendingPrice * totalUnitsPending);
-                Session.Add("TotalUnitsReserved", totalUnitsReserved);
-                Session.Add("totalUnitsReservedPrice", totalUnitsReservedPrice * totalUnitsReserved);
                
+                 var units = _serviceProvider.GetDevelopmentUnits(new SelectRelevantUnitsQuery()
+                 {
+                     DevelopmentID = DevelopmentID,
+                     UserListID = USER.UserListID,
+                     UserTypeID = USER.UserTypeID
+                 });
+
+                 SessionHandler.SessionContext("DevelopmentImage", DevelopmentImage);
+
+                 if (units.IsNotNull() && units.HasItems())
+                 {
+                     var totalUnits = units.Count();
+                     var totalUnitsPrice = units.Sum(x => x.UnitPriceIncluding);
+                     var totalUnitsAvailable = units.Count(x => x.UnitStatusID == 1);
+                     var totalUnitsAvailablePrice = units.Where(x => x.UnitStatusID == 1).Sum(x => x.UnitPriceIncluding);
+                     var totalUnitsReserved = units.Count(x => x.UnitStatusID == 2);
+                     var totalUnitsReservedPrice = units.Where(x => x.UnitStatusID == 2).Sum(x => x.UnitPriceIncluding);
+                     var totalUnitsPending = units.Count(x => x.UnitStatusID == 3);
+                     var totalUnitsPendingPrice = units.Where(x => x.UnitStatusID == 3).Sum(x => x.UnitPriceIncluding);
+                     var totalUnitsSold = units.Count(x => x.UnitStatusID == 4);
+                     var totalUnitsSoldPrice = units.Where(x => x.UnitStatusID == 4).Sum(x => x.UnitPriceIncluding);
+
+                     Session.Add("TotalUnits", totalUnits);
+                     Session.Add("TotalUnitsPrice", totalUnitsPrice * totalUnits);
+                     Session.Add("TotalUnitsAvailable", totalUnitsAvailable);
+                     Session.Add("TotalUnitsAvailablePrice", totalUnitsAvailablePrice * totalUnitsAvailable);
+                     Session.Add("TotalUnitsSold", totalUnitsSold);
+                     Session.Add("totalUnitsSoldPrice", totalUnitsSoldPrice * totalUnitsSold);
+                     Session.Add("TotalUnitsPending", totalUnitsPending);
+                     Session.Add("TotalUnitsPendingPrice", totalUnitsPendingPrice * totalUnitsPending);
+                     Session.Add("TotalUnitsReserved", totalUnitsReserved);
+                     Session.Add("totalUnitsReservedPrice", totalUnitsReservedPrice * totalUnitsReserved);
+                 }
 
                 List<DevelopmentViewModel> list = new List<DevelopmentViewModel>();
 
@@ -128,12 +136,10 @@ namespace AAMPS.Web.Controllers
                         UnitPrice = item.UnitPrice,
                         UnitPriceIncluding = item.UnitPriceIncluding,
                         UnitActiveDate = item.UnitActiveDate,
-                        UnitStatusID = aampService.GetUnitStatusById(item.UnitStatusID).UnitStatusDescription,
-                        DevelopmentDescription = aampService.GetDevelopmentById(item.DevelopmentID).DevelopmentDescription,
+                        UnitStatusID = _serviceProvider.GetUnitStatusById(item.UnitStatusID).UnitStatusDescription,
+                        DevelopmentDescription = _serviceProvider.GetDevelopmentById(item.DevelopmentID).DevelopmentDescription,
 
                     };
-
-                  
 
                     list.Add(viewModel);
                 }
@@ -145,7 +151,7 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-              
+                ExceptionHandler.HandleException(ex);
             }
 
             return View();
@@ -154,9 +160,11 @@ namespace AAMPS.Web.Controllers
         [AuthPermission(Permissions.View)]
         public JsonResult GetCurrentUnitDetails(int id)
         {
-            var development = aampService.GetDevelopmentById(id);
+            var development = _serviceProvider.GetDevelopmentById(id);
 
-            var _currentUnit = aampService.GetUnitByDevelopmentId(development.DevelopmentID).FirstOrDefault();
+            Invariant.IsNotNull(development, () => "development does not exist");
+
+            var _currentUnit = _serviceProvider.GetUnitByDevelopmentId(development.DevelopmentID).FirstOrDefault();
 
             var viewModel = new DevelopmentViewModel()
             {
@@ -168,8 +176,8 @@ namespace AAMPS.Web.Controllers
                 UnitPhase = _currentUnit.UnitPhase,
                 UnitPriceIncluding = _currentUnit.UnitPriceIncluding,
                 UnitActiveDate = _currentUnit.UnitActiveDate,
-                UnitStatusID = aampService.GetUnitStatusById(_currentUnit.UnitStatusID).UnitStatusDescription,
-                DevelopmentDescription = aampService.GetDevelopmentById(_currentUnit.DevelopmentID).DevelopmentDescription,
+                UnitStatusID = _serviceProvider.GetUnitStatusById(_currentUnit.UnitStatusID).UnitStatusDescription,
+                DevelopmentDescription = _serviceProvider.GetDevelopmentById(_currentUnit.DevelopmentID).DevelopmentDescription,
                
             };
            
@@ -180,40 +188,42 @@ namespace AAMPS.Web.Controllers
         [HttpPost]
         public void UpdateUnit(DevelopmentViewModel viewModel)
         {
-            if (viewModel != null)
+            try
             {
-                var currentUnit = aampService.GetUnitById(viewModel.UnitId);
-                currentUnit.UnitNumber = viewModel.UnitNumber;
-                currentUnit.UnitSize = viewModel.UnitSize;
-                currentUnit.UnitFloor = viewModel.UnitFloor;
-                currentUnit.UnitBlock = viewModel.UnitBlock;
-                currentUnit.UnitPhase = viewModel.UnitPhase;
-                currentUnit.UnitPriceIncluding = viewModel.UnitPriceIncluding;
-                currentUnit.UnitActiveDate = viewModel.UnitActiveDate;
+                if (viewModel.IsNotNull())
+                {
+                    var currentUnit = _serviceProvider.GetUnitById(viewModel.UnitId);
+                    currentUnit.UnitNumber = viewModel.UnitNumber;
+                    currentUnit.UnitSize = viewModel.UnitSize;
+                    currentUnit.UnitFloor = viewModel.UnitFloor;
+                    currentUnit.UnitBlock = viewModel.UnitBlock;
+                    currentUnit.UnitPhase = viewModel.UnitPhase;
+                    currentUnit.UnitPriceIncluding = viewModel.UnitPriceIncluding;
+                    currentUnit.UnitActiveDate = viewModel.UnitActiveDate;
 
-                aampService.UpdateUnit(currentUnit);
-               
+                    _serviceProvider.UpdateUnit(currentUnit);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.HandleException(ex);
             }
                
         }
 
         public JsonResult GetDevelopmentSummary()
         {
-            var development = aampService.GetDevelopmentById(1);
+            var development = _serviceProvider.GetDevelopmentById(1);
 
-            var units = aampService.GetUnitByDevelopmentId(development.DevelopmentID).Count();
+            var units = _serviceProvider.GetUnitByDevelopmentId(development.DevelopmentID).Count();
 
             var viewModel = new DevelopmentUnitViewModel()
             {
                 DevelopmentDescription = development.DevelopmentDescription,
-                EstateName = aampService.GetEstateByDevelopment(development.EstateID).EstateDescription,
+                EstateName = _serviceProvider.GetEstateByDevelopment(development.EstateID).EstateDescription,
                 TotalUnits = units
 
             };
-
-           // Session.Add("DevelopmentName", viewModel.DevelopmentDescription);
-
-
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
 

@@ -14,6 +14,14 @@ namespace Aamps.Domain.Queries.Reports.Bonds
         [DataMember]
         public string UnitNo { get; set; }
         [DataMember]
+        public string Phase { get; set; }
+        [DataMember]
+        public double? Price { get; set; }
+        [DataMember]
+        public string Type { get; set; }
+        [DataMember]
+        public string Status { get; set; }
+        [DataMember]
         public string Agency { get; set; }
         [DataMember]
         public string Agent { get; set; }

@@ -38,6 +38,9 @@ namespace Aamps.Service
         List<Unit> GetAllUnAvailableUnits(int id);
 
         [OperationContract]
+        List<Unit> GetDevelopmentUnits(SelectRelevantUnitsQuery query);
+
+        [OperationContract]
         Unit GetUnitByUnitBlock(string block);
 
         [OperationContract]
@@ -100,14 +103,6 @@ namespace Aamps.Service
         List<BondsReportQuery> GetBondsReport(int id);
 
         [OperationContract]
-        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped)]
-        List<SelectRelevantUnitsQuery> GetRelevantUnits(int userId, int userTypeId, int DevelopmentId);
-
-        [OperationContract]
-        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped)]
-        List<SelectRelevantDevelopmentQuery> GetRelevantDevelopments(int userId, int groupId, int companyId, int userTypeId);
-
-        [OperationContract]
         Sale GetSaleByUnitId(int id);
 
         [OperationContract]
@@ -123,6 +118,9 @@ namespace Aamps.Service
 
         [OperationContract]
         List<Development> GetAllDevelopments();
+
+        [OperationContract]
+        List<SelectRelevantDevelopmentQueryResult> GetAgentDevelopments(SelectRelevantDevelopmentQuery query);
 
         [OperationContract]
         Development GetDevelopmentById(int id);

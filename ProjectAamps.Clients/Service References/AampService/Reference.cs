@@ -1050,6 +1050,83 @@ namespace AAMPS.Clients.AampService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SelectRelevantUnitsQuery", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Units")]
+    [System.SerializableAttribute()]
+    public partial class SelectRelevantUnitsQuery : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DevelopmentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserListIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserTypeIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DevelopmentID {
+            get {
+                return this.DevelopmentIDField;
+            }
+            set {
+                if ((this.DevelopmentIDField.Equals(value) != true)) {
+                    this.DevelopmentIDField = value;
+                    this.RaisePropertyChanged("DevelopmentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserListID {
+            get {
+                return this.UserListIDField;
+            }
+            set {
+                if ((this.UserListIDField.Equals(value) != true)) {
+                    this.UserListIDField = value;
+                    this.RaisePropertyChanged("UserListID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserTypeID {
+            get {
+                return this.UserTypeIDField;
+            }
+            set {
+                if ((this.UserTypeIDField.Equals(value) != true)) {
+                    this.UserTypeIDField = value;
+                    this.RaisePropertyChanged("UserTypeID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OriginatorTr", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
     [System.SerializableAttribute()]
     public partial class OriginatorTr : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -6908,10 +6985,22 @@ namespace AAMPS.Clients.AampService {
         private System.Nullable<System.DateTime> InstToMODtField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhaseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PurchaserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> SalesBondClientAcceptDtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UnitNoField;
@@ -7083,6 +7172,32 @@ namespace AAMPS.Clients.AampService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Phase {
+            get {
+                return this.PhaseField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhaseField, value) != true)) {
+                    this.PhaseField = value;
+                    this.RaisePropertyChanged("Phase");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Purchaser {
             get {
                 return this.PurchaserField;
@@ -7104,6 +7219,32 @@ namespace AAMPS.Clients.AampService {
                 if ((this.SalesBondClientAcceptDtField.Equals(value) != true)) {
                     this.SalesBondClientAcceptDtField = value;
                     this.RaisePropertyChanged("SalesBondClientAcceptDt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
                 }
             }
         }
@@ -7133,69 +7274,24 @@ namespace AAMPS.Clients.AampService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SelectRelevantUnitsQuery", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Units")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SelectRelevantDevelopmentQuery", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments")]
     [System.SerializableAttribute()]
-    public partial class SelectRelevantUnitsQuery : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class SelectRelevantDevelopmentQuery : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DevelopmentIDField;
+        private int CompanyIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> UnitActiveDateField;
+        private int UserGroupIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UnitAddedByUserField;
+        private int UserListIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> UnitAgentIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UnitBlockField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime UnitDateAddedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime UnitDateModifiedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double UnitErfSizeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UnitFloorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UnitIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UnitModifiedByUserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UnitNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UnitPhaseField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double UnitPriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double UnitPriceIncludingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double UnitPriceVatField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double UnitSizeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UnitStatusIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UnitTypeIDField;
+        private int UserTypeIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -7208,248 +7304,53 @@ namespace AAMPS.Clients.AampService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int DevelopmentID {
+        public int CompanyID {
             get {
-                return this.DevelopmentIDField;
+                return this.CompanyIDField;
             }
             set {
-                if ((this.DevelopmentIDField.Equals(value) != true)) {
-                    this.DevelopmentIDField = value;
-                    this.RaisePropertyChanged("DevelopmentID");
+                if ((this.CompanyIDField.Equals(value) != true)) {
+                    this.CompanyIDField = value;
+                    this.RaisePropertyChanged("CompanyID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> UnitActiveDate {
+        public int UserGroupID {
             get {
-                return this.UnitActiveDateField;
+                return this.UserGroupIDField;
             }
             set {
-                if ((this.UnitActiveDateField.Equals(value) != true)) {
-                    this.UnitActiveDateField = value;
-                    this.RaisePropertyChanged("UnitActiveDate");
+                if ((this.UserGroupIDField.Equals(value) != true)) {
+                    this.UserGroupIDField = value;
+                    this.RaisePropertyChanged("UserGroupID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitAddedByUser {
+        public int UserListID {
             get {
-                return this.UnitAddedByUserField;
+                return this.UserListIDField;
             }
             set {
-                if ((this.UnitAddedByUserField.Equals(value) != true)) {
-                    this.UnitAddedByUserField = value;
-                    this.RaisePropertyChanged("UnitAddedByUser");
+                if ((this.UserListIDField.Equals(value) != true)) {
+                    this.UserListIDField = value;
+                    this.RaisePropertyChanged("UserListID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> UnitAgentID {
+        public int UserTypeID {
             get {
-                return this.UnitAgentIDField;
+                return this.UserTypeIDField;
             }
             set {
-                if ((this.UnitAgentIDField.Equals(value) != true)) {
-                    this.UnitAgentIDField = value;
-                    this.RaisePropertyChanged("UnitAgentID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UnitBlock {
-            get {
-                return this.UnitBlockField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UnitBlockField, value) != true)) {
-                    this.UnitBlockField = value;
-                    this.RaisePropertyChanged("UnitBlock");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime UnitDateAdded {
-            get {
-                return this.UnitDateAddedField;
-            }
-            set {
-                if ((this.UnitDateAddedField.Equals(value) != true)) {
-                    this.UnitDateAddedField = value;
-                    this.RaisePropertyChanged("UnitDateAdded");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime UnitDateModified {
-            get {
-                return this.UnitDateModifiedField;
-            }
-            set {
-                if ((this.UnitDateModifiedField.Equals(value) != true)) {
-                    this.UnitDateModifiedField = value;
-                    this.RaisePropertyChanged("UnitDateModified");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double UnitErfSize {
-            get {
-                return this.UnitErfSizeField;
-            }
-            set {
-                if ((this.UnitErfSizeField.Equals(value) != true)) {
-                    this.UnitErfSizeField = value;
-                    this.RaisePropertyChanged("UnitErfSize");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UnitFloor {
-            get {
-                return this.UnitFloorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UnitFloorField, value) != true)) {
-                    this.UnitFloorField = value;
-                    this.RaisePropertyChanged("UnitFloor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitID {
-            get {
-                return this.UnitIDField;
-            }
-            set {
-                if ((this.UnitIDField.Equals(value) != true)) {
-                    this.UnitIDField = value;
-                    this.RaisePropertyChanged("UnitID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitModifiedByUser {
-            get {
-                return this.UnitModifiedByUserField;
-            }
-            set {
-                if ((this.UnitModifiedByUserField.Equals(value) != true)) {
-                    this.UnitModifiedByUserField = value;
-                    this.RaisePropertyChanged("UnitModifiedByUser");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UnitNumber {
-            get {
-                return this.UnitNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UnitNumberField, value) != true)) {
-                    this.UnitNumberField = value;
-                    this.RaisePropertyChanged("UnitNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UnitPhase {
-            get {
-                return this.UnitPhaseField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UnitPhaseField, value) != true)) {
-                    this.UnitPhaseField = value;
-                    this.RaisePropertyChanged("UnitPhase");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double UnitPrice {
-            get {
-                return this.UnitPriceField;
-            }
-            set {
-                if ((this.UnitPriceField.Equals(value) != true)) {
-                    this.UnitPriceField = value;
-                    this.RaisePropertyChanged("UnitPrice");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double UnitPriceIncluding {
-            get {
-                return this.UnitPriceIncludingField;
-            }
-            set {
-                if ((this.UnitPriceIncludingField.Equals(value) != true)) {
-                    this.UnitPriceIncludingField = value;
-                    this.RaisePropertyChanged("UnitPriceIncluding");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double UnitPriceVat {
-            get {
-                return this.UnitPriceVatField;
-            }
-            set {
-                if ((this.UnitPriceVatField.Equals(value) != true)) {
-                    this.UnitPriceVatField = value;
-                    this.RaisePropertyChanged("UnitPriceVat");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double UnitSize {
-            get {
-                return this.UnitSizeField;
-            }
-            set {
-                if ((this.UnitSizeField.Equals(value) != true)) {
-                    this.UnitSizeField = value;
-                    this.RaisePropertyChanged("UnitSize");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitStatusID {
-            get {
-                return this.UnitStatusIDField;
-            }
-            set {
-                if ((this.UnitStatusIDField.Equals(value) != true)) {
-                    this.UnitStatusIDField = value;
-                    this.RaisePropertyChanged("UnitStatusID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitTypeID {
-            get {
-                return this.UnitTypeIDField;
-            }
-            set {
-                if ((this.UnitTypeIDField.Equals(value) != true)) {
-                    this.UnitTypeIDField = value;
-                    this.RaisePropertyChanged("UnitTypeID");
+                if ((this.UserTypeIDField.Equals(value) != true)) {
+                    this.UserTypeIDField = value;
+                    this.RaisePropertyChanged("UserTypeID");
                 }
             }
         }
@@ -7466,9 +7367,9 @@ namespace AAMPS.Clients.AampService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SelectRelevantDevelopmentQuery", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SelectRelevantDevelopmentQueryResult", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments")]
     [System.SerializableAttribute()]
-    public partial class SelectRelevantDevelopmentQuery : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class SelectRelevantDevelopmentQueryResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -7660,6 +7561,12 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllUnAvailableUnits", ReplyAction="http://tempuri.org/IAampService/GetAllUnAvailableUnitsResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Unit[]> GetAllUnAvailableUnitsAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDevelopmentUnits", ReplyAction="http://tempuri.org/IAampService/GetDevelopmentUnitsResponse")]
+        AAMPS.Clients.AampService.Unit[] GetDevelopmentUnits(AAMPS.Clients.AampService.SelectRelevantUnitsQuery query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDevelopmentUnits", ReplyAction="http://tempuri.org/IAampService/GetDevelopmentUnitsResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Unit[]> GetDevelopmentUnitsAsync(AAMPS.Clients.AampService.SelectRelevantUnitsQuery query);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitByUnitBlock", ReplyAction="http://tempuri.org/IAampService/GetUnitByUnitBlockResponse")]
         AAMPS.Clients.AampService.Unit GetUnitByUnitBlock(string block);
         
@@ -7780,18 +7687,6 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetBondsReport", ReplyAction="http://tempuri.org/IAampService/GetBondsReportResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.BondsReportQuery[]> GetBondsReportAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetRelevantUnits", ReplyAction="http://tempuri.org/IAampService/GetRelevantUnitsResponse")]
-        AAMPS.Clients.AampService.SelectRelevantUnitsQuery[] GetRelevantUnits(int userId, int userTypeId, int DevelopmentId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetRelevantUnits", ReplyAction="http://tempuri.org/IAampService/GetRelevantUnitsResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SelectRelevantUnitsQuery[]> GetRelevantUnitsAsync(int userId, int userTypeId, int DevelopmentId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetRelevantDevelopments", ReplyAction="http://tempuri.org/IAampService/GetRelevantDevelopmentsResponse")]
-        AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery[] GetRelevantDevelopments(int userId, int groupId, int companyId, int userTypeId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetRelevantDevelopments", ReplyAction="http://tempuri.org/IAampService/GetRelevantDevelopmentsResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery[]> GetRelevantDevelopmentsAsync(int userId, int groupId, int companyId, int userTypeId);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetSaleByUnitId", ReplyAction="http://tempuri.org/IAampService/GetSaleByUnitIdResponse")]
         AAMPS.Clients.AampService.Sale GetSaleByUnitId(int id);
         
@@ -7821,6 +7716,12 @@ namespace AAMPS.Clients.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllDevelopments", ReplyAction="http://tempuri.org/IAampService/GetAllDevelopmentsResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Development[]> GetAllDevelopmentsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAgentDevelopments", ReplyAction="http://tempuri.org/IAampService/GetAgentDevelopmentsResponse")]
+        AAMPS.Clients.AampService.SelectRelevantDevelopmentQueryResult[] GetAgentDevelopments(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAgentDevelopments", ReplyAction="http://tempuri.org/IAampService/GetAgentDevelopmentsResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SelectRelevantDevelopmentQueryResult[]> GetAgentDevelopmentsAsync(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDevelopmentById", ReplyAction="http://tempuri.org/IAampService/GetDevelopmentByIdResponse")]
         AAMPS.Clients.AampService.Development GetDevelopmentById(int id);
@@ -8016,6 +7917,14 @@ namespace AAMPS.Clients.AampService {
             return base.Channel.GetAllUnAvailableUnitsAsync(id);
         }
         
+        public AAMPS.Clients.AampService.Unit[] GetDevelopmentUnits(AAMPS.Clients.AampService.SelectRelevantUnitsQuery query) {
+            return base.Channel.GetDevelopmentUnits(query);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Unit[]> GetDevelopmentUnitsAsync(AAMPS.Clients.AampService.SelectRelevantUnitsQuery query) {
+            return base.Channel.GetDevelopmentUnitsAsync(query);
+        }
+        
         public AAMPS.Clients.AampService.Unit GetUnitByUnitBlock(string block) {
             return base.Channel.GetUnitByUnitBlock(block);
         }
@@ -8176,22 +8085,6 @@ namespace AAMPS.Clients.AampService {
             return base.Channel.GetBondsReportAsync(id);
         }
         
-        public AAMPS.Clients.AampService.SelectRelevantUnitsQuery[] GetRelevantUnits(int userId, int userTypeId, int DevelopmentId) {
-            return base.Channel.GetRelevantUnits(userId, userTypeId, DevelopmentId);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SelectRelevantUnitsQuery[]> GetRelevantUnitsAsync(int userId, int userTypeId, int DevelopmentId) {
-            return base.Channel.GetRelevantUnitsAsync(userId, userTypeId, DevelopmentId);
-        }
-        
-        public AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery[] GetRelevantDevelopments(int userId, int groupId, int companyId, int userTypeId) {
-            return base.Channel.GetRelevantDevelopments(userId, groupId, companyId, userTypeId);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery[]> GetRelevantDevelopmentsAsync(int userId, int groupId, int companyId, int userTypeId) {
-            return base.Channel.GetRelevantDevelopmentsAsync(userId, groupId, companyId, userTypeId);
-        }
-        
         public AAMPS.Clients.AampService.Sale GetSaleByUnitId(int id) {
             return base.Channel.GetSaleByUnitId(id);
         }
@@ -8230,6 +8123,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Development[]> GetAllDevelopmentsAsync() {
             return base.Channel.GetAllDevelopmentsAsync();
+        }
+        
+        public AAMPS.Clients.AampService.SelectRelevantDevelopmentQueryResult[] GetAgentDevelopments(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query) {
+            return base.Channel.GetAgentDevelopments(query);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SelectRelevantDevelopmentQueryResult[]> GetAgentDevelopmentsAsync(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query) {
+            return base.Channel.GetAgentDevelopmentsAsync(query);
         }
         
         public AAMPS.Clients.AampService.Development GetDevelopmentById(int id) {

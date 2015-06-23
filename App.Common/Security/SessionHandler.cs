@@ -30,5 +30,14 @@ namespace App.Common.Security
              }
              return null;
         }
+
+        public static Object GetSessionObject(string session)
+        {
+            if (HttpContext.Current.Session["" + session + ""] != null)
+            {
+                return (Object)HttpContext.Current.Session["" + session + ""] as Object;
+            }
+            return null;
+        }
     }
 }

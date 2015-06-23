@@ -1,8 +1,75 @@
-﻿
+﻿@model IEnumerable<AAMPS.Clients.AampService.BondsReportQuery>
 @{
     ViewBag.Title = "BondsReport";
     Layout = "~/Views/Report/_ReportLayout.cshtml";
 }
 
-<h4>BondsReport</h4>
-
+<h4>Bonds Report for </h4>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-responsive" id="tableBondsReport">
+                <thead style="background-color:#000000; color:#ffffff">
+                    <tr>
+                        <td>Development</td>
+                        <td>Unit No</td>
+                        <td>Phase</td>
+                        <td>Price</td>
+                        <td>Type</td>
+                        <td>Status</td>
+                        <td>Agency</td>
+                        <td>Agent</td>
+                        <td>Purchaser</td>
+                        <td>Deposit</td>
+                        <td>InstToMODt</td>
+                        <td>Bond Due Date</td>
+                        <td>Bond Req</td>
+                        <td>Bond Amount Grant</td>
+                        <td>Bond Short Fall</td>
+                        <td>Sales Bond Client Accepted</td>
+                        <td>Days left</td>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@item.Development</td>
+                            <td>@item.UnitNo</td>
+                            <td>@item.Phase</td>
+                            <td><label id="lblPrice">@item.Price</label></td>
+                            <td>@item.Type</td>
+                            <td>@item.Status</td>
+                            <td>@item.Agency</td>
+                            <td>@item.Agent</td>
+                            <td>@item.Purchaser</td>
+                            <td><label id="lblDeposit">@item.Deposit</label></td>
+                            <td><label id="lblInstToMODt">@item.InstToMODt</label></td>
+                            <td><label id="lblBondDueDate">@item.BondDueDate</label></td>
+                            <td><label id="lblBondReq">@item.BondReq</label></td>
+                            <td><label id="lblBondAmountGrant">@item.BondAmountGrant</label></td>
+                            <td><label id="lblBondShortFall">@item.BondShortFall</label></td>
+                            <td><label id="lblSalesBondClientAcceptDt">@item.SalesBondClientAcceptDt</label></td>
+                            <td>@item.DaysLeft</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+            </div>
+        </div>
+    </div>
+@section Scripts {
+            <script>
+                $(function () {
+                    var resources = new Resources();
+                    resources.formatTableColumnRandValue("tableBondsReport", 3, "lblPrice");
+                    resources.formatTableColumnRandValue("tableBondsReport", 9, "lblDeposit");
+                    resources.formatTableColumnDateValue("tableBondsReport", 10, "lblInstToMODt");
+                    resources.formatTableColumnDateValue("tableBondsReport", 11, "lblBondDueDate");
+                    resources.formatTableColumnRandValue("tableBondsReport", 12, "lblBondReq");
+                    resources.formatTableColumnRandValue("tableBondsReport", 13, "lblBondAmountGrant");
+                    resources.formatTableColumnRandValue("tableBondsReport", 14, "lblBondShortFall");
+                    resources.formatTableColumnDateValue("tableBondsReport", 15, "lblSalesBondClientAcceptDt");
+                });
+            </script>
+    }

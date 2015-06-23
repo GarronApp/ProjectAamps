@@ -5,9 +5,9 @@
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Sales" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Units" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Units" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Sales" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/" />
@@ -42,6 +42,12 @@
   </wsdl:message>
   <wsdl:message name="IAampService_GetAllUnAvailableUnits_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllUnAvailableUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentUnits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentUnits" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentUnits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentUnitsResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetUnitByUnitBlock_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUnitByUnitBlock" />
@@ -163,18 +169,6 @@
   <wsdl:message name="IAampService_GetBondsReport_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetBondsReportResponse" />
   </wsdl:message>
-  <wsdl:message name="IAampService_GetRelevantUnits_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRelevantUnits" />
-  </wsdl:message>
-  <wsdl:message name="IAampService_GetRelevantUnits_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetRelevantUnitsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAampService_GetRelevantDevelopments_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetRelevantDevelopments" />
-  </wsdl:message>
-  <wsdl:message name="IAampService_GetRelevantDevelopments_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetRelevantDevelopmentsResponse" />
-  </wsdl:message>
   <wsdl:message name="IAampService_GetSaleByUnitId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSaleByUnitId" />
   </wsdl:message>
@@ -204,6 +198,12 @@
   </wsdl:message>
   <wsdl:message name="IAampService_GetAllDevelopments_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllDevelopmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAgentDevelopments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentDevelopments" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAgentDevelopments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentDevelopmentsResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetDevelopmentById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDevelopmentById" />
@@ -352,6 +352,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllUnAvailableUnits" message="tns:IAampService_GetAllUnAvailableUnits_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllUnAvailableUnitsResponse" message="tns:IAampService_GetAllUnAvailableUnits_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentUnits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentUnits" message="tns:IAampService_GetDevelopmentUnits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentUnitsResponse" message="tns:IAampService_GetDevelopmentUnits_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUnitByUnitBlock">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitByUnitBlock" message="tns:IAampService_GetUnitByUnitBlock_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitByUnitBlockResponse" message="tns:IAampService_GetUnitByUnitBlock_OutputMessage" />
@@ -432,14 +436,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetBondsReport" message="tns:IAampService_GetBondsReport_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetBondsReportResponse" message="tns:IAampService_GetBondsReport_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetRelevantUnits">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetRelevantUnits" message="tns:IAampService_GetRelevantUnits_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetRelevantUnitsResponse" message="tns:IAampService_GetRelevantUnits_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetRelevantDevelopments">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetRelevantDevelopments" message="tns:IAampService_GetRelevantDevelopments_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetRelevantDevelopmentsResponse" message="tns:IAampService_GetRelevantDevelopments_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetSaleByUnitId">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetSaleByUnitId" message="tns:IAampService_GetSaleByUnitId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetSaleByUnitIdResponse" message="tns:IAampService_GetSaleByUnitId_OutputMessage" />
@@ -459,6 +455,10 @@
     <wsdl:operation name="GetAllDevelopments">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllDevelopments" message="tns:IAampService_GetAllDevelopments_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllDevelopmentsResponse" message="tns:IAampService_GetAllDevelopments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentDevelopments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAgentDevelopments" message="tns:IAampService_GetAgentDevelopments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAgentDevelopmentsResponse" message="tns:IAampService_GetAgentDevelopments_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDevelopmentById">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentById" message="tns:IAampService_GetDevelopmentById_InputMessage" />
@@ -585,6 +585,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllUnAvailableUnits">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetAllUnAvailableUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentUnits">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetDevelopmentUnits" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -772,24 +781,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetRelevantUnits">
-      <soap:operation soapAction="http://tempuri.org/IAampService/GetRelevantUnits" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetRelevantDevelopments">
-      <soap:operation soapAction="http://tempuri.org/IAampService/GetRelevantDevelopments" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetSaleByUnitId">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetSaleByUnitId" style="document" />
       <wsdl:input>
@@ -828,6 +819,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllDevelopments">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetAllDevelopments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentDevelopments">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetAgentDevelopments" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

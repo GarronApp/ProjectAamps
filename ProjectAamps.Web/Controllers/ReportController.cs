@@ -16,6 +16,7 @@ using iTextSharp.text.html.simpleparser;
 using App.Common.Reporting;
 using AAMPS.Clients.ViewModels.Development;
 using App.Common.Security;
+using AAMPS.Clients.Security;
 
 namespace AAMPS.Web.Controllers
 {
@@ -28,6 +29,8 @@ namespace AAMPS.Web.Controllers
             return View();
         }
 
+        [AampsAuthorize]
+        [AuthPermission(Permissions.View)]
         public ActionResult SalesReport()
         {
             var developmentId = int.Parse(SessionHandler.GetSessionContext("DevelopmentID").ToString());
@@ -35,6 +38,8 @@ namespace AAMPS.Web.Controllers
             return View(result);
         }
 
+        [AampsAuthorize]
+        [AuthPermission(Permissions.View)]
         public ActionResult BondsReport()
         {
             var developmentId = int.Parse(SessionHandler.GetSessionContext("DevelopmentID").ToString());

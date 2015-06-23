@@ -16,16 +16,15 @@ using AAMPS.Clients.Actions.Sales;
 using AAMPS.Clients.Queries.Sales;
 using AAMPS.Clients.Actions.Development;
 using AAMPS.Clients.Queries.Development;
-using AAMPS.Clients.Actions.Sales;
 using App.Common.Exceptions;
 using AAMPS.Clients.Security;
+using AAMPS.Web.Providers;
 
 
 namespace AAMPS.Web.Controllers
 {
-    public class SalesController : Controller
+    public class SalesController : BaseController
     {
-        AampServiceClient _repoService = new AampServiceClient();
         //
         // GET: /Sales/
 
@@ -36,7 +35,7 @@ namespace AAMPS.Web.Controllers
         public ActionResult GetSaleTypes()
         {
            var salesTypeList = new List<string>();
-           var salesTypes = _repoService.GetSaleTypes();
+           var salesTypes = _serviceProvider.GetSaleTypes();
            foreach (var item in salesTypes)
            {
              salesTypeList.Add(item.SaleTypeDescription);
@@ -51,7 +50,7 @@ namespace AAMPS.Web.Controllers
         public ActionResult GetPreferedContactMethods()
         {
             var contactTypeList = new List<string>();
-            var contactTypes = _repoService.GetAllPreferedContactMethods();
+            var contactTypes = _serviceProvider.GetAllPreferedContactMethods();
             foreach (var item in contactTypes)
             {
                 contactTypeList.Add(item.PreferedContactMethodDescription);
@@ -65,7 +64,7 @@ namespace AAMPS.Web.Controllers
         public ActionResult GetPurchaserEntityTypes()
         {
             var purchaserEntityTypesList = new List<string>();
-            var purchaserEntityTypes = _repoService.GetPurchaserEntityTypes();
+            var purchaserEntityTypes = _serviceProvider.GetPurchaserEntityTypes();
             foreach (var item in purchaserEntityTypes)
             {
                 purchaserEntityTypesList.Add(item.EntityTypeDescription);
@@ -78,7 +77,7 @@ namespace AAMPS.Web.Controllers
         public ActionResult GetSaleDepositProofs()
         {
             var salesDepositProofList = new List<string>();
-            var depositProofs = _repoService.GetDepositTypes();
+            var depositProofs = _serviceProvider.GetDepositTypes();
             foreach (var item in depositProofs)
             {
                 salesDepositProofList.Add(item.SaleDepositProofDescription);
@@ -91,7 +90,7 @@ namespace AAMPS.Web.Controllers
         public ActionResult GetCompanyOriginator()
         {
             var originatorTypeList = new List<string>();
-            var originators = _repoService.GetCompanies();
+            var originators = _serviceProvider.GetCompanies();
             foreach (var item in originators.Where(x=> x.UserGroupID == 5))
             {
                 originatorTypeList.Add(item.CompanyDescription);
@@ -114,9 +113,7 @@ namespace AAMPS.Web.Controllers
 
             SessionHandler.SessionContext("CurrentUnit", id);
 
-            var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
-
-            var result = new LoadDevelopmentSummaryTotals(new LoadDevelopmentSummaryTotalsQuery() { UnitId = id });
+            var result = new LoadDevelopmentSummaryTotals(new LoadDevelopmentSummaryTotalsQuery() { UnitId = UnitID.GetValueOrDefault()});
 
             return View();
         }
@@ -130,17 +127,13 @@ namespace AAMPS.Web.Controllers
 
                 if (IsNewSale != "true")
                 {
-                    var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
-
-                    var response = new LoadSaleDetails(new LoadSalesQuery() { UnitId = unitId });
+                    var response = new LoadSaleDetails(new LoadSalesQuery() { UnitId = UnitID.GetValueOrDefault()});
 
                     return Json(response.query.QueryResult, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
-
-                    var response = new LoadNewSale(new LoadSalesQuery() { UnitId = unitId });
+                    var response = new LoadNewSale(new LoadSalesQuery() { UnitId = UnitID.GetValueOrDefault() });
 
                     return Json(response.query.QueryResult, JsonRequestBehavior.AllowGet);
                    
@@ -160,8 +153,7 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-                int _currentUnitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
-                var _individual = _repoService.GetSaleByUnitId(_currentUnitId).Individual;
+                var _individual = _serviceProvider.GetSaleByUnitId(UnitID.GetValueOrDefault()).Individual;
 
                 if (_individual != null)
                 {
@@ -218,7 +210,7 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-                if (purchaser != null)
+                if (purchaser.IsNotNull())
                 {
                     var _newPurchaser = new SavePurchaser(purchaser);
 
@@ -244,9 +236,7 @@ namespace AAMPS.Web.Controllers
             {   
                 if (reservation != null)
                 {
-                    var unitId = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
-
-                    var response = new LoadAndSaveAvailableSale(new LoadSalesQuery() { UnitId = unitId, AvailableReservationVM = reservation });
+                    var response = new LoadAndSaveAvailableSale(new LoadSalesQuery() { UnitId = UnitID.GetValueOrDefault(), AvailableReservationVM = reservation });
                                        
                     return Json(response.avaialableReservationVM, JsonRequestBehavior.AllowGet);
                 }
@@ -268,8 +258,8 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-                var _currentSale = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
-                var _linkedUnit = int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
+                var _currentSale = SaleID.GetValueOrDefault();
+                var _linkedUnit = UnitID.GetValueOrDefault();
 
                 var response = new UpdateReservedToPendingSale(new LoadSalesQuery()
                 {
@@ -296,8 +286,8 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-                var _currentSale = int.Parse(SessionHandler.GetSessionContext("CurrentSaleId"));
-                var _linkedUnit =  int.Parse(SessionHandler.GetSessionContext("CurrentUnit"));
+                var _currentSale = SaleID.GetValueOrDefault();
+                var _linkedUnit = UnitID.GetValueOrDefault();
 
                 var response = new UpdatePendingToSoldSale(new LoadSalesQuery()
                 {
@@ -324,7 +314,7 @@ namespace AAMPS.Web.Controllers
             {
                 if (person != null)
                 {
-                    _repoService.SaveIndividual(person);
+                    _serviceProvider.SaveIndividual(person);
                     return Json(person, JsonRequestBehavior.AllowGet);
                 }
             }

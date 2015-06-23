@@ -1,4 +1,5 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.Queries.Developments;
 using Aamps.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,7 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
+       
         public Estate GetEstateByDevelopment(int id)
         {
             AampsContext _dbContext = new AampsContext();
@@ -47,19 +49,19 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
-        public List<Aamps.Domain.Queries.Developments.SelectRelevantDevelopmentQuery> GetRelevantDevelopments(int userId, int groupId, int companyId, int userTypeId)
+        public List<Aamps.Domain.Queries.Developments.SelectRelevantDevelopmentQueryResult> GetRelevantDevelopments(SelectRelevantDevelopmentQuery SelectRelevantDevelopmentQuery)
         {
-            var query = new List<SqlParameterCollection>();
-            {
-                new SqlParameter() { ParameterName = "UserListID", Value = userId };
-                new SqlParameter() { ParameterName = "UserGroupID", Value = groupId };
-                new SqlParameter() { ParameterName = "UserCompanyID", Value = companyId };
-                new SqlParameter() { ParameterName = "UserTypeID", Value = userTypeId };
-            };
+            SqlParameter[] query = 
+                {
+                   new SqlParameter() { ParameterName = "UserListID", Value = SelectRelevantDevelopmentQuery.UserListID },
+                   new SqlParameter() { ParameterName = "UserGroupID", Value = SelectRelevantDevelopmentQuery.UserGroupID },
+                   new SqlParameter() { ParameterName = "CompanyID", Value = SelectRelevantDevelopmentQuery.CompanyID },
+                   new SqlParameter() { ParameterName = "UserTypeID", Value = SelectRelevantDevelopmentQuery.UserTypeID }
+                };
 
-            using (var dc = new AampsContext())
+         using (var dc = new AampsContext())
             {
-                var result = dc.Database.SqlQuery<Aamps.Domain.Queries.Developments.SelectRelevantDevelopmentQuery>("exec dbo.csp_Select_RelevantDevelopments @UserListID @UserGroupID @UserCompanyID @UserTypeID", query);
+                var result = dc.Database.SqlQuery<Aamps.Domain.Queries.Developments.SelectRelevantDevelopmentQueryResult>("exec dbo.csp_Select_RelevantDevelopments @UserListID,@UserGroupID,@CompanyID,@UserTypeID", query);
                 return result.ToList();
             }
         }

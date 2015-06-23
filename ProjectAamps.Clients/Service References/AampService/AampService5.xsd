@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Units" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Units" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfSelectRelevantUnitsQuery">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfBondsReportQuery">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="SelectRelevantUnitsQuery" nillable="true" type="tns:SelectRelevantUnitsQuery" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BondsReportQuery" nillable="true" type="tns:BondsReportQuery" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfSelectRelevantUnitsQuery" nillable="true" type="tns:ArrayOfSelectRelevantUnitsQuery" />
-  <xs:complexType name="SelectRelevantUnitsQuery">
+  <xs:element name="ArrayOfBondsReportQuery" nillable="true" type="tns:ArrayOfBondsReportQuery" />
+  <xs:complexType name="BondsReportQuery">
     <xs:sequence>
-      <xs:element minOccurs="0" name="DevelopmentID" type="xs:int" />
-      <xs:element minOccurs="0" name="UnitActiveDate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="UnitAddedByUser" type="xs:int" />
-      <xs:element minOccurs="0" name="UnitAgentID" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="UnitBlock" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UnitDateAdded" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="UnitDateModified" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="UnitErfSize" type="xs:double" />
-      <xs:element minOccurs="0" name="UnitFloor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UnitID" type="xs:int" />
-      <xs:element minOccurs="0" name="UnitModifiedByUser" type="xs:int" />
-      <xs:element minOccurs="0" name="UnitNumber" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UnitPhase" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="UnitPrice" type="xs:double" />
-      <xs:element minOccurs="0" name="UnitPriceIncluding" type="xs:double" />
-      <xs:element minOccurs="0" name="UnitPriceVat" type="xs:double" />
-      <xs:element minOccurs="0" name="UnitSize" type="xs:double" />
-      <xs:element minOccurs="0" name="UnitStatusID" type="xs:int" />
-      <xs:element minOccurs="0" name="UnitTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="Agency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Agent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bank" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BondAmountGrant" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BondDueDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="BondReq" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BondShortFall" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BondStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DaysLeft" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Deposit" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Development" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InstToMODt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Phase" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Purchaser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SalesBondClientAcceptDt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnitNo" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="SelectRelevantUnitsQuery" nillable="true" type="tns:SelectRelevantUnitsQuery" />
+  <xs:element name="BondsReportQuery" nillable="true" type="tns:BondsReportQuery" />
 </xs:schema>

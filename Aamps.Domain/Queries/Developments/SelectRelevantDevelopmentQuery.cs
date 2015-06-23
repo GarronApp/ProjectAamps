@@ -10,13 +10,15 @@ namespace Aamps.Domain.Queries.Developments
     public class SelectRelevantDevelopmentQuery
     {
         [DataMember]
-        public int DevelopmentID { get; set; }
+        public int UserListID { get; set; }
         [DataMember]
-        public string DevelopmentDescription { get; set; }
+        public int UserGroupID { get; set; }
         [DataMember]
-        public int EstateID { get; set; }
+        public int CompanyID { get; set; }
         [DataMember]
-        public string DevelopmentUrlImage { get; set; }
+        public int UserTypeID { get; set; }
 
     }
+
+    
 }

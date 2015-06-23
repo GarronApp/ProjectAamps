@@ -45,7 +45,7 @@ namespace AAMPS.Clients.Security
             }
             catch (Exception ex)
             {
-              
+                ExceptionHandler.HandleException(ex);
                 _serviceProvider.Close();
             }
             finally

@@ -1,4 +1,5 @@
 ﻿using Aamps.Domain.Models;
+using Aamps.Domain.Queries.Units;
 using Aamps.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -159,18 +160,18 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
-        public List<Aamps.Domain.Queries.Units.SelectRelevantUnitsQuery> GetRelevantUnits(int userId, int userTypeId, int DevelopmentId)
+        public List<Aamps.Domain.Models.Unit> GetRelevantUnits(SelectRelevantUnitsQuery SelectRelevantUnitsQuery)
         {
-            var query = new List<SqlParameterCollection>();
-            {
-                new SqlParameter() { ParameterName = "UserListID", Value = userId };
-                new SqlParameter() { ParameterName = "UserTypeID", Value = userTypeId };
-                new SqlParameter() { ParameterName = "DevelopmentID", Value = DevelopmentId };
-            };
+            SqlParameter[] query = 
+                {
+                   new SqlParameter() { ParameterName = "UserListID", Value = SelectRelevantUnitsQuery.UserListID},
+                   new SqlParameter() { ParameterName = "UserTypeID", Value = SelectRelevantUnitsQuery.UserTypeID },
+                   new SqlParameter() { ParameterName = "DevelopmentID", Value = SelectRelevantUnitsQuery.DevelopmentID },
+                };
 
             using (var dc = new AampsContext())
             {
-                var result = dc.Database.SqlQuery<Aamps.Domain.Queries.Units.SelectRelevantUnitsQuery>("exec dbo.csp_Select_RelevantUnits @UserListID @UserTypeID @DevelopmentID", query);
+                var result = dc.Database.SqlQuery<Aamps.Domain.Models.Unit>("exec dbo.csp_Select_RelevantUnits @UserListID,@UserTypeID,@DevelopmentID", query);
                 return result.ToList();
             }
         }
