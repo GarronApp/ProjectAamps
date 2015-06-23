@@ -706,3 +706,87 @@ Object reference not set to an instance of an object.
 ------------------------= End Exception =---------------------------
 
 
+-----------------------= Start Exception =--------------------------
+2015-06-24 12:10:02 AM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-24 12:13:34 AM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-24 12:14:27 AM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-24 12:16:34 AM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-24 12:17:04 AM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-24 12:17:51 AM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+

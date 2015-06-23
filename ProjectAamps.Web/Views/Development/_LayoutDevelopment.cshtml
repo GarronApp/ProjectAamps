@@ -88,6 +88,13 @@
 <script type="text/javascript">
     $(function () {
 
+        $(document).ajaxError(function (event, jqxhr, settings, exception) {
+            if (jqxhr.status == 401) {
+                console.log(jqxhr);
+                toastr.error(jqxhr.statusText);
+            }
+        });
+
         $.ajax({
             url: '@Url.Action("GetDevelopmentSummary", "Development")',
             type: 'GET',

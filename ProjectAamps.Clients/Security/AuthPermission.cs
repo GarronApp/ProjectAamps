@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using App.Extentions;
 using System.Web.Routing;
+using System.Web;
+using System.Net;
 
 namespace AAMPS.Clients.Security
 {
@@ -31,12 +33,10 @@ namespace AAMPS.Clients.Security
             {
                 if(filterContext.HttpContext.Request.IsAjaxRequest())
                 {
-                    JsonResult UnauthorizedResult = new JsonResult();
-                    UnauthorizedResult.Data = (new { PermissionStatus = "Unauthorized", Code = "401", description = "You do not have permission to perform this action" });
-                    UnauthorizedResult.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-                    filterContext.Result = UnauthorizedResult;
-                }
-               
+                    filterContext.HttpContext.Response.StatusCode = 401;
+                    filterContext.HttpContext.Response.StatusDescription = "You do not have permission to perform this action";
+                    filterContext.HttpContext.Response.End();
+                }     
             }
 
         }
@@ -59,6 +59,9 @@ namespace AAMPS.Clients.Security
                     else
                     {
                         HasRights = false;
+                        httpContext.Response.StatusCode = 401;
+                        httpContext.Response.StatusDescription = "You do not have permission to perform this action";
+                        httpContext.Response.End();
                     }
                 }
 
