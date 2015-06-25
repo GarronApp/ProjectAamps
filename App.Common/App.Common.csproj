@@ -92,7 +92,6 @@
     <Compile Include="Reporting\PDFByteStreamWrtieProvider.cs" />
     <Compile Include="Reporting\PDFByteStreamProvider.cs" />
     <Compile Include="Reporting\ReportSettings.cs" />
-    <Compile Include="Security\AampsAuthorize.cs" />
     <Compile Include="Security\SessionHandler.cs" />
     <Compile Include="Security\UserSessionValidationHandler.cs" />
     <Compile Include="Validation\LoginValidationHandler.cs" />

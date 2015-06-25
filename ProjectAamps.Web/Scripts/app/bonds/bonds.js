@@ -1,18 +1,20 @@
 ﻿function Bonds() {
 
     var instance = this;
-    instance.save_Reservation_Url = "/Sales/SaveAvailableReservation";
-    instance.save_BondsOrginator_Url = "/Bonds/SaveUpdateOrginator";
-    instance.save_SaleBondsDetails_Url = "/Bonds/SaveSalesBondDetails";
-    instance.save_ReservedSale_Url = "/Sales/UpdateReservedSale"
-    instance.save_Individual_Url = "/Sales/SaveIndividual";
-    instance.getPurchaserEntityTypes_Url = "/Sales/GetPurchaserEntityTypes";
-    instance.getBondDetails_Url = "/Bonds/GetDetails";
-    instance.getOrginatorDetails_Url = "/Bonds/LoadData/";
-    instance.getPurchaserDetails_Url = "/Bonds/LoadPurchaser/";
-    instance.getIndividualDetails_Url = "/Bonds/LoadIndividual/";
-    instance.getBanks_Url = "/Bonds/GetBanks";
-    instance.getMOStatus_Url = "/Bonds/GetMOStatus";
+    instance.settings_route = "/aamps";
+
+    instance.save_Reservation_Url = instance.settings_route + "/Sales/SaveAvailableReservation";
+    instance.save_BondsOrginator_Url = instance.settings_route + "/Bonds/SaveUpdateOrginator";
+    instance.save_SaleBondsDetails_Url = instance.settings_route + "/Bonds/SaveSalesBondDetails";
+    instance.save_ReservedSale_Url = instance.settings_route + "/Sales/UpdateReservedSale"
+    instance.save_Individual_Url = instance.settings_route + "/Sales/SaveIndividual";
+    instance.getPurchaserEntityTypes_Url = instance.settings_route + "/Sales/GetPurchaserEntityTypes";
+    instance.getBondDetails_Url = instance.settings_route + "/Bonds/GetDetails";
+    instance.getOrginatorDetails_Url = instance.settings_route + "/Bonds/LoadData/";
+    instance.getPurchaserDetails_Url = instance.settings_route + "/Bonds/LoadPurchaser/";
+    instance.getIndividualDetails_Url = instance.settings_route + "/Bonds/LoadIndividual/";
+    instance.getBanks_Url = instance.settings_route + "/Bonds/GetBanks";
+    instance.getMOStatus_Url = instance.settings_route + "/Bonds/GetMOStatus";
 
 
     this.load = function () {

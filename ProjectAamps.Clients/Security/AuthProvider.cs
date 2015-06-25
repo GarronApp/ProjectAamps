@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using App.Extentions;
+using App.Common.Security;
 
 
 namespace AAMPS.Clients.Security
@@ -68,15 +69,15 @@ namespace AAMPS.Clients.Security
                 {
 
                     var Read = Convert.ToInt32(UserRights.UserRightView);
-                    System.Web.HttpContext.Current.Session.Add("ReadAccess", Read);
+                    SessionHandler.SessionContext("ReadAccess", Read);
                     var Write = Convert.ToInt32(UserRights.UserRightAdd);
-                    System.Web.HttpContext.Current.Session.Add("WriteAccess", Write);
+                    SessionHandler.SessionContext("WriteAccess", Write);
                     var Delete = Convert.ToInt32(UserRights.UserRightDelete);
-                    System.Web.HttpContext.Current.Session.Add("DeleteAccess", Delete);
+                    SessionHandler.SessionContext("DeleteAccess", Delete);
                     var Edit = Convert.ToInt32(UserRights.UserRightEdit);
-                    System.Web.HttpContext.Current.Session.Add("EditAccess", Edit);
+                    SessionHandler.SessionContext("EditAccess", Edit);
                     var Full = Convert.ToInt32(UserRights.UserRightFull);
-                    System.Web.HttpContext.Current.Session.Add("FullAccess", Full);
+                    SessionHandler.SessionContext("FullAccess", Full);
                 }
                
             }

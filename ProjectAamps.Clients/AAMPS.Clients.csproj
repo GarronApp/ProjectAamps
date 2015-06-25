@@ -62,6 +62,7 @@
     <Compile Include="Queries\Development\LoadDevelopmentSummaryTotalsQuery.cs" />
     <Compile Include="Queries\Sales\LoadSalesQuery.cs" />
     <Compile Include="Queries\Sales\MapToSaleDetailsQuery.cs" />
+    <Compile Include="Security\AampsAuthorize.cs" />
     <Compile Include="Security\AuthPermission.cs" />
     <Compile Include="Security\AuthProvider.cs" />
     <Compile Include="Security\PermissionType.cs" />

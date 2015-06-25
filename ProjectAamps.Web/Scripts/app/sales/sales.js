@@ -1,18 +1,20 @@
 ﻿function Sales() {
 
     var instance = this;
-    instance.save_Reservation_Url = "/Sales/SaveAvailableReservation";
-    instance.save_ReservedSale_Url = "/Sales/UpdateReservedSale"
-    instance.save_PendingSale_Url = "/Sales/UpdatePendingSale";
-    instance.save_Individual_Url = "/Sales/SaveIndividual";
-    instance.save_Purchaser_Url = "/Sales/SavePurchaser";
-    instance.getAgentDetails_Url = "/Sales/GetAgentSaleDetails";
-    instance.get_Individual_Url = "/Sales/GetIndividual";
-    instance.getSaleTypes_Url = "/Sales/GetSaleTypes";
-    instance.getPreferedContactTypes_Url = "/Sales/GetPreferedContactMethods";
-    instance.getDepositProofTypes_Url = "/Sales/GetSaleDepositProofs";
-    instance.getCompanyOrginator_Url = "/Sales/GetCompanyOriginator";
-    instance.getPurchaserEntityTypes_Url = "/Sales/GetPurchaserEntityTypes";
+    instance.settings_route = "";
+
+    instance.save_Reservation_Url = instance.settings_route + "/Sales/SaveAvailableReservation";
+    instance.save_ReservedSale_Url = instance.settings_route + "/Sales/UpdateReservedSale"
+    instance.save_PendingSale_Url = instance.settings_route + "/Sales/UpdatePendingSale";
+    instance.save_Individual_Url = instance.settings_route + "/Sales/SaveIndividual";
+    instance.save_Purchaser_Url = instance.settings_route + "/Sales/SavePurchaser";
+    instance.getAgentDetails_Url = instance.settings_route + "/Sales/GetAgentSaleDetails";
+    instance.get_Individual_Url = instance.settings_route + "/Sales/GetIndividual";
+    instance.getSaleTypes_Url = instance.settings_route + "/Sales/GetSaleTypes";
+    instance.getPreferedContactTypes_Url = instance.settings_route + "/Sales/GetPreferedContactMethods";
+    instance.getDepositProofTypes_Url = instance.settings_route + "/Sales/GetSaleDepositProofs";
+    instance.getCompanyOrginator_Url = instance.settings_route + "/Sales/GetCompanyOriginator";
+    instance.getPurchaserEntityTypes_Url = instance.settings_route + "/Sales/GetPurchaserEntityTypes";
     instance.IndividualAdded = false;
     instance.PurchaserFormValid = false;
     instance.ReservedFormValid = false;
@@ -1054,13 +1056,8 @@
             type: "POST",
             data: formData,
             success: function (data) {
-                if (data.PermissionStatus != 'Unauthorized') {
                     instance.RedirectToDashBoard();
                     toastr.success('Reservation has been updated');
-                }
-                else {
-                    instance.HandleUnauthorizedPermissions(data);
-                }
             },
             error: function (exception) {
                 console.log(exception);
@@ -1078,7 +1075,6 @@
             type: "POST",
             data: formData,
             success: function (data) {
-                if (data.PermissionStatus != 'Unauthorized') {
                     if (data.PendingFormCompleteAndValid != 0) {
                         instance.RedirectToDashBoard();
                         toastr.success('Updated successful');
@@ -1087,10 +1083,6 @@
                         window.location.reload(true);
                         toastr.success('Updated successful');
                     }
-                }
-                else {
-                    instance.HandleUnauthorizedPermissions(data);
-                }
             },
             error: function (exception) {
                 console.log(exception);
@@ -1108,13 +1100,8 @@
             type: "POST",
             data: formData,
             success: function (data) {
-                if (data.PermissionStatus != 'Unauthorized') {
                     instance.RedirectToDashBoard();
                     toastr.success('Updated successful');
-                }
-                else {
-                    instance.HandleUnauthorizedPermissions(data);
-                }
             },
             error: function (exception) {
                 console.log(exception);
@@ -1212,7 +1199,6 @@
             cache: false,
             success: function (data) {
                 console.log(data);
-                if (data.PermissionStatus != 'Unauthorized') {
                     if (instance.isArray(data)) {
                         toastr.info("Duplicate record(s) found");
                         instance.LoadDuplicateIndividuals(data);
@@ -1221,11 +1207,6 @@
                         instance.MapIndividualDetails(data);
                         toastr.success("Individual added successfully");
                     }
-                }
-                else {
-                    instance.HandleUnauthorizedPermissions(data);
-                }
-
             },
             error: function (exception) {
                 console.log(exception);
@@ -1242,14 +1223,8 @@
             async: true,
             cache: false,
             success: function (data) {
-                if (data.PermissionStatus != 'Unauthorized') {
                     instance.MapPurchaserlDetails(data);
                     toastr.success("Purchaser added successfully");
-                }
-                else {
-                    instance.HandleUnauthorizedPermissions(data);
-                }
-
             },
             error: function (exception) {
                 console.log(exception);
@@ -1270,7 +1245,6 @@
             async: true,
             cache: false,
             success: function (data) {
-                if (data.PermissionStatus != 'Unauthorized') {
                     if (instance.isArray(data)) {
                         toastr.info("Duplicate record(s) found");
                         instance.updateIndividualRecord = true;
@@ -1280,10 +1254,6 @@
                         instance.MapIndividualDetails(data);
                         toastr.success("Individual updated successfully");
                     }
-                }
-                else {
-                    instance.HandleUnauthorizedPermissions(data);
-                }
             },
             error: function (exception) {
                 console.log(exception);
@@ -1310,7 +1280,7 @@
     }
 
     this.RedirectToDashBoard = function () {
-        window.location.href = "/Development/Dashboard";
+        window.location.href = instance.settings_route + "/Development/Dashboard";
     }
 
     this.ConvertCurrentDate = function (currentDate, control) {

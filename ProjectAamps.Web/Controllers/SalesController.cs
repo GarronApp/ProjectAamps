@@ -19,6 +19,7 @@ using AAMPS.Clients.Queries.Development;
 using App.Common.Exceptions;
 using AAMPS.Clients.Security;
 using AAMPS.Web.Providers;
+using ProjectAamps.Clients.Security;
 
 
 namespace AAMPS.Web.Controllers
@@ -30,8 +31,8 @@ namespace AAMPS.Web.Controllers
 
         public int SalesId { get; set; }
 
-        [AampsAuthorize]
         [HttpGet]
+        [AampsAuthorize]
         public ActionResult GetSaleTypes()
         {
            var salesTypeList = new List<string>();
@@ -45,8 +46,8 @@ namespace AAMPS.Web.Controllers
 
         }
 
-        [AampsAuthorize]
         [HttpGet]
+        [AampsAuthorize]
         public ActionResult GetPreferedContactMethods()
         {
             var contactTypeList = new List<string>();
@@ -59,8 +60,8 @@ namespace AAMPS.Web.Controllers
 
         }
 
-        [AampsAuthorize]
         [HttpGet]
+        [AampsAuthorize]
         public ActionResult GetPurchaserEntityTypes()
         {
             var purchaserEntityTypesList = new List<string>();
@@ -72,8 +73,8 @@ namespace AAMPS.Web.Controllers
             return Json(purchaserEntityTypesList, JsonRequestBehavior.AllowGet);
         }
 
-        [AampsAuthorize]
         [HttpGet]
+        [AampsAuthorize]
         public ActionResult GetSaleDepositProofs()
         {
             var salesDepositProofList = new List<string>();
@@ -85,8 +86,8 @@ namespace AAMPS.Web.Controllers
             return Json(salesDepositProofList, JsonRequestBehavior.AllowGet);
         }
 
-        [AampsAuthorize]
         [HttpGet]
+        [AampsAuthorize]
         public ActionResult GetCompanyOriginator()
         {
             var originatorTypeList = new List<string>();
@@ -99,8 +100,8 @@ namespace AAMPS.Web.Controllers
 
         }
 
-        [AampsAuthorize]
         [HttpGet]
+        [AampsAuthorize]
         public ActionResult Index()
         {
             SessionHandler.SessionContext("NewSale", "true");
@@ -172,8 +173,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.Add)]
+        [AampsAuthorize(Permissions.Add)]
         public JsonResult SaveIndividual(IndividualViewModel individual)
         {
             try
@@ -204,8 +204,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.Add)]
+        [AampsAuthorize(Permissions.Add)]
         public JsonResult SavePurchaser(PurchaserViewModel purchaser)
         {
             try
@@ -228,8 +227,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.Add)]
+        [AampsAuthorize(Permissions.Add)]
         public JsonResult SaveAvailableReservation(ReservationViewModel reservation)
         {
             try
@@ -252,8 +250,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.Edit)]
+        [AampsAuthorize(Permissions.Edit)]
         public JsonResult UpdateReservedSale(ReservedSaleViewModel sale)
         {
             try
@@ -280,8 +277,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.Edit)]
+        [AampsAuthorize(Permissions.Edit)]
         public JsonResult UpdatePendingSale(PendingSaleViewModel sale)
         {
             try
@@ -308,6 +304,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
+        [AampsAuthorize(Permissions.Add)]
         public JsonResult SaveReservation(Individual person)
         {
             try

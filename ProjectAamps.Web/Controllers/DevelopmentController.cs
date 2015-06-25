@@ -10,6 +10,7 @@ using App.Common.Exceptions;
 using AAMPS.Clients.Security;
 using App.Extentions;
 using AAMPS.Web.Providers;
+using ProjectAamps.Clients.Security;
 
 
 namespace AAMPS.Web.Controllers
@@ -79,8 +80,6 @@ namespace AAMPS.Web.Controllers
         }
 
         // GET: Development
-        [AampsAuthorize]
-        [AuthPermission(Permissions.View)]
         public ActionResult Dashboard()
         {
             try
@@ -157,7 +156,7 @@ namespace AAMPS.Web.Controllers
             return View();
         }
         [HttpGet]
-        [AuthPermission(Permissions.View)]
+        [AampsAuthorize(Permissions.View)]
         public JsonResult GetCurrentUnitDetails(int id)
         {
             var development = _serviceProvider.GetDevelopmentById(id);

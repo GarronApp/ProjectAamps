@@ -321,14 +321,15 @@
 <script src="~/Scripts/c3.js"></script>
 <link href="~/Content/c3.css" rel="stylesheet" />
 <script type="text/javascript">
+    var route = ""
     function ViewBondDetails(id) {
-        window.location.href = "/Bonds/Details/" + id;
+        window.location.href = route + "/Bonds/Details/" + id;
     }
     function ViewNotAvailableUnits(id) {
-        window.location.href = "/Sales/Details/" + id;
+        window.location.href = route + "/Sales/Details/" + id;
     }
     function ViewAvailableUnits(id) {
-        window.location.href = "/Sales/Details/" + id;
+        window.location.href = route + "/Sales/Details/" + id;
     }
     function showReservations(context) {
 

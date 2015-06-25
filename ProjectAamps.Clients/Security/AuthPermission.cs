@@ -9,6 +9,7 @@ using App.Extentions;
 using System.Web.Routing;
 using System.Web;
 using System.Net;
+using ProjectAamps.Clients.Security;
 
 namespace AAMPS.Clients.Security
 {
@@ -29,14 +30,15 @@ namespace AAMPS.Clients.Security
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            if(!HasRights)
+            if (!HasRights)
             {
-                if(filterContext.HttpContext.Request.IsAjaxRequest())
+                if (filterContext.HttpContext.Request.IsAjaxRequest())
                 {
                     filterContext.HttpContext.Response.StatusCode = 401;
                     filterContext.HttpContext.Response.StatusDescription = "You do not have permission to perform this action";
                     filterContext.HttpContext.Response.End();
-                }     
+                }
+
             }
 
         }
@@ -59,9 +61,6 @@ namespace AAMPS.Clients.Security
                     else
                     {
                         HasRights = false;
-                        httpContext.Response.StatusCode = 401;
-                        httpContext.Response.StatusDescription = "You do not have permission to perform this action";
-                        httpContext.Response.End();
                     }
                 }
 
@@ -120,17 +119,7 @@ namespace AAMPS.Clients.Security
                             }
                             return false;
                         }
-                    case Permissions.Add|Permissions.Edit:
-                        {
-                            var writeAccess = SafeCastSessionProperty(context.Session["WriteAccess"]);
-                            var editAccess = SafeCastSessionProperty(context.Session["EditAccess"]);
-
-                            if (writeAccess == hasAccess && editAccess == hasAccess)
-                            {
-                                return true;
-                            }
-                            return false;
-                        }
+                   
                     case Permissions.Admin:
                         {
                             var fullAccess = SafeCastSessionProperty(context.Session["FullAccess"]);
@@ -150,7 +139,7 @@ namespace AAMPS.Clients.Security
 
         }
 
-       private int SafeCastSessionProperty(object val)
+        private int SafeCastSessionProperty(object val)
         {
             return (int)val;
         }
@@ -179,5 +168,5 @@ namespace AAMPS.Clients.Security
         }
     }
 
-  
+
 }

@@ -16,6 +16,7 @@ using AAMPS.Clients.ViewModels.Purchaser;
 using AAMPS.Clients.ViewModels.Individual;
 using AAMPS.Clients.Security;
 using App.Extentions;
+using ProjectAamps.Clients.Security;
 
 
 namespace AAMPS.Web.Controllers
@@ -78,8 +79,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.Add | Permissions.Edit)]
+        [AampsAuthorize(Permissions.Add | Permissions.Edit)]
         public JsonResult SaveSalesBondDetails(SalesViewModel sale)
         {
             try
@@ -109,15 +109,14 @@ namespace AAMPS.Web.Controllers
             }
             catch (Exception ex)
             {
-            
+              
             }
 
             return Json(sale, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.Add | Permissions.Edit)]
+        [AampsAuthorize(Permissions.Add | Permissions.Edit)]
         public JsonResult SaveUpdateOrginator(OrginatorViewModel orginator)
         {
             try
@@ -244,8 +243,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.View)]
+        [AampsAuthorize(Permissions.View)]
         public JsonResult LoadPurchaser(int id)
         {
             var _purchaser = _repoService.GetPurchaserById(id);
@@ -278,8 +276,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.View)]
+        [AampsAuthorize(Permissions.View)]
         public JsonResult LoadIndividual(int id)
         {
             var _individual = _repoService.GetIndividualById(id);
@@ -297,8 +294,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.View)]
+        [AampsAuthorize(Permissions.View)]
         public JsonResult LoadData(int id)
         {
             Invariant.IsNotNull(id, () => "orginator id is null");
@@ -377,8 +373,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize]
-        [AuthPermission(Permissions.Add | Permissions.Edit)]
+        [AampsAuthorize(Permissions.Add | Permissions.Edit)]
         public void UpdateSaleBondDetails(OriginatorTr orginator, string bondAccountNumber)
         {
             try
@@ -403,8 +398,8 @@ namespace AAMPS.Web.Controllers
             }
         }
 
-        [AampsAuthorize]
         [HttpGet]
+        [AampsAuthorize]
         public ActionResult GetBanks()
         {
             var bankTypeList = new List<string>();
@@ -417,8 +412,8 @@ namespace AAMPS.Web.Controllers
 
         }
 
-        [AampsAuthorize]
         [HttpGet]
+        [AampsAuthorize]
         public ActionResult GetMOStatus()
         {
             var MOStatusTypeList = new List<string>();

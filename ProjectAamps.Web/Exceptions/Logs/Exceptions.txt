@@ -790,3 +790,53 @@ Parameter name: String
 ------------------------= End Exception =---------------------------
 
 
+-----------------------= Start Exception =--------------------------
+2015-06-24 11:58:52 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 36
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-24 11:59:49 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 36
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-25 08:45:53 PM
+
+You do not have the necessary permission to perform this action
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 52
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-25 08:46:24 PM
+
+You do not have the necessary permission to perform this action
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 52
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-25 09:51:45 PM
+
+You do not have the necessary permission to perform this action
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 52
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+

@@ -10,10 +10,10 @@ namespace AAMPS.Clients.Security
     [Flags]
     public enum Permissions
     {
-        View = (1 << 0),
-        Add = (1 << 1),
-        Edit = (1 << 2),
-        Delete = (1 << 3),
+        View = 1,
+        Add = 2,
+        Edit = 4,
+        Delete = 6,
         Admin = (View | Add | Edit | Delete)
     }
 }

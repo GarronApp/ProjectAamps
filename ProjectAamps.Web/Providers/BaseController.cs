@@ -6,12 +6,15 @@ using System.Web;
 using System.Web.Mvc;
 using App.Common.Security;
 using App.Extentions;
+using System.Configuration;
 
 namespace AAMPS.Web.Providers
 {
     public abstract class BaseController : Controller
     {
         public AAMPS.Clients.AampService.AampServiceClient _service;
+
+        protected string strAppTitle = ConfigurationSettings.AppSettings["AppRoute"];
 
         public AAMPS.Clients.AampService.AampServiceClient _serviceProvider
         {

@@ -197,6 +197,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BaseController.cs" />
+    <Compile Include="Providers\ErrorHandlerController.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +256,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.autoajax.js" />
+    <Content Include="Scripts\jquery.autoajax.min.js" />
     <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.moneymask.js" />
@@ -324,6 +327,7 @@
     <Folder Include="Scripts\app\development\" />
     <Folder Include="Scripts\app\reporting\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\ErrorHandler\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
