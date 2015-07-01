@@ -5,8 +5,9 @@
   <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Sales" />
   <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" />
   <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments" />
-  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
-  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Development" />
+  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
+  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/" />
   <xs:element name="GetAllUnits">
     <xs:complexType>
       <xs:sequence />
@@ -415,17 +416,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAgentDevelopments">
+  <xs:element name="GetDevelopmentsByAgent">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments" minOccurs="0" name="query" nillable="true" type="q33:SelectRelevantDevelopmentQuery" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAgentDevelopmentsResponse">
+  <xs:element name="GetDevelopmentsByAgentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments" minOccurs="0" name="GetAgentDevelopmentsResult" nillable="true" type="q34:ArrayOfSelectRelevantDevelopmentQueryResult" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Development" minOccurs="0" name="GetDevelopmentsByAgentResult" nillable="true" type="q34:ArrayOfAgentDevelopmentViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

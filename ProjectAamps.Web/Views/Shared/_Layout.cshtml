@@ -92,7 +92,7 @@
     $(function () {
 
         $(document).ajaxError(function (event, jqxhr, settings, exception) {
-            if (jqxhr.status == 401) {
+            if (jqxhr.status == 403) {
                 console.log(jqxhr);
                 toastr.error(jqxhr.statusText);
             }

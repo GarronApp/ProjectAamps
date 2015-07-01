@@ -4,6 +4,7 @@ using Aamps.Domain.Queries.Reports.Bonds;
 using Aamps.Domain.Queries.Reports.Sales;
 using Aamps.Domain.Queries.Units;
 using Aamps.Domain.ValueObjects;
+using Aamps.Domain.ViewModels.Development;
 using Aamps.Domain.ViewModels.Reports.Sales;
 using System;
 using System.Collections.Generic;
@@ -120,7 +121,7 @@ namespace Aamps.Service
         List<Development> GetAllDevelopments();
 
         [OperationContract]
-        List<SelectRelevantDevelopmentQueryResult> GetAgentDevelopments(SelectRelevantDevelopmentQuery query);
+        List<AgentDevelopmentViewModel> GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query);
 
         [OperationContract]
         Development GetDevelopmentById(int id);

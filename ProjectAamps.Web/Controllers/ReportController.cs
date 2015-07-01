@@ -17,7 +17,8 @@ using App.Common.Reporting;
 using AAMPS.Clients.ViewModels.Development;
 using App.Common.Security;
 using AAMPS.Clients.Security;
-using ProjectAamps.Clients.Security;
+using AAMPS.Clients.Security;
+using System.Net;
 
 namespace AAMPS.Web.Controllers
 {
@@ -27,7 +28,8 @@ namespace AAMPS.Web.Controllers
         // GET: Report
         public ActionResult Index()
         {
-            return View();
+            return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "Bad Request");
+            //return View();
         }
 
         [AampsAuthorize(Permissions.View)]
@@ -44,6 +46,12 @@ namespace AAMPS.Web.Controllers
             var developmentId = int.Parse(SessionHandler.GetSessionContext("DevelopmentID").ToString());
             var result = aampService.GetBondsReport(developmentId);
             return View(result);
+        }
+
+        public JsonResult TEST()
+        {
+            var test = new HttpStatusCodeResult(403, "Test");
+            return Json(test, JsonRequestBehavior.AllowGet);
         }
 
         public void ExportToPdf()

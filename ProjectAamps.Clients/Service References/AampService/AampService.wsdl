@@ -9,8 +9,9 @@
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Sales" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Development" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAampService_GetAllUnits_InputMessage">
@@ -199,11 +200,11 @@
   <wsdl:message name="IAampService_GetAllDevelopments_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllDevelopmentsResponse" />
   </wsdl:message>
-  <wsdl:message name="IAampService_GetAgentDevelopments_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAgentDevelopments" />
+  <wsdl:message name="IAampService_GetDevelopmentsByAgent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentsByAgent" />
   </wsdl:message>
-  <wsdl:message name="IAampService_GetAgentDevelopments_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAgentDevelopmentsResponse" />
+  <wsdl:message name="IAampService_GetDevelopmentsByAgent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentsByAgentResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetDevelopmentById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDevelopmentById" />
@@ -456,9 +457,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllDevelopments" message="tns:IAampService_GetAllDevelopments_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllDevelopmentsResponse" message="tns:IAampService_GetAllDevelopments_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAgentDevelopments">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAgentDevelopments" message="tns:IAampService_GetAgentDevelopments_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAgentDevelopmentsResponse" message="tns:IAampService_GetAgentDevelopments_OutputMessage" />
+    <wsdl:operation name="GetDevelopmentsByAgent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentsByAgent" message="tns:IAampService_GetDevelopmentsByAgent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentsByAgentResponse" message="tns:IAampService_GetDevelopmentsByAgent_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDevelopmentById">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentById" message="tns:IAampService_GetDevelopmentById_InputMessage" />
@@ -826,8 +827,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAgentDevelopments">
-      <soap:operation soapAction="http://tempuri.org/IAampService/GetAgentDevelopments" style="document" />
+    <wsdl:operation name="GetDevelopmentsByAgent">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetDevelopmentsByAgent" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

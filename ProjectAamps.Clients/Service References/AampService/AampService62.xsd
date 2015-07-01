@@ -1,65 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:simpleType name="GetUnitStatusType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Available">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Reserved">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Pending">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Sold">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Occupied">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Bankable">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Registered">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Unavailable">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="GetUnitStatusType" nillable="true" type="tns:GetUnitStatusType" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Development" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Development" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfAgentDevelopmentViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AgentDevelopmentViewModel" nillable="true" type="tns:AgentDevelopmentViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAgentDevelopmentViewModel" nillable="true" type="tns:ArrayOfAgentDevelopmentViewModel" />
+  <xs:complexType name="AgentDevelopmentViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DevelopmentDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DevelopmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="DevelopmentUrlImage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstateID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AgentDevelopmentViewModel" nillable="true" type="tns:AgentDevelopmentViewModel" />
 </xs:schema>

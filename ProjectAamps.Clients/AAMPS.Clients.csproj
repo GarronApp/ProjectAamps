@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -62,11 +63,14 @@
     <Compile Include="Queries\Development\LoadDevelopmentSummaryTotalsQuery.cs" />
     <Compile Include="Queries\Sales\LoadSalesQuery.cs" />
     <Compile Include="Queries\Sales\MapToSaleDetailsQuery.cs" />
+    <Compile Include="Security\HttpForbiddenResult.cs" />
+    <Compile Include="Security\TestAuthorizeAttribute.cs" />
     <Compile Include="Security\AampsAuthorize.cs" />
     <Compile Include="Security\AuthPermission.cs" />
     <Compile Include="Security\AuthProvider.cs" />
     <Compile Include="Security\PermissionType.cs" />
     <Compile Include="Security\Queries\UserLoginQuery.cs" />
+    <Compile Include="Security\SecureProvider.cs" />
     <Compile Include="Service References\AampService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +88,7 @@
     <Compile Include="ViewModels\Sales\ReservationViewModel.cs" />
     <Compile Include="ViewModels\Sales\ReservedSaleViewModel.cs" />
     <Compile Include="ViewModels\Sales\SalesViewModel.cs" />
+    <Compile Include="ViewModels\User\UserRightsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -131,6 +136,12 @@
     <None Include="Service References\AampService\AampService62.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\AampService\AampService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.AgentDevelopmentViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Bank1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -152,16 +163,9 @@
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Individual.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.MOStatus1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.OriginatorTr1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Validation\" />
-    <Folder Include="ViewModels\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\App.Common\App.Common.csproj">
@@ -186,6 +190,12 @@
     <None Include="Service References\AampService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.MOStatus1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.OriginatorTr1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.PreferedContactMethod1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -205,9 +215,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleType1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SelectRelevantDevelopmentQueryResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Unit1.datasource">

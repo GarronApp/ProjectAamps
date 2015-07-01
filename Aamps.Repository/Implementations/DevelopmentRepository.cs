@@ -49,7 +49,7 @@ namespace Aamps.Repository.Implementations
             return results;
         }
 
-        public List<Aamps.Domain.Queries.Developments.SelectRelevantDevelopmentQueryResult> GetRelevantDevelopments(SelectRelevantDevelopmentQuery SelectRelevantDevelopmentQuery)
+        public List<Aamps.Domain.ViewModels.Development.AgentDevelopmentViewModel> GetRelevantDevelopments(SelectRelevantDevelopmentQuery SelectRelevantDevelopmentQuery)
         {
             SqlParameter[] query = 
                 {
@@ -61,7 +61,7 @@ namespace Aamps.Repository.Implementations
 
          using (var dc = new AampsContext())
             {
-                var result = dc.Database.SqlQuery<Aamps.Domain.Queries.Developments.SelectRelevantDevelopmentQueryResult>("exec dbo.csp_Select_RelevantDevelopments @UserListID,@UserGroupID,@CompanyID,@UserTypeID", query);
+                var result = dc.Database.SqlQuery<Aamps.Domain.ViewModels.Development.AgentDevelopmentViewModel>("exec dbo.csp_Select_RelevantDevelopments @UserListID,@UserGroupID,@CompanyID,@UserTypeID", query);
                 return result.ToList();
             }
         }

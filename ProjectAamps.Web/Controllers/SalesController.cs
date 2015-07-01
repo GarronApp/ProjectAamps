@@ -19,7 +19,7 @@ using AAMPS.Clients.Queries.Development;
 using App.Common.Exceptions;
 using AAMPS.Clients.Security;
 using AAMPS.Web.Providers;
-using ProjectAamps.Clients.Security;
+using AAMPS.Clients.Security;
 
 
 namespace AAMPS.Web.Controllers
@@ -32,7 +32,6 @@ namespace AAMPS.Web.Controllers
         public int SalesId { get; set; }
 
         [HttpGet]
-        [AampsAuthorize]
         public ActionResult GetSaleTypes()
         {
            var salesTypeList = new List<string>();
@@ -47,7 +46,6 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpGet]
-        [AampsAuthorize]
         public ActionResult GetPreferedContactMethods()
         {
             var contactTypeList = new List<string>();
@@ -61,7 +59,6 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpGet]
-        [AampsAuthorize]
         public ActionResult GetPurchaserEntityTypes()
         {
             var purchaserEntityTypesList = new List<string>();
@@ -74,7 +71,6 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpGet]
-        [AampsAuthorize]
         public ActionResult GetSaleDepositProofs()
         {
             var salesDepositProofList = new List<string>();
@@ -87,7 +83,6 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpGet]
-        [AampsAuthorize]
         public ActionResult GetCompanyOriginator()
         {
             var originatorTypeList = new List<string>();
@@ -173,7 +168,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize(Permissions.Add)]
+        [AampsAuthorize(Permissions.View |Permissions.Add)]
         public JsonResult SaveIndividual(IndividualViewModel individual)
         {
             try

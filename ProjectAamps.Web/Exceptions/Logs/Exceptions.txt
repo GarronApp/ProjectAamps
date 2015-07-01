@@ -713,8 +713,8 @@ Value cannot be null.
 Parameter name: String
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 90
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -727,8 +727,8 @@ Value cannot be null.
 Parameter name: String
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 90
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -741,8 +741,8 @@ Value cannot be null.
 Parameter name: String
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 90
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -755,8 +755,8 @@ Value cannot be null.
 Parameter name: String
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 90
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -769,8 +769,8 @@ Value cannot be null.
 Parameter name: String
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 90
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -783,8 +783,8 @@ Value cannot be null.
 Parameter name: String
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 50
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 90
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 50
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 90
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -794,7 +794,7 @@ Parameter name: String
 2015-06-24 11:58:52 PM
 
 Object reference not set to an instance of an object.
-   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 36
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthPermission.cs:line 36
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -804,7 +804,7 @@ Object reference not set to an instance of an object.
 2015-06-24 11:59:49 PM
 
 Object reference not set to an instance of an object.
-   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 36
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthPermission.cs:line 36
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -814,7 +814,7 @@ Object reference not set to an instance of an object.
 2015-06-25 08:45:53 PM
 
 You do not have the necessary permission to perform this action
-   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 52
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthPermission.cs:line 52
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -824,7 +824,7 @@ You do not have the necessary permission to perform this action
 2015-06-25 08:46:24 PM
 
 You do not have the necessary permission to perform this action
-   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 52
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthPermission.cs:line 52
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -834,7 +834,21 @@ You do not have the necessary permission to perform this action
 2015-06-25 09:51:45 PM
 
 You do not have the necessary permission to perform this action
-   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AuthPermission.cs:line 52
+   at AAMPS.Clients.Security.AuthPermission.OnActionExecuting(ActionExecutingContext filterContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthPermission.cs:line 52
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-06-26 09:54:30 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 53
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 89
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------

@@ -16,7 +16,7 @@ using AAMPS.Clients.ViewModels.Purchaser;
 using AAMPS.Clients.ViewModels.Individual;
 using AAMPS.Clients.Security;
 using App.Extentions;
-using ProjectAamps.Clients.Security;
+using AAMPS.Clients.Security;
 
 
 namespace AAMPS.Web.Controllers

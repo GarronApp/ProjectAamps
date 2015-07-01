@@ -1,4 +1,4 @@
-﻿using ProjectAamps.Clients.Security;
+﻿using AAMPS.Clients.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;

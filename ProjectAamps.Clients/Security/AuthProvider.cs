@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 using System.Web;
 using App.Extentions;
 using App.Common.Security;
+using AAMPS.Clients.Security;
 
 
 namespace AAMPS.Clients.Security
 {
-    public class AuthProvider
+    public class AuthProvider : SecureProvider
     {
         public bool ValidateUser(string UserName, string Password)
         {
 
-            AAMPS.Clients.AampService.AampServiceClient _serviceProvider = new AAMPS.Clients.AampService.AampServiceClient();
             try
             {
-                var _currentUser = _serviceProvider.GetCurrentUser(UserName);
-
+                var _currentUser = base._serviceProvider.GetCurrentUser(UserName);
+                
                 if (_currentUser.IsNotNull())
                 {
                     if (!String.IsNullOrEmpty(Password))
@@ -36,8 +36,7 @@ namespace AAMPS.Clients.Security
                             System.Web.HttpContext.Current.Session.Add("USER", _currentUser);
                             System.Web.HttpContext.Current.Session.Add("CurrentUser", _currentUser.UserListName);
                             System.Web.HttpContext.Current.Session.Add("CurrentUserFullName", _currentUser.UserListName + " " + _currentUser.UserListSurname);
-
-                            SetPermissionRights(_serviceProvider, _currentUser.UserListID);
+                            base.LoadPermissions();
                             return true;
                         }
                     }
@@ -59,33 +58,6 @@ namespace AAMPS.Clients.Security
             return false;
         }
 
-        private void SetPermissionRights(AAMPS.Clients.AampService.AampServiceClient _serviceProvider, int userIdentity)
-        {
-            try
-            {
-                var UserRights = _serviceProvider.GetUserPermissions(userIdentity);
-
-                if (UserRights.IsNotNull())
-                {
-
-                    var Read = Convert.ToInt32(UserRights.UserRightView);
-                    SessionHandler.SessionContext("ReadAccess", Read);
-                    var Write = Convert.ToInt32(UserRights.UserRightAdd);
-                    SessionHandler.SessionContext("WriteAccess", Write);
-                    var Delete = Convert.ToInt32(UserRights.UserRightDelete);
-                    SessionHandler.SessionContext("DeleteAccess", Delete);
-                    var Edit = Convert.ToInt32(UserRights.UserRightEdit);
-                    SessionHandler.SessionContext("EditAccess", Edit);
-                    var Full = Convert.ToInt32(UserRights.UserRightFull);
-                    SessionHandler.SessionContext("FullAccess", Full);
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.HandleException(ex);
-            }
-            
-        }
+     
     }
 }

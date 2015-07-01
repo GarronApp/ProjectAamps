@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BondsController.cs" />
     <Compile Include="Controllers\DevelopmentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Views\Report\_ReportLayout.cshtml" />
     <Content Include="Views\Report\SalesReport.cshtml" />
     <Content Include="Views\Report\BondsReport.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ProjectAamps.Web.Providers
+namespace AAMPS.Web.Providers
 {
     public class ErrorHandlerController : Controller
     {

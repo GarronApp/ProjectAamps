@@ -43,6 +43,7 @@
     <Compile Include="BooleanExtensions.cs" />
     <Compile Include="DataContractFactory.cs" />
     <Compile Include="DataContractSurrogate.cs" />
+    <Compile Include="EnumExtentions.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
     <Compile Include="IListExtensions.cs" />
     <Compile Include="Invariant.cs" />

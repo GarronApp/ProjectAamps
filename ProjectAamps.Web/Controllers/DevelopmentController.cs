@@ -10,7 +10,7 @@ using App.Common.Exceptions;
 using AAMPS.Clients.Security;
 using App.Extentions;
 using AAMPS.Web.Providers;
-using ProjectAamps.Clients.Security;
+using AAMPS.Clients.Security;
 
 
 namespace AAMPS.Web.Controllers
@@ -25,7 +25,7 @@ namespace AAMPS.Web.Controllers
 
                 if (USER.IsNotNull())
                 {
-                    var developments = _serviceProvider.GetAgentDevelopments(new SelectRelevantDevelopmentQuery()
+                    var developments = _serviceProvider.GetDevelopmentsByAgent(new SelectRelevantDevelopmentQuery()
                     {
                         UserListID = USER.UserListID,
                         UserGroupID = USER.UserGroupID,

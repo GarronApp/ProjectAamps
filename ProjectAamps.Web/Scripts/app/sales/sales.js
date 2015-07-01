@@ -1198,7 +1198,10 @@
             async: true,
             cache: false,
             success: function (data) {
-                console.log(data);
+                console.log(data)
+                if (data.Forbidden)
+                    window.location.href = data.newurl;
+                else {
                     if (instance.isArray(data)) {
                         toastr.info("Duplicate record(s) found");
                         instance.LoadDuplicateIndividuals(data);
@@ -1207,11 +1210,12 @@
                         instance.MapIndividualDetails(data);
                         toastr.success("Individual added successfully");
                     }
+                }
             },
             error: function (exception) {
                 console.log(exception);
             }
-        }).done(function () { $("#progress").addClass('hide'); });
+        }).done(function (data) { console.log(data); $("#progress").addClass('hide'); });
     }
 
     this.UpdatePurchaserDetails = function () {

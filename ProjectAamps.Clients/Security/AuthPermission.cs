@@ -9,7 +9,7 @@ using App.Extentions;
 using System.Web.Routing;
 using System.Web;
 using System.Net;
-using ProjectAamps.Clients.Security;
+using AAMPS.Clients.Security;
 
 namespace AAMPS.Clients.Security
 {
@@ -120,16 +120,7 @@ namespace AAMPS.Clients.Security
                             return false;
                         }
                    
-                    case Permissions.Admin:
-                        {
-                            var fullAccess = SafeCastSessionProperty(context.Session["FullAccess"]);
-
-                            if (fullAccess == hasAccess)
-                            {
-                                return true;
-                            }
-                            return false;
-                        }
+                  
                     default:
                         break;
                 }

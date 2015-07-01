@@ -657,6 +657,14 @@
 <script src="~/Scripts/app/sales/sales.js"></script>
 <script type="text/javascript">
     $(function () {
+        
+        $(document).ajaxError(function (event, jqxhr, settings, exception) {
+            if (jqxhr.status == 403) {
+                console.log(jqxhr);
+                toastr.error(jqxhr.statusText);
+            }
+        });
+
         var sales = new Sales();
         sales.load();
     });

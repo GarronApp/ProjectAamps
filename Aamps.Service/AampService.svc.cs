@@ -5,6 +5,7 @@ using Aamps.Domain.Queries.Reports.Sales;
 using Aamps.Domain.Queries.Units;
 using Aamps.Domain.Rules.Individual;
 using Aamps.Domain.ValueObjects;
+using Aamps.Domain.ViewModels.Development;
 using Aamps.Domain.ViewModels.Reports.Sales;
 using Aamps.Repository.Implementations;
 using System.Collections.Generic;
@@ -235,16 +236,15 @@ namespace Aamps.Service
             return results;
         }
 
-
-        public List<SelectRelevantDevelopmentQueryResult> GetAgentDevelopments(SelectRelevantDevelopmentQuery SelectRelevantDevelopmentQuery)
+        public List<AgentDevelopmentViewModel> GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query)
         {
             _devRepo = new DevelopmentRepository(_dbContext);
             var results = _devRepo.GetRelevantDevelopments(new SelectRelevantDevelopmentQuery()
             {
-                 UserListID = SelectRelevantDevelopmentQuery.UserListID,
-                 UserGroupID = SelectRelevantDevelopmentQuery.UserGroupID,
-                 UserTypeID = SelectRelevantDevelopmentQuery.UserTypeID,
-                 CompanyID = SelectRelevantDevelopmentQuery.CompanyID
+                UserListID = query.UserListID,
+                UserGroupID = query.UserGroupID,
+                UserTypeID = query.UserTypeID,
+                CompanyID = query.CompanyID
             });
             return results;
         }
