@@ -11,10 +11,20 @@ namespace AAMPS.Web.Controllers
         // GET: Error
         public JsonResult Unauthorized()
         {
-            return Json(new { Forbidden = true, newurl = Url.Action("Forbidden","Error")}, JsonRequestBehavior.AllowGet);
+            throw new HttpException(403, "");
+            //return Json(new { Forbidden = true, status = "403", statusText = "You do not have the permissions to do this action"}, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Forbidden()
+        {
+            return View();
+        }
+
+        public ActionResult PageNotFound()
+        {
+            return View();
+        }
+        public ActionResult SystemError()
         {
             return View();
         }

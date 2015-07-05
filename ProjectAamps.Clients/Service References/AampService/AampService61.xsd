@@ -9,4 +9,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SelectRelevantDevelopmentQuery" nillable="true" type="tns:SelectRelevantDevelopmentQuery" />
+  <xs:complexType name="ArrayOfSelectRelevantDevelopmentResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SelectRelevantDevelopmentResult" nillable="true" type="tns:SelectRelevantDevelopmentResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSelectRelevantDevelopmentResult" nillable="true" type="tns:ArrayOfSelectRelevantDevelopmentResult" />
+  <xs:complexType name="SelectRelevantDevelopmentResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DevelopmentDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DevelopmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="DevelopmentUrlImage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstateID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SelectRelevantDevelopmentResult" nillable="true" type="tns:SelectRelevantDevelopmentResult" />
 </xs:schema>

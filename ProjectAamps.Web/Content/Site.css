@@ -480,6 +480,36 @@ legend.scheduler-border {
     border-bottom:none;
 }
 
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.upload-progress {
+position:relative;
+width:400px;
+border:1px solid #ddd;
+padding:1px;
+}
+.progress-bar {
+width:0px;
+height:20px;
+background-color:#57be65;
+}
+
+
 /* BONDS SCREEN  */
 
 .legend-heading{

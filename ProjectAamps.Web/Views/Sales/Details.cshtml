@@ -144,8 +144,9 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <input type="button" id="btnReservedUpdatePersonDetails" class="btn btn-primary btn-sm" value="Update Individual's Details" />
-                                <span id="progress" class="hide"><span class="disabledControls">Loading...</span> 
+                                <span id="progress" class="progress hide">
                                     <img style="height:20px" src="~/Images/ajax-loader.gif" />
+                                    <span class="disabledControls">Processing...</span> 
                                 </span> 
                             </div>
                            
@@ -236,23 +237,16 @@
                                     <input type="text" class="form-control datepicker" disabled="disabled" id="txtSalesDepositProofDt" name="SalesDepositProofDt" data-date-format="dd/mm/yyyy" placeholder="">
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label for="txtDepositPaid" class="col-sm-4 control-label">Upload Proof</label>
                                 <div class="col-sm-8">
-                                    @*<span class="btn btn-default btn-file">
-                                            Browse <input type="file">
-                                        </span>*@
-                                    <a class='btn btn-primary' href='javascript:;'>
-                                        Browse...
-                                        <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40" onchange='$("#upload-file-info").html($(this).val());'>
-                                    </a>
-                                    &nbsp;
-                                    <span class='label label-info' id="upload-file-info"></span>
+                                    <input type="file" id="btnUploadProof" multiple name="UploadFile" value="Browse..." />
+                                    @*<input type="button" class="btn btn-primary btn-sm" id="btnUploadDocuments" value="Upload" />*@
                                 </div>
-                            </div>
-                        </div>
+                   
 
+                        </div>
+                       </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
@@ -322,7 +316,7 @@
             <h4 class="panel-title">
                 Sold
                 <span class="pull-right"><i id="showPanelSoldOpenClose" class="fa fa-plus-circle" style="font-size:18px"></i></span>
-                <input type="button" class="close pull-right btn-cancel" value="RETURN" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard","Development")'" />
+                <input type="button" class="close pull-right btn-cancel" value="RETURN" data-dismiss="modal" onclick="window.location.href='@Url.Action("Dashboard", "Development")'" />
             </h4>
         </div>
     </a>
@@ -654,19 +648,42 @@
 </div>
 
 @section Scripts {
+<script src="http://malsup.github.com/jquery.form.js"></script>
 <script src="~/Scripts/app/sales/sales.js"></script>
 <script type="text/javascript">
     $(function () {
         
-        $(document).ajaxError(function (event, jqxhr, settings, exception) {
-            if (jqxhr.status == 403) {
-                console.log(jqxhr);
-                toastr.error(jqxhr.statusText);
+        var sales = new Sales();
+        sales.load();
+
+        var bar = $('.progress-bar');
+        var percent = $('.progress-bar');
+        var status = $('#status');
+
+        $('form').ajaxForm({
+            beforeSend: function () {
+                status.empty();
+                var percentValue = '0%';
+                bar.width(percentValue);
+                percent.html(percentValue);
+            },
+            uploadProgress: function (event, position, total, percentComplete) {
+                var percentValue = percentComplete + '%';
+                bar.width(percentValue);
+                percent.html(percentValue);
+            },
+            success: function (d) {
+                var percentValue = '100%';
+                bar.width(percentValue);
+                percent.html(percentValue);
+                $('#fu1').val('');
+                alert(d);
+            },
+            complete: function (xhr) {
+                status.html(xhr.responseText);
             }
         });
 
-        var sales = new Sales();
-        sales.load();
     });
 </script>
 

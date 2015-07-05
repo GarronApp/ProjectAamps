@@ -23,9 +23,9 @@ namespace AAMPS.Web.Controllers
             try
             {
 
-                if (USER.IsNotNull())
+                if (base.USER.IsNotNull())
                 {
-                    var developments = _serviceProvider.GetDevelopmentsByAgent(new SelectRelevantDevelopmentQuery()
+                    var developments = base._serviceProvider.GetDevelopmentsByAgent(new SelectRelevantDevelopmentQuery()
                     {
                         UserListID = USER.UserListID,
                         UserGroupID = USER.UserGroupID,

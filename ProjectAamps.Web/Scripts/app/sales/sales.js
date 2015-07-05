@@ -15,6 +15,7 @@
     instance.getDepositProofTypes_Url = instance.settings_route + "/Sales/GetSaleDepositProofs";
     instance.getCompanyOrginator_Url = instance.settings_route + "/Sales/GetCompanyOriginator";
     instance.getPurchaserEntityTypes_Url = instance.settings_route + "/Sales/GetPurchaserEntityTypes";
+    instance.uploadDocuments_Url = instance.settings_route + "/Sales/UploadDocuments?id=";
     instance.IndividualAdded = false;
     instance.PurchaserFormValid = false;
     instance.ReservedFormValid = false;
@@ -386,6 +387,37 @@
             
         });
 
+        $('#btnUploadProof').on('change', function (e) {
+            var files = e.target.files;
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append("file" + x, files[x]);
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: instance.uploadDocuments_Url + files,
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {
+                            toastr.success(result);
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            var err = "Error " + " " + status + " " + p3 + " " + p4;
+                            if (xhr.responseText && xhr.responseText[0] == "{")
+                                err = JSON.parse(xhr.responseText).Message;
+                            toastr.error(err);
+                        }
+                    });
+                } else {
+                    alert("This browser doesn't support HTML5 file uploads!");
+                }
+            }
+        });
+
         $(".clearDuplicateIndividualForm").click(function () {
             if (instance.updateIndividualRecord == true) {
 
@@ -402,7 +434,6 @@
                 $('#individualFormReserved')[0].reset();
             }
         });
-
 
         instance.LoadSaleTypes();
         instance.LoadContactPreferedTypes();
@@ -1127,6 +1158,40 @@
         });
     }
 
+    this.UploadDocuments = function () {
+
+        $('#btnUploadProof').on('change', function (e) {
+            var files = e.target.files;
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append("file" + x, files[x]);
+                    }
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/Sales/UploadDocuments?id=' + myID,
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {
+                            console.log(result);
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            var err = "Error " + " " + status + " " + p3 + " " + p4;
+                            if (xhr.responseText && xhr.responseText[0] == "{")
+                                err = JSON.parse(xhr.responseText).Message;
+                            console.log(err);
+                        }
+                    });
+                } else {
+                    alert("This browser doesn't support HTML5 file uploads!");
+                }
+            }
+        });
+    }
+
     this.HandleUnauthorizedPermissions = function (data) {
         toastr.error(data.description);
     }
@@ -1199,9 +1264,11 @@
             cache: false,
             success: function (data) {
                 console.log(data)
-                if (data.Forbidden)
-                    window.location.href = data.newurl;
-                else {
+                //if (data.Forbidden) {
+                //    window.location.href = data.newurl;
+                //}
+                 
+                //else {
                     if (instance.isArray(data)) {
                         toastr.info("Duplicate record(s) found");
                         instance.LoadDuplicateIndividuals(data);
@@ -1210,12 +1277,12 @@
                         instance.MapIndividualDetails(data);
                         toastr.success("Individual added successfully");
                     }
-                }
+                //}
             },
             error: function (exception) {
                 console.log(exception);
             }
-        }).done(function (data) { console.log(data); $("#progress").addClass('hide'); });
+        }).done(function (data) { console.log(data); $(".progress").addClass('hide'); });
     }
 
     this.UpdatePurchaserDetails = function () {

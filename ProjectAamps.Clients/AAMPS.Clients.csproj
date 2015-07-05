@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Actions\Bonds\LoadBondDetails.cs" />
     <Compile Include="Actions\Development\LoadDevelopmentSummaryTotals.cs" />
+    <Compile Include="Actions\Sales\FileUpload.cs" />
     <Compile Include="Actions\Sales\UpdatePendingToSoldSale.cs" />
     <Compile Include="Actions\Sales\UpdateReservedToPendingSale.cs" />
     <Compile Include="Actions\Sales\LoadAndSaveAvailableSale.cs" />
@@ -64,13 +65,15 @@
     <Compile Include="Queries\Sales\LoadSalesQuery.cs" />
     <Compile Include="Queries\Sales\MapToSaleDetailsQuery.cs" />
     <Compile Include="Security\HttpForbiddenResult.cs" />
-    <Compile Include="Security\TestAuthorizeAttribute.cs" />
     <Compile Include="Security\AampsAuthorize.cs" />
     <Compile Include="Security\AuthPermission.cs" />
     <Compile Include="Security\AuthProvider.cs" />
     <Compile Include="Security\PermissionType.cs" />
     <Compile Include="Security\Queries\UserLoginQuery.cs" />
     <Compile Include="Security\SecureProvider.cs" />
+    <Compile Include="Security\TestAuthorizeAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service References\AampService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,12 +138,6 @@
     </None>
     <None Include="Service References\AampService\AampService62.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AampService\AampService7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.AgentDevelopmentViewModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Bank1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -215,6 +212,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SaleType1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AampService\ProjectAamps.Clients.AampService.SelectRelevantDevelopmentResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AampService\ProjectAamps.Clients.AampService.Unit1.datasource">

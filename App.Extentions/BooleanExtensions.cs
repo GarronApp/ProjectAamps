@@ -21,5 +21,17 @@ namespace App.Extentions
             }
             return string.Empty;
         }
+
+        public static int BoolToInt(this bool? value)
+        {
+            if(value.HasValue)
+            {
+                if (value == true)
+                    return 1;
+                else
+                    return 0;
+            }
+            return 0;
+        }
     }
 }

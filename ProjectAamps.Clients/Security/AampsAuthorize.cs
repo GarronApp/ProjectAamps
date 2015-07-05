@@ -1,5 +1,6 @@
 ﻿using AAMPS.Clients.AampService;
 using AAMPS.Clients.Security;
+using App.Common.Exceptions;
 using App.Common.Security;
 using App.Extentions;
 using System;
@@ -55,32 +56,33 @@ namespace AAMPS.Clients.Security
                 {
                     checkPermissions = true;
 
-                    foreach (var permisssion in _permissions)
-                    {
-                        var hasPermission = 0;
+                        foreach (var permisssion in _permissions)
+                        {
+                       
+                            var hasPermission = 0;
 
-                        if (permisssion == Permissions.View)
-                        {
-                            hasPermission = SessionHandler.CastSessionToInt(httpContext.Session["USER_RIGHT_VIEW"].ToString());
-                            HandlePermission(hasPermission);
+                            if (permisssion == Permissions.View)
+                            {
+                                hasPermission = SessionHandler.CastSessionToInt("USER_RIGHT_VIEW");
+                                return HandlePermission(hasPermission);
+                            }
+                            if (permisssion == Permissions.Add)
+                            {
+                                hasPermission = SessionHandler.CastSessionToInt("USER_RIGHT_ADD");
+                                return HandlePermission(hasPermission);
+                            }
+                            if (permisssion == Permissions.Edit)
+                            {
+                                hasPermission = SessionHandler.CastSessionToInt("USER_RIGHT_EDIT");
+                                return HandlePermission(hasPermission);
+                            }
+                            if (permisssion == Permissions.Delete)
+                            {
+                                hasPermission = SessionHandler.CastSessionToInt("USER_RIGHT_DELETE");
+                                return HandlePermission(hasPermission);
+                            }
                         }
-                        if (permisssion == Permissions.Add)
-                        {
-                            hasPermission = SessionHandler.CastSessionToInt(httpContext.Session["USER_RIGHT_ADD"].ToString());
-                            return HandlePermission(hasPermission);
-                        }
-                        if (permisssion == Permissions.Edit)
-                        {
-                            hasPermission = SessionHandler.CastSessionToInt(httpContext.Session["USER_RIGHT_EDIT"].ToString());
-                            return HandlePermission(hasPermission);
-                        }
-                        if (permisssion == Permissions.Delete)
-                        {
-                            hasPermission = SessionHandler.CastSessionToInt(httpContext.Session["USER_RIGHT_DELETE"].ToString());
-                            return HandlePermission(hasPermission);
-                        }
-
-                    }
+                    
                 }
                 else
                 {
@@ -91,7 +93,7 @@ namespace AAMPS.Clients.Security
             }
             catch(Exception ex)
             {
-                
+                ExceptionHandler.HandleException(ex);
             }
 
             return false;
@@ -117,9 +119,15 @@ namespace AAMPS.Clients.Security
 
             if (checkPermissions && !HasRights)
             {
-
-                filterContext.Result = new HttpStatusCodeResult(403, "Forbidden");
-           
+                if(filterContext.HttpContext.Request.IsAjaxRequest())
+                {
+                    filterContext.Result = new HttpStatusCodeResult(403, string.Empty);
+                }
+                else
+                {
+                    filterContext.Result = new HttpStatusCodeResult(403, string.Empty);
+                }
+                
             }
 
         }
@@ -135,67 +143,8 @@ namespace AAMPS.Clients.Security
             {
                 HasRights = true;
                 return true;
-
             }
         }
-
-        //private bool HasPermission(IEnumerable<Permissions> rights, System.Web.HttpContextBase context)
-        //{
-        //    foreach (var permission in rights)
-        //    {
-        //        switch (permission)
-        //        {
-        //            case Permissions.View:
-        //                {
-        //                    var readAccess = SafeCastSessionProperty(context.Session["ReadAccess"]);
-
-        //                    if (readAccess == hasAccess)
-        //                    {
-        //                        return true;
-                                
-        //                    }
-        //                    return false;
-        //                }
-        //            case Permissions.Add:
-        //                {
-        //                    var writeAccess = SafeCastSessionProperty(context.Session["WriteAccess"]);
-
-        //                    if (writeAccess == hasAccess)
-        //                    {
-        //                        return true;
-        //                    }
-        //                    return false;
-        //                }
-        //            case Permissions.Delete:
-        //                {
-        //                    var deleteAccess = SafeCastSessionProperty(context.Session["DeleteAccess"]);
-
-        //                    if (deleteAccess == hasAccess)
-        //                    {
-        //                        return true;
-        //                    }
-        //                    return false;
-        //                }
-        //            case Permissions.Edit:
-        //                {
-        //                    var editAccess = SafeCastSessionProperty(context.Session["EditAccess"]);
-
-        //                    if (editAccess == hasAccess)
-        //                    {
-        //                        return true;
-        //                    }
-        //                    return false;
-        //                }
-                   
-                   
-        //            default:
-        //                break;
-        //        }
-        //    }
-
-        //    return false;
-
-        //}
 
         public UserList USER
         {
@@ -218,21 +167,5 @@ namespace AAMPS.Clients.Security
             return int.Parse(SessionHandler.GetSessionContext(val));
         }
 
-
-        //public void OnActionExecuted(ActionExecutedContext filterContext)
-        //{
-        //}
-
-        //public void OnActionExecuting(ActionExecutingContext filterContext)
-        //{
-        //    if (filterContext.HttpContext.Response.StatusCode == 403)
-        //    {
-        //        var config = (CustomErrorsSection)
-        //                       WebConfigurationManager.GetSection("system.web/customErrors");
-        //        string urlToRedirectTo = config.Errors["403"].Redirect;
-        //        filterContext.Result = new RedirectResult(urlToRedirectTo);
-        //    }
-            
-        //}
     }
 }

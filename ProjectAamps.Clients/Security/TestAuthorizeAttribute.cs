@@ -126,13 +126,13 @@ namespace AAMPS.Clients.Security
                     //new System.Web.Mvc.HttpStatusCodeResult(403,"forbidden");
                     //return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "Bad Request");
                     //filterContext.HttpContext.Response.StatusCode = 403;
-                    filterContext.Result = new HttpStatusCodeResult(403, "Forbidden");
+                    filterContext.Result = new HttpStatusCodeResult(403, "sdfsdfsdf");
                     //filterContext.HttpContext.Response.StatusDescription = "You do not have permission to perform this action";
 
                 }
                 else
                 {
-                    filterContext.Result = new HttpStatusCodeResult(403, "Forbidden");
+                    filterContext.Result = new HttpStatusCodeResult(403, "Forbiddsdfsdfen");
                 }
             }
 

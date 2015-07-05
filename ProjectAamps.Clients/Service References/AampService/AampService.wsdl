@@ -9,9 +9,8 @@
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Sales" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Reports.Bonds" />
       <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Development" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
-      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ValueObjects" />
+      <xsd:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAampService_GetAllUnits_InputMessage">

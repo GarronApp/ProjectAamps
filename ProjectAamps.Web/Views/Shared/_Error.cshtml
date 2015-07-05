@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container" style="background-color: #c3c3c3;">
+        @RenderBody()
+    </div>
+    <footer style="background-color: #c3c3c3" class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="~/Images/aamps.gif" style="height:40px;padding-left:5px;margin-bottom:5px" class="pull-right" />
+                    <h6 class="text-right" style="margin-right: 10px; padding-top:18px"><span class="text-left pull-left"><b>Welcome to Aamps, Your online Management Property System</b></span> Powered by AAMPS (c) 2015</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

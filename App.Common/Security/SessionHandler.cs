@@ -31,11 +31,16 @@ namespace App.Common.Security
              return null;
         }
 
-        public static int CastSessionToInt(string session)
+        public static int CastSessionToInt(object session)
         {
             if (HttpContext.Current.Session["" + session + ""] != null)
             {
-                return int.Parse(HttpContext.Current.Session["" + session + ""].ToString());
+                var result = HttpContext.Current.Session["" + session + ""];
+                if(result != null)
+                {
+                    return result.Equals(true) ? 1 : 0;
+                }
+                
             }
             return 0;
         }

@@ -854,3 +854,29 @@ Parameter name: String
 ------------------------= End Exception =---------------------------
 
 
+-----------------------= Start Exception =--------------------------
+2015-07-04 12:27:16 AM
+
+Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at App.Common.Security.SessionHandler.CastSessionToInt(Object session) in c:\workspace\Aamps\App.Common\Security\SessionHandler.cs:line 38
+   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AampsAuthorize.cs:line 66
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-04 12:27:52 AM
+
+Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at App.Common.Security.SessionHandler.CastSessionToInt(Object session) in c:\workspace\Aamps\App.Common\Security\SessionHandler.cs:line 38
+   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AampsAuthorize.cs:line 66
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+

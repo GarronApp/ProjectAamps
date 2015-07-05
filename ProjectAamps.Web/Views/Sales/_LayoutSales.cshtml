@@ -138,13 +138,6 @@
 <script type="text/javascript">
     $(function () {
 
-        $(document).ajaxError(function (event, jqxhr, settings, exception) {
-            if (jqxhr.status == 403) {
-                console.log(jqxhr);
-                toastr.error(jqxhr.statusText);
-            }
-        });
-
         $.ajax({
             url: '@Url.Action("GetCurrentUser", "Account")',
             type: 'GET',
@@ -156,30 +149,6 @@
         });
 
         FormatSummaryTotalsCurrency();
-
-        var items = [];
-        $.getJSON("/Development/GetTotals", function (data) {
-
-            items.push(data);
-            console.log(data)
-            var chart = c3.generate({
-                size: {
-                    height: 180,
-                    width: 360
-                },
-                data: {
-                    columns: [
-                          [data[0].series, data[0].data],
-                          [data[2].series, data[2].data],
-                          [data[1].series, data[1].data],
-                          [data[3].series, data[3].data],
-
-                    ],
-                    type: 'bar',
-                },
-
-            });
-        });
     });
 </script>
 

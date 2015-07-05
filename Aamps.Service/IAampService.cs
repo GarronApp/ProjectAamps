@@ -121,7 +121,7 @@ namespace Aamps.Service
         List<Development> GetAllDevelopments();
 
         [OperationContract]
-        List<AgentDevelopmentViewModel> GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query);
+        List<SelectRelevantDevelopmentResult> GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query);
 
         [OperationContract]
         Development GetDevelopmentById(int id);
@@ -131,35 +131,44 @@ namespace Aamps.Service
 
         [OperationContract]
         UnitStatus GetUnitStatusById(int id);
+
         [OperationContract]
         List<Company> GetCompanies();
+        
         [OperationContract]
         Company GetCompanyByUserGroupId(int id);
 
         //Individual
          [OperationContract]
          Individual SaveIndividual(Individual person);
-         [OperationContract]
+        
+        [OperationContract]
          Individual UpdateIndividual(Individual person);
-         [OperationContract]
-         List<PreferedContactMethod> GetAllPreferedContactMethods();
-         [OperationContract]
-         PreferedContactMethod GetPreferedContactMethodById(int id);
-         [OperationContract]
-         Individual GetIndividualById(int id);
-         [OperationContract]
-         [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped)]
-         List<Individual> ValidateIndividual(string lastname, string cellphone, string email);
          
+        [OperationContract]
+         List<PreferedContactMethod> GetAllPreferedContactMethods();
+         
+        [OperationContract]
+         PreferedContactMethod GetPreferedContactMethodById(int id);
+        
+        [OperationContract]
+         Individual GetIndividualById(int id);
+         
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped)]
+        List<Individual> ValidateIndividual(string lastname, string cellphone, string email);
 
         //Purchaser
          [OperationContract]
          Purchaser SavePurchaser(Purchaser purchaser);
-         [OperationContract]
+         
+        [OperationContract]
          Purchaser UpdatePurchaser(Purchaser purchaser);
-         [OperationContract]
+         
+        [OperationContract]
          Purchaser GetPurchaserById(int id);
-         [OperationContract]
+         
+        [OperationContract]
          List<EntityType> GetPurchaserEntityTypes();
 
         //User
@@ -168,7 +177,6 @@ namespace Aamps.Service
 
         [OperationContract]
         UserList GetCurrentUser(string username);
-
 
         [OperationContract]
         UserRight GetUserPermissions(int user);
@@ -183,7 +191,6 @@ namespace Aamps.Service
 
         [OperationContract]
         int GetSaleStatusTypes(GetSaleStatusType type);
-
         
     }
 }

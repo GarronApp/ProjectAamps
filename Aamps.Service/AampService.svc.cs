@@ -236,7 +236,7 @@ namespace Aamps.Service
             return results;
         }
 
-        public List<AgentDevelopmentViewModel> GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query)
+        public List<SelectRelevantDevelopmentResult> GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query)
         {
             _devRepo = new DevelopmentRepository(_dbContext);
             var results = _devRepo.GetRelevantDevelopments(new SelectRelevantDevelopmentQuery()

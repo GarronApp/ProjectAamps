@@ -7367,9 +7367,9 @@ namespace AAMPS.Clients.AampService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AgentDevelopmentViewModel", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.ViewModels.Development")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SelectRelevantDevelopmentResult", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments")]
     [System.SerializableAttribute()]
-    public partial class AgentDevelopmentViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class SelectRelevantDevelopmentResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -7718,10 +7718,10 @@ namespace AAMPS.Clients.AampService {
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Development[]> GetAllDevelopmentsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDevelopmentsByAgent", ReplyAction="http://tempuri.org/IAampService/GetDevelopmentsByAgentResponse")]
-        AAMPS.Clients.AampService.AgentDevelopmentViewModel[] GetDevelopmentsByAgent(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query);
+        AAMPS.Clients.AampService.SelectRelevantDevelopmentResult[] GetDevelopmentsByAgent(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDevelopmentsByAgent", ReplyAction="http://tempuri.org/IAampService/GetDevelopmentsByAgentResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.AgentDevelopmentViewModel[]> GetDevelopmentsByAgentAsync(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query);
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.SelectRelevantDevelopmentResult[]> GetDevelopmentsByAgentAsync(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDevelopmentById", ReplyAction="http://tempuri.org/IAampService/GetDevelopmentByIdResponse")]
         AAMPS.Clients.AampService.Development GetDevelopmentById(int id);
@@ -8125,11 +8125,11 @@ namespace AAMPS.Clients.AampService {
             return base.Channel.GetAllDevelopmentsAsync();
         }
         
-        public AAMPS.Clients.AampService.AgentDevelopmentViewModel[] GetDevelopmentsByAgent(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query) {
+        public AAMPS.Clients.AampService.SelectRelevantDevelopmentResult[] GetDevelopmentsByAgent(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query) {
             return base.Channel.GetDevelopmentsByAgent(query);
         }
         
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.AgentDevelopmentViewModel[]> GetDevelopmentsByAgentAsync(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query) {
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.SelectRelevantDevelopmentResult[]> GetDevelopmentsByAgentAsync(AAMPS.Clients.AampService.SelectRelevantDevelopmentQuery query) {
             return base.Channel.GetDevelopmentsByAgentAsync(query);
         }
         

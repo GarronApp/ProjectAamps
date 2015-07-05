@@ -20,6 +20,10 @@ using App.Common.Exceptions;
 using AAMPS.Clients.Security;
 using AAMPS.Web.Providers;
 using AAMPS.Clients.Security;
+using ProjectAamps.Clients.Actions.Sales;
+using System.IO;
+using System.Threading.Tasks;
+using System.Net;
 
 
 namespace AAMPS.Web.Controllers
@@ -114,7 +118,59 @@ namespace AAMPS.Web.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public JsonResult UploadDocuments(IEnumerable<HttpPostedFileBase> files)
+        //{
+        //    int count = 0;
+        //    if (files != null)
+        //    {
+        //        foreach (var file in files)
+        //        {
+        //            if (file != null && file.ContentLength > 0)
+        //            {
+        //                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+        //                var path = Path.Combine(Server.MapPath("~/files"), fileName);
+        //                file.SaveAs(path);
+        //                count++;
+        //            }
+        //        }
+        //    }
+        //    return new JsonResult { Data = "Successfully " + count + " file(s) uploaded" };
+        //}
+
+        [HttpPost]
+        public JsonResult UploadDocuments(string id)
+        {
+            try
+            {
+                foreach (string file in Request.Files)
+                {
+                    var fileContent = Request.Files[file];
+                    if (fileContent != null && fileContent.ContentLength > 0)
+                    {
+                        var stream = fileContent.InputStream;
+                        var fileName = Path.GetFileName(fileContent.FileName);
+                        var path =  Path.Combine(Server.MapPath("~/files"), fileName);
+
+                        using (var fileStream = System.IO.File.Create(path))
+                        {
+                            stream.CopyTo(fileStream);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Upload failed");
+            }
+
+            return Json("File uploaded successfully");
+        }
+
         [HttpGet]
+        [AampsAuthorize(Permissions.View)]
         public JsonResult GetAgentSaleDetails()
         {
             try
@@ -168,7 +224,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        [AampsAuthorize(Permissions.View |Permissions.Add)]
+        [AampsAuthorize(Permissions.Add)]
         public JsonResult SaveIndividual(IndividualViewModel individual)
         {
             try

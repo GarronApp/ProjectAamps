@@ -235,6 +235,8 @@
     <Content Include="Images\Yellowwood_Estate_Logo.gif" />
     <Content Include="LICENSE.txt" />
     <Content Include="Scripts\app\bonds\bonds.js" />
+    <Content Include="Scripts\app\development\development.js" />
+    <Content Include="Scripts\app\exceptions.js" />
     <Content Include="Scripts\app\resources.js" />
     <Content Include="Scripts\app\sales\sales.js" />
     <Content Include="Scripts\autoNumeric\autoNumeric-1.9.25.js" />
@@ -320,15 +322,16 @@
     <Content Include="Views\Report\SalesReport.cshtml" />
     <Content Include="Views\Report\BondsReport.cshtml" />
     <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\Shared\_Error.cshtml" />
+    <Content Include="Views\Error\SystemError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Pdf\" />
     <Folder Include="Reports\" />
     <Folder Include="Scripts\app\authentication\" />
-    <Folder Include="Scripts\app\development\" />
     <Folder Include="Scripts\app\reporting\" />
-    <Folder Include="Views\Base\" />
     <Folder Include="Views\ErrorHandler\" />
   </ItemGroup>
   <ItemGroup>
