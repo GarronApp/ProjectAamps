@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BondsController.cs" />
     <Compile Include="Controllers\DevelopmentController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -215,6 +216,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Emails\Templates\PurchaserReservationCaptured.html" />
     <Content Include="Exceptions\Logs\Exceptions.txt" />
     <Content Include="favicon.ico" />
     <Content Include="files\HtmlPage.html" />
@@ -325,6 +327,7 @@
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Views\Shared\_Error.cshtml" />
     <Content Include="Views\Error\SystemError.cshtml" />
+    <Content Include="Views\Shared\_EmailTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,6 +335,7 @@
     <Folder Include="Reports\" />
     <Folder Include="Scripts\app\authentication\" />
     <Folder Include="Scripts\app\reporting\" />
+    <Folder Include="Views\Email\" />
     <Folder Include="Views\ErrorHandler\" />
   </ItemGroup>
   <ItemGroup>

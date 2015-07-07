@@ -44,8 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\Base\BaseActionProvider.cs" />
     <Compile Include="Actions\Bonds\LoadBondDetails.cs" />
     <Compile Include="Actions\Development\LoadDevelopmentSummaryTotals.cs" />
+    <Compile Include="Actions\Emails\EmailEngineProvider.cs" />
+    <Compile Include="Actions\Emails\EmailSettings.cs" />
+    <Compile Include="Actions\Emails\IEmailEngineProvider.cs" />
     <Compile Include="Actions\Sales\FileUpload.cs" />
     <Compile Include="Actions\Sales\UpdatePendingToSoldSale.cs" />
     <Compile Include="Actions\Sales\UpdateReservedToPendingSale.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="ViewModels\Development\DevelopmentUnitViewModel.cs" />
     <Compile Include="ViewModels\Development\DevelopmentViewModel.cs" />
     <Compile Include="ViewModels\Development\SummaryViewModel.cs" />
+    <Compile Include="ViewModels\Emails\PurchaserReservationCapturedVM.cs" />
     <Compile Include="ViewModels\IClientViewModel.cs" />
     <Compile Include="ViewModels\Individual\IndividualViewModel.cs" />
     <Compile Include="ViewModels\Originator\OrginatorViewModel.cs" />
@@ -162,6 +167,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Info\Sales\" />
+    <Folder Include="Info\User\" />
     <Folder Include="Validation\" />
   </ItemGroup>
   <ItemGroup>

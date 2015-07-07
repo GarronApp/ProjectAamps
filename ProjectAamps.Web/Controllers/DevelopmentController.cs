@@ -10,8 +10,6 @@ using App.Common.Exceptions;
 using AAMPS.Clients.Security;
 using App.Extentions;
 using AAMPS.Web.Providers;
-using AAMPS.Clients.Security;
-
 
 namespace AAMPS.Web.Controllers
 {
@@ -22,15 +20,14 @@ namespace AAMPS.Web.Controllers
         {
             try
             {
-
-                if (base.USER.IsNotNull())
+                if (base.UserInfo.IsNotNull())
                 {
                     var developments = base._serviceProvider.GetDevelopmentsByAgent(new SelectRelevantDevelopmentQuery()
                     {
-                        UserListID = USER.UserListID,
-                        UserGroupID = USER.UserGroupID,
-                        UserTypeID = USER.UserTypeID,
-                        CompanyID = USER.CompanyID
+                        UserListID = UserInfo.UserListID,
+                        UserGroupID = UserInfo.UserGroupID,
+                        UserTypeID = UserInfo.UserTypeID,
+                        CompanyID = UserInfo.CompanyID
                     });
 
                     return View(developments);
@@ -89,8 +86,8 @@ namespace AAMPS.Web.Controllers
                  var units = _serviceProvider.GetDevelopmentUnits(new SelectRelevantUnitsQuery()
                  {
                      DevelopmentID = DevelopmentID,
-                     UserListID = USER.UserListID,
-                     UserTypeID = USER.UserTypeID
+                     UserListID = UserInfo.UserListID,
+                     UserTypeID = UserInfo.UserTypeID
                  });
 
                  SessionHandler.SessionContext("DevelopmentImage", DevelopmentImage);

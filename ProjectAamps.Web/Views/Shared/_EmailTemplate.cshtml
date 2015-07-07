@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container" style="background-color: #c3c3c3;">
+        @RenderBody()
+    </div>
+    <footer style="background-color: #c3c3c3" class="container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Yours Sincerely</p>
+                    <br /><br />
+                    <p><strong>[DEVELOPER NAME]</strong></p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

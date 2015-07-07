@@ -140,7 +140,7 @@ namespace AAMPS.Web.Controllers
         //}
 
         [HttpPost]
-        public JsonResult UploadDocuments(string id)
+        public async Task<JsonResult> UploadDocuments(string id)
         {
             try
             {
@@ -149,13 +149,13 @@ namespace AAMPS.Web.Controllers
                     var fileContent = Request.Files[file];
                     if (fileContent != null && fileContent.ContentLength > 0)
                     {
-                        var stream = fileContent.InputStream;
+                        var stream =  fileContent.InputStream;
                         var fileName = Path.GetFileName(fileContent.FileName);
                         var path =  Path.Combine(Server.MapPath("~/files"), fileName);
 
                         using (var fileStream = System.IO.File.Create(path))
                         {
-                            stream.CopyTo(fileStream);
+                           await Task.Run(() =>  stream.CopyTo(fileStream));
                         }
                     }
                 }

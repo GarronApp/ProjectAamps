@@ -3,6 +3,8 @@ using AAMPS.Clients.Queries.Sales;
 using AAMPS.Clients.ViewModels.Individual;
 using AAMPS.Clients.ViewModels.Purchaser;
 using App.Common.Controllers.Actions;
+using App.Common.Security;
+using App.Extentions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +64,11 @@ namespace AAMPS.Clients.Actions.Sales
                 MapIndividual(_individual);
 
                 var result = new AampServiceClient().SaveIndividual(_individual);
+
+                if(result.IsNotNull())
+                {
+                    SessionHandler.SessionContext("IndividualInfo", result);
+                }
 
                 _individual.IndividualID = result.IndividualID;
                 IndividualViewModel.IndividualID = result.IndividualID;
