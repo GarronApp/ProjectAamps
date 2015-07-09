@@ -197,26 +197,6 @@ namespace Aamps.Repository.Implementations
            
         }
 
-
-        public List<Company> GetCompanies()
-        {
-            AampsContext _dbContext = new AampsContext();
-            var results = (from x in _dbContext.Companies
-                           select x).ToList();
-
-            return results;
-        }
-
-        public Company GetCompanyByUserGroupId(int id)
-        {
-            AampsContext _dbContext = new AampsContext();
-            var results = (from x in _dbContext.Companies
-                           where x.UserGroupID == id
-                           select x).FirstOrDefault();
-
-            return results;
-        }
-
         public void AddSale(Sale sale)
         {
              try

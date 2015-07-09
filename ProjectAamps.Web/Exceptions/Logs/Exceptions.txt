@@ -861,7 +861,7 @@ Input string was not in a correct format.
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
    at App.Common.Security.SessionHandler.CastSessionToInt(Object session) in c:\workspace\Aamps\App.Common\Security\SessionHandler.cs:line 38
-   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AampsAuthorize.cs:line 66
+   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AampsAuthorize.cs:line 66
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -874,7 +874,7 @@ Input string was not in a correct format.
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
    at App.Common.Security.SessionHandler.CastSessionToInt(Object session) in c:\workspace\Aamps\App.Common\Security\SessionHandler.cs:line 38
-   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\ProjectAamps.Clients\Security\AampsAuthorize.cs:line 66
+   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AampsAuthorize.cs:line 66
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------
@@ -887,8 +887,181 @@ Value cannot be null.
 Parameter name: String
    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\ProjectAamps.Web\Providers\BaseController.cs:line 141
-   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 86
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 141
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 86
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-08 10:40:31 AM
+
+An error occurred while receiving the HTTP response to http://localhost:1862/AampService.svc/soap. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetCurrentUser(String username)
+   at AAMPS.Clients.AampService.AampServiceClient.GetCurrentUser(String username) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 8265
+   at AAMPS.Clients.Security.AuthProvider.ValidateUser(String UserName, String Password) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthProvider.cs:line 23
+----= Inner Exception Exception =----
+System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-08 10:40:42 AM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetCurrentUser(String username)
+   at AAMPS.Clients.AampService.AampServiceClient.GetCurrentUser(String username) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 8265
+   at AAMPS.Clients.Security.AuthProvider.ValidateUser(String UserName, String Password) in c:\workspace\Aamps\AAMPS.Clients\Security\AuthProvider.cs:line 23
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-08 12:14:15 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 141
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 86
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-08 12:16:36 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 141
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 86
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-09 12:36:49 AM
+
+An error occurred while receiving the HTTP response to http://localhost:1862/AampService.svc/soap. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpChannelUtilities.ProcessGetResponseWebException(WebException webException, HttpWebRequest request, HttpAbortReason abortReason)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetDevelopmentById(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentById(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 8143
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 136
+----= Inner Exception Exception =----
+System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Connection.SyncRead(HttpWebRequest request, Boolean userRetrievedStream, Boolean probeRead)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-09 02:15:41 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 155
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-09 02:15:49 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 155
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-09 02:15:54 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 155
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-09 02:16:53 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 155
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-09 02:19:07 AM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\ProjectAamps.Web\Controllers\DevelopmentController.cs:line 155
 ----= Inner Exception Exception =----
 
 ------------------------= End Exception =---------------------------

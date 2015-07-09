@@ -211,29 +211,17 @@
   <wsdl:message name="IAampService_GetDevelopmentById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDevelopmentByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IAampService_GetEstateByDevelopment_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetEstateByDevelopment" />
+  <wsdl:message name="IAampService_GetEstateById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEstateById" />
   </wsdl:message>
-  <wsdl:message name="IAampService_GetEstateByDevelopment_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetEstateByDevelopmentResponse" />
+  <wsdl:message name="IAampService_GetEstateById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEstateByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetUnitStatusById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUnitStatusById" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetUnitStatusById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUnitStatusByIdResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAampService_GetCompanies_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCompanies" />
-  </wsdl:message>
-  <wsdl:message name="IAampService_GetCompanies_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAampService_GetCompanyByUserGroupId_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetCompanyByUserGroupId" />
-  </wsdl:message>
-  <wsdl:message name="IAampService_GetCompanyByUserGroupId_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetCompanyByUserGroupIdResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_SaveIndividual_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveIndividual" />
@@ -294,6 +282,24 @@
   </wsdl:message>
   <wsdl:message name="IAampService_GetPurchaserEntityTypes_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPurchaserEntityTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetCompanyById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyById" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetCompanyById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompanies" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetAllCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetCompaniesByGroup_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompaniesByGroup" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetCompaniesByGroup_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompaniesByGroupResponse" />
   </wsdl:message>
   <wsdl:message name="IAampService_GetUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUser" />
@@ -464,21 +470,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentById" message="tns:IAampService_GetDevelopmentById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentByIdResponse" message="tns:IAampService_GetDevelopmentById_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetEstateByDevelopment">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetEstateByDevelopment" message="tns:IAampService_GetEstateByDevelopment_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetEstateByDevelopmentResponse" message="tns:IAampService_GetEstateByDevelopment_OutputMessage" />
+    <wsdl:operation name="GetEstateById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetEstateById" message="tns:IAampService_GetEstateById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetEstateByIdResponse" message="tns:IAampService_GetEstateById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUnitStatusById">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusById" message="tns:IAampService_GetUnitStatusById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusByIdResponse" message="tns:IAampService_GetUnitStatusById_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanies">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetCompanies" message="tns:IAampService_GetCompanies_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetCompaniesResponse" message="tns:IAampService_GetCompanies_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanyByUserGroupId">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetCompanyByUserGroupId" message="tns:IAampService_GetCompanyByUserGroupId_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetCompanyByUserGroupIdResponse" message="tns:IAampService_GetCompanyByUserGroupId_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveIndividual">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/SaveIndividual" message="tns:IAampService_SaveIndividual_InputMessage" />
@@ -519,6 +517,18 @@
     <wsdl:operation name="GetPurchaserEntityTypes">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetPurchaserEntityTypes" message="tns:IAampService_GetPurchaserEntityTypes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetPurchaserEntityTypesResponse" message="tns:IAampService_GetPurchaserEntityTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetCompanyById" message="tns:IAampService_GetCompanyById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetCompanyByIdResponse" message="tns:IAampService_GetCompanyById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompanies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetAllCompanies" message="tns:IAampService_GetAllCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetAllCompaniesResponse" message="tns:IAampService_GetAllCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompaniesByGroup">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetCompaniesByGroup" message="tns:IAampService_GetCompaniesByGroup_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetCompaniesByGroupResponse" message="tns:IAampService_GetCompaniesByGroup_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUser" message="tns:IAampService_GetUser_InputMessage" />
@@ -844,8 +854,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetEstateByDevelopment">
-      <soap:operation soapAction="http://tempuri.org/IAampService/GetEstateByDevelopment" style="document" />
+    <wsdl:operation name="GetEstateById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetEstateById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -855,24 +865,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetUnitStatusById">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetUnitStatusById" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanies">
-      <soap:operation soapAction="http://tempuri.org/IAampService/GetCompanies" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCompanyByUserGroupId">
-      <soap:operation soapAction="http://tempuri.org/IAampService/GetCompanyByUserGroupId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -963,6 +955,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetPurchaserEntityTypes">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetPurchaserEntityTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyById">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetCompanyById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompanies">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetAllCompanies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompaniesByGroup">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetCompaniesByGroup" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

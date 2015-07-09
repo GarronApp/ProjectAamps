@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ProjectAamps.Web.Controllers
+namespace AAMPS.Web.Controllers
 {
     public class EmailController : Controller
     {

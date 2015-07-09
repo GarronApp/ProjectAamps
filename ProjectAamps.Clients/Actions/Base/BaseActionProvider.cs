@@ -1,4 +1,6 @@
 ﻿using AAMPS.Clients.AampService;
+using AAMPS.Clients.Actions.Emails;
+using AAMPS.Clients.ViewModels.Emails;
 using App.Common.Controllers.Actions;
 using App.Common.Security;
 using App.Extentions;
@@ -7,8 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
-namespace ProjectAamps.Clients.Actions.Base
+namespace AAMPS.Clients.Actions.Base
 {
     public class BaseActionProvider: ControllerAction
     {
@@ -40,21 +43,67 @@ namespace ProjectAamps.Clients.Actions.Base
 
         }
 
-        public Development DevelopmentInfo
+        //public AAMPS.Clients.AampService.Development DevelopmentInfo
+        //{
+        //    get
+        //    {
+        //        var developmentId =  int.Parse(SessionHandler.GetSessionContext("DevelopmentID"));
+
+        //        if (developmentId.IsNotNull())
+        //        {
+        //            var development = _serviceProvider.GetDevelopmentById(developmentId);
+
+        //            return development as AAMPS.Clients.AampService.Development;
+        //        }
+
+        //        return null;
+        //    }
+
+        //}
+
+        public AAMPS.Clients.AampService.Development DevelopmentInfo
         {
             get
             {
+                var development = SessionHandler.GetSessionObject("DevelopmentInfo");
 
-                var developmentId =  int.Parse(SessionHandler.GetSessionContext("DevelopmentID"));
-
-                if (developmentId.IsNotNull())
+                if (development.IsNotNull())
                 {
-                    var development = _serviceProvider.GetDevelopmentById(developmentId);
-
-                    return development as Development;
+                    return development as AAMPS.Clients.AampService.Development;
                 }
 
                 return null;
+            }
+
+        }
+
+        public string EstateName
+        {
+            get
+            {
+                var estateId = int.Parse(SessionHandler.GetSessionObject("EstateInfo").ToString());
+
+                if (estateId.IsNotNull())
+                {
+                    return _serviceProvider.GetEstateById(estateId).EstateDescription;
+                }
+
+                return string.Empty;
+            }
+        }
+
+        public string DeveloperName
+        {
+            get
+            {
+                var developerInfo = int.Parse(SessionHandler.GetSessionContext("DeveloperInfo").ToString());
+
+                if (developerInfo.IsNotNull())
+                {
+                    return _serviceProvider.GetCompanyById(developerInfo).CompanyDescription;
+
+                }
+                return string.Empty;
             }
 
         }
@@ -123,6 +172,19 @@ namespace ProjectAamps.Clients.Actions.Base
 
         }
 
+        public string EmailMessage
+        {
+            get
+            {
+                var message = SessionHandler.GetSessionContext("EmailMessage");
+                if(message.IsNotNull())
+                {
+                    return message;
+                }
+                return string.Empty;
+            }
+        }
+
         public AAMPS.Clients.AampService.AampServiceClient _serviceProvider
         {
             get
@@ -130,5 +192,56 @@ namespace ProjectAamps.Clients.Actions.Base
                 return _service = new AampServiceClient();
             }
         }
+
+        public List<string> ReservedStatusEmailTriggers
+        {
+            get
+            {
+                List<string> queuedEmails = new List<string>();
+                queuedEmails.Add(EmailSettings.PurchaserReservationCapturedTemplate);
+                queuedEmails.Add(EmailSettings.AgentReservationCapturedTemplate);
+                return queuedEmails;
+            }
+        }
+
+        public string AbsolutePath
+        {
+            get
+            {
+                var message = SessionHandler.GetSessionContext("AbsolutePathInfo");
+                if (message.IsNotNull())
+                {
+                    return message;
+                }
+                return string.Empty;
+            }
+        }
+
+        public EmailTypeViewModelInfo EmailDataModel
+        {
+            get
+            {
+                var ViewModelInfo = new EmailTypeViewModelInfo()
+                {
+                    DevelopmentName = DevelopmentInfo.DevelopmentDescription,
+                    DevelopmentImage = DevelopmentInfo.DevelopmentUrlImage,
+                    EstateName = EstateName,
+                    DeveloperName = DeveloperName,
+                    AgentName = UserInfo.UserListName,
+                    AgentSurname = UserInfo.UserListSurname,
+                    EmailAddress = UserInfo.UserListEmail,
+                    PurchaserName = IndividualInfo.IndividualName,
+                    PurchaserSurname = IndividualInfo.IndividualSurname,
+                    UnitNumber = UnitInfo.UnitNumber,
+                    Price = UnitInfo.UnitPrice,
+                    LapseDate = SaleInfo.SaleReservationDt,
+                    LapseTime = SaleInfo.SaleReservationExpiryDt
+                };
+
+                return EmailDataModel;
+            }
+        }
+        
+
     }
 }

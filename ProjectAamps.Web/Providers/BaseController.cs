@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using App.Common.Security;
 using App.Extentions;
 using System.Configuration;
-using ProjectAamps.Clients.ViewModels.Emails;
+using AAMPS.Clients.ViewModels.Emails;
 
 namespace AAMPS.Web.Providers
 {
@@ -44,13 +44,6 @@ namespace AAMPS.Web.Providers
         {
             get
             {
-                var development = HttpContext.Request.QueryString["DevelopmentID"];
-                
-                if(development.IsNotNull())
-                {
-                    SessionHandler.SessionContext("DevelopmentInfo", development);
-                }
-
                 var developmentInfo = SessionHandler.GetSessionObject("DevelopmentInfo");
 
                 if (developmentInfo.IsNotNull())
@@ -173,6 +166,24 @@ namespace AAMPS.Web.Providers
                 return null;
             }
         }
+
+        //public string EstateName
+        //{
+        //    get
+        //    {
+        //        return _serviceProvider.GetEstateById(DevelopmentInfo.DevelopmentID).EstateDescription;
+        //    }
+
+        //}
+
+        //public string DeveloperName
+        //{
+        //    get
+        //    {
+        //        return _serviceProvider.GetCompanyById(DevelopmentInfo.DevelopmentDevID).CompanyDescription;
+        //    }
+
+        //}
 
 
 

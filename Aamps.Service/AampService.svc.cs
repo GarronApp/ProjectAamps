@@ -8,6 +8,7 @@ using Aamps.Domain.ValueObjects;
 using Aamps.Domain.ViewModels.Development;
 using Aamps.Domain.ViewModels.Reports.Sales;
 using Aamps.Repository.Implementations;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
@@ -27,6 +28,7 @@ namespace Aamps.Service
         UserRepository _userRepo;
         OrginatorRepository _orginatorRepo;
         UserPermissionRepository _permissionRepo;
+        CompanyRepository _companyRepo;
 
         public AampService()
         {
@@ -347,18 +349,29 @@ namespace Aamps.Service
             return results;
         }
 
-        public List<Company> GetCompanies()
+
+        public Company GetCompanyById(int id)
         {
-            _salesRepo = new SalesRepository(_dbContext);
-            var results = _salesRepo.GetCompanies();
+            _companyRepo = new CompanyRepository(_dbContext);
+             var results = _companyRepo.GetCompanyById(id);
 
             return results;
         }
 
-        public Company GetCompanyByUserGroupId(int id)
+
+
+        public List<Company> GetAllCompanies()
         {
-             _salesRepo = new SalesRepository(_dbContext);
-             var results = _salesRepo.GetCompanyByUserGroupId(id);
+            _companyRepo = new CompanyRepository(_dbContext);
+            var results = _companyRepo.GetAllCompanies();
+
+            return results;
+        }
+
+        public List<Company> GetCompaniesByGroup(int id)
+        {
+            _companyRepo = new CompanyRepository(_dbContext);
+            var results = _companyRepo.GetCompaniesByGroup(id);
 
             return results;
         }
@@ -379,10 +392,10 @@ namespace Aamps.Service
             return results;
         }
 
-        public Estate GetEstateByDevelopment(int id)
+        public Estate GetEstateById(int id)
         {
             _devRepo = new DevelopmentRepository(_dbContext);
-            var results = _devRepo.GetEstateByDevelopment(id);
+            var results = _devRepo.GetEstateById(id);
 
             return results;
        }

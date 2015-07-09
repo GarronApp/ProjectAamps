@@ -19,8 +19,6 @@ using AAMPS.Clients.Queries.Development;
 using App.Common.Exceptions;
 using AAMPS.Clients.Security;
 using AAMPS.Web.Providers;
-using AAMPS.Clients.Security;
-using ProjectAamps.Clients.Actions.Sales;
 using System.IO;
 using System.Threading.Tasks;
 using System.Net;
@@ -86,18 +84,18 @@ namespace AAMPS.Web.Controllers
             return Json(salesDepositProofList, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public ActionResult GetCompanyOriginator()
-        {
-            var originatorTypeList = new List<string>();
-            var originators = _serviceProvider.GetCompanies();
-            foreach (var item in originators.Where(x=> x.UserGroupID == 5))
-            {
-                originatorTypeList.Add(item.CompanyDescription);
-            }
-            return Json(originatorTypeList, JsonRequestBehavior.AllowGet);
+        //[HttpGet]
+        //public ActionResult GetCompanyOriginator()
+        //{
+        //    var originatorTypeList = new List<string>();
+        //    var originators = _serviceProvider.GetCompanies();
+        //    foreach (var item in originators.Where(x=> x.UserGroupID == 5))
+        //    {
+        //        originatorTypeList.Add(item.CompanyDescription);
+        //    }
+        //    return Json(originatorTypeList, JsonRequestBehavior.AllowGet);
 
-        }
+        //}
 
         [HttpGet]
         [AampsAuthorize]

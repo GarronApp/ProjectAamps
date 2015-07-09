@@ -2,8 +2,8 @@
 using AAMPS.Clients.ViewModels.Sales;
 using App.Common.Controllers.Actions;
 using App.Common.Security;
-using ProjectAamps.Clients.Actions.Emails;
-using ProjectAamps.Clients.ViewModels.Emails;
+using AAMPS.Clients.Actions.Emails;
+using AAMPS.Clients.ViewModels.Emails;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,7 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App.Extentions;
-using ProjectAamps.Clients.Actions.Base;
+using AAMPS.Clients.Actions.Base;
+using System.Web;
 
 namespace AAMPS.Clients.Actions.Sales
 {
@@ -44,8 +45,6 @@ namespace AAMPS.Clients.Actions.Sales
 
         public override object OnExecute()
         {
-
-
             var _currentUnit = new AAMPS.Clients.AampService.AampServiceClient().GetUnitById(Id);
             if(_currentUnit.IsNotNull())
             {
@@ -96,26 +95,30 @@ namespace AAMPS.Clients.Actions.Sales
 
             query.AvailableReservationVM = avaialableReservationVM;
 
-            var purchaserReservationCapturedVM = new PurchaserReservationCapturedVM()
-            {
-                DevelopmentName = DevelopmentInfo.DevelopmentDescription,
-                DevelopmentImage = DevelopmentInfo.DevelopmentUrlImage,
-                AgentName = UserInfo.UserListName,
-                AgentSurname = UserInfo.UserListSurname,
-                EmailAddress = UserInfo.UserListEmail,
-                PurchaserName = IndividualInfo.IndividualName,
-                PurchaserSurname = IndividualInfo.IndividualSurname,
-                UnitNumber = UnitInfo.UnitNumber,
-                Price = UnitInfo.UnitPrice,
-                LapseDate = SaleInfo.SaleReservationDt,
-                LapseTime = SaleInfo.SaleReservationExpiryDt
-            };
+                var ViewModelInfo = new EmailTypeViewModelInfo()
+                {
+                    DevelopmentName = DevelopmentInfo.DevelopmentDescription,
+                    DevelopmentImage = DevelopmentInfo.DevelopmentUrlImage,
+                    EstateName = EstateName,
+                    DeveloperName = DeveloperName,
+                    AgentName = UserInfo.UserListName,
+                    AgentSurname = UserInfo.UserListSurname,
+                    AgentEmailAddress = UserInfo.UserListEmail,
+                    EmailAddress = UserInfo.UserListEmail,
+                    PurchaserName = IndividualInfo.IndividualName,
+                    PurchaserSurname = IndividualInfo.IndividualSurname,
+                    UnitNumber = UnitInfo.UnitNumber,
+                    Price = UnitInfo.UnitPrice,
+                    LapseDate = SaleInfo.SaleReservationDt,
+                    LapseTime = SaleInfo.SaleReservationExpiryDt
+                };
 
-            var triggerMail = new EmailEngineProvider()  { ViewModelInfo = purchaserReservationCapturedVM};
-             
-            triggerMail.BuildEmail();
+            SessionHandler.SessionContext("AbsolutePathInfo", HttpContext.Current.Server.MapPath("~/"));
+
+            new EmailEngineProvider(EmailScenario.Sale_Reserved_Scenario, ViewModelInfo);
 
             return avaialableReservationVM;
+
         }
     }
 }

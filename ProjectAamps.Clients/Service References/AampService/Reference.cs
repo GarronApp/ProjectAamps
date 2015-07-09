@@ -7729,29 +7729,17 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetDevelopmentById", ReplyAction="http://tempuri.org/IAampService/GetDevelopmentByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.Development> GetDevelopmentByIdAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetEstateByDevelopment", ReplyAction="http://tempuri.org/IAampService/GetEstateByDevelopmentResponse")]
-        AAMPS.Clients.AampService.Estate GetEstateByDevelopment(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetEstateById", ReplyAction="http://tempuri.org/IAampService/GetEstateByIdResponse")]
+        AAMPS.Clients.AampService.Estate GetEstateById(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetEstateByDevelopment", ReplyAction="http://tempuri.org/IAampService/GetEstateByDevelopmentResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Estate> GetEstateByDevelopmentAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetEstateById", ReplyAction="http://tempuri.org/IAampService/GetEstateByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Estate> GetEstateByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitStatusById", ReplyAction="http://tempuri.org/IAampService/GetUnitStatusByIdResponse")]
         AAMPS.Clients.AampService.UnitStatus GetUnitStatusById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUnitStatusById", ReplyAction="http://tempuri.org/IAampService/GetUnitStatusByIdResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.UnitStatus> GetUnitStatusByIdAsync(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompanies", ReplyAction="http://tempuri.org/IAampService/GetCompaniesResponse")]
-        AAMPS.Clients.AampService.Company[] GetCompanies();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompanies", ReplyAction="http://tempuri.org/IAampService/GetCompaniesResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company[]> GetCompaniesAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompanyByUserGroupId", ReplyAction="http://tempuri.org/IAampService/GetCompanyByUserGroupIdResponse")]
-        AAMPS.Clients.AampService.Company GetCompanyByUserGroupId(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompanyByUserGroupId", ReplyAction="http://tempuri.org/IAampService/GetCompanyByUserGroupIdResponse")]
-        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company> GetCompanyByUserGroupIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/SaveIndividual", ReplyAction="http://tempuri.org/IAampService/SaveIndividualResponse")]
         AAMPS.Clients.AampService.Individual SaveIndividual(AAMPS.Clients.AampService.Individual person);
@@ -7812,6 +7800,24 @@ namespace AAMPS.Clients.AampService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetPurchaserEntityTypes", ReplyAction="http://tempuri.org/IAampService/GetPurchaserEntityTypesResponse")]
         System.Threading.Tasks.Task<AAMPS.Clients.AampService.EntityType[]> GetPurchaserEntityTypesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompanyById", ReplyAction="http://tempuri.org/IAampService/GetCompanyByIdResponse")]
+        AAMPS.Clients.AampService.Company GetCompanyById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompanyById", ReplyAction="http://tempuri.org/IAampService/GetCompanyByIdResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company> GetCompanyByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllCompanies", ReplyAction="http://tempuri.org/IAampService/GetAllCompaniesResponse")]
+        AAMPS.Clients.AampService.Company[] GetAllCompanies();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllCompanies", ReplyAction="http://tempuri.org/IAampService/GetAllCompaniesResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company[]> GetAllCompaniesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompaniesByGroup", ReplyAction="http://tempuri.org/IAampService/GetCompaniesByGroupResponse")]
+        AAMPS.Clients.AampService.Company[] GetCompaniesByGroup(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetCompaniesByGroup", ReplyAction="http://tempuri.org/IAampService/GetCompaniesByGroupResponse")]
+        System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company[]> GetCompaniesByGroupAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetUser", ReplyAction="http://tempuri.org/IAampService/GetUserResponse")]
         AAMPS.Clients.AampService.UserList GetUser(int identity);
@@ -8141,12 +8147,12 @@ namespace AAMPS.Clients.AampService {
             return base.Channel.GetDevelopmentByIdAsync(id);
         }
         
-        public AAMPS.Clients.AampService.Estate GetEstateByDevelopment(int id) {
-            return base.Channel.GetEstateByDevelopment(id);
+        public AAMPS.Clients.AampService.Estate GetEstateById(int id) {
+            return base.Channel.GetEstateById(id);
         }
         
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Estate> GetEstateByDevelopmentAsync(int id) {
-            return base.Channel.GetEstateByDevelopmentAsync(id);
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Estate> GetEstateByIdAsync(int id) {
+            return base.Channel.GetEstateByIdAsync(id);
         }
         
         public AAMPS.Clients.AampService.UnitStatus GetUnitStatusById(int id) {
@@ -8155,22 +8161,6 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.UnitStatus> GetUnitStatusByIdAsync(int id) {
             return base.Channel.GetUnitStatusByIdAsync(id);
-        }
-        
-        public AAMPS.Clients.AampService.Company[] GetCompanies() {
-            return base.Channel.GetCompanies();
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company[]> GetCompaniesAsync() {
-            return base.Channel.GetCompaniesAsync();
-        }
-        
-        public AAMPS.Clients.AampService.Company GetCompanyByUserGroupId(int id) {
-            return base.Channel.GetCompanyByUserGroupId(id);
-        }
-        
-        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company> GetCompanyByUserGroupIdAsync(int id) {
-            return base.Channel.GetCompanyByUserGroupIdAsync(id);
         }
         
         public AAMPS.Clients.AampService.Individual SaveIndividual(AAMPS.Clients.AampService.Individual person) {
@@ -8251,6 +8241,30 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task<AAMPS.Clients.AampService.EntityType[]> GetPurchaserEntityTypesAsync() {
             return base.Channel.GetPurchaserEntityTypesAsync();
+        }
+        
+        public AAMPS.Clients.AampService.Company GetCompanyById(int id) {
+            return base.Channel.GetCompanyById(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company> GetCompanyByIdAsync(int id) {
+            return base.Channel.GetCompanyByIdAsync(id);
+        }
+        
+        public AAMPS.Clients.AampService.Company[] GetAllCompanies() {
+            return base.Channel.GetAllCompanies();
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company[]> GetAllCompaniesAsync() {
+            return base.Channel.GetAllCompaniesAsync();
+        }
+        
+        public AAMPS.Clients.AampService.Company[] GetCompaniesByGroup(int id) {
+            return base.Channel.GetCompaniesByGroup(id);
+        }
+        
+        public System.Threading.Tasks.Task<AAMPS.Clients.AampService.Company[]> GetCompaniesByGroupAsync(int id) {
+            return base.Channel.GetCompaniesByGroupAsync(id);
         }
         
         public AAMPS.Clients.AampService.UserList GetUser(int identity) {

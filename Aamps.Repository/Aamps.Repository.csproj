@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementations\BaseRepository.cs" />
+    <Compile Include="Implementations\CompanyRepository.cs" />
     <Compile Include="Implementations\PurchaserRepository.cs" />
     <Compile Include="Implementations\IndividualRepository.cs" />
     <Compile Include="Implementations\DevelopmentRepository.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Implementations\UserPermissionRepository.cs" />
     <Compile Include="Implementations\UserRepository.cs" />
     <Compile Include="Implementations\UnitRepository.cs" />
+    <Compile Include="Interfaces\ICompanyRepository.cs" />
     <Compile Include="Interfaces\IPurchaserRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IDevelopmentRepository.cs" />

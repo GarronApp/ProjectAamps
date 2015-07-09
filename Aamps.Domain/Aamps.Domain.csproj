@@ -94,6 +94,7 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Development.cs" />
     <Compile Include="Models\DevelopmentType.cs" />
+    <Compile Include="Models\DocumentDtl.cs" />
     <Compile Include="Models\EntityType.cs" />
     <Compile Include="Models\Estate.cs" />
     <Compile Include="Models\FinancialTr.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Models\Mapping\CompanyMap.cs" />
     <Compile Include="Models\Mapping\DevelopmentMap.cs" />
     <Compile Include="Models\Mapping\DevelopmentTypeMap.cs" />
+    <Compile Include="Models\Mapping\DocumentDtlMap.cs" />
     <Compile Include="Models\Mapping\EntityTypeMap.cs" />
     <Compile Include="Models\Mapping\EstateMap.cs" />
     <Compile Include="Models\Mapping\FinancialTrMap.cs" />

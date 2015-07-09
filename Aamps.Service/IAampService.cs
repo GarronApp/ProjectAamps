@@ -19,7 +19,7 @@ namespace Aamps.Service
     [ServiceContract]
     public interface IAampService
     {
-        //Unit Service
+        #region Units
 
         [OperationContract]
         //[WebInvoke(UriTemplate = "/Units", BodyStyle = WebMessageBodyStyle.Bare, Method = "GET")]
@@ -56,13 +56,18 @@ namespace Aamps.Service
         [OperationContract]
         void UpdateUnit(Unit unit);
 
-        //Orginator Service
+        #endregion Units
+
+        #region Orginator
+
         [OperationContract]
         void UpdateOrginator(OriginatorTr originatorTr);
         [OperationContract]
         void SaveOrginator(OriginatorTr originatorTr);
 
-        //Sales Service
+        #endregion Orginator
+
+        #region Sales
 
         [OperationContract]
         List<Sale> GetAllSales();
@@ -115,7 +120,9 @@ namespace Aamps.Service
         [OperationContract]
         void UpdateSale(Sale sale);
 
-        //Development Service
+        #endregion
+
+        #region Development
 
         [OperationContract]
         List<Development> GetAllDevelopments();
@@ -127,19 +134,16 @@ namespace Aamps.Service
         Development GetDevelopmentById(int id);
 
         [OperationContract]
-        Estate GetEstateByDevelopment(int id);
+        Estate GetEstateById(int id);
 
         [OperationContract]
         UnitStatus GetUnitStatusById(int id);
-
-        [OperationContract]
-        List<Company> GetCompanies();
         
-        [OperationContract]
-        Company GetCompanyByUserGroupId(int id);
+        #endregion
 
-        //Individual
-         [OperationContract]
+        #region Individual
+
+        [OperationContract]
          Individual SaveIndividual(Individual person);
         
         [OperationContract]
@@ -157,9 +161,12 @@ namespace Aamps.Service
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped)]
         List<Individual> ValidateIndividual(string lastname, string cellphone, string email);
+       
+        #endregion
 
-        //Purchaser
-         [OperationContract]
+        #region Purchaser
+
+        [OperationContract]
          Purchaser SavePurchaser(Purchaser purchaser);
          
         [OperationContract]
@@ -170,8 +177,23 @@ namespace Aamps.Service
          
         [OperationContract]
          List<EntityType> GetPurchaserEntityTypes();
+        
+        #endregion
 
-        //User
+        #region Company
+
+        [OperationContract]
+        Company GetCompanyById(int id);
+
+        [OperationContract]
+        List<Company> GetAllCompanies();
+
+        [OperationContract]
+        List<Company> GetCompaniesByGroup(int id);
+        
+        #endregion
+
+        #region User
         [OperationContract]
         UserList GetUser(int identity);
 
@@ -180,8 +202,10 @@ namespace Aamps.Service
 
         [OperationContract]
         UserRight GetUserPermissions(int user);
+        
+        #endregion
 
-        //Enums
+        #region Enums
 
         [OperationContract]
         int GetUnitStatusTypes(GetUnitStatusType type);
@@ -191,6 +215,8 @@ namespace Aamps.Service
 
         [OperationContract]
         int GetSaleStatusTypes(GetSaleStatusType type);
-        
+
+
+        #endregion
     }
 }

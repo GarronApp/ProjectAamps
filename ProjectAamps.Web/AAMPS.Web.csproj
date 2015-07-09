@@ -216,6 +216,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Emails\Templates\AgentReservationCaptured.html" />
     <Content Include="Emails\Templates\PurchaserReservationCaptured.html" />
     <Content Include="Exceptions\Logs\Exceptions.txt" />
     <Content Include="favicon.ico" />

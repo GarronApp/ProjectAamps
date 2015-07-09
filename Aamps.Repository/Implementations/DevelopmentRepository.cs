@@ -39,7 +39,7 @@ namespace Aamps.Repository.Implementations
         }
 
        
-        public Estate GetEstateByDevelopment(int id)
+        public Estate GetEstateById(int id)
         {
             AampsContext _dbContext = new AampsContext();
             var results = (from x in _dbContext.Estates

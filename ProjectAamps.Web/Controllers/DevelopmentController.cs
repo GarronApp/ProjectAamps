@@ -115,7 +115,19 @@ namespace AAMPS.Web.Controllers
                      Session.Add("TotalUnitsPendingPrice", totalUnitsPendingPrice * totalUnitsPending);
                      Session.Add("TotalUnitsReserved", totalUnitsReserved);
                      Session.Add("totalUnitsReservedPrice", totalUnitsReservedPrice * totalUnitsReserved);
+
+                     var development = _serviceProvider.GetDevelopmentById(units.FirstOrDefault().DevelopmentID);
+
+                     if(development.IsNotNull())
+                     {
+                         SessionHandler.SessionContext("DevelopmentInfo", development);
+                         SessionHandler.SessionContext("EstateInfo", development.EstateID);
+                         SessionHandler.SessionContext("DeveloperInfo", development.DevelopmentDevID);
+                     }
+
                  }
+
+               
 
                 List<DevelopmentViewModel> list = new List<DevelopmentViewModel>();
 
@@ -216,7 +228,7 @@ namespace AAMPS.Web.Controllers
             var viewModel = new DevelopmentUnitViewModel()
             {
                 DevelopmentDescription = development.DevelopmentDescription,
-                EstateName = _serviceProvider.GetEstateByDevelopment(development.EstateID).EstateDescription,
+                EstateName = _serviceProvider.GetEstateById(development.EstateID).EstateDescription,
                 TotalUnits = units
 
             };

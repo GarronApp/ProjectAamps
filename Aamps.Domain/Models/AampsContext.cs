@@ -25,6 +25,7 @@ namespace Aamps.Domain.Models
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CommentGroup> CommentGroups { get; set; }
+        public DbSet<DocumentDtl> DocumentDtls { get; set; }
         public DbSet<Development> Developments { get; set; }
         public DbSet<DevelopmentType> DevelopmentTypes { get; set; }
         public DbSet<EntityType> EntityTypes { get; set; }

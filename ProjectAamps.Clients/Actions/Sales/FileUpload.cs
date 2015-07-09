@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace ProjectAamps.Clients.Actions.Sales
+namespace AAMPS.Clients.Actions.Sales
 {
     public class FileUpload
     {

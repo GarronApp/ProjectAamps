@@ -5,7 +5,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectAamps.Clients.Actions.Emails
+namespace AAMPS.Clients.Actions.Emails
 {
     public interface IEmailEngineProvider
     {
