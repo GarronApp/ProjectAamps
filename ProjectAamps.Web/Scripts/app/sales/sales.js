@@ -45,6 +45,8 @@
             $(this).datepicker('hide');
         });
 
+        $('[data-toggle="tooltip"]').tooltip()
+
         $('#accordion .panel-collapse').on('shown', function () {
             $(this).prev().find(".glyphicon").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
         });
@@ -407,6 +409,7 @@
                         },
                         error: function (xhr, status, p3, p4) {
                             var err = "Error " + " " + status + " " + p3 + " " + p4;
+                            console.log(err);
                             if (xhr.responseText && xhr.responseText[0] == "{")
                                 err = JSON.parse(xhr.responseText).Message;
                             toastr.error(err);
@@ -1168,7 +1171,7 @@
                     for (var x = 0; x < files.length; x++) {
                         data.append("file" + x, files[x]);
                     }
-
+                    $("#progress").removeClass('hide');
                     $.ajax({
                         type: "POST",
                         url: '/Sales/UploadDocuments?id=' + myID,
@@ -1184,7 +1187,7 @@
                                 err = JSON.parse(xhr.responseText).Message;
                             console.log(err);
                         }
-                    });
+                    }).done(function (data) {$(".progress").addClass('hide'); });
                 } else {
                     alert("This browser doesn't support HTML5 file uploads!");
                 }

@@ -17,6 +17,7 @@
         }).on('changeDate', function (e) {
             $(this).datepicker('hide');
         });
+
     }
 
     this.initializeNumericInputValues = function (controls) {

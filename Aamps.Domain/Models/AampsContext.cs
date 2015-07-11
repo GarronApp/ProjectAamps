@@ -70,6 +70,7 @@ namespace Aamps.Domain.Models
             modelBuilder.Configurations.Add(new CommentGroupMap());
             modelBuilder.Configurations.Add(new DevelopmentMap());
             modelBuilder.Configurations.Add(new DevelopmentTypeMap());
+            modelBuilder.Configurations.Add(new DocumentDtlMap());
             modelBuilder.Configurations.Add(new EntityTypeMap());
             modelBuilder.Configurations.Add(new EstateMap());
             modelBuilder.Configurations.Add(new IndividualMap());

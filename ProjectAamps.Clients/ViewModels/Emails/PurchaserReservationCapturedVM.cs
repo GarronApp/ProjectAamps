@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectAamps.Clients.ViewModels.Emails
+namespace AAMPS.Clients.ViewModels.Emails
 {
     public class PurchaserReservationCapturedVM
     {

@@ -23,6 +23,7 @@ namespace Aamps.Service
         UnitRepository _unitRepo;
         SalesRepository _salesRepo;
         DevelopmentRepository _devRepo;
+        DocumentRepository _docRepo;
         IndividualRepository _personRepo;
         PurchaserRepository _purchaserRepo;
         UserRepository _userRepo;
@@ -72,9 +73,6 @@ namespace Aamps.Service
 
             return results;
         }
-
-
-
 
         public Unit GetUnitById(int id)
         {
@@ -269,6 +267,12 @@ namespace Aamps.Service
              _salesRepo.Update(sale);
          }
 
+         public void UploadDocumentInfo(DocumentDtl document)
+         {
+             _docRepo = new DocumentRepository(_dbContext);
+             _docRepo.Add(document);
+         }
+
          public Individual SaveIndividual(Individual person)
         {
             _personRepo = new IndividualRepository(_dbContext);
@@ -357,7 +361,6 @@ namespace Aamps.Service
 
             return results;
         }
-
 
 
         public List<Company> GetAllCompanies()

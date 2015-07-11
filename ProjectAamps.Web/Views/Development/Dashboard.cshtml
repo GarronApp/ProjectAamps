@@ -7,6 +7,8 @@
 
 <div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
     <div class="row text-center" style="margin-top:-40px">
+        <button id="btnHome" onclick="window.location.href='@Url.Action("HomePage","Development")'" class="btn btn-primary btn-sm pull-left" type="button" style="margin-top:15px" data-toggle="tooltip" data-placement="top" title="return home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;HOME</button>
+        <button id="btnBack" onclick="window.location.href='@Url.Action("Dashboard","Development")'" class="btn btn-primary btn-sm pull-right" type="button" style="margin-top:15px" data-toggle="tooltip" data-placement="top" title="return to dashboard"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>&nbsp;Go Back</button>
         <h3 style="font-size:1.49em;font-weight:bold">Development Dashboard for @Session["DevelopmentName"].ToString() </h3>
     </div>
     <fieldset>

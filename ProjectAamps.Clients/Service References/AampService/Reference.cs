@@ -7274,6 +7274,243 @@ namespace AAMPS.Clients.AampService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DocumentDtl", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models")]
+    [System.SerializableAttribute()]
+    public partial class DocumentDtl : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> DocumenDtltAddedUserIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> DocumentDtlAddedDtField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> DocumentDtlGUIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DocumentDtlIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentDtlNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentDtlPathField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> FinancialTrField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IndividualIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> OriginatorIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PurchaserIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> SalesIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TransferIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> UnitIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> DocumenDtltAddedUserID {
+            get {
+                return this.DocumenDtltAddedUserIDField;
+            }
+            set {
+                if ((this.DocumenDtltAddedUserIDField.Equals(value) != true)) {
+                    this.DocumenDtltAddedUserIDField = value;
+                    this.RaisePropertyChanged("DocumenDtltAddedUserID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> DocumentDtlAddedDt {
+            get {
+                return this.DocumentDtlAddedDtField;
+            }
+            set {
+                if ((this.DocumentDtlAddedDtField.Equals(value) != true)) {
+                    this.DocumentDtlAddedDtField = value;
+                    this.RaisePropertyChanged("DocumentDtlAddedDt");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> DocumentDtlGUID {
+            get {
+                return this.DocumentDtlGUIDField;
+            }
+            set {
+                if ((this.DocumentDtlGUIDField.Equals(value) != true)) {
+                    this.DocumentDtlGUIDField = value;
+                    this.RaisePropertyChanged("DocumentDtlGUID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DocumentDtlID {
+            get {
+                return this.DocumentDtlIDField;
+            }
+            set {
+                if ((this.DocumentDtlIDField.Equals(value) != true)) {
+                    this.DocumentDtlIDField = value;
+                    this.RaisePropertyChanged("DocumentDtlID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DocumentDtlName {
+            get {
+                return this.DocumentDtlNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentDtlNameField, value) != true)) {
+                    this.DocumentDtlNameField = value;
+                    this.RaisePropertyChanged("DocumentDtlName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DocumentDtlPath {
+            get {
+                return this.DocumentDtlPathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentDtlPathField, value) != true)) {
+                    this.DocumentDtlPathField = value;
+                    this.RaisePropertyChanged("DocumentDtlPath");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> FinancialTr {
+            get {
+                return this.FinancialTrField;
+            }
+            set {
+                if ((this.FinancialTrField.Equals(value) != true)) {
+                    this.FinancialTrField = value;
+                    this.RaisePropertyChanged("FinancialTr");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IndividualID {
+            get {
+                return this.IndividualIDField;
+            }
+            set {
+                if ((this.IndividualIDField.Equals(value) != true)) {
+                    this.IndividualIDField = value;
+                    this.RaisePropertyChanged("IndividualID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> OriginatorID {
+            get {
+                return this.OriginatorIDField;
+            }
+            set {
+                if ((this.OriginatorIDField.Equals(value) != true)) {
+                    this.OriginatorIDField = value;
+                    this.RaisePropertyChanged("OriginatorID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PurchaserID {
+            get {
+                return this.PurchaserIDField;
+            }
+            set {
+                if ((this.PurchaserIDField.Equals(value) != true)) {
+                    this.PurchaserIDField = value;
+                    this.RaisePropertyChanged("PurchaserID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> SalesID {
+            get {
+                return this.SalesIDField;
+            }
+            set {
+                if ((this.SalesIDField.Equals(value) != true)) {
+                    this.SalesIDField = value;
+                    this.RaisePropertyChanged("SalesID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TransferID {
+            get {
+                return this.TransferIDField;
+            }
+            set {
+                if ((this.TransferIDField.Equals(value) != true)) {
+                    this.TransferIDField = value;
+                    this.RaisePropertyChanged("TransferID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> UnitID {
+            get {
+                return this.UnitIDField;
+            }
+            set {
+                if ((this.UnitIDField.Equals(value) != true)) {
+                    this.UnitIDField = value;
+                    this.RaisePropertyChanged("UnitID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SelectRelevantDevelopmentQuery", Namespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Queries.Developments")]
     [System.SerializableAttribute()]
     public partial class SelectRelevantDevelopmentQuery : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -7711,6 +7948,12 @@ namespace AAMPS.Clients.AampService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UpdateSale", ReplyAction="http://tempuri.org/IAampService/UpdateSaleResponse")]
         System.Threading.Tasks.Task UpdateSaleAsync(AAMPS.Clients.AampService.Sale sale);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UploadDocumentInfo", ReplyAction="http://tempuri.org/IAampService/UploadDocumentInfoResponse")]
+        void UploadDocumentInfo(AAMPS.Clients.AampService.DocumentDtl document);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/UploadDocumentInfo", ReplyAction="http://tempuri.org/IAampService/UploadDocumentInfoResponse")]
+        System.Threading.Tasks.Task UploadDocumentInfoAsync(AAMPS.Clients.AampService.DocumentDtl document);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAampService/GetAllDevelopments", ReplyAction="http://tempuri.org/IAampService/GetAllDevelopmentsResponse")]
         AAMPS.Clients.AampService.Development[] GetAllDevelopments();
         
@@ -8121,6 +8364,14 @@ namespace AAMPS.Clients.AampService {
         
         public System.Threading.Tasks.Task UpdateSaleAsync(AAMPS.Clients.AampService.Sale sale) {
             return base.Channel.UpdateSaleAsync(sale);
+        }
+        
+        public void UploadDocumentInfo(AAMPS.Clients.AampService.DocumentDtl document) {
+            base.Channel.UploadDocumentInfo(document);
+        }
+        
+        public System.Threading.Tasks.Task UploadDocumentInfoAsync(AAMPS.Clients.AampService.DocumentDtl document) {
+            return base.Channel.UploadDocumentInfoAsync(document);
         }
         
         public AAMPS.Clients.AampService.Development[] GetAllDevelopments() {

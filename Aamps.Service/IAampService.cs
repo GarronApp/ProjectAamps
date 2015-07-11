@@ -120,6 +120,9 @@ namespace Aamps.Service
         [OperationContract]
         void UpdateSale(Sale sale);
 
+        [OperationContract]
+        void UploadDocumentInfo(DocumentDtl document);
+
         #endregion
 
         #region Development

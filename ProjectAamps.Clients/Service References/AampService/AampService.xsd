@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Aamps.Domain.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:1862/AampService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ArrayOfUnit">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Unit" nillable="true" type="tns:Unit" />
@@ -655,6 +656,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfMOStatus" nillable="true" type="tns:ArrayOfMOStatus" />
+  <xs:complexType name="DocumentDtl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumenDtltAddedUserID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentDtlAddedDt" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocumentDtlGUID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DocumentDtlID" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentDtlName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentDtlPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FinancialTr" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IndividualID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="OriginatorID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PurchaserID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SalesID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TransferID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UnitID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentDtl" nillable="true" type="tns:DocumentDtl" />
   <xs:complexType name="ArrayOfPreferedContactMethod">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PreferedContactMethod" nillable="true" type="tns:PreferedContactMethod" />

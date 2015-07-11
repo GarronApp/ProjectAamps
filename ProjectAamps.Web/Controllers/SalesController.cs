@@ -137,35 +137,75 @@ namespace AAMPS.Web.Controllers
         //    return new JsonResult { Data = "Successfully " + count + " file(s) uploaded" };
         //}
 
+        public string GenerateFileName()
+        {
+            return DateTime.Now.ToShortDateString() + "_" + Guid.NewGuid().ToString("N");
+        }
+
         [HttpPost]
         public async Task<JsonResult> UploadDocuments(string id)
         {
             try
             {
+                var doc = new DocumentDtl();
+
                 foreach (string file in Request.Files)
                 {
                     var fileContent = Request.Files[file];
                     if (fileContent != null && fileContent.ContentLength > 0)
                     {
-                        var stream =  fileContent.InputStream;
+                        int MaxContentLength = 1024 * 1024 * 4; //4 MB
+                        string[] AllowedFileExtensions = new string[] { ".jpg", ".png", ".doc", ".docx", ".pdf" };
+
                         var fileName = Path.GetFileName(fileContent.FileName);
-                        var path =  Path.Combine(Server.MapPath("~/files"), fileName);
+
+                         if (!AllowedFileExtensions.Contains(fileName.Substring(fileName.LastIndexOf('.'))))
+                         {
+                             return Json("Invalid File Format!");
+                         }
+
+                        if (fileContent.ContentLength > MaxContentLength)
+                        {
+                            return Json("Document cannot be larger then" + MaxContentLength + " MB");
+                        }
+
+                        var stream = fileContent.InputStream;
+                        var documentIdentity = Guid.NewGuid();
+                        var directory = Server.MapPath("~/files/" + SaleID + "/" + documentIdentity);
+                        System.IO.Directory.CreateDirectory(directory);
+                        var path = Path.Combine(directory, fileName);
+                        //
 
                         using (var fileStream = System.IO.File.Create(path))
                         {
-                           await Task.Run(() =>  stream.CopyTo(fileStream));
+                          await Task.Run(() =>  stream.CopyTo(fileStream));
                         }
+
+                        doc.DocumentDtlGUID = documentIdentity;
+                        doc.DocumentDtlName = fileName;
+                        doc.DocumentDtlPath = path;
+                        doc.DocumenDtltAddedUserID = UserInfo.UserListID;
+                        doc.DocumentDtlAddedDt = DateTime.Now;
+
+                        _serviceProvider.UploadDocumentInfo(doc);
+
+                        };
+
                     }
+
+                 
                 }
-            }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionHandler.HandleException(ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json("Upload failed");
             }
 
             return Json("File uploaded successfully");
         }
+
+
 
         [HttpGet]
         [AampsAuthorize(Permissions.View)]

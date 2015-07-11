@@ -1,7 +1,7 @@
 ﻿function Bonds() {
 
     var instance = this;
-    instance.settings_route = "/aamps";
+    instance.settings_route = "";
 
     instance.save_Reservation_Url = instance.settings_route + "/Sales/SaveAvailableReservation";
     instance.save_BondsOrginator_Url = instance.settings_route + "/Bonds/SaveUpdateOrginator";
@@ -32,6 +32,8 @@
         }).on('changeDate', function (e) {
             $(this).datepicker('hide');
         });
+
+        $('[data-toggle="tooltip"]').tooltip()
 
         $("#btnAddBankApplication").prop("disabled", true);
 
