@@ -49,6 +49,23 @@ namespace Aamps.Repository.Implementations
             }
         }
 
+        public List<UserList> GetDevelopmentAgents(int company)
+        {
+            try
+            {
+                AampsContext _dbContext = new AampsContext();
+                var agents = _dbContext.UserLists
+                     .Where(x => x.CompanyID == company)
+                     .ToList();
+
+                return agents;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
 
 

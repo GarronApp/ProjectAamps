@@ -1245,7 +1245,7 @@
                         $("#txtIndividualSurname").val(instance.dublicateIndividualRecords[i].IndividualSurname);
                         $("#txtIndividualContactCell").val(instance.dublicateIndividualRecords[i].IndividualContactCell);
                         $("#txtIndividualEmail").val(instance.dublicateIndividualRecords[i].IndividualEmail);
-
+                        $("#DuplicateIndividualFound").val(1);
                         $('#DuplicateIndividualDetailsModal').modal('hide');
                        
                         break;
@@ -1267,20 +1267,15 @@
             cache: false,
             success: function (data) {
                 console.log(data)
-                //if (data.Forbidden) {
-                //    window.location.href = data.newurl;
-                //}
-                 
-                //else {
                     if (instance.isArray(data)) {
                         toastr.info("Duplicate record(s) found");
                         instance.LoadDuplicateIndividuals(data);
                     }
                     else {
                         instance.MapIndividualDetails(data);
+                        $("#DuplicateIndividualFound").val(0);
                         toastr.success("Individual added successfully");
                     }
-                //}
             },
             error: function (exception) {
                 console.log(exception);

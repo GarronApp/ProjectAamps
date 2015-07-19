@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AAMPS.Clients.ViewModels.Development.DevelopmentViewModel>
+
+<table class="table table-hover table-bordered" id="tableUnits">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td class="dark-orange">Unit Number</td>
+            <td class="dark-orange">Phase</td>
+            <td class="dark-orange">Block</td>
+            <td class="dark-orange">Floor</td>
+            <td class="text-center dark-orange">Unit Size</td>
+            <td class="dark-orange">Unit Status</td>
+            <td class="text-right dark-orange">Selling Price</td>
+            <td class="dark-orange">Available Date</td>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr id="tableUnitsRow">
+                <td id="rowIndicator">#</td>
+                <td id="unitNumber">@item.UnitNumber</td>
+                <td id="unitPhase">@item.UnitPhase</td>
+                <td id="unitBlock">@item.UnitBlock</td>
+                <td id="unitFloor">@item.UnitFloor</td>
+                <td id="unitUnitSize" class="text-center">@item.UnitSize</td>
+                <td id="unitStatusID">@item.UnitStatusID</td>
+                <td id="unitPriceIncluding" class="text-right"><label id="lblUnitPriceIncluding">@item.UnitPriceIncluding.ToString("C",System.Globalization.CultureInfo.CurrentCulture)</label></td>
+                <td id="unitActiveDate">@item.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>
+            </tr>
+        </tbody>
+    }
+</table>

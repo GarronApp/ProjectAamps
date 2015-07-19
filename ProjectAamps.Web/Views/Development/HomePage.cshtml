@@ -28,6 +28,8 @@
 <script>
 
     $(function () {
+        @*$("#developmentLogo").removeClass('hide');
+        $("#developmentLogo").attr("src", '@Url.Content("~/Images/" + Session["DevelopmentImage"].ToString())');*@
         $('.thumbnail').hover(
        function () {
 

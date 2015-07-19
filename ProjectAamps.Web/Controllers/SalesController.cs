@@ -205,10 +205,6 @@ namespace AAMPS.Web.Controllers
             return Json("File uploaded successfully");
         }
 
-
-
-        [HttpGet]
-        [AampsAuthorize(Permissions.View)]
         public JsonResult GetAgentSaleDetails()
         {
             try

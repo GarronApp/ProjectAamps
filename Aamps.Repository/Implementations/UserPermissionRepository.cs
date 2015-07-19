@@ -16,11 +16,21 @@ namespace Aamps.Repository.Implementations
 
         }
 
-        public UserRight GetUserPermissions(int user)
+        public List<UserRight> GetUserPermissions(int user)
         {
             AampsContext _dbContext = new AampsContext();
             var results = (from x in _dbContext.UserRights
                            where x.UserListID == user
+                           select x).ToList();
+
+            return results;
+        }
+
+        public FormReport GetFormPermissions(int id)
+        {
+            AampsContext _dbContext = new AampsContext();
+            var results = (from x in _dbContext.FormReports
+                           where x.FormReportID == id
                            select x).FirstOrDefault();
 
             return results;

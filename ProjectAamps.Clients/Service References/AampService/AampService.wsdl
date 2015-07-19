@@ -49,6 +49,18 @@
   <wsdl:message name="IAampService_GetDevelopmentUnits_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDevelopmentUnitsResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentAvailableUnits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentAvailableUnits" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentAvailableUnits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentAvailableUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentSummaryUnits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentSummaryUnits" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentSummaryUnits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentSummaryUnitsResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_GetUnitByUnitBlock_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUnitByUnitBlock" />
   </wsdl:message>
@@ -325,6 +337,18 @@
   <wsdl:message name="IAampService_GetUserPermissions_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserPermissionsResponse" />
   </wsdl:message>
+  <wsdl:message name="IAampService_GetFormPermissions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormPermissions" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetFormPermissions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentAgents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentAgents" />
+  </wsdl:message>
+  <wsdl:message name="IAampService_GetDevelopmentAgents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevelopmentAgentsResponse" />
+  </wsdl:message>
   <wsdl:message name="IAampService_GetUnitStatusTypes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUnitStatusTypes" />
   </wsdl:message>
@@ -367,6 +391,14 @@
     <wsdl:operation name="GetDevelopmentUnits">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentUnits" message="tns:IAampService_GetDevelopmentUnits_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentUnitsResponse" message="tns:IAampService_GetDevelopmentUnits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentAvailableUnits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentAvailableUnits" message="tns:IAampService_GetDevelopmentAvailableUnits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentAvailableUnitsResponse" message="tns:IAampService_GetDevelopmentAvailableUnits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentSummaryUnits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentSummaryUnits" message="tns:IAampService_GetDevelopmentSummaryUnits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentSummaryUnitsResponse" message="tns:IAampService_GetDevelopmentSummaryUnits_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUnitByUnitBlock">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitByUnitBlock" message="tns:IAampService_GetUnitByUnitBlock_InputMessage" />
@@ -552,6 +584,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUserPermissions" message="tns:IAampService_GetUserPermissions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUserPermissionsResponse" message="tns:IAampService_GetUserPermissions_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetFormPermissions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetFormPermissions" message="tns:IAampService_GetFormPermissions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetFormPermissionsResponse" message="tns:IAampService_GetFormPermissions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentAgents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentAgents" message="tns:IAampService_GetDevelopmentAgents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetDevelopmentAgentsResponse" message="tns:IAampService_GetDevelopmentAgents_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUnitStatusTypes">
       <wsdl:input wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusTypes" message="tns:IAampService_GetUnitStatusTypes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAampService/GetUnitStatusTypesResponse" message="tns:IAampService_GetUnitStatusTypes_OutputMessage" />
@@ -614,6 +654,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetDevelopmentUnits">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetDevelopmentUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentAvailableUnits">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetDevelopmentAvailableUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentSummaryUnits">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetDevelopmentSummaryUnits" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1028,6 +1086,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetUserPermissions">
       <soap:operation soapAction="http://tempuri.org/IAampService/GetUserPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormPermissions">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetFormPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevelopmentAgents">
+      <soap:operation soapAction="http://tempuri.org/IAampService/GetDevelopmentAgents" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

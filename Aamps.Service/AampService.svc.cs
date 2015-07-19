@@ -188,6 +188,7 @@ namespace Aamps.Service
             var results = _salesRepo.GetOriginatorBySalesId(id);
             return results;
         }
+
         public OriginatorTr GetOriginatorById(int id)
         {
             _salesRepo = new SalesRepository(_dbContext);
@@ -232,6 +233,30 @@ namespace Aamps.Service
                 UserListID = SelectRelevantUnitsQuery.UserListID,
                 UserTypeID = SelectRelevantUnitsQuery.UserTypeID,
                 DevelopmentID = SelectRelevantUnitsQuery.DevelopmentID
+            });
+            return results;
+        }
+
+        public List<Unit> GetDevelopmentAvailableUnits(SelectRelevantAvailableUnitQuery SelectRelevantAvailableUnitQuery)
+        {
+            _unitRepo = new UnitRepository(_dbContext);
+            var results = _unitRepo.GetRelevantAvailableUnits(new SelectRelevantAvailableUnitQuery()
+            {
+                UserListID = SelectRelevantAvailableUnitQuery.UserListID,
+                DevelopmentID = SelectRelevantAvailableUnitQuery.DevelopmentID,
+                CompanyID = SelectRelevantAvailableUnitQuery.CompanyID,
+                UserTypeID = SelectRelevantAvailableUnitQuery.UserTypeID
+            });
+            return results;
+        }
+
+        public List<Unit> GetDevelopmentSummaryUnits(SelectRelevantSummaryUnitQuery SelectRelevantSummaryUnitQuery)
+        {
+            _unitRepo = new UnitRepository(_dbContext);
+            var results = _unitRepo.GetRelevantSummaryUnits(new SelectRelevantSummaryUnitQuery()
+            {
+                UserListID = SelectRelevantSummaryUnitQuery.UserListID,
+                DevelopmentID = SelectRelevantSummaryUnitQuery.DevelopmentID
             });
             return results;
         }
@@ -411,7 +436,7 @@ namespace Aamps.Service
             return user;
         }
 
-        public UserRight GetUserPermissions(int user)
+        public List<UserRight> GetUserPermissions(int user)
         {
             _permissionRepo = new UserPermissionRepository(_dbContext);
             var permissions = _permissionRepo.GetUserPermissions(user);
@@ -420,12 +445,28 @@ namespace Aamps.Service
 
         }
 
+        public FormReport GetFormPermissions(int id)
+        {
+            _permissionRepo = new UserPermissionRepository(_dbContext);
+            var formIdentity = _permissionRepo.GetFormPermissions(id);
+
+            return formIdentity;
+        }
+
         public UserList GetCurrentUser(string username)
         {
             _userRepo = new UserRepository(_dbContext);
             var user = _userRepo.GetUserByUsername(username);
 
             return user;
+        }
+
+        public List<UserList> GetDevelopmentAgents(int company)
+        {
+            _userRepo = new UserRepository(_dbContext);
+            var agents = _userRepo.GetDevelopmentAgents(company);
+
+            return agents;
         }
 
         public void SaveOrginator(OriginatorTr originatorTr)

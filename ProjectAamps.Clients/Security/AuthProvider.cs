@@ -34,6 +34,7 @@ namespace AAMPS.Clients.Security
                             System.Web.HttpContext.Current.Session.Add("CurrentUserSession", SessionIdentity);
                             System.Web.HttpContext.Current.Session.Add("CurrentUserId", _currentUser.UserListID);
                             System.Web.HttpContext.Current.Session.Add("USER", _currentUser);
+                            System.Web.HttpContext.Current.Session.Add("CompanyID", _currentUser.CompanyID);
                             System.Web.HttpContext.Current.Session.Add("CurrentUser", _currentUser.UserListName);
                             System.Web.HttpContext.Current.Session.Add("CurrentUserFullName", _currentUser.UserListName + " " + _currentUser.UserListSurname);
                             base.LoadPermissions();

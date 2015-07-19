@@ -11,10 +11,11 @@
 </head>
 <body>
     <header>
+       @*@Html.Partial("~/Views/Shared/Header.cshtml");*@
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <a href="javascript:void()"><img id="developmentLogo" class="img-thumbnail hide" src="" alt="DEVELOPMENT LOGO" style="height:100px;" /></a>
+                    <a href="javascript:void()"><img id="developmentLogo" class="img-thumbnail hide" src="" alt="DEVELOPMENT LOGO" style="height:100px;margin-left: -15px;" /></a>
                 </div>
                 <div class="col-md-10">
                     <div class="row">
@@ -31,6 +32,7 @@
     </header>
     <div class="container">
         @RenderBody()
+        <hr />
     </div>
 
     <footer style="background-color: #c3c3c3" class="container">
@@ -38,7 +40,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <img src="~/Images/aamps.gif" style="height:40px;padding-left:5px;margin-bottom:5px" class="pull-right" />
-                    <h6 class="text-right" style="margin-right: 10px; padding-top:18px"><span class="text-left pull-left"><b>Welcome to Aamps, Your online Management Property System</b></span> Powered by AAMPS (c) 2015</h6>
+                    <h6 class="text-right" style="margin-right: 10px; padding-top:18px"><span class="text-left pull-left"><b>Welcome to Aamps, Your online Management Property System</b></span> Powered by AAMPS &copy; 2015</h6>
                 </div>
             </div>
         </div>

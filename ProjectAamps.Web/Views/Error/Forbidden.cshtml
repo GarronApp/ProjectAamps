@@ -1,10 +1,30 @@
 ﻿@{
-    ViewBag.Title = "Forbidden";
+    ViewBag.Title = "AAMPS | Forbidden Page";
 }
 
-<div class="jumbotron" style="background-color:#eee; margin-top:0px; padding-bottom:10px;margin-top:20px">
-    <div class="row text-center" style="margin-top:-30px">
-        <h5 style="font-size:1.49em;font-weight:bold">You do not have permissions to perform this action</h5>
-        <h5 style="font-size:1.39em;font-weight:bold">Please contact the Administrator for access right queries</h5>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template text-center">
+                <h1>
+                    Oops!
+                </h1>
+                <h2>
+                    Unauthorized Page
+                </h2>
+                <div class="error-details">
+                    <h4>You do not have permissions to perform this action</h4>
+                    <h4>Please contact the Administrator for access rights.</h4>
+                </div>
+                <br /><br />
+                <div class="error-actions text-center">
+                    <a href="javascript:void" onclick="window.location.href='@Url.Action("HomePage","Development")'" class="btn btn-primary btn-lg">
+                        <span class="glyphicon glyphicon-home"></span>
+                        Take Me Home
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr />
     </div>
 </div>

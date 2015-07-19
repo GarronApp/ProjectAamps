@@ -61,45 +61,23 @@
 </div>
 <div class="row">
     <p class="text-center" id="buttonsDashBoard">
-        <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('available')">RESERVATIONS</button>
+        <button type="button" class="btn btn-primary btn-lg" id="btnAvailableUnits">RESERVATIONS</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="showReservations('notavailable')">UPDATE SALES INFO</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="showBonds()">BONDS</button>
         <button type="button" class="btn btn-primary btn-lg" onclick="showReports()">REPORTS</button>
 
     </p>
     <br /><br />
+    <span id="progress" class="progress hide">
+        <img style="height:20px" src="~/Images/ajax-loader.gif" />
+        <span class="disabledControls">Processing...</span>
+    </span> 
+    <select class="selectpicker show-tick show-menu-arrow pull-right" title='[ Filter by Agent ]' id="selectfilteragentunits" style="width:auto;height:auto" name="filteragentunits"></select>
 
-    <table class="table table-hover table-bordered" id="tableUnits">
-        <thead>
-            <tr>
-                <td>#</td>
-                <td class="dark-orange">Unit Number</td>
-                <td class="dark-orange">Phase</td>
-                <td class="dark-orange">Block</td>
-                <td class="dark-orange">Floor</td>
-                <td class="text-center dark-orange">Unit Size</td>
-                <td class="dark-orange">Unit Status</td>
-                <td class="text-right dark-orange">Selling Price</td>
-                <td class="dark-orange">Available Date</td>
-            </tr>
-        </thead>
-        @foreach (var item in Model)
-        {
-            <tbody>
-                <tr id="tableUnitsRow">
-                    <td>#</td>
-                    <td>@item.UnitNumber</td>
-                    <td>@item.UnitPhase</td>
-                    <td>@item.UnitBlock</td>
-                    <td>@item.UnitFloor</td>
-                    <td class="text-center">@item.UnitSize</td>
-                    <td>@item.UnitStatusID</td>
-                    <td class="text-right"><label id="lblUnitPriceIncluding">@item.UnitPriceIncluding</label></td>
-                    <td>@item.UnitActiveDate.Value.ToString("dd/MM/yyyy")</td>
-                </tr>
-            </tbody>
-        }
-    </table>
+    <br /><br />
+      <div id="divAgentUnitsResults">
+          @{Html.RenderPartial("~/Views/Development/_DashboardUnits.cshtml", Model);}
+      </div>
 </div>
 
 <div class="modal fade" id="ReservationDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -111,56 +89,8 @@
                     <h4 class="modal-title" id="modalEdit">Available Units</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <table class="table table-condensed" id="availableUnits">
-                            <thead class="datagrid">
-                                <tr>
-                                    <th class="dark-orange">
-                                        Unit Number
-                                    </th>
-                                    <th class="dark-orange">
-                                        Unit Block
-                                    </th>
-                                    <th class="dark-orange">
-                                        Unit Floor
-                                    </th>
-                                    <th class="dark-orange">
-                                        Unit Price
-                                    </th>
-                                    <th class="dark-orange">
-                                        Unit Size
-                                    </th>
-                                </tr>
-                            </thead>
-
-
-                            @foreach (var item in Model.Where(c => c.UnitStatusId == 1))
-                            {
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            @item.UnitNumber
-                                        </td>
-                                        <td>
-                                            @item.UnitBlock
-                                        </td>
-                                        <td>
-                                            @item.UnitFloor
-                                        </td>
-                                        <td>
-                                            <label id="lblUnitPriceAvailableUnits">@item.UnitPriceIncluding</label>
-                                        </td>
-                                        <td>
-                                            @item.UnitSize
-                                        </td>
-                                        <td>
-                                            <a class="orange" onclick="ViewAvailableUnits(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Book Unit</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            }
-                        </table>
-
+                    <div class="row" id="divAvailableUnits">
+                        @{Html.RenderPartial("~/Views/Development/_AvailableUnits.cshtml", Model);}
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -320,9 +250,11 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/d3.js"></script>
 <script src="~/Scripts/c3.js"></script>
+<script src="~/Scripts/app/development/development.js"></script>
 <link href="~/Content/c3.css" rel="stylesheet" />
 <script type="text/javascript">
     var route = ""
+        
     function ViewBondDetails(id) {
         window.location.href = route + "/Bonds/Details/" + id;
     }
@@ -334,9 +266,6 @@
     }
     function showReservations(context) {
 
-        if (context === 'available') {
-            $('#ReservationDetailsModal').modal('show');
-        }
         if (context == "notavailable") {
             $('#ReservationDetailsModalNotAvailable').modal('show');
         }
@@ -367,9 +296,7 @@
         $("#lblTotalUnitsSoldPrice").html(formatNumber($("#lblTotalUnitsSoldPrice").html()));
         $("#lblTotalUnitsPrice").html(formatNumber($("#lblTotalUnitsPrice").html()));
 
-        $("table#tableUnits > tbody > tr").each(function () {
-            $(this).find('td:eq(7)').html(formatNumber($("#lblUnitPriceIncluding").html()));
-        });
+     
         $("table#availableUnits > tbody > tr").each(function () {
             $(this).find('td:eq(3)').html(formatNumber($("#lblUnitPriceAvailableUnits").html()));
         });
@@ -388,51 +315,13 @@
 <script type="text/javascript">
     $(function () {
 
-        $.ajax({
-            url: '@Url.Action("GetDevelopmentSummary", "Development")',
-            type: 'GET',
-            datatype: 'json',
-            data: {},
-            success: function (data) {
-
-                $("#lblDevName").html(data.DevelopmentDescription);
-                $("#lblEstateName").html(data.EstateName);
-                $("#lblTotalUnits").html(data.TotalUnits);
-                $("#lblTotalPending").html(data.PendingStatusCount);
-                $("#lblTotalReserved").html(data.ReservedStatusCount);
-                $("#lblTotalSold").html(data.SoldStatusCount);
-
-            }
-        });
-
-        FormatSummaryTotalsCurrency();
+        var development = new Development();
+        development.load();
 
         $("#developmentLogo").removeClass('hide');
         $("#developmentLogo").attr("src", '@Url.Content("~/Images/" + Session["DevelopmentImage"].ToString())');
 
-
-        var items = [];
-        $.getJSON("GetTotals", function (data) {
-
-            items.push(data);
-            console.log(data)
-            var chart = c3.generate({
-                size: {
-                    height: 180,
-                    width: 360
-                },
-                data: {
-                    columns: [
-                          [data[0].series, data[0].data],
-                          [data[2].series, data[2].data],
-                          [data[1].series, data[1].data],
-                          [data[3].series, data[3].data],
-                    ],
-                    type: 'bar',
-                },
-
-            });
-        });
+        FormatSummaryTotalsCurrency();
 
     });
 </script>

@@ -10,6 +10,7 @@ using App.Common.Exceptions;
 using AAMPS.Clients.Security;
 using App.Extentions;
 using AAMPS.Web.Providers;
+using System.Threading.Tasks;
 
 namespace AAMPS.Web.Controllers
 {
@@ -76,18 +77,34 @@ namespace AAMPS.Web.Controllers
 
         }
 
+        public JsonResult GetDevelopmentAgents()
+        {
+            var agents = _serviceProvider.GetDevelopmentAgents(DevelopmentInfo.DevelopmentSalesCoID);
+            var agentInfo = agents.Select(x => new { x.UserListName, x.UserListSurname , x.UserListID});
+            if(agents.IsNotNull())
+            {
+                var agentList = new List<object>();
+                foreach (var item in agentInfo)
+                {
+                    agentList.Add(item);
+                }
+                return Json(agentList, JsonRequestBehavior.AllowGet);
+            }
+            return null;
+        }
+
         // GET: Development
-        public ActionResult Dashboard()
+        [AampsAuthorize(Permissions.View)]
+        public async Task<ActionResult> Dashboard()
         {
             try
             {
                 Session.Remove("CurrentUnit");
                
-                 var units = _serviceProvider.GetDevelopmentUnits(new SelectRelevantUnitsQuery()
+                 var units = await _serviceProvider.GetDevelopmentSummaryUnitsAsync(new SelectRelevantSummaryUnitQuery()
                  {
                      DevelopmentID = DevelopmentID,
                      UserListID = UserInfo.UserListID,
-                     UserTypeID = UserInfo.UserTypeID
                  });
 
                  SessionHandler.SessionContext("DevelopmentImage", DevelopmentImage);
@@ -152,7 +169,10 @@ namespace AAMPS.Web.Controllers
                     list.Add(viewModel);
                 }
 
-                Session.Add("DevelopmentName", list.FirstOrDefault().DevelopmentDescription);
+                if(list.HasItems())
+                {
+                    Session.Add("DevelopmentName", list.FirstOrDefault().DevelopmentDescription);
+                }
            
               return View(list);
 
@@ -164,6 +184,89 @@ namespace AAMPS.Web.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public async Task<ActionResult> GetAgentUnits(int? agent)
+        {
+            var units = await _serviceProvider.GetDevelopmentSummaryUnitsAsync(new SelectRelevantSummaryUnitQuery()
+            {
+                DevelopmentID = DevelopmentID,
+                UserListID = agent,
+            });
+
+            if (units.HasItems())
+            {
+
+                List<DevelopmentViewModel> list = new List<DevelopmentViewModel>();
+
+                foreach (var item in units)
+                {
+                    DevelopmentViewModel viewModel = new DevelopmentViewModel()
+                    {
+                        UnitId = item.UnitID,
+                        UnitStatusId = item.UnitStatusID,
+                        UnitNumber = item.UnitNumber,
+                        UnitSize = item.UnitSize,
+                        UnitBlock = item.UnitBlock,
+                        UnitFloor = item.UnitFloor.IsNullOrEmpty() ? item.UnitFloor : item.UnitFloor.FormatInvariantCulture("{0}", string.Empty),
+                        UnitPrice = item.UnitPrice,
+                        UnitPriceIncluding = item.UnitPriceIncluding,
+                        UnitActiveDate = item.UnitActiveDate,
+                        UnitStatusID = _serviceProvider.GetUnitStatusById(item.UnitStatusID).UnitStatusDescription,
+                        DevelopmentDescription = _serviceProvider.GetDevelopmentById(item.DevelopmentID).DevelopmentDescription,
+
+                    };
+
+                    list.Add(viewModel);
+                }
+
+                return PartialView("~/Views/Development/_DashboardUnits.cshtml", list);
+            }
+            else
+            {
+                return Json("{0}".FormatInvariantCulture("<strong>No results found for agent selected.</strong>"),JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetAvailableUnits()
+        {
+            var units = await _serviceProvider.GetDevelopmentAvailableUnitsAsync(new SelectRelevantAvailableUnitQuery()
+            {
+               UserListID = UserInfo.UserListID,
+               UserTypeID = UserInfo.UserTypeID,
+               DevelopmentID = DevelopmentID,
+               CompanyID = 4
+            });
+
+            if (units.HasItems())
+            {
+
+                List<DevelopmentViewModel> list = new List<DevelopmentViewModel>();
+
+                foreach (var item in units)
+                {
+                    DevelopmentViewModel viewModel = new DevelopmentViewModel()
+                    {
+                        UnitId = item.UnitID,
+                        UnitNumber = item.UnitNumber,
+                        UnitBlock = item.UnitBlock,
+                        UnitFloor = item.UnitFloor.IsNullOrEmpty() ? item.UnitFloor : item.UnitFloor.FormatInvariantCulture("{0}", string.Empty),
+                        UnitPriceIncluding = item.UnitPriceIncluding,
+                        UnitSize = item.UnitSize
+                    };
+
+                    list.Add(viewModel);
+                }
+
+                return PartialView("~/Views/Development/_AvailableUnits.cshtml", list);
+            }
+            else
+            {
+                return Json("{0}".FormatInvariantCulture("No results found."), JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpGet]
         [AampsAuthorize(Permissions.View)]
         public JsonResult GetCurrentUnitDetails(int id)

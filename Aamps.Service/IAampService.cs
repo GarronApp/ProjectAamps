@@ -42,6 +42,12 @@ namespace Aamps.Service
         List<Unit> GetDevelopmentUnits(SelectRelevantUnitsQuery query);
 
         [OperationContract]
+        List<Unit> GetDevelopmentAvailableUnits(SelectRelevantAvailableUnitQuery query);
+
+        [OperationContract]
+        List<Unit> GetDevelopmentSummaryUnits(SelectRelevantSummaryUnitQuery query);
+
+        [OperationContract]
         Unit GetUnitByUnitBlock(string block);
 
         [OperationContract]
@@ -204,7 +210,13 @@ namespace Aamps.Service
         UserList GetCurrentUser(string username);
 
         [OperationContract]
-        UserRight GetUserPermissions(int user);
+        List<UserRight> GetUserPermissions(int user);
+
+        [OperationContract]
+        FormReport GetFormPermissions(int id);
+
+        [OperationContract]
+        List<UserList> GetDevelopmentAgents(int company);
         
         #endregion
 

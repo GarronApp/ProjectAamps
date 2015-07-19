@@ -1,0 +1,24 @@
+﻿<div class="container">
+    <div class="row">
+        @*<div class="col-md-2">
+            <a href="javascript:void()"><img id="developmentLogo" class="img-thumbnail hide" src="" alt="DEVELOPMENT LOGO" style="height:100px;margin-left: -15px;" /></a>
+        </div>*@
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-4 pull-right" style="margin-top: -5px;border-radius: 5px;padding: 10px; background-color:#83250B">
+                    <span>
+                        <span class="glyphicon glyphicon-user"></span><span style="font-size:13px;font-weight:bold; color:#ffffff">&nbsp;Welcome, <span id="currentUser"></span></span>
+                        <a href="#" style="color:#ffffff" data-toggle="modal" data-target=".bs-example-modal-sm" class="pull-right dark-orange"><span class="glyphicon glyphicon-off"></span>&nbsp;Logout</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        alert("loaded");
+            @*$("#developmentLogo").removeClass('hide');
+            $("#developmentLogo").attr("src", '@Url.Content("~/Images/" + Session["DevelopmentImage"].ToString())');*@
+        });
+</script>

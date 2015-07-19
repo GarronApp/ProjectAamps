@@ -91,8 +91,7 @@
 
                         <div class=" form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                @*<input type="button" id="btnUpdateReservation" class="btn btn-primary btn-sm" value="Update Reservation" />*@
-                                <button id="btnUpdateReservation" class="btn btn-primary btn-sm" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;Update Reservation</button>
+                                <button type="button" id="btnUpdateReservation" class="btn btn-primary btn-sm" ><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;Update Reservation</button>
                             </div>
                         </div>
 
@@ -103,6 +102,7 @@
                         <div class="form-group">
                             <input type="text" class="form-control" id="IndividualID" name="IndividualID" value="" style="display:none">
                             <input type="text" id="IsNewIndividual" name="IsNewIndividual" value="1" class="hide" />
+                            <input type="text" id="DuplicateIndividualValidated" name="DuplicateIndividualValidated" value="0" class="hide" />
                             <label for="txtFirstName" class="col-sm-2 control-label">First Name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="txtIndividualName" name="IndividualName" placeholder="first name">
@@ -142,8 +142,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                @*<input type="button" id="btnReservedUpdatePersonDetails" class="btn btn-primary btn-sm" value="Update Individual's Details" />*@
-                                <button id="btnReservedUpdatePersonDetails" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;Update Individual's Details</button>
+                                <button type="button" id="btnReservedUpdatePersonDetails" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;Update Individual's Details</button>
                                 <span id="progress" class="progress hide">
                                     <img style="height:20px" src="~/Images/ajax-loader.gif" />
                                     <span class="disabledControls">Processing...</span> 
@@ -252,7 +251,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-4 col-sm-8">
-                                <input type="button" class="btn btn-primary btn-sm" id="btnUpdateReservedSale" value="Update Sale Details" />
+                                <button type="button" class="btn btn-primary btn-sm" id="btnUpdateReservedSale" value="Update Sale Details"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;Update Sale Details</button>
                             </div>
                         </div>
                     </form>
@@ -300,7 +299,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <input type="button" id="btnPendingUpdatePersonDetails" class="btn btn-primary btn-sm" value="Update Contact Details" />
+                                <button type="button" class="btn btn-primary btn-sm" id="btnPendingUpdatePersonDetails" value="Update Contact Details"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;Update Contact Details</button>
                             </div>
                         </div>
 

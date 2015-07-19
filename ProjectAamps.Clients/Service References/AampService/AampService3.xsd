@@ -8,4 +8,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SelectRelevantUnitsQuery" nillable="true" type="tns:SelectRelevantUnitsQuery" />
+  <xs:complexType name="SelectRelevantAvailableUnitQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="DevelopmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserListID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTypeID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SelectRelevantAvailableUnitQuery" nillable="true" type="tns:SelectRelevantAvailableUnitQuery" />
+  <xs:complexType name="SelectRelevantSummaryUnitQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DevelopmentID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserListID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SelectRelevantSummaryUnitQuery" nillable="true" type="tns:SelectRelevantSummaryUnitQuery" />
 </xs:schema>

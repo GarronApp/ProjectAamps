@@ -1,15 +1,31 @@
 ﻿
 @{
-    ViewBag.Title = "System Error";
+    ViewBag.Title = "AAMPS | System Error";
     Layout = "~/Views/Shared/_Error.cshtml";
 }
 
-<div>
+<div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2>System Error!</h2>
-            <h4>An unexpected error occured, please notify the administrator</h4>
-            <hr />
+            <div class="error-template text-center">
+                <h1>
+                    Oops!
+                </h1>
+                <h2>
+                    System Error!
+                </h2>
+                <div class="error-details">
+                    <h4>An unexpected error occured, please notify the administrator</h4>
+                </div>
+                <br /><br />
+                <div class="error-actions text-center">
+                    <a href="javascript:void" onclick="window.location.href='@Url.Action("HomePage","Development")'" class="btn btn-primary btn-lg">
+                        <span class="glyphicon glyphicon-home"></span>
+                        Take Me Home
+                    </a>
+                </div>
+            </div>
         </div>
+        <hr />
     </div>
 </div>

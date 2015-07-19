@@ -18,6 +18,8 @@
             $(this).datepicker('hide');
         });
 
+        $('.selectpicker').selectpicker();
+
     }
 
     this.initializeNumericInputValues = function (controls) {

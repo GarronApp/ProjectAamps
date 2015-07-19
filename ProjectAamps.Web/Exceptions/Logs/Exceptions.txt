@@ -1186,3 +1186,251 @@ Exception rethrown at [0]:
 ------------------------= End Exception =---------------------------
 
 
+-----------------------= Start Exception =--------------------------
+2015-07-11 09:07:33 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 134
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 86
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-12 02:34:08 PM
+
+Value cannot be null.
+Parameter name: String
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at AAMPS.Web.Providers.BaseController.get_DevelopmentID() in c:\workspace\Aamps\AAMPS.Web\Providers\BaseController.cs:line 134
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 86
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-14 09:24:22 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 86
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-14 09:24:29 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 86
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-15 12:46:30 AM
+
+Unable to cast object of type 'AAMPS.Clients.AampService.UserRight[]' to type 'System.Collections.ArrayList'.
+   at AAMPS.Clients.Security.AampsAuthorize.get_UserPermissions() in c:\workspace\Aamps\AAMPS.Clients\Security\AampsAuthorize.cs:line 213
+   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AampsAuthorize.cs:line 69
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-15 07:54:25 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetFormPermissions(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetFormPermissions(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 8552
+   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AampsAuthorize.cs:line 79
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-15 07:54:28 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetDevelopmentUnits(SelectRelevantUnitsQuery query)
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentUnits(SelectRelevantUnitsQuery query) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 8176
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 87
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-15 07:54:51 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query)
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 8392
+   at AAMPS.Web.Controllers.DevelopmentController.HomePage() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 25
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-15 09:16:28 PM
+
+Object reference not set to an instance of an object.
+   at AAMPS.Web.Controllers.DevelopmentController.Dashboard() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 155
+----= Inner Exception Exception =----
+
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-16 04:24:15 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetFormPermissions(Int32 id)
+   at AAMPS.Clients.AampService.AampServiceClient.GetFormPermissions(Int32 id) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 8740
+   at AAMPS.Clients.Security.AampsAuthorize.AuthorizeCore(HttpContextBase httpContext) in c:\workspace\Aamps\AAMPS.Clients\Security\AampsAuthorize.cs:line 79
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-16 04:24:17 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+   at System.Runtime.AsyncResult.End[TAsyncResult](IAsyncResult result)
+   at System.ServiceModel.Channels.ServiceChannel.SendAsyncResult.End(SendAsyncResult result)
+   at System.ServiceModel.Channels.ServiceChannel.EndCall(String action, Object[] outs, IAsyncResult result)
+   at System.ServiceModel.Channels.ServiceChannelProxy.TaskCreator.<>c__DisplayClass5`1.<CreateGenericTask>b__4(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at AAMPS.Web.Controllers.DevelopmentController.<Dashboard>d__31.MoveNext() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 104
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetRequestStream(IAsyncResult asyncResult, TransportContext& context)
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStreamAsyncResult.CompleteGetRequestStream(IAsyncResult result)
+------------------------= End Exception =---------------------------
+
+
+-----------------------= Start Exception =--------------------------
+2015-07-16 04:24:28 PM
+
+There was no endpoint listening at http://localhost:1862/AampService.svc/soap that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.
+
+Server stack trace: 
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+   at System.ServiceModel.Channels.HttpOutput.Send(TimeSpan timeout)
+   at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.SendRequest(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   at AAMPS.Clients.AampService.IAampService.GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query)
+   at AAMPS.Clients.AampService.AampServiceClient.GetDevelopmentsByAgent(SelectRelevantDevelopmentQuery query) in c:\workspace\Aamps\AAMPS.Clients\Service References\AampService\Reference.cs:line 8580
+   at AAMPS.Web.Controllers.DevelopmentController.HomePage() in c:\workspace\Aamps\AAMPS.Web\Controllers\DevelopmentController.cs:line 26
+----= Inner Exception Exception =----
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1862
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at System.ServiceModel.Channels.HttpOutput.WebRequestHttpOutput.GetOutputStream()
+------------------------= End Exception =---------------------------
+
+

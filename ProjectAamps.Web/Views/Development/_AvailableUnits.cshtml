@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AAMPS.Clients.ViewModels.Development.DevelopmentViewModel>
+<table class="table table-condensed" id="availableUnits">
+    <thead class="datagrid">
+        <tr>
+            <th class="dark-orange">
+                Unit Number
+            </th>
+            <th class="dark-orange">
+                Unit Block
+            </th>
+            <th class="dark-orange">
+                Unit Floor
+            </th>
+            <th class="dark-orange">
+                Unit Price
+            </th>
+            <th class="dark-orange">
+                Unit Size
+            </th>
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @item.UnitNumber
+                </td>
+                <td>
+                    @item.UnitBlock
+                </td>
+                <td>
+                    @item.UnitFloor
+                </td>
+                <td>
+                    <label id="lblUnitPriceAvailableUnits">@item.UnitPriceIncluding.ToString("C", System.Globalization.CultureInfo.CurrentCulture)</label>
+                </td>
+                <td>
+                    @item.UnitSize
+                </td>
+                <td>
+                    <a class="orange" onclick="ViewAvailableUnits(@item.UnitId)"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Book Unit</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+

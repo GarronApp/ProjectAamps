@@ -11,6 +11,7 @@ namespace AAMPS.Clients.ViewModels.Individual
     {
         public int IndividualID { get; set; }
         public int IsNewIndividual { get; set; }
+        public int DuplicateIndividualFound { get; set; }
         public string IndividualName { get; set; }
         public string IndividualSurname { get; set; }
         public string IndividualIDNumber { get; set; }
@@ -34,6 +35,14 @@ namespace AAMPS.Clients.ViewModels.Individual
             set
             {
                 individual = value;
+            }
+        }
+
+        public bool DuplicateIndividual
+        {
+            get
+            {
+                return DuplicateIndividualFound == 1 ? true : false;
             }
         }
     }

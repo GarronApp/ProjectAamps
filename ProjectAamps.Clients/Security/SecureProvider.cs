@@ -47,14 +47,17 @@ namespace AAMPS.Clients.Security
         {
             var rights = _serviceProvider.GetUserPermissions(USER.UserListID);
 
-            if(rights.IsNotNull())
+            if(rights.HasItems())
             {
-                SessionHandler.SessionContext("USER_RIGHT_VIEW", rights.UserRightView);
-                SessionHandler.SessionContext("USER_RIGHT_ADD", rights.UserRightAdd);
-                SessionHandler.SessionContext("USER_RIGHT_EDIT", rights.UserRightEdit);
-                SessionHandler.SessionContext("USER_RIGHT_DELETE", rights.UserRightDelete);
+                SessionHandler.SessionContext("USER_RIGHTS", rights);
             }
-            
+
+            //var formPermissions = rights.HasItems() ? _serviceProvider.GetFormPermissions(rights.FirstOrDefault().FormReportID) : null;
+
+            //if(formPermissions.IsNotNull())
+            //{
+            //    SessionHandler.SessionContext("FORM_URL", formPermissions.FormReportID);
+            //}
         }
     }
 }

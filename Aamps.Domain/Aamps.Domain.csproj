@@ -165,6 +165,8 @@
     <Compile Include="Queries\Developments\SelectRelevantDevelopmentResult.cs" />
     <Compile Include="Queries\Reports\Bonds\BondsReportQuery.cs" />
     <Compile Include="Queries\Reports\Sales\SalesReportQuery.cs" />
+    <Compile Include="Queries\Units\SelectRelevantAvailableUnitQuery.cs" />
+    <Compile Include="Queries\Units\SelectRelevantSummaryUnitQuery.cs" />
     <Compile Include="Queries\Units\SelectRelevantUnitsQuery.cs" />
     <Compile Include="Rules\Individual\IndividualDuplicationRule.cs" />
     <Compile Include="Rules\Individual\IndividualRules.cs" />
@@ -189,6 +191,8 @@
     <Folder Include="Mappers\Sales\" />
     <Folder Include="Operations\Sales\Implementations\" />
     <Folder Include="Operations\Sales\Interfaces\" />
+    <Folder Include="Queries\Bonds\" />
+    <Folder Include="Queries\Sales\" />
     <Folder Include="Rules\Sales\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

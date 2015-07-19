@@ -53,5 +53,14 @@ namespace App.Common.Security
             }
             return null;
         }
+
+        public static IEnumerable<Object> GetSessionListObject(string session)
+        {
+            if (HttpContext.Current.Session["" + session + ""] != null)
+            {
+                return (IEnumerable<Object>)HttpContext.Current.Session["" + session + ""];
+            }
+            return null;
+        }
     }
 }

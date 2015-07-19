@@ -15,8 +15,6 @@ namespace AAMPS.Web.Providers
     {
         public AAMPS.Clients.AampService.AampServiceClient _service;
 
-        protected string strAppTitle = ConfigurationSettings.AppSettings["AppRoute"];
-
         public AAMPS.Clients.AampService.AampServiceClient _serviceProvider
         {
             get
@@ -198,5 +196,12 @@ namespace AAMPS.Web.Providers
         }
 
        
+    }
+
+    public class SelectAgentViewModel
+    {
+        public int AgentId { get; set; }
+        public string  FirstName { get; set; }
+        public string  LastName { get; set; }
     }
 }
