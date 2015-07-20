@@ -171,7 +171,11 @@ namespace AAMPS.Web.Controllers
 
                 if(list.HasItems())
                 {
-                    Session.Add("DevelopmentName", list.FirstOrDefault().DevelopmentDescription);
+                    SessionHandler.SessionContext("DevelopmentName", DevelopmentInfo.DevelopmentDescription);
+                }
+                else
+                {
+                    SessionHandler.SessionContext("DevelopmentName", string.Empty);
                 }
            
               return View(list);

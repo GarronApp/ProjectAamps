@@ -1162,8 +1162,9 @@
     }
 
     this.UploadDocuments = function () {
-
-        $('#btnUploadProof').on('change', function (e) {
+          $('#btnUploadProof').on('change', function (e) {
+              $("#uploadDocumentsProgress").removeClass('hide');
+              console.log("hey");
             var files = e.target.files;
             if (files.length > 0) {
                 if (window.FormData !== undefined) {
@@ -1171,7 +1172,7 @@
                     for (var x = 0; x < files.length; x++) {
                         data.append("file" + x, files[x]);
                     }
-                    $("#progress").removeClass('hide');
+                    console.log("hey 74567");
                     $.ajax({
                         type: "POST",
                         url: '/Sales/UploadDocuments?id=' + myID,
@@ -1187,12 +1188,13 @@
                                 err = JSON.parse(xhr.responseText).Message;
                             console.log(err);
                         }
-                    }).done(function (data) {$(".progress").addClass('hide'); });
+                    }).done(function () { $("#uploadDocumentsProgress").addClass('hide'); });
                 } else {
                     alert("This browser doesn't support HTML5 file uploads!");
                 }
             }
-        });
+          });
+          console.log("hey 2342");
     }
 
     this.HandleUnauthorizedPermissions = function (data) {

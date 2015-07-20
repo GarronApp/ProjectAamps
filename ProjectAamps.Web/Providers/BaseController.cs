@@ -15,6 +15,8 @@ namespace AAMPS.Web.Providers
     {
         public AAMPS.Clients.AampService.AampServiceClient _service;
 
+        public static string DocumentUploadURL = System.Configuration.ConfigurationManager.AppSettings["DocumentUploadUrl"];
+
         public AAMPS.Clients.AampService.AampServiceClient _serviceProvider
         {
             get
@@ -165,23 +167,23 @@ namespace AAMPS.Web.Providers
             }
         }
 
-        //public string EstateName
-        //{
-        //    get
-        //    {
-        //        return _serviceProvider.GetEstateById(DevelopmentInfo.DevelopmentID).EstateDescription;
-        //    }
+        public string EstateName
+        {
+            get
+            {
+                return _serviceProvider.GetEstateById(DevelopmentInfo.DevelopmentID).EstateDescription;
+            }
 
-        //}
+        }
 
-        //public string DeveloperName
-        //{
-        //    get
-        //    {
-        //        return _serviceProvider.GetCompanyById(DevelopmentInfo.DevelopmentDevID).CompanyDescription;
-        //    }
+        public string DeveloperName
+        {
+            get
+            {
+                return _serviceProvider.GetCompanyById(DevelopmentInfo.DevelopmentDevID).CompanyDescription;
+            }
 
-        //}
+        }
 
 
 

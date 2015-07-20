@@ -143,7 +143,7 @@ namespace AAMPS.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> UploadDocuments(string id)
+        public JsonResult UploadDocuments(string id)
         {
             try
             {
@@ -171,14 +171,14 @@ namespace AAMPS.Web.Controllers
 
                         var stream = fileContent.InputStream;
                         var documentIdentity = Guid.NewGuid();
-                        var directory = Server.MapPath("~/files/" + SaleID + "/" + documentIdentity);
+                        var directory = Server.MapPath(DocumentUploadURL + SaleID + "/" + documentIdentity);
                         System.IO.Directory.CreateDirectory(directory);
                         var path = Path.Combine(directory, fileName);
                         //
 
                         using (var fileStream = System.IO.File.Create(path))
                         {
-                          await Task.Run(() =>  stream.CopyTo(fileStream));
+                            stream.CopyTo(fileStream);
                         }
 
                         doc.DocumentDtlGUID = documentIdentity;
@@ -202,7 +202,7 @@ namespace AAMPS.Web.Controllers
                 return Json("Upload failed");
             }
 
-            return Json("File uploaded successfully");
+            return Json("File(s) uploaded successfully");
         }
 
         public JsonResult GetAgentSaleDetails()
