@@ -30,6 +30,7 @@
         instance.resources = new Resources();
         instance.resources.MaskCellPhone();
         instance.resources.MaskWorkPhone();
+        instance.resources.resourceConfiguration();
 
         var nowTemp = new Date();
         var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
@@ -46,6 +47,10 @@
         });
 
         $('[data-toggle="tooltip"]').tooltip()
+
+        $(".progress-bar").animate({
+            width: "100%"
+        }, 4500);
 
         $('#accordion .panel-collapse').on('shown', function () {
             $(this).prev().find(".glyphicon").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-down");
@@ -390,6 +395,8 @@
         });
 
         $('#btnUploadProof').on('change', function (e) {
+            $("#uploadDocumentsProgress").removeClass('hide');
+            $('#PleaseWait').modal('show');
             var files = e.target.files;
             if (files.length > 0) {
                 if (window.FormData !== undefined) {
@@ -405,7 +412,7 @@
                         processData: false,
                         data: data,
                         success: function (result) {
-                            toastr.success(result);
+                               toastr.success(result);
                         },
                         error: function (xhr, status, p3, p4) {
                             var err = "Error " + " " + status + " " + p3 + " " + p4;
@@ -414,7 +421,7 @@
                                 err = JSON.parse(xhr.responseText).Message;
                             toastr.error(err);
                         }
-                    });
+                    }).done(function () { $('#PleaseWait').modal('hide'); });
                 } else {
                     alert("This browser doesn't support HTML5 file uploads!");
                 }
@@ -442,7 +449,6 @@
         instance.LoadContactPreferedTypes();
         instance.LoadDepositProofTypes();
         instance.LoadPurchaserEntityTypes();
-        instance.LoadCompanyOrginators();
         instance.initializeSaleDetails();
     }
 
@@ -1164,7 +1170,7 @@
     this.UploadDocuments = function () {
           $('#btnUploadProof').on('change', function (e) {
               $("#uploadDocumentsProgress").removeClass('hide');
-              console.log("hey");
+              //$('#myPleaseWait').modal('show');
             var files = e.target.files;
             if (files.length > 0) {
                 if (window.FormData !== undefined) {
@@ -1172,7 +1178,6 @@
                     for (var x = 0; x < files.length; x++) {
                         data.append("file" + x, files[x]);
                     }
-                    console.log("hey 74567");
                     $.ajax({
                         type: "POST",
                         url: '/Sales/UploadDocuments?id=' + myID,
@@ -1194,7 +1199,6 @@
                 }
             }
           });
-          console.log("hey 2342");
     }
 
     this.HandleUnauthorizedPermissions = function (data) {

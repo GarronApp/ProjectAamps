@@ -239,11 +239,9 @@
                                 <label for="txtDepositPaid" class="col-sm-4 control-label">Upload Proof</label>
                                 <div class="col-sm-8">
                                     <input type="file" id="btnUploadProof" multiple name="UploadFile" value="Browse..." />
+                                    <span><span class="glyphicon glyphicon-info-sign"></span>&nbsp;<strong>4mb</strong> maximum upload size</span>
                                 </div>
-                                <div id="uploadDocumentsProgress" class="progress hide">
-                                    <img style="height:20px" src='@Url.Content("~/Images/ajax-loader.gif")' />
-                                    <span class="disabledControls">Uploading...</span>
-                                </div> 
+                             
 
                         </div>
                        </div>
@@ -645,6 +643,27 @@
         </div>
     </form>
 </div>
+
+<div class="modal fade bs-example-modal-sm" id="PleaseWait" tabindex="-1"
+    role="dialog" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <img style="height:15px" src='@Url.Content("~/Images/ajax-loader.gif")' />&nbsp;Please Wait...
+                 </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-12 col-sm-12 progress-container">
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-info progress-bar-info" style="width:0%">Uploading...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section Scripts {
 <script src="http://malsup.github.com/jquery.form.js"></script>

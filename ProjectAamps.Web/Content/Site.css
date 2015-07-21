@@ -110,6 +110,10 @@ p#buttonsDashBoard .btn-lg, .btn-group-lg > .btn {
     /*border-color: #83250B;*/
 }
 
+.progress.active .progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
 
 
 .btn-primary :hover {
@@ -553,7 +557,7 @@ padding:1px;
 .progress-bar {
 width:0px;
 height:20px;
-background-color:#57be65;
+background-color:#83250B;
 }
 
 
