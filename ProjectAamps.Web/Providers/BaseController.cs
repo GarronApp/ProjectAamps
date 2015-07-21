@@ -20,7 +20,7 @@ namespace AAMPS.Web.Providers
         public AAMPS.Clients.AampService.AampServiceClient _serviceProvider
         {
             get
-            {
+            {                
                 return _service = new AampServiceClient();
             }
         }
